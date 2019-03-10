@@ -1,0 +1,90 @@
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe.config
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.pdb
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Form1.resources
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Properties.Resources.resources
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.ManualUC.resources
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.Setting.resources
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.GenerateResource.cache
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CoreCompileInputs.cache
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CopyComplete
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.IMUSetting.resources
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoUC.resources
+D:\InterfaceThesis\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe.config
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.pdb
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Form1.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Properties.Resources.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoUC.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.IMUSetting.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.ManualUC.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.Setting.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.GenerateResource.cache
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CoreCompileInputs.cache
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CopyComplete
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb
+C:\Users\Duc Ta\Downloads\ThesisInterface-newlook\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe.config
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.pdb
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Form1.resources
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Properties.Resources.resources
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoUC.resources
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.IMUSetting.resources
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.ManualUC.resources
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.Setting.resources
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.GenerateResource.cache
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CoreCompileInputs.cache
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CopyComplete
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
+D:\ThesisInterface\ThesisInterface-newlook\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb
+D:\ThesisInterface\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe.config
+D:\ThesisInterface\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe
+D:\ThesisInterface\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.pdb
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Form1.resources
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Properties.Resources.resources
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoUC.resources
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.IMUSetting.resources
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.ManualUC.resources
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.Setting.resources
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.GenerateResource.cache
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CoreCompileInputs.cache
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CopyComplete
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
+D:\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe.config
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.pdb
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Form1.resources
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Properties.Resources.resources
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoUC.resources
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.IMUSetting.resources
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.ManualUC.resources
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.Setting.resources
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.GenerateResource.cache
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CoreCompileInputs.cache
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CopyComplete
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
+D:\github\ThesisInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe.config
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.pdb
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Form1.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Properties.Resources.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoUC.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.IMUSetting.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.ManualUC.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.Setting.resources
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.GenerateResource.cache
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CoreCompileInputs.cache
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CopyComplete
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
+C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb
