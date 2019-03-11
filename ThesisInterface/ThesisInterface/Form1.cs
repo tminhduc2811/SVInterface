@@ -33,6 +33,8 @@ namespace ThesisInterface
 
         public string IMUWaitKey = "|";  // This is used for creating waiting messages...
 
+        public string ConfigWaitKey = "|";
+
         public string OldMess = "";
 
         public class Vehicle
@@ -276,6 +278,7 @@ namespace ThesisInterface
                 mess = "$" + mess + checksum(mess) + "\r\n";
                 serialPort1.Write(mess);
                 ConfigMessToWait = mess;
+                OldMess = setting1.ReceiveMessTextBox.Text;
                 setting1.SentMessTextBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Sending Configuration...\r\n(Mess sent:" + mess;
                 ConfigWaitForRespond.Enabled = true;
 
@@ -567,7 +570,7 @@ namespace ThesisInterface
             {
                 string CC = checksum("AUCON,1,");
                 serialPort1.WriteLine("$AUCON,1," + CC + "\r\n");
-
+                
                 autoUC1.MessTextbox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started auto control mode\r\n";
 
             }
@@ -637,6 +640,17 @@ namespace ThesisInterface
             if(timeout > 0)
             {
                 timeout--;
+                if (ConfigWaitKey == "|")
+                {
+                    setting1.ReceiveMessTextBox.Text = OldMess + "Waiting for respond" + ConfigWaitKey;
+                    ConfigWaitKey = "-";
+
+                }
+                else
+                {
+                    setting1.ReceiveMessTextBox.Text = OldMess + "Waiting for respond" + ConfigWaitKey;
+                    ConfigWaitKey = "|";
+                }
                 if (serialPort1.IsOpen && (ManualEnabled == false))
                 {
                     if (serialPort1.BytesToRead != 0)
@@ -646,7 +660,7 @@ namespace ThesisInterface
                         if (temp.Contains("$SINFO,1"))
                         {
                             ConfigWaitForRespond.Enabled = false;
-                            setting1.ReceiveMessTextBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": " + "Setting successfully\r\n";
+                            setting1.ReceiveMessTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + ": " + "Setting successfully\r\n";
                             timeout = 40;
                             ConfigMessToWait = "";
                             
@@ -654,7 +668,7 @@ namespace ThesisInterface
                         else if(temp.Contains("$SINFO,0"))
                         {
                             ConfigWaitForRespond.Enabled = false;
-                            setting1.ReceiveMessTextBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": " + "Fail to config\r\n";
+                            setting1.ReceiveMessTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + ": " + "Fail to config\r\n";
                             timeout = 40;
                             ConfigMessToWait = "";
                             
@@ -667,7 +681,7 @@ namespace ThesisInterface
                 ConfigWaitForRespond.Enabled = false;
                 timeout = 40;
                 MessageBox.Show("Error: Timeout, no respone from MCU", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+                setting1.ReceiveMessTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + ": " + "Fail to config\r\n";
             }
         }
 

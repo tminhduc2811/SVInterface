@@ -88,3 +88,18 @@ C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface
 C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CopyComplete
 C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
 C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe.config
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.pdb
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Form1.resources
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Properties.Resources.resources
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoUC.resources
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.IMUSetting.resources
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.ManualUC.resources
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.Setting.resources
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.GenerateResource.cache
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CoreCompileInputs.cache
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CopyComplete
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb

@@ -53,6 +53,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
+            this.ReceiveMessTextBox = new System.Windows.Forms.RichTextBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.SentMessTextBox = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -79,7 +80,6 @@
             this.bunifuMetroTextbox2 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.bunifuMetroTextbox4 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.bunifuMetroTextbox5 = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.ReceiveMessTextBox = new System.Windows.Forms.RichTextBox();
             this.panel6.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -104,7 +104,7 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Makhina", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Location = new System.Drawing.Point(149, 3);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(50, 19);
@@ -142,8 +142,8 @@
             this.Kd1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Kd1.BackColor = System.Drawing.Color.White;
             this.Kd1.BorderColorFocused = System.Drawing.Color.Yellow;
-            this.Kd1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.Kd1.BorderColorMouseHover = System.Drawing.Color.Lime;
+            this.Kd1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.Kd1.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(66)))));
             this.Kd1.BorderThickness = 3;
             this.Kd1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Kd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -162,8 +162,8 @@
             this.Ki1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Ki1.BackColor = System.Drawing.Color.White;
             this.Ki1.BorderColorFocused = System.Drawing.Color.Yellow;
-            this.Ki1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.Ki1.BorderColorMouseHover = System.Drawing.Color.Lime;
+            this.Ki1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.Ki1.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(66)))));
             this.Ki1.BorderThickness = 3;
             this.Ki1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Ki1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -182,8 +182,8 @@
             this.Kp1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Kp1.BackColor = System.Drawing.Color.White;
             this.Kp1.BorderColorFocused = System.Drawing.Color.Yellow;
-            this.Kp1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.Kp1.BorderColorMouseHover = System.Drawing.Color.Lime;
+            this.Kp1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.Kp1.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(66)))));
             this.Kp1.BorderThickness = 3;
             this.Kp1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Kp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -244,8 +244,8 @@
             this.Velocity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Velocity.BackColor = System.Drawing.Color.White;
             this.Velocity.BorderColorFocused = System.Drawing.Color.Yellow;
-            this.Velocity.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.Velocity.BorderColorMouseHover = System.Drawing.Color.Lime;
+            this.Velocity.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.Velocity.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(66)))));
             this.Velocity.BorderThickness = 3;
             this.Velocity.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Velocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -277,8 +277,8 @@
             this.Angle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Angle.BackColor = System.Drawing.Color.White;
             this.Angle.BorderColorFocused = System.Drawing.Color.Yellow;
-            this.Angle.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.Angle.BorderColorMouseHover = System.Drawing.Color.Lime;
+            this.Angle.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.Angle.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(66)))));
             this.Angle.BorderThickness = 3;
             this.Angle.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Angle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -297,8 +297,8 @@
             this.Mode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Mode.BackColor = System.Drawing.Color.White;
             this.Mode.BorderColorFocused = System.Drawing.Color.Yellow;
-            this.Mode.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.Mode.BorderColorMouseHover = System.Drawing.Color.Lime;
+            this.Mode.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.Mode.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(66)))));
             this.Mode.BorderThickness = 3;
             this.Mode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Mode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -382,8 +382,8 @@
             this.Kp2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Kp2.BackColor = System.Drawing.Color.White;
             this.Kp2.BorderColorFocused = System.Drawing.Color.Yellow;
-            this.Kp2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.Kp2.BorderColorMouseHover = System.Drawing.Color.Lime;
+            this.Kp2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.Kp2.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(66)))));
             this.Kp2.BorderThickness = 3;
             this.Kp2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Kp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -415,8 +415,8 @@
             this.Ki2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Ki2.BackColor = System.Drawing.Color.White;
             this.Ki2.BorderColorFocused = System.Drawing.Color.Yellow;
-            this.Ki2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.Ki2.BorderColorMouseHover = System.Drawing.Color.Lime;
+            this.Ki2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.Ki2.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(66)))));
             this.Ki2.BorderThickness = 3;
             this.Ki2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Ki2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -435,8 +435,8 @@
             this.Kd2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Kd2.BackColor = System.Drawing.Color.White;
             this.Kd2.BorderColorFocused = System.Drawing.Color.Yellow;
-            this.Kd2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.Kd2.BorderColorMouseHover = System.Drawing.Color.Lime;
+            this.Kd2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.Kd2.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(66)))));
             this.Kd2.BorderThickness = 3;
             this.Kd2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Kd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -469,7 +469,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.panel8.Controls.Add(this.label18);
             this.panel8.Controls.Add(this.ReceiveMessTextBox);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -484,16 +484,30 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Makhina", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(135, 3);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(92, 19);
             this.label18.TabIndex = 12;
             this.label18.Text = "RECEIVED";
             // 
+            // ReceiveMessTextBox
+            // 
+            this.ReceiveMessTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReceiveMessTextBox.BackColor = System.Drawing.Color.White;
+            this.ReceiveMessTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ReceiveMessTextBox.ForeColor = System.Drawing.Color.Black;
+            this.ReceiveMessTextBox.Location = new System.Drawing.Point(0, 25);
+            this.ReceiveMessTextBox.Name = "ReceiveMessTextBox";
+            this.ReceiveMessTextBox.Size = new System.Drawing.Size(350, 66);
+            this.ReceiveMessTextBox.TabIndex = 0;
+            this.ReceiveMessTextBox.Text = "";
+            // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.panel7.Controls.Add(this.label17);
             this.panel7.Controls.Add(this.SentMessTextBox);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -674,10 +688,10 @@
             // 
             this.BaudrateBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BaudrateBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.BaudrateBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.BaudrateBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BaudrateBox.Font = new System.Drawing.Font("Aqua Grotesque", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BaudrateBox.ForeColor = System.Drawing.Color.Black;
+            this.BaudrateBox.ForeColor = System.Drawing.Color.White;
             this.BaudrateBox.FormattingEnabled = true;
             this.BaudrateBox.Location = new System.Drawing.Point(159, 47);
             this.BaudrateBox.Name = "BaudrateBox";
@@ -688,10 +702,10 @@
             // 
             this.PortNameBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PortNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.PortNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.PortNameBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PortNameBox.Font = new System.Drawing.Font("Aqua Grotesque", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PortNameBox.ForeColor = System.Drawing.Color.Black;
+            this.PortNameBox.ForeColor = System.Drawing.Color.White;
             this.PortNameBox.FormattingEnabled = true;
             this.PortNameBox.Location = new System.Drawing.Point(159, 13);
             this.PortNameBox.Name = "PortNameBox";
@@ -797,9 +811,9 @@
             // 
             this.bunifuMetroTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuMetroTextbox2.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuMetroTextbox2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuMetroTextbox2.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.bunifuMetroTextbox2.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox2.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.bunifuMetroTextbox2.BorderThickness = 2;
             this.bunifuMetroTextbox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.bunifuMetroTextbox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -816,9 +830,9 @@
             // 
             this.bunifuMetroTextbox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuMetroTextbox4.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuMetroTextbox4.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuMetroTextbox4.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.bunifuMetroTextbox4.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox4.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox4.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.bunifuMetroTextbox4.BorderThickness = 2;
             this.bunifuMetroTextbox4.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.bunifuMetroTextbox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -833,9 +847,9 @@
             // 
             // bunifuMetroTextbox5
             // 
-            this.bunifuMetroTextbox5.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuMetroTextbox5.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuMetroTextbox5.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.bunifuMetroTextbox5.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox5.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox5.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.bunifuMetroTextbox5.BorderThickness = 2;
             this.bunifuMetroTextbox5.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.bunifuMetroTextbox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -847,20 +861,6 @@
             this.bunifuMetroTextbox5.Size = new System.Drawing.Size(305, 164);
             this.bunifuMetroTextbox5.TabIndex = 15;
             this.bunifuMetroTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // ReceiveMessTextBox
-            // 
-            this.ReceiveMessTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReceiveMessTextBox.BackColor = System.Drawing.Color.White;
-            this.ReceiveMessTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ReceiveMessTextBox.ForeColor = System.Drawing.Color.Black;
-            this.ReceiveMessTextBox.Location = new System.Drawing.Point(0, 25);
-            this.ReceiveMessTextBox.Name = "ReceiveMessTextBox";
-            this.ReceiveMessTextBox.Size = new System.Drawing.Size(350, 66);
-            this.ReceiveMessTextBox.TabIndex = 0;
-            this.ReceiveMessTextBox.Text = "";
             // 
             // Setting
             // 
