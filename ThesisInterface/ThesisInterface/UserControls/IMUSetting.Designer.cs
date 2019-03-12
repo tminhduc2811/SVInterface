@@ -463,7 +463,7 @@
             this.StartBt.IconVisible = true;
             this.StartBt.IconZoom = 90D;
             this.StartBt.IsTab = false;
-            this.StartBt.Location = new System.Drawing.Point(394, 42);
+            this.StartBt.Location = new System.Drawing.Point(406, 42);
             this.StartBt.Margin = new System.Windows.Forms.Padding(4);
             this.StartBt.Name = "StartBt";
             this.StartBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
@@ -500,7 +500,7 @@
             this.ReadBt.IconVisible = true;
             this.ReadBt.IconZoom = 90D;
             this.ReadBt.IsTab = false;
-            this.ReadBt.Location = new System.Drawing.Point(209, 42);
+            this.ReadBt.Location = new System.Drawing.Point(210, 42);
             this.ReadBt.Margin = new System.Windows.Forms.Padding(4);
             this.ReadBt.Name = "ReadBt";
             this.ReadBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
@@ -534,7 +534,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Ailerons", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
-            this.label6.Location = new System.Drawing.Point(205, 3);
+            this.label6.Location = new System.Drawing.Point(196, 3);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(152, 25);
             this.label6.TabIndex = 7;
@@ -547,7 +547,7 @@
             this.CalibBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.CalibBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CalibBt.BorderRadius = 0;
-            this.CalibBt.ButtonText = "Send";
+            this.CalibBt.ButtonText = "Start";
             this.CalibBt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CalibBt.DisabledColor = System.Drawing.Color.Gray;
             this.CalibBt.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -572,7 +572,7 @@
             this.CalibBt.selected = false;
             this.CalibBt.Size = new System.Drawing.Size(123, 40);
             this.CalibBt.TabIndex = 6;
-            this.CalibBt.Text = "Send";
+            this.CalibBt.Text = "Start";
             this.CalibBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CalibBt.Textcolor = System.Drawing.Color.White;
             this.CalibBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

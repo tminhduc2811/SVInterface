@@ -103,7 +103,7 @@
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Quality = 10;
-            this.TopPanel.Size = new System.Drawing.Size(1000, 47);
+            this.TopPanel.Size = new System.Drawing.Size(1087, 47);
             this.TopPanel.TabIndex = 9;
             // 
             // closebt
@@ -112,7 +112,7 @@
             this.closebt.BackColor = System.Drawing.Color.Transparent;
             this.closebt.Image = global::ThesisInterface.Properties.Resources.Close_Window_64px;
             this.closebt.ImageActive = null;
-            this.closebt.Location = new System.Drawing.Point(969, 7);
+            this.closebt.Location = new System.Drawing.Point(1056, 7);
             this.closebt.Name = "closebt";
             this.closebt.Size = new System.Drawing.Size(25, 25);
             this.closebt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -127,7 +127,7 @@
             this.maxbt.BackColor = System.Drawing.Color.Transparent;
             this.maxbt.Image = global::ThesisInterface.Properties.Resources.Restore_Window_50px;
             this.maxbt.ImageActive = null;
-            this.maxbt.Location = new System.Drawing.Point(938, 7);
+            this.maxbt.Location = new System.Drawing.Point(1025, 7);
             this.maxbt.Name = "maxbt";
             this.maxbt.Size = new System.Drawing.Size(25, 25);
             this.maxbt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -142,7 +142,7 @@
             this.minbt.BackColor = System.Drawing.Color.Transparent;
             this.minbt.Image = global::ThesisInterface.Properties.Resources.Minimize_Window_64px;
             this.minbt.ImageActive = null;
-            this.minbt.Location = new System.Drawing.Point(907, 7);
+            this.minbt.Location = new System.Drawing.Point(994, 7);
             this.minbt.Name = "minbt";
             this.minbt.Size = new System.Drawing.Size(25, 25);
             this.minbt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -198,7 +198,7 @@
             this.panel1.Location = new System.Drawing.Point(156, 47);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(844, 460);
+            this.panel1.Size = new System.Drawing.Size(931, 537);
             this.panel1.TabIndex = 11;
             // 
             // autoUC1
@@ -207,7 +207,7 @@
             this.autoUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.autoUC1.Location = new System.Drawing.Point(0, 0);
             this.autoUC1.Name = "autoUC1";
-            this.autoUC1.Size = new System.Drawing.Size(844, 460);
+            this.autoUC1.Size = new System.Drawing.Size(931, 537);
             this.autoUC1.TabIndex = 12;
             // 
             // imuSetting1
@@ -216,7 +216,7 @@
             this.imuSetting1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imuSetting1.Location = new System.Drawing.Point(0, 0);
             this.imuSetting1.Name = "imuSetting1";
-            this.imuSetting1.Size = new System.Drawing.Size(844, 460);
+            this.imuSetting1.Size = new System.Drawing.Size(931, 537);
             this.imuSetting1.TabIndex = 2;
             // 
             // setting1
@@ -225,7 +225,7 @@
             this.setting1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.setting1.Location = new System.Drawing.Point(0, 0);
             this.setting1.Name = "setting1";
-            this.setting1.Size = new System.Drawing.Size(844, 460);
+            this.setting1.Size = new System.Drawing.Size(931, 537);
             this.setting1.TabIndex = 1;
             // 
             // manualUC1
@@ -234,7 +234,7 @@
             this.manualUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.manualUC1.Location = new System.Drawing.Point(0, 0);
             this.manualUC1.Name = "manualUC1";
-            this.manualUC1.Size = new System.Drawing.Size(844, 460);
+            this.manualUC1.Size = new System.Drawing.Size(931, 537);
             this.manualUC1.TabIndex = 0;
             this.manualUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyDown);
             // 
@@ -265,7 +265,7 @@
             this.SidePanel.Location = new System.Drawing.Point(0, 47);
             this.SidePanel.Name = "SidePanel";
             this.SidePanel.Quality = 10;
-            this.SidePanel.Size = new System.Drawing.Size(156, 460);
+            this.SidePanel.Size = new System.Drawing.Size(156, 537);
             this.SidePanel.TabIndex = 10;
             // 
             // bunifuFlatButton4
@@ -436,7 +436,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 507);
+            this.ClientSize = new System.Drawing.Size(1087, 584);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SidePanel);
             this.Controls.Add(this.TopPanel);

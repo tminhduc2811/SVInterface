@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.IO;
+using GMap.NET;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
+using GMap.NET.MapProviders;
 
 namespace ThesisInterface
 {
@@ -100,7 +104,7 @@ namespace ThesisInterface
         
         private bool ManualEnabled = false;
 
-        // Main form buttons click events ----------------------------------------
+        // Main form buttons click events ----------------------------------------//
 
         private void menubt_Click(object sender, EventArgs e)
         {
@@ -149,10 +153,10 @@ namespace ThesisInterface
         {
             autoUC1.BringToFront();
         }
+    
+        //-------------------------------------------------------------------------//
 
-        //-------------------------------------------------------------------------
-
-        // Init Functions & Linking to events ---------------------------------------------------------
+        // Init Functions & Linking to events -------------------------------------//
 
         private void InitForm()
         {
@@ -163,6 +167,7 @@ namespace ThesisInterface
             InitManualUC();
             ConfigWaitForRespond.Enabled = false;
             IMUConfigWaitForRespond.Enabled = false;
+            InitAutoUC();
         }
 
         private void InitSettingUC()
@@ -222,9 +227,9 @@ namespace ThesisInterface
             this.autoUC1.SaveBtClickHandler(new EventHandler(SaveBtAutoUCClickHandler));
         }
 
-        //-------------------------------------------------------------------------
+        //--------------------------------------------------------------------------//
        
-        // Handler for SETTING User Control-----------------------------------------
+        // Handler for SETTING User Control-----------------------------------------//
 
         private void OpenBtSettingUCClickHandler(object sender, EventArgs e)
         {
@@ -312,9 +317,9 @@ namespace ThesisInterface
             }
         }
 
-        //--------------------------------------------------------------------------
+        //--------------------------------------------------------------------------//
 
-        // Handler for IMU User Control --------------------------------------------
+        // Handler for IMU User Control --------------------------------------------//
 
         private void SendMessConfigIMUClickHandler(object sender, EventArgs e)
         {
@@ -390,19 +395,37 @@ namespace ThesisInterface
 
         private void CalibIMUBtClickHandler(object sender, EventArgs e)
         {
-            try
+            if(imuSetting1.CalibBt.Text == "Start")
             {
-                string Mess = "IMUCF,MAG2D,";
-                Mess = "$" + Mess + checksum(Mess) + "\r\n";
-                serialPort1.Write(Mess);
-                imuSetting1.SentTextBox.Text += "Sending Calibration Command... \r\nMessages: " + Mess;
-                OldMess = imuSetting1.ReceivedTextBox.Text;
-                IMUConfigWaitForRespond.Enabled = true;
-            }
+                try
+                {
+                    string Mess = "IMUCF,MAG2D,";
+                    Mess = "$" + Mess + checksum(Mess) + "\r\n";
+                    serialPort1.Write(Mess);
+                    imuSetting1.SentTextBox.Text += "Sending Calibration Command... \r\nMessages: " + Mess;
+                    OldMess = imuSetting1.ReceivedTextBox.Text;
+                    imuSetting1.CalibBt.Text = "Stop";
+                    IMUConfigWaitForRespond.Enabled = true;
+                }
 
-            catch (Exception ex)
+                catch (Exception ex)
+                {                    
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
             {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    serialPort1.Write("$VSTOP");
+                    imuSetting1.CalibBt.Text = "Start";
+                    IMUConfigWaitForRespond.Enabled = true;
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -442,9 +465,9 @@ namespace ThesisInterface
             }
         }
 
-        //--------------------------------------------------------------------------
+        //--------------------------------------------------------------------------//
 
-        // Handler for MANUAL User Control -----------------------------------------
+        // Handler for MANUAL User Control -----------------------------------------//
 
         private void ImportBtManualUCClickHandler(object sender, EventArgs e)
         {
@@ -560,9 +583,9 @@ namespace ThesisInterface
             }
         }
 
-        //--------------------------------------------------------------------------
+        //--------------------------------------------------------------------------//
 
-        // Handler for AUTO User Control -------------------------------------------
+        // Handler for AUTO User Control -------------------------------------------//
 
         private void StartBtAutoUCClickHandler(object sender, EventArgs e)
         {
@@ -596,9 +619,25 @@ namespace ThesisInterface
 
         }
 
-        //--------------------------------------------------------------------------
+        private void InitAutoUC()
+        {
+            autoUC1.gmap.DragButton = MouseButtons.Left;
+            autoUC1.gmap.MapProvider = GMap.NET.MapProviders.GoogleSatelliteMapProvider.Instance;
+            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
+            autoUC1.gmap.SetPositionByKeywords("Vietnam, Ho Chi Minh");
+            autoUC1.gmap.Position = new PointLatLng(10.772801, 106.659273);
+            autoUC1.gmap.Zoom = 19;
+            //GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
+            //GMap.NET.WindowsForms.GMapMarker marker =
+            //    new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
+            //        new GMap.NET.PointLatLng(10.772801, 106.659273),
+            //        GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin);
+            //markers.Markers.Add(marker);
+            //autoUC1.gmap.Overlays.Add(markers);
+        }
+        //--------------------------------------------------------------------------//
         
-        // TIMERS ------------------------------------------------------------------ 
+        // TIMERS ------------------------------------------------------------------//
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -721,9 +760,9 @@ namespace ThesisInterface
             }
         }
 
-        //---------------------------------------------------------------------------
+        //---------------------------------------------------------------------------//
         
-        // Other functions ----------------------------------------------------------
+        // Other functions ----------------------------------------------------------//
 
         public void DrawVehicleStatusOnImage(PictureBox ImgBox, float angle, Image image)
         {

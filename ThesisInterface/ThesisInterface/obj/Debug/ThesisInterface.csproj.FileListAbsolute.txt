@@ -91,7 +91,6 @@ C:\Users\Duc Ta\Downloads\ThesisInterface-master\ThesisInterface\ThesisInterface
 D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe.config
 D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.exe
 D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\ThesisInterface.pdb
-D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache
 D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Form1.resources
 D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Properties.Resources.resources
 D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoUC.resources
@@ -103,3 +102,18 @@ D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\Thes
 D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CopyComplete
 D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
 D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\EntityFramework.dll
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\EntityFramework.SqlServer.dll
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\GMap.NET.Core.dll
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\GMap.NET.WindowsForms.dll
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\GMap.NET.WindowsPresentation.dll
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\Newtonsoft.Json.dll
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\System.Data.SQLite.dll
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\EntityFramework.xml
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\EntityFramework.SqlServer.xml
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\Newtonsoft.Json.xml
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\System.Data.SQLite.xml
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\bin\Debug\System.Data.SQLite.dll.config
+D:\Project\ThesisInterface-master\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache

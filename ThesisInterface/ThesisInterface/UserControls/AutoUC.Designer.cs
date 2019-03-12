@@ -49,7 +49,8 @@
             this.bunifuMetroTextbox5 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.gmap = new GMap.NET.WindowsForms.GMapControl();
             this.bunifuGradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OpenBt)).BeginInit();
@@ -268,7 +269,7 @@
             this.bunifuMetroTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox1.isPassword = false;
             this.bunifuMetroTextbox1.Location = new System.Drawing.Point(3, 15);
-            this.bunifuMetroTextbox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuMetroTextbox1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuMetroTextbox1.Name = "bunifuMetroTextbox1";
             this.bunifuMetroTextbox1.Size = new System.Drawing.Size(182, 153);
             this.bunifuMetroTextbox1.TabIndex = 17;
@@ -280,7 +281,7 @@
             this.panel3.Controls.Add(this.bunifuMetroTextbox5);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(2, 184);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(190, 107);
             this.panel3.TabIndex = 6;
@@ -312,7 +313,7 @@
             this.bunifuMetroTextbox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox5.isPassword = false;
             this.bunifuMetroTextbox5.Location = new System.Drawing.Point(4, 4);
-            this.bunifuMetroTextbox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuMetroTextbox5.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuMetroTextbox5.Name = "bunifuMetroTextbox5";
             this.bunifuMetroTextbox5.Size = new System.Drawing.Size(182, 92);
             this.bunifuMetroTextbox5.TabIndex = 16;
@@ -335,25 +336,48 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.gmap);
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(203, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(600, 454);
             this.panel1.TabIndex = 1;
             // 
-            // label1
+            // panel4
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Courier New", 13.8F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
-            this.label1.Location = new System.Drawing.Point(253, -3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 21);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "• MAP •";
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 294);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(600, 160);
+            this.panel4.TabIndex = 16;
+            // 
+            // gmap
+            // 
+            this.gmap.Bearing = 0F;
+            this.gmap.CanDragMap = true;
+            this.gmap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gmap.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gmap.GrayScaleMode = false;
+            this.gmap.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gmap.LevelsKeepInMemmory = 5;
+            this.gmap.Location = new System.Drawing.Point(0, 0);
+            this.gmap.MarkersEnabled = true;
+            this.gmap.MaxZoom = 100;
+            this.gmap.MinZoom = 2;
+            this.gmap.MouseWheelZoomEnabled = true;
+            this.gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gmap.Name = "gmap";
+            this.gmap.NegativeMode = false;
+            this.gmap.PolygonsEnabled = true;
+            this.gmap.RetryLoadTile = 0;
+            this.gmap.RoutesEnabled = true;
+            this.gmap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gmap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gmap.ShowTileGridLines = false;
+            this.gmap.Size = new System.Drawing.Size(600, 294);
+            this.gmap.TabIndex = 17;
+            this.gmap.Zoom = 0D;
             // 
             // AutoUC
             // 
@@ -377,7 +401,6 @@
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -400,10 +423,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
         private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextbox5;
         public System.Windows.Forms.RichTextBox MessTextbox;
         private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextbox1;
+        private System.Windows.Forms.Panel panel4;
+        public GMap.NET.WindowsForms.GMapControl gmap;
     }
 }
