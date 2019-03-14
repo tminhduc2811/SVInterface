@@ -41,6 +41,16 @@ namespace ThesisInterface
 
         public string OldMess = "";
 
+        public bool PlanMapEnable = false;
+
+        public List<PointLatLng> PlanCooridnatesList = new List<PointLatLng>();
+
+        public List<PointLatLng> ActualCooridnatesList = new List<PointLatLng>();
+
+        public GMapOverlay PlanLines = new GMapOverlay("PlanLines");
+
+        public GMapOverlay ActualLines = new GMapOverlay("ActualLines");
+
         public class Vehicle
         {
             public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, M1Duty, M2Duty, RefAngle, Angle, PosX, PosY;
@@ -152,6 +162,7 @@ namespace ThesisInterface
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
             autoUC1.BringToFront();
+            SidePanel.Width = 0;
         }
     
         //-------------------------------------------------------------------------//
@@ -225,6 +236,9 @@ namespace ThesisInterface
             this.autoUC1.StopBtClickHandler(new EventHandler(StopBtAutoUCClickHandler));
             this.autoUC1.OpenBtClickHandler(new EventHandler(OpenBtAutoUCClickHandler));
             this.autoUC1.SaveBtClickHandler(new EventHandler(SaveBtAutoUCClickHandler));
+            this.autoUC1.PlanRoutesBtClickHandler(new EventHandler(PlanRoutesBtAutoUCClickHandler));
+            this.autoUC1.SendRoutesBtClickHandler(new EventHandler(SendRoutesBtAutoUCClickHandler));
+            this.autoUC1.ClearAllBtClickHandler(new EventHandler(ClearAllBtAutoUCClickHandler));
         }
 
         //--------------------------------------------------------------------------//
@@ -594,7 +608,7 @@ namespace ThesisInterface
                 string CC = checksum("AUCON,1,");
                 serialPort1.WriteLine("$AUCON,1," + CC + "\r\n");
                 
-                autoUC1.MessTextbox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started auto control mode\r\n";
+                autoUC1.DetailInfoTb.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started auto control mode\r\n";
 
             }
 
@@ -619,6 +633,45 @@ namespace ThesisInterface
 
         }
 
+        private void autoUC1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(PlanMapEnable && (e.Button == MouseButtons.Right))
+            {
+                PlanCooridnatesList.Add(autoUC1.gmap.FromLocalToLatLng( e.X, e.Y));
+                var line = new GMapRoute(PlanCooridnatesList, "single_line")
+                {
+                    Stroke = new Pen(Color.DarkRed, 2)
+                };
+                PlanLines.Routes.Clear();
+                PlanLines.Routes.Add(line);
+                autoUC1.gmap.Overlays.Add(PlanLines);
+            }
+        }
+
+        private void PlanRoutesBtAutoUCClickHandler(object sender, EventArgs e)
+        {
+            if(PlanMapEnable == true)
+            {
+                PlanMapEnable = false;
+                autoUC1.PlanMapBt.Text = "Plan Routes";
+            }
+            else
+            {
+                PlanMapEnable = true;
+                autoUC1.PlanMapBt.Text = "OK";
+            }
+        }
+
+        private void SendRoutesBtAutoUCClickHandler(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearAllBtAutoUCClickHandler(object sender, EventArgs e)
+        {
+            autoUC1.gmap.Overlays.Clear();
+        }
+
         private void InitAutoUC()
         {
             autoUC1.gmap.DragButton = MouseButtons.Left;
@@ -627,6 +680,7 @@ namespace ThesisInterface
             autoUC1.gmap.SetPositionByKeywords("Vietnam, Ho Chi Minh");
             autoUC1.gmap.Position = new PointLatLng(10.772801, 106.659273);
             autoUC1.gmap.Zoom = 19;
+            
             //GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
             //GMap.NET.WindowsForms.GMapMarker marker =
             //    new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
@@ -806,6 +860,6 @@ namespace ThesisInterface
             return sum.ToString("X");
         }
 
-
+        
     }
 }

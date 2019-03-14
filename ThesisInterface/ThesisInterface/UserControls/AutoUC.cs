@@ -36,5 +36,25 @@ namespace ThesisInterface.UserControls
         {
             this.SaveBt.Click += handler;
         }
+
+        public void gmap_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.OnMouseClick(e);
+        }
+
+        public void PlanRoutesBtClickHandler(EventHandler handler)
+        {
+            this.PlanMapBt.Click += handler;
+        }
+
+        public void SendRoutesBtClickHandler(EventHandler handler)
+        {
+            this.SendMapBt.Click += handler;
+        }
+
+        public void ClearAllBtClickHandler(EventHandler handler)
+        {
+            this.ClearAllBt.Click += handler;
+        }
     }
 }

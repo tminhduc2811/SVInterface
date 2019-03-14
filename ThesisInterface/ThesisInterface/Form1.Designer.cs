@@ -209,6 +209,7 @@
             this.autoUC1.Name = "autoUC1";
             this.autoUC1.Size = new System.Drawing.Size(931, 537);
             this.autoUC1.TabIndex = 12;
+            this.autoUC1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.autoUC1_MouseClick);
             // 
             // imuSetting1
             // 
