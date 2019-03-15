@@ -238,7 +238,8 @@ namespace ThesisInterface
             this.autoUC1.SaveBtClickHandler(new EventHandler(SaveBtAutoUCClickHandler));
             this.autoUC1.PlanRoutesBtClickHandler(new EventHandler(PlanRoutesBtAutoUCClickHandler));
             this.autoUC1.SendRoutesBtClickHandler(new EventHandler(SendRoutesBtAutoUCClickHandler));
-            this.autoUC1.ClearAllBtClickHandler(new EventHandler(ClearAllBtAutoUCClickHandler));
+            this.autoUC1.ClearPlannedMapBtClickHandler(new EventHandler(ClearPlannedMapBtAutoUCClickHandler));
+            this.autoUC1.ClearActualMapBtClickHandler(new EventHandler(ClearActualMapBtAutoUCClickHandler));
         }
 
         //--------------------------------------------------------------------------//
@@ -667,9 +668,18 @@ namespace ThesisInterface
 
         }
 
-        private void ClearAllBtAutoUCClickHandler(object sender, EventArgs e)
+        private void ClearPlannedMapBtAutoUCClickHandler(object sender, EventArgs e)
         {
             autoUC1.gmap.Overlays.Clear();
+            PlanCooridnatesList.Clear();
+            PlanLines.Clear();
+            ActualCooridnatesList.Clear();
+            ActualLines.Clear();
+        }
+
+        private void ClearActualMapBtAutoUCClickHandler(object sender, EventArgs e)
+        {
+
         }
 
         private void InitAutoUC()

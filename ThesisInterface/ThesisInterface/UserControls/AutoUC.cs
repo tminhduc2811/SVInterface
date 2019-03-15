@@ -52,9 +52,14 @@ namespace ThesisInterface.UserControls
             this.SendMapBt.Click += handler;
         }
 
-        public void ClearAllBtClickHandler(EventHandler handler)
+        public void ClearPlannedMapBtClickHandler(EventHandler handler)
         {
-            this.ClearAllBt.Click += handler;
+            this.ClearPlannedMap.Click += handler;
+        }
+
+        public void ClearActualMapBtClickHandler(EventHandler handler)
+        {
+            this.ClearActualMapBt.Click += handler;
         }
     }
 }
