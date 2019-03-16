@@ -628,9 +628,11 @@
             this.SentTextBox.Location = new System.Drawing.Point(30, 70);
             this.SentTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.SentTextBox.Name = "SentTextBox";
+            this.SentTextBox.ReadOnly = true;
             this.SentTextBox.Size = new System.Drawing.Size(205, 158);
             this.SentTextBox.TabIndex = 6;
             this.SentTextBox.Text = "";
+            this.SentTextBox.TextChanged += new System.EventHandler(this.SentTextBox_TextChanged);
             // 
             // label8
             // 
@@ -686,9 +688,11 @@
             this.ReceivedTextBox.Location = new System.Drawing.Point(28, 70);
             this.ReceivedTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.ReceivedTextBox.Name = "ReceivedTextBox";
+            this.ReceivedTextBox.ReadOnly = true;
             this.ReceivedTextBox.Size = new System.Drawing.Size(203, 158);
             this.ReceivedTextBox.TabIndex = 6;
             this.ReceivedTextBox.Text = "";
+            this.ReceivedTextBox.TextChanged += new System.EventHandler(this.ReceivedTextBox_TextChanged);
             // 
             // bunifuMetroTextbox6
             // 

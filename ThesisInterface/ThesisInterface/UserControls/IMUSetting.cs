@@ -58,5 +58,17 @@ namespace ThesisInterface.UserControls
                 for (int ix = 0; ix < BaudrateCheckBox.Items.Count; ++ix)
                     if (e.Index != ix) BaudrateCheckBox.SetItemChecked(ix, false);
         }
+
+        private void SentTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SentTextBox.SelectionStart = SentTextBox.Text.Length;
+            SentTextBox.ScrollToCaret();
+        }
+
+        private void ReceivedTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ReceivedTextBox.SelectionStart = ReceivedTextBox.Text.Length;
+            ReceivedTextBox.ScrollToCaret();
+        }
     }
 }

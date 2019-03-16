@@ -41,7 +41,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.PlanMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
             this.ClearPlannedMap = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.ClearActualMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
             this.SendMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuMetroTextbox2 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -65,8 +67,6 @@
             this.ReceivedTb = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bunifuMetroTextbox3 = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.PlanMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.ClearActualMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuGradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OpenBt)).BeginInit();
@@ -252,6 +252,40 @@
             this.panel5.Size = new System.Drawing.Size(188, 139);
             this.panel5.TabIndex = 18;
             // 
+            // PlanMapBt
+            // 
+            this.PlanMapBt.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
+            this.PlanMapBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.PlanMapBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PlanMapBt.BorderRadius = 0;
+            this.PlanMapBt.ButtonText = "Plan Routes";
+            this.PlanMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PlanMapBt.DisabledColor = System.Drawing.Color.Gray;
+            this.PlanMapBt.Iconcolor = System.Drawing.Color.Transparent;
+            this.PlanMapBt.Iconimage = ((System.Drawing.Image)(resources.GetObject("PlanMapBt.Iconimage")));
+            this.PlanMapBt.Iconimage_right = null;
+            this.PlanMapBt.Iconimage_right_Selected = null;
+            this.PlanMapBt.Iconimage_Selected = null;
+            this.PlanMapBt.IconMarginLeft = 0;
+            this.PlanMapBt.IconMarginRight = 0;
+            this.PlanMapBt.IconRightVisible = true;
+            this.PlanMapBt.IconRightZoom = 0D;
+            this.PlanMapBt.IconVisible = true;
+            this.PlanMapBt.IconZoom = 90D;
+            this.PlanMapBt.IsTab = false;
+            this.PlanMapBt.Location = new System.Drawing.Point(15, 11);
+            this.PlanMapBt.Name = "PlanMapBt";
+            this.PlanMapBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.PlanMapBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.PlanMapBt.OnHoverTextColor = System.Drawing.Color.White;
+            this.PlanMapBt.selected = false;
+            this.PlanMapBt.Size = new System.Drawing.Size(160, 24);
+            this.PlanMapBt.TabIndex = 0;
+            this.PlanMapBt.Text = "Plan Routes";
+            this.PlanMapBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PlanMapBt.Textcolor = System.Drawing.Color.White;
+            this.PlanMapBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
             // ClearPlannedMap
             // 
             this.ClearPlannedMap.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
@@ -285,6 +319,40 @@
             this.ClearPlannedMap.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ClearPlannedMap.Textcolor = System.Drawing.Color.White;
             this.ClearPlannedMap.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // ClearActualMapBt
+            // 
+            this.ClearActualMapBt.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
+            this.ClearActualMapBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.ClearActualMapBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClearActualMapBt.BorderRadius = 0;
+            this.ClearActualMapBt.ButtonText = "Clear Actual Map";
+            this.ClearActualMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ClearActualMapBt.DisabledColor = System.Drawing.Color.Gray;
+            this.ClearActualMapBt.Iconcolor = System.Drawing.Color.Transparent;
+            this.ClearActualMapBt.Iconimage = ((System.Drawing.Image)(resources.GetObject("ClearActualMapBt.Iconimage")));
+            this.ClearActualMapBt.Iconimage_right = null;
+            this.ClearActualMapBt.Iconimage_right_Selected = null;
+            this.ClearActualMapBt.Iconimage_Selected = null;
+            this.ClearActualMapBt.IconMarginLeft = 0;
+            this.ClearActualMapBt.IconMarginRight = 0;
+            this.ClearActualMapBt.IconRightVisible = true;
+            this.ClearActualMapBt.IconRightZoom = 0D;
+            this.ClearActualMapBt.IconVisible = true;
+            this.ClearActualMapBt.IconZoom = 90D;
+            this.ClearActualMapBt.IsTab = false;
+            this.ClearActualMapBt.Location = new System.Drawing.Point(15, 72);
+            this.ClearActualMapBt.Name = "ClearActualMapBt";
+            this.ClearActualMapBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.ClearActualMapBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.ClearActualMapBt.OnHoverTextColor = System.Drawing.Color.White;
+            this.ClearActualMapBt.selected = false;
+            this.ClearActualMapBt.Size = new System.Drawing.Size(160, 24);
+            this.ClearActualMapBt.TabIndex = 0;
+            this.ClearActualMapBt.Text = "Clear Actual Map";
+            this.ClearActualMapBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ClearActualMapBt.Textcolor = System.Drawing.Color.White;
+            this.ClearActualMapBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // SendMapBt
             // 
@@ -554,9 +622,11 @@
             this.SentTb.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.SentTb.Location = new System.Drawing.Point(16, 21);
             this.SentTb.Name = "SentTb";
+            this.SentTb.ReadOnly = true;
             this.SentTb.Size = new System.Drawing.Size(261, 123);
             this.SentTb.TabIndex = 19;
             this.SentTb.Text = "";
+            this.SentTb.TextChanged += new System.EventHandler(this.SentTb_TextChanged);
             // 
             // label3
             // 
@@ -609,9 +679,11 @@
             this.ReceivedTb.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.ReceivedTb.Location = new System.Drawing.Point(16, 19);
             this.ReceivedTb.Name = "ReceivedTb";
+            this.ReceivedTb.ReadOnly = true;
             this.ReceivedTb.Size = new System.Drawing.Size(261, 123);
             this.ReceivedTb.TabIndex = 19;
             this.ReceivedTb.Text = "";
+            this.ReceivedTb.TextChanged += new System.EventHandler(this.ReceivedTb_TextChanged);
             // 
             // label2
             // 
@@ -643,74 +715,6 @@
             this.bunifuMetroTextbox3.Size = new System.Drawing.Size(294, 154);
             this.bunifuMetroTextbox3.TabIndex = 17;
             this.bunifuMetroTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // PlanMapBt
-            // 
-            this.PlanMapBt.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
-            this.PlanMapBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.PlanMapBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PlanMapBt.BorderRadius = 0;
-            this.PlanMapBt.ButtonText = "Plan Routes";
-            this.PlanMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PlanMapBt.DisabledColor = System.Drawing.Color.Gray;
-            this.PlanMapBt.Iconcolor = System.Drawing.Color.Transparent;
-            this.PlanMapBt.Iconimage = ((System.Drawing.Image)(resources.GetObject("PlanMapBt.Iconimage")));
-            this.PlanMapBt.Iconimage_right = null;
-            this.PlanMapBt.Iconimage_right_Selected = null;
-            this.PlanMapBt.Iconimage_Selected = null;
-            this.PlanMapBt.IconMarginLeft = 0;
-            this.PlanMapBt.IconMarginRight = 0;
-            this.PlanMapBt.IconRightVisible = true;
-            this.PlanMapBt.IconRightZoom = 0D;
-            this.PlanMapBt.IconVisible = true;
-            this.PlanMapBt.IconZoom = 90D;
-            this.PlanMapBt.IsTab = false;
-            this.PlanMapBt.Location = new System.Drawing.Point(15, 11);
-            this.PlanMapBt.Name = "PlanMapBt";
-            this.PlanMapBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.PlanMapBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.PlanMapBt.OnHoverTextColor = System.Drawing.Color.White;
-            this.PlanMapBt.selected = false;
-            this.PlanMapBt.Size = new System.Drawing.Size(160, 24);
-            this.PlanMapBt.TabIndex = 0;
-            this.PlanMapBt.Text = "Plan Routes";
-            this.PlanMapBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PlanMapBt.Textcolor = System.Drawing.Color.White;
-            this.PlanMapBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // ClearActualMapBt
-            // 
-            this.ClearActualMapBt.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
-            this.ClearActualMapBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.ClearActualMapBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClearActualMapBt.BorderRadius = 0;
-            this.ClearActualMapBt.ButtonText = "Clear Actual Map";
-            this.ClearActualMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ClearActualMapBt.DisabledColor = System.Drawing.Color.Gray;
-            this.ClearActualMapBt.Iconcolor = System.Drawing.Color.Transparent;
-            this.ClearActualMapBt.Iconimage = ((System.Drawing.Image)(resources.GetObject("ClearActualMapBt.Iconimage")));
-            this.ClearActualMapBt.Iconimage_right = null;
-            this.ClearActualMapBt.Iconimage_right_Selected = null;
-            this.ClearActualMapBt.Iconimage_Selected = null;
-            this.ClearActualMapBt.IconMarginLeft = 0;
-            this.ClearActualMapBt.IconMarginRight = 0;
-            this.ClearActualMapBt.IconRightVisible = true;
-            this.ClearActualMapBt.IconRightZoom = 0D;
-            this.ClearActualMapBt.IconVisible = true;
-            this.ClearActualMapBt.IconZoom = 90D;
-            this.ClearActualMapBt.IsTab = false;
-            this.ClearActualMapBt.Location = new System.Drawing.Point(15, 72);
-            this.ClearActualMapBt.Name = "ClearActualMapBt";
-            this.ClearActualMapBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.ClearActualMapBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.ClearActualMapBt.OnHoverTextColor = System.Drawing.Color.White;
-            this.ClearActualMapBt.selected = false;
-            this.ClearActualMapBt.Size = new System.Drawing.Size(160, 24);
-            this.ClearActualMapBt.TabIndex = 0;
-            this.ClearActualMapBt.Text = "Clear Actual Map";
-            this.ClearActualMapBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ClearActualMapBt.Textcolor = System.Drawing.Color.White;
-            this.ClearActualMapBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // AutoUC
             // 

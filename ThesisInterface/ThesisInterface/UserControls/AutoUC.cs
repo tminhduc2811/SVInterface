@@ -61,5 +61,17 @@ namespace ThesisInterface.UserControls
         {
             this.ClearActualMapBt.Click += handler;
         }
+
+        private void ReceivedTb_TextChanged(object sender, EventArgs e)
+        {
+            ReceivedTb.SelectionStart = ReceivedTb.Text.Length;
+            ReceivedTb.ScrollToCaret();
+        }
+
+        private void SentTb_TextChanged(object sender, EventArgs e)
+        {
+            SentTb.SelectionStart = SentTb.Text.Length;
+            SentTb.ScrollToCaret();
+        }
     }
 }

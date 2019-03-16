@@ -44,10 +44,6 @@
             this.bunifuElipse4 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.autoUC1 = new ThesisInterface.UserControls.AutoUC();
-            this.imuSetting1 = new ThesisInterface.UserControls.IMUSetting();
-            this.setting1 = new ThesisInterface.UserControls.Setting();
-            this.manualUC1 = new ThesisInterface.UserControls.ManualUC();
             this.ConfigWaitForRespond = new System.Windows.Forms.Timer(this.components);
             this.IMUConfigWaitForRespond = new System.Windows.Forms.Timer(this.components);
             this.SidePanel = new Bunifu.Framework.UI.BunifuGradientPanel();
@@ -56,6 +52,11 @@
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.AutoTimer = new System.Windows.Forms.Timer(this.components);
+            this.autoUC1 = new ThesisInterface.UserControls.AutoUC();
+            this.imuSetting1 = new ThesisInterface.UserControls.IMUSetting();
+            this.setting1 = new ThesisInterface.UserControls.Setting();
+            this.manualUC1 = new ThesisInterface.UserControls.ManualUC();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closebt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxbt)).BeginInit();
@@ -200,44 +201,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(931, 537);
             this.panel1.TabIndex = 11;
-            // 
-            // autoUC1
-            // 
-            this.autoUC1.BackColor = System.Drawing.Color.White;
-            this.autoUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.autoUC1.Location = new System.Drawing.Point(0, 0);
-            this.autoUC1.Name = "autoUC1";
-            this.autoUC1.Size = new System.Drawing.Size(931, 537);
-            this.autoUC1.TabIndex = 12;
-            this.autoUC1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.autoUC1_MouseClick);
-            // 
-            // imuSetting1
-            // 
-            this.imuSetting1.BackColor = System.Drawing.Color.White;
-            this.imuSetting1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imuSetting1.Location = new System.Drawing.Point(0, 0);
-            this.imuSetting1.Name = "imuSetting1";
-            this.imuSetting1.Size = new System.Drawing.Size(931, 537);
-            this.imuSetting1.TabIndex = 2;
-            // 
-            // setting1
-            // 
-            this.setting1.BackColor = System.Drawing.Color.White;
-            this.setting1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.setting1.Location = new System.Drawing.Point(0, 0);
-            this.setting1.Name = "setting1";
-            this.setting1.Size = new System.Drawing.Size(931, 537);
-            this.setting1.TabIndex = 1;
-            // 
-            // manualUC1
-            // 
-            this.manualUC1.BackColor = System.Drawing.Color.White;
-            this.manualUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.manualUC1.Location = new System.Drawing.Point(0, 0);
-            this.manualUC1.Name = "manualUC1";
-            this.manualUC1.Size = new System.Drawing.Size(931, 537);
-            this.manualUC1.TabIndex = 0;
-            this.manualUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyDown);
             // 
             // ConfigWaitForRespond
             // 
@@ -433,6 +396,48 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "BKU";
             // 
+            // AutoTimer
+            // 
+            this.AutoTimer.Tick += new System.EventHandler(this.AutoTimer_Tick);
+            // 
+            // autoUC1
+            // 
+            this.autoUC1.BackColor = System.Drawing.Color.White;
+            this.autoUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoUC1.Location = new System.Drawing.Point(0, 0);
+            this.autoUC1.Name = "autoUC1";
+            this.autoUC1.Size = new System.Drawing.Size(931, 537);
+            this.autoUC1.TabIndex = 12;
+            this.autoUC1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.autoUC1_MouseClick);
+            // 
+            // imuSetting1
+            // 
+            this.imuSetting1.BackColor = System.Drawing.Color.White;
+            this.imuSetting1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imuSetting1.Location = new System.Drawing.Point(0, 0);
+            this.imuSetting1.Name = "imuSetting1";
+            this.imuSetting1.Size = new System.Drawing.Size(931, 537);
+            this.imuSetting1.TabIndex = 2;
+            // 
+            // setting1
+            // 
+            this.setting1.BackColor = System.Drawing.Color.White;
+            this.setting1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.setting1.Location = new System.Drawing.Point(0, 0);
+            this.setting1.Name = "setting1";
+            this.setting1.Size = new System.Drawing.Size(931, 537);
+            this.setting1.TabIndex = 1;
+            // 
+            // manualUC1
+            // 
+            this.manualUC1.BackColor = System.Drawing.Color.White;
+            this.manualUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.manualUC1.Location = new System.Drawing.Point(0, 0);
+            this.manualUC1.Name = "manualUC1";
+            this.manualUC1.Size = new System.Drawing.Size(931, 537);
+            this.manualUC1.TabIndex = 0;
+            this.manualUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyDown);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,6 +490,7 @@
         private UserControls.IMUSetting imuSetting1;
         private System.Windows.Forms.Timer IMUConfigWaitForRespond;
         private UserControls.AutoUC autoUC1;
+        private System.Windows.Forms.Timer AutoTimer;
     }
 }
 

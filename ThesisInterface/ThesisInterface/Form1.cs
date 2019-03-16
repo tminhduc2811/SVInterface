@@ -33,7 +33,11 @@ namespace ThesisInterface
         
         public int timeout = 40;
 
-        public int timeoutIMU = 10;
+        public int timeoutIMU = 40;
+
+        public int timeoutAuto = 40;
+
+        public string AutoWaitKey = "|";
 
         public string IMUWaitKey = "|";  // This is used for creating waiting messages...
 
@@ -209,6 +213,7 @@ namespace ThesisInterface
             sr.Close();
             sr.Dispose();
             ConfigWaitForRespond.Interval = 20;
+            IMUConfigWaitForRespond.Interval = 20;
         }
 
         private void InitManualUC()
@@ -294,8 +299,8 @@ namespace ThesisInterface
                 mess = "VEHCF," + setting1.Velocity.Text + ","
                     + setting1.Kp1.Text + "," + setting1.Ki1.Text + ","
                     + setting1.Kd1.Text + "," + setting1.Kp2.Text
-                    + "," + setting1.Ki2.Text + "," + setting1.Kd2.Text + ",";
-                mess = "$" + mess + checksum(mess) + "\r\n";
+                    + "," + setting1.Ki2.Text + "," + setting1.Kd2.Text;
+                mess = MessagesDocker(mess);
                 serialPort1.Write(mess);
                 ConfigMessToWait = mess;
                 OldMess = setting1.ReceiveMessTextBox.Text;
@@ -349,8 +354,8 @@ namespace ThesisInterface
                     else
                         Mess += "0";
                 }
-                Mess = "IMUCF,DATOP," + Mess + ",";
-                Mess = "$" + Mess + checksum(Mess) + "\r\n";
+                Mess = "IMUCF,DATOP," + Mess;
+                Mess = MessagesDocker(Mess);
                 serialPort1.Write(Mess);
                 imuSetting1.SentTextBox.Text += "Sending Messages Configuration \r\nMessages: "+ Mess;
                 OldMess = imuSetting1.ReceivedTextBox.Text;
@@ -370,8 +375,8 @@ namespace ThesisInterface
                 int[] indexes = imuSetting1.BaudrateCheckBox.CheckedIndices.Cast<int>().ToArray();
                 if(indexes.Count() != 0)
                 {
-                    string Mess = "IMUCF,DATOP," + (indexes[0] + 1).ToString() + ",";
-                    Mess = "$" + Mess + checksum(Mess) + "\r\n";
+                    string Mess = "IMUCF,DATOP," + (indexes[0] + 1).ToString();
+                    Mess = MessagesDocker(Mess);
                     serialPort1.Write(Mess);
                     imuSetting1.SentTextBox.Text += "Sending Baudrate Configuration... \r\nMessages: " + Mess;
                     OldMess = imuSetting1.ReceivedTextBox.Text;
@@ -394,8 +399,8 @@ namespace ThesisInterface
         {
             try
             {
-                string Mess = "IMUCF,TSAMP," + imuSetting1.FreqTextBox.Text + ",";
-                Mess = "$" + Mess + checksum(Mess) + "\r\n";
+                string Mess = "IMUCF,TSAMP," + imuSetting1.FreqTextBox.Text;
+                Mess = MessagesDocker(Mess);
                 serialPort1.Write(Mess);
                 imuSetting1.SentTextBox.Text += "Sending Update Frequency Configuration... \r\nMessages: " + Mess;
                 OldMess = imuSetting1.ReceivedTextBox.Text;
@@ -414,8 +419,8 @@ namespace ThesisInterface
             {
                 try
                 {
-                    string Mess = "IMUCF,MAG2D,";
-                    Mess = "$" + Mess + checksum(Mess) + "\r\n";
+                    string Mess = "IMUCF,MAG2D";
+                    Mess = MessagesDocker(Mess);
                     serialPort1.Write(Mess);
                     imuSetting1.SentTextBox.Text += "Sending Calibration Command... \r\nMessages: " + Mess;
                     OldMess = imuSetting1.ReceivedTextBox.Text;
@@ -448,8 +453,8 @@ namespace ThesisInterface
         {
             try
             {
-                string Mess = "IMUCF,GPARA,";
-                Mess = "$" + Mess + checksum(Mess) + "\r\n";
+                string Mess = "IMUCF,GPARA";
+                Mess = MessagesDocker(Mess);
                 serialPort1.Write(Mess);
                 imuSetting1.SentTextBox.Text += "Sending Read Config Command... \r\nMessages: " + Mess;
                 OldMess = imuSetting1.ReceivedTextBox.Text;
@@ -466,8 +471,8 @@ namespace ThesisInterface
         {
             try
             {
-                string Mess = "IMUCF,START,";
-                Mess = "$" + Mess + checksum(Mess) + "\r\n";
+                string Mess = "IMUCF,START";
+                Mess = MessagesDocker(Mess);
                 serialPort1.Write(Mess);
                 imuSetting1.SentTextBox.Text += "Sending Start Command... \r\nMessages: " + Mess;
                 OldMess = imuSetting1.ReceivedTextBox.Text;
@@ -519,9 +524,7 @@ namespace ThesisInterface
             // Write start command to MCU
             try
             {
-                string CC = checksum("MACON,1,");
-                serialPort1.Write("$MACON,1," + CC + "\r\n");
-
+                serialPort1.Write(MessagesDocker("MACON,1"));
                 manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started to control manually\r\n";
                 manualUC1.FormStatus.Text = "STARTED";
                 ManualEnabled = true;
@@ -540,8 +543,7 @@ namespace ThesisInterface
             
             try
             {
-                string CC = checksum("MACON,0,");
-                serialPort1.Write("$MACON,0," + CC + "\r\n");
+                serialPort1.Write(MessagesDocker("MACON,0"));
                 ManualEnabled = false;
                 timer1.Enabled = false;
                 manualUC1.FormStatus.Text = "STOPED";
@@ -555,7 +557,6 @@ namespace ThesisInterface
 
         private void manualUC1_KeyDown(object sender, KeyEventArgs e)
         {
-            //MessageBox.Show(e.KeyData.ToString());
             if (ManualEnabled)
             {
                 try
@@ -563,27 +564,27 @@ namespace ThesisInterface
                     string key = e.KeyData.ToString().ToUpper();
                     if (key == "W")
                     {
-                        serialPort1.Write("$MACON," + key + "," + checksum("MACON,W,") + "\r\n");
-                        manualUC1.SentBox.Text += "Increasing velocity...\r\n(Messages Sent: " + "$MACON," + key + "," + checksum("MACON,W,") + "M,W)\r\n";
+                        serialPort1.Write(MessagesDocker("MACON,W"));
+                        manualUC1.SentBox.Text += "Increasing velocity...\r\n(Messages Sent: " + "$MACON," + key + "," + checksum("MACON,W,")+"\r\n";
                     }
                     if (key == "A")
                     {
-                        serialPort1.Write("$MACON," + key + "," + checksum("MACON,A,") + "\r\n");
+                        serialPort1.Write(MessagesDocker("MACON,A"));
                         manualUC1.SentBox.Text += "Turning Left...\r\n(Messages Sent: $MACON,A)\r\n";
                     }
                     if (key == "D")
                     {
-                        serialPort1.Write("$MACON," + key + "," + checksum("MACON,D,") + "\r\n");
+                        serialPort1.Write(MessagesDocker("MACON,D"));
                         manualUC1.SentBox.Text += "Turning Right...\r\n(Messages Sent: $MACON,D)\r\n";
                     }
                     if (key == "S")
                     {
-                        serialPort1.Write("$MACON," + key + "," + checksum("MACON,S,") + "\r\n");
+                        serialPort1.Write(MessagesDocker("MACON,S"));
                         manualUC1.SentBox.Text += "Decreasing Velocity...\r\n(Messages Sent: $MACON,S)\r\n";
                     }
                     if (key == "F")
                     {
-                        serialPort1.Write("$SFRST," + checksum("SFRST,") + "\r\n");
+                        serialPort1.Write(MessagesDocker("MACON,F"));
                         manualUC1.SentBox.Text += "RESET VEHICLE...\r\n(Messages Sent: $MACON,F)\r\n";
                     }
                 }
@@ -606,11 +607,10 @@ namespace ThesisInterface
         {
             try
             {
-                string CC = checksum("AUCON,1,");
-                serialPort1.WriteLine("$AUCON,1," + CC + "\r\n");
-                
-                autoUC1.DetailInfoTb.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started auto control mode\r\n";
-
+                serialPort1.Write(MessagesDocker("AUCON,1"));
+                OldMess = autoUC1.ReceivedTb.Text;
+                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Start auto mode\r\n";
+                AutoTimer.Enabled = true;
             }
 
             catch (Exception ex)
@@ -621,7 +621,16 @@ namespace ThesisInterface
 
         private void StopBtAutoUCClickHandler(object sender, EventArgs e)
         {
+            try
+            {
+                serialPort1.Write(MessagesDocker("AUCON,0"));
+                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stop auto mode\r\n";
+            }
 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void OpenBtAutoUCClickHandler(object sender, EventArgs e)
@@ -638,7 +647,8 @@ namespace ThesisInterface
         {
             if(PlanMapEnable && (e.Button == MouseButtons.Right))
             {
-                PlanCooridnatesList.Add(autoUC1.gmap.FromLocalToLatLng( e.X, e.Y));
+                //MessageBox.Show(autoUC1.gmap.FromLocalToLatLng(e.X, e.Y).ToString());
+                PlanCooridnatesList.Add(autoUC1.gmap.FromLocalToLatLng(e.X, e.Y));
                 var line = new GMapRoute(PlanCooridnatesList, "single_line")
                 {
                     Stroke = new Pen(Color.DarkRed, 2)
@@ -684,6 +694,8 @@ namespace ThesisInterface
 
         private void InitAutoUC()
         {
+            AutoTimer.Interval = 20;
+            AutoTimer.Enabled = false;
             autoUC1.gmap.DragButton = MouseButtons.Left;
             autoUC1.gmap.MapProvider = GMap.NET.MapProviders.GoogleSatelliteMapProvider.Instance;
             GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
@@ -699,6 +711,7 @@ namespace ThesisInterface
             //markers.Markers.Add(marker);
             //autoUC1.gmap.Overlays.Add(markers);
         }
+
         //--------------------------------------------------------------------------//
         
         // TIMERS ------------------------------------------------------------------//
@@ -811,21 +824,57 @@ namespace ThesisInterface
                     if(messParsed[0].Contains("$SINFO") && messParsed[1].Contains("1"))
                     {
                         imuSetting1.ReceivedTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Done\r\n";
-                        timeoutIMU = 10;
+                        timeoutIMU = 40;
                         IMUConfigWaitForRespond.Enabled = false;
                     }
                 }
             }
             else
             {
-                timeoutIMU = 10;
+                timeoutIMU = 40;
                 imuSetting1.ReceivedTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Failed to config IMU\r\n";
                 IMUConfigWaitForRespond.Enabled = false;
             }
         }
 
+        private void AutoTimer_Tick(object sender, EventArgs e)
+        {
+            if (timeoutAuto > 0)
+            {
+                timeoutAuto--;
+                if (AutoWaitKey == "|")
+                {
+                    autoUC1.ReceivedTb.Text = OldMess + "Waiting for respond" + AutoWaitKey;
+                    AutoWaitKey = "-";
+
+                }
+                else
+                {
+                    autoUC1.ReceivedTb.Text = OldMess + "Waiting for respond" + AutoWaitKey;
+                    AutoWaitKey = "|";
+                }
+                if (serialPort1.BytesToRead != 0)
+                {
+                    string mess = serialPort1.ReadLine();
+                    string[] messParsed = mess.Split(',');
+                    if (messParsed[0].Contains("$SINFO") && messParsed[1].Contains("1"))
+                    {
+                        autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Started auto mode successfully.\r\n";
+                        timeoutAuto = 40;
+                        AutoTimer.Enabled = false;
+                    }
+                }
+            }
+            else
+            {
+                timeoutAuto = 40;
+                autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Failed to start auto mode\r\n";
+                AutoTimer.Enabled = false;
+            }
+        }
+
         //---------------------------------------------------------------------------//
-        
+
         // Other functions ----------------------------------------------------------//
 
         public void DrawVehicleStatusOnImage(PictureBox ImgBox, float angle, Image image)
@@ -870,6 +919,12 @@ namespace ThesisInterface
             return sum.ToString("X");
         }
 
-        
+        public string MessagesDocker(string RawMess)
+        {
+            string MessWithoutKey = RawMess + ",";
+
+            return "$" + MessWithoutKey + checksum(MessWithoutKey) + "\r\n";
+        }
+
     }
 }
