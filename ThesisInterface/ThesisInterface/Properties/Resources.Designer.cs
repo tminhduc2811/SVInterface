@@ -103,6 +103,26 @@ namespace ThesisInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Connect_Develop_100px {
+            get {
+                object obj = ResourceManager.GetObject("Connect Develop_100px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Connect_Develop_96px {
+            get {
+                object obj = ResourceManager.GetObject("Connect Develop_96px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap connected {
             get {
                 object obj = ResourceManager.GetObject("connected", resourceCulture);
@@ -166,6 +186,16 @@ namespace ThesisInterface.Properties {
         internal static System.Drawing.Bitmap icons8_Update_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Update_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Inbox_96px {
+            get {
+                object obj = ResourceManager.GetObject("Inbox_96px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +273,29 @@ namespace ThesisInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Play_100px {
+            get {
+                object obj = ResourceManager.GetObject("Play_100px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap play2 {
             get {
                 object obj = ResourceManager.GetObject("play2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Restart_100px {
+            get {
+                object obj = ResourceManager.GetObject("Restart_100px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +313,39 @@ namespace ThesisInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Save_100px {
+            get {
+                object obj = ResourceManager.GetObject("Save_100px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_1104px {
+            get {
+                object obj = ResourceManager.GetObject("Save_1104px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Save_64px {
             get {
                 object obj = ResourceManager.GetObject("Save_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_as_100px {
+            get {
+                object obj = ResourceManager.GetObject("Save as_100px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -303,6 +383,16 @@ namespace ThesisInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Send_Letter_100px {
+            get {
+                object obj = ResourceManager.GetObject("Send Letter_100px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Settings_64px {
             get {
                 object obj = ResourceManager.GetObject("Settings_64px", resourceCulture);
@@ -316,6 +406,16 @@ namespace ThesisInterface.Properties {
         internal static System.Drawing.Bitmap startwhite {
             get {
                 object obj = ResourceManager.GetObject("startwhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stop_100px {
+            get {
+                object obj = ResourceManager.GetObject("Stop_100px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

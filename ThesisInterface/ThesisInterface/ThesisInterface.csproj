@@ -117,6 +117,12 @@
     <Compile Include="UserControls\AutoUC.Designer.cs">
       <DependentUpon>AutoUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\VehicleSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\VehicleSetting.Designer.cs">
+      <DependentUpon>VehicleSetting.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\VehicleSetting.resx">
+      <DependentUpon>VehicleSetting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -244,6 +253,16 @@
     <None Include="Resources\do_extend.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Play_100px.png" />
+    <None Include="Resources\Stop_100px.png" />
+    <None Include="Resources\Connect Develop_100px.png" />
+    <None Include="Resources\Connect Develop_96px.png" />
+    <None Include="Resources\Restart_100px.png" />
+    <None Include="Resources\Inbox_96px.png" />
+    <None Include="Resources\Save as_100px.png" />
+    <None Include="Resources\Save_1104px.png" />
+    <None Include="Resources\Send Letter_100px.png" />
+    <None Include="Resources\Save_100px.png" />
     <Content Include="robot_qyi_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

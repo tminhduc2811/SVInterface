@@ -114,9 +114,12 @@ namespace ThesisInterface
         {
             InitializeComponent();
             InitForm();
+
         }
         
         private bool ManualEnabled = false;
+
+        private bool AutoEnabled = false;
 
         // Main form buttons click events ----------------------------------------//
 
@@ -148,7 +151,7 @@ namespace ThesisInterface
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            this.setting1.BringToFront();
+            this.vehicleSetting1.BringToFront();
             SidePanel.Width = 0;
         }
 
@@ -178,7 +181,7 @@ namespace ThesisInterface
             SidePanel.Width = 0;
             InitSettingUC();
             LinkToUCEvents();
-            this.setting1.BringToFront();
+            this.vehicleSetting1.BringToFront();
             InitManualUC();
             ConfigWaitForRespond.Enabled = false;
             IMUConfigWaitForRespond.Enabled = false;
@@ -187,28 +190,28 @@ namespace ThesisInterface
 
         private void InitSettingUC()
         {
-            setting1.ConnectedImage.Visible = false;
-            setting1.ConnectedLabel.Visible = false;
-            setting1.CloseSPBt.Enabled = false;
+            vehicleSetting1.ConnectedImage.Visible = false;
+            vehicleSetting1.ConnectedLabel.Visible = false;
+            vehicleSetting1.CloseSPBt.Enabled = false;
             // Add items to combo box
             string[] Ports = SerialPort.GetPortNames();
-            setting1.PortNameBox.Items.AddRange(Ports);
-            setting1.BaudrateBox.Text = "9600";
+            vehicleSetting1.PortNameBox.Items.AddRange(Ports);
+            vehicleSetting1.BaudrateBox.Text = "9600";
             // Read txt file
             StreamReader sr = new StreamReader(Application.StartupPath + @"\Config.txt");
 
             string PIDConfig = sr.ReadLine();
             string[] a;
             a = PIDConfig.Split(',');
-            setting1.Velocity.Text = a[1];
-            setting1.Angle.Text = a[2];
-            setting1.Kp1.Text = a[3];
-            setting1.Ki1.Text = a[4];
-            setting1.Kd1.Text = a[5];
-            setting1.Kp2.Text = a[6];
-            setting1.Ki2.Text = a[7];
-            setting1.Kd2.Text = a[8];
-            setting1.Mode.Text = "0";
+            vehicleSetting1.Velocity.Text = a[1];
+            vehicleSetting1.Angle.Text = a[2];
+            vehicleSetting1.Kp1.Text = a[3];
+            vehicleSetting1.Ki1.Text = a[4];
+            vehicleSetting1.Kd1.Text = a[5];
+            vehicleSetting1.Kp2.Text = a[6];
+            vehicleSetting1.Ki2.Text = a[7];
+            vehicleSetting1.Kd2.Text = a[8];
+            vehicleSetting1.Mode.Text = "0";
             // Exit stream reader
             sr.Close();
             sr.Dispose();
@@ -223,10 +226,11 @@ namespace ThesisInterface
 
         private void LinkToUCEvents()
         {
-            this.setting1.OpenSPBtClickHandler(new EventHandler(OpenBtSettingUCClickHandler));
-            this.setting1.CloseSPBtClickHandler(new EventHandler(CloseBtSettingUCClickHandler));
-            this.setting1.SendBtClickHandler(new EventHandler(SendBtSettingUCClickHandler));
-            this.setting1.SaveBtClickHandler(new EventHandler(SaveBtSettingUCClickHandler));
+            this.vehicleSetting1.OpenSPBtClickHandler(new EventHandler(OpenBtSettingUCClickHandler));
+            this.vehicleSetting1.CloseSPBtClickHandler(new EventHandler(CloseBtSettingUCClickHandler));
+            this.vehicleSetting1.SendBtClickHandler(new EventHandler(SendBtSettingUCClickHandler));
+            this.vehicleSetting1.SaveBtClickHandler(new EventHandler(SaveBtSettingUCClickHandler));
+            this.vehicleSetting1.UpdateSPBtClickHandler(new EventHandler(UpdateSPBtSettingUCClickHandler));
             this.manualUC1.StartBtClickHandler(new EventHandler(StartBtManualUCClickHandler));
             this.manualUC1.StopBtClickHandler(new EventHandler(StopBtManualUCClickHandler));
             this.manualUC1.ImportBtClickHandler(new EventHandler(ImportBtManualUCClickHandler));
@@ -251,20 +255,26 @@ namespace ThesisInterface
        
         // Handler for SETTING User Control-----------------------------------------//
 
+        private void UpdateSPBtSettingUCClickHandler(object sender, EventArgs e)
+        {
+            string[] Ports = SerialPort.GetPortNames();
+            vehicleSetting1.PortNameBox.Items.AddRange(Ports);
+        }
+
         private void OpenBtSettingUCClickHandler(object sender, EventArgs e)
         {
             try
             {
-                serialPort1.PortName = setting1.PortNameBox.Text;
-                serialPort1.BaudRate = Convert.ToInt32(setting1.BaudrateBox.Text);
+                serialPort1.PortName = vehicleSetting1.PortNameBox.Text;
+                serialPort1.BaudRate = Convert.ToInt32(vehicleSetting1.BaudrateBox.Text);
                 serialPort1.ReadBufferSize = 100000;
                 serialPort1.Open();
-                setting1.CloseSPBt.Enabled = true;
-                setting1.OpenSPBt.Enabled = false;
-                setting1.ConnectedImage.Visible = true;
-                setting1.ConnectedLabel.Visible = true;
-                setting1.DisconnectedImage.Visible = false;
-                setting1.DisconnectedLabel.Visible = false;
+                vehicleSetting1.CloseSPBt.Enabled = true;
+                vehicleSetting1.OpenSPBt.Enabled = false;
+                vehicleSetting1.ConnectedImage.Visible = true;
+                vehicleSetting1.ConnectedLabel.Visible = true;
+                vehicleSetting1.DisonnectedImage.Visible = false;
+                vehicleSetting1.DisconnectedLabel.Visible = false;
 
             }
             catch (Exception ex)
@@ -278,12 +288,12 @@ namespace ThesisInterface
             try
             {
                 serialPort1.Close();
-                setting1.CloseSPBt.Enabled = false;
-                setting1.OpenSPBt.Enabled = true;
-                setting1.ConnectedImage.Visible = false;
-                setting1.ConnectedLabel.Visible = false;
-                setting1.DisconnectedImage.Visible = true;
-                setting1.DisconnectedLabel.Visible = true;
+                vehicleSetting1.CloseSPBt.Enabled = false;
+                vehicleSetting1.OpenSPBt.Enabled = true;
+                vehicleSetting1.ConnectedImage.Visible = false;
+                vehicleSetting1.ConnectedLabel.Visible = false;
+                vehicleSetting1.DisonnectedImage.Visible = true;
+                vehicleSetting1.DisconnectedLabel.Visible = true;
             }
             catch (Exception ex)
             {
@@ -296,15 +306,15 @@ namespace ThesisInterface
             try
             {
                 string mess = "";
-                mess = "VEHCF," + setting1.Velocity.Text + ","
-                    + setting1.Kp1.Text + "," + setting1.Ki1.Text + ","
-                    + setting1.Kd1.Text + "," + setting1.Kp2.Text
-                    + "," + setting1.Ki2.Text + "," + setting1.Kd2.Text;
+                mess = "VEHCF," + vehicleSetting1.Velocity.Text + ","
+                    + vehicleSetting1.Kp1.Text + "," + vehicleSetting1.Ki1.Text + ","
+                    + vehicleSetting1.Kd1.Text + "," + vehicleSetting1.Kp2.Text
+                    + "," + vehicleSetting1.Ki2.Text + "," + vehicleSetting1.Kd2.Text;
                 mess = MessagesDocker(mess);
                 serialPort1.Write(mess);
                 ConfigMessToWait = mess;
-                OldMess = setting1.ReceiveMessTextBox.Text;
-                setting1.SentMessTextBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Sending Configuration...\r\n(Mess sent:" + mess;
+                OldMess = vehicleSetting1.ReceiveMessTextBox.Text;
+                vehicleSetting1.SentMessTextBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Sending Configuration...\r\n(Mess sent:" + mess;
                 ConfigWaitForRespond.Enabled = true;
 
             }
@@ -319,10 +329,10 @@ namespace ThesisInterface
             try
             {
                 string mess = "";
-                mess = "$VEHCF," + setting1.Velocity.Text + "," + setting1.Angle.Text + ","
-                    + setting1.Kp1.Text + "," + setting1.Ki1.Text + ","
-                    + setting1.Kd1.Text + "," + setting1.Kp2.Text
-                    + "," + setting1.Ki2.Text + "," + setting1.Kd2.Text;
+                mess = "$VEHCF," + vehicleSetting1.Velocity.Text + "," + vehicleSetting1.Angle.Text + ","
+                    + vehicleSetting1.Kp1.Text + "," + vehicleSetting1.Ki1.Text + ","
+                    + vehicleSetting1.Kd1.Text + "," + vehicleSetting1.Kp2.Text
+                    + "," + vehicleSetting1.Ki2.Text + "," + vehicleSetting1.Kd2.Text;
 
                 StreamWriter sw = new StreamWriter(Application.StartupPath + @"\Config.txt");
                 sw.WriteLine(mess);
@@ -611,6 +621,10 @@ namespace ThesisInterface
                 OldMess = autoUC1.ReceivedTb.Text;
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Start auto mode\r\n";
                 AutoTimer.Enabled = true;
+                //test from here
+                AutoEnabled = true;
+                timer1.Enabled = true;
+            
             }
 
             catch (Exception ex)
@@ -683,13 +697,13 @@ namespace ThesisInterface
             autoUC1.gmap.Overlays.Clear();
             PlanCooridnatesList.Clear();
             PlanLines.Clear();
-            ActualCooridnatesList.Clear();
-            ActualLines.Clear();
         }
 
         private void ClearActualMapBtAutoUCClickHandler(object sender, EventArgs e)
         {
-
+            autoUC1.gmap.Overlays.Clear();
+            ActualCooridnatesList.Clear();
+            ActualLines.Clear();
         }
 
         private void InitAutoUC()
@@ -749,6 +763,36 @@ namespace ThesisInterface
                     }
                 }
             }
+            else if(AutoEnabled)
+            {
+                if (serialPort1.IsOpen)
+                {
+                    if (serialPort1.BytesToRead != 0)
+                    {
+                        try
+                        {
+                            string mess = serialPort1.ReadLine();
+                            string[] value = mess.Split(',');
+                            if (value[0] == "$GNGLL")
+                            {
+                                autoUC1.ReceivedTb.Text += mess;
+                                ActualCooridnatesList.Add(new GMap.NET.PointLatLng(Convert.ToDouble(value[1]), Convert.ToDouble(value[3])));
+                                var line = new GMapRoute(ActualCooridnatesList, "single_line")
+                                {
+                                    Stroke = new Pen(Color.DarkGreen, 2)
+                                };
+                                ActualLines.Routes.Clear();                                
+                                ActualLines.Routes.Add(line);
+                                autoUC1.gmap.Overlays.Add(ActualLines);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
         }
 
         private void ConfigWaitForRespond_Tick(object sender, EventArgs e)
@@ -758,13 +802,13 @@ namespace ThesisInterface
                 timeout--;
                 if (ConfigWaitKey == "|")
                 {
-                    setting1.ReceiveMessTextBox.Text = OldMess + "Waiting for respond" + ConfigWaitKey;
+                    vehicleSetting1.ReceiveMessTextBox.Text = OldMess + "Waiting for respond" + ConfigWaitKey;
                     ConfigWaitKey = "-";
 
                 }
                 else
                 {
-                    setting1.ReceiveMessTextBox.Text = OldMess + "Waiting for respond" + ConfigWaitKey;
+                    vehicleSetting1.ReceiveMessTextBox.Text = OldMess + "Waiting for respond" + ConfigWaitKey;
                     ConfigWaitKey = "|";
                 }
                 if (serialPort1.IsOpen && (ManualEnabled == false))
@@ -776,7 +820,7 @@ namespace ThesisInterface
                         if (temp.Contains("$SINFO,1"))
                         {
                             ConfigWaitForRespond.Enabled = false;
-                            setting1.ReceiveMessTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + ": " + "Setting successfully\r\n";
+                            vehicleSetting1.ReceiveMessTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + ": " + "Setting successfully\r\n";
                             timeout = 40;
                             ConfigMessToWait = "";
                             
@@ -784,7 +828,7 @@ namespace ThesisInterface
                         else if(temp.Contains("$SINFO,0"))
                         {
                             ConfigWaitForRespond.Enabled = false;
-                            setting1.ReceiveMessTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + ": " + "Fail to config\r\n";
+                            vehicleSetting1.ReceiveMessTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + ": " + "Fail to config\r\n";
                             timeout = 40;
                             ConfigMessToWait = "";
                             
@@ -797,7 +841,7 @@ namespace ThesisInterface
                 ConfigWaitForRespond.Enabled = false;
                 timeout = 40;
                 MessageBox.Show("Error: Timeout, no respone from MCU", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                setting1.ReceiveMessTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + ": " + "Fail to config\r\n";
+                vehicleSetting1.ReceiveMessTextBox.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + ": " + "Fail to config\r\n";
             }
         }
 
