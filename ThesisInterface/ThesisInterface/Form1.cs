@@ -114,7 +114,6 @@ namespace ThesisInterface
         {
             InitializeComponent();
             InitForm();
-
         }
         
         private bool ManualEnabled = false;
@@ -171,7 +170,15 @@ namespace ThesisInterface
             autoUC1.BringToFront();
             SidePanel.Width = 0;
         }
-    
+
+        private void TopPanel_DoubleClick(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
         //-------------------------------------------------------------------------//
 
         // Init Functions & Linking to events -------------------------------------//
@@ -258,6 +265,7 @@ namespace ThesisInterface
         private void UpdateSPBtSettingUCClickHandler(object sender, EventArgs e)
         {
             string[] Ports = SerialPort.GetPortNames();
+            vehicleSetting1.PortNameBox.Items.Clear();
             vehicleSetting1.PortNameBox.Items.AddRange(Ports);
         }
 
@@ -969,6 +977,7 @@ namespace ThesisInterface
 
             return "$" + MessWithoutKey + checksum(MessWithoutKey) + "\r\n";
         }
+
 
     }
 }

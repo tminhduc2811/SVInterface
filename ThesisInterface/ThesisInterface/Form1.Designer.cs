@@ -35,6 +35,7 @@
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.TopPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.ConnectedImage = new System.Windows.Forms.PictureBox();
             this.closebt = new Bunifu.Framework.UI.BunifuImageButton();
             this.maxbt = new Bunifu.Framework.UI.BunifuImageButton();
             this.minbt = new Bunifu.Framework.UI.BunifuImageButton();
@@ -57,15 +58,14 @@
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.ConnectedImage = new System.Windows.Forms.PictureBox();
             this.TopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closebt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxbt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minbt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menubt)).BeginInit();
             this.panel1.SuspendLayout();
             this.SidePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -109,6 +109,18 @@
             this.TopPanel.Quality = 10;
             this.TopPanel.Size = new System.Drawing.Size(1087, 47);
             this.TopPanel.TabIndex = 9;
+            this.TopPanel.DoubleClick += new System.EventHandler(this.TopPanel_DoubleClick);
+            // 
+            // ConnectedImage
+            // 
+            this.ConnectedImage.BackColor = System.Drawing.Color.Transparent;
+            this.ConnectedImage.Image = global::ThesisInterface.Properties.Resources.Connect_Develop_96px;
+            this.ConnectedImage.Location = new System.Drawing.Point(341, 1);
+            this.ConnectedImage.Name = "ConnectedImage";
+            this.ConnectedImage.Size = new System.Drawing.Size(106, 46);
+            this.ConnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ConnectedImage.TabIndex = 19;
+            this.ConnectedImage.TabStop = false;
             // 
             // closebt
             // 
@@ -174,8 +186,8 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Ailerons", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(58, 6);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
+            this.label1.Location = new System.Drawing.Point(58, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(277, 28);
             this.label1.TabIndex = 1;
@@ -304,7 +316,7 @@
             this.bunifuFlatButton4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bunifuFlatButton4.Name = "bunifuFlatButton4";
             this.bunifuFlatButton4.Normalcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton4.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.bunifuFlatButton4.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(28)))), ((int)(((byte)(23)))));
             this.bunifuFlatButton4.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton4.selected = false;
             this.bunifuFlatButton4.Size = new System.Drawing.Size(156, 50);
@@ -342,7 +354,7 @@
             this.bunifuFlatButton3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bunifuFlatButton3.Name = "bunifuFlatButton3";
             this.bunifuFlatButton3.Normalcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(28)))), ((int)(((byte)(23)))));
             this.bunifuFlatButton3.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton3.selected = false;
             this.bunifuFlatButton3.Size = new System.Drawing.Size(156, 50);
@@ -380,7 +392,7 @@
             this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bunifuFlatButton1.Name = "bunifuFlatButton1";
             this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(28)))), ((int)(((byte)(23)))));
             this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton1.selected = false;
             this.bunifuFlatButton1.Size = new System.Drawing.Size(156, 50);
@@ -418,7 +430,7 @@
             this.bunifuFlatButton2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bunifuFlatButton2.Name = "bunifuFlatButton2";
             this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(28)))), ((int)(((byte)(23)))));
             this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton2.selected = false;
             this.bunifuFlatButton2.Size = new System.Drawing.Size(156, 50);
@@ -441,17 +453,6 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "BKU";
             // 
-            // ConnectedImage
-            // 
-            this.ConnectedImage.BackColor = System.Drawing.Color.Transparent;
-            this.ConnectedImage.Image = global::ThesisInterface.Properties.Resources.Connect_Develop_96px;
-            this.ConnectedImage.Location = new System.Drawing.Point(341, 1);
-            this.ConnectedImage.Name = "ConnectedImage";
-            this.ConnectedImage.Size = new System.Drawing.Size(106, 46);
-            this.ConnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ConnectedImage.TabIndex = 19;
-            this.ConnectedImage.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -465,6 +466,7 @@
             this.Text = "Form1";
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closebt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxbt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minbt)).EndInit();
@@ -472,7 +474,6 @@
             this.panel1.ResumeLayout(false);
             this.SidePanel.ResumeLayout(false);
             this.SidePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).EndInit();
             this.ResumeLayout(false);
 
         }

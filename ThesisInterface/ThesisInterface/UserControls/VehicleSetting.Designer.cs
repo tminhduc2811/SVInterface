@@ -39,13 +39,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.PortNameBox = new System.Windows.Forms.ComboBox();
             this.BaudrateBox = new System.Windows.Forms.ComboBox();
-            this.UpdateSP = new Bunifu.Framework.UI.BunifuImageButton();
-            this.SendBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.SaveBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.CloseSPBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.OpenSPBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.DisonnectedImage = new System.Windows.Forms.PictureBox();
-            this.ConnectedImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -80,13 +73,13 @@
             this.label19 = new System.Windows.Forms.Label();
             this.SentMessTextBox = new System.Windows.Forms.RichTextBox();
             this.ConnectedLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.UpdateSP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SendBt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CloseSPBt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OpenSPBt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DisonnectedImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
+            this.UpdateSP = new Bunifu.Framework.UI.BunifuImageButton();
+            this.SendBt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.SaveBt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.CloseSPBt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.OpenSPBt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.DisonnectedImage = new System.Windows.Forms.PictureBox();
+            this.ConnectedImage = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -95,14 +88,21 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpdateSP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SendBt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseSPBt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OpenSPBt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisonnectedImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuMetroTextbox5
             // 
-            this.bunifuMetroTextbox5.BackColor = System.Drawing.Color.AliceBlue;
-            this.bunifuMetroTextbox5.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuMetroTextbox5.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuMetroTextbox5.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox5.BackColor = System.Drawing.Color.White;
+            this.bunifuMetroTextbox5.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox5.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox5.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(29)))), ((int)(((byte)(42)))));
             this.bunifuMetroTextbox5.BorderThickness = 2;
             this.bunifuMetroTextbox5.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.bunifuMetroTextbox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -122,7 +122,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Ailerons", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(68)))), ((int)(((byte)(23)))));
             this.label3.Location = new System.Drawing.Point(94, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(150, 29);
@@ -145,10 +145,10 @@
             // 
             this.bunifuMetroTextbox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuMetroTextbox4.BackColor = System.Drawing.Color.AliceBlue;
-            this.bunifuMetroTextbox4.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuMetroTextbox4.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuMetroTextbox4.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox4.BackColor = System.Drawing.Color.White;
+            this.bunifuMetroTextbox4.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox4.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox4.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(29)))), ((int)(((byte)(42)))));
             this.bunifuMetroTextbox4.BorderThickness = 2;
             this.bunifuMetroTextbox4.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.bunifuMetroTextbox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -164,10 +164,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.AliceBlue;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 15.75F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.label1.Location = new System.Drawing.Point(395, 97);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label1.Location = new System.Drawing.Point(395, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 25);
             this.label1.TabIndex = 26;
@@ -176,10 +176,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.AliceBlue;
+            this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.label2.Location = new System.Drawing.Point(395, 63);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label2.Location = new System.Drawing.Point(395, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 25);
             this.label2.TabIndex = 27;
@@ -191,7 +191,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Ailerons", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(68)))), ((int)(((byte)(23)))));
             this.label4.Location = new System.Drawing.Point(532, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(136, 29);
@@ -202,9 +202,9 @@
             // 
             this.bunifuMetroTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuMetroTextbox2.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuMetroTextbox2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuMetroTextbox2.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox2.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuMetroTextbox2.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(29)))), ((int)(((byte)(42)))));
             this.bunifuMetroTextbox2.BorderThickness = 2;
             this.bunifuMetroTextbox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.bunifuMetroTextbox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -223,7 +223,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Ailerons", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(68)))), ((int)(((byte)(23)))));
             this.label5.Location = new System.Drawing.Point(289, 204);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(298, 29);
@@ -236,11 +236,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PortNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.PortNameBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PortNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PortNameBox.ForeColor = System.Drawing.Color.White;
             this.PortNameBox.FormattingEnabled = true;
             this.PortNameBox.Location = new System.Drawing.Point(506, 67);
             this.PortNameBox.Name = "PortNameBox";
-            this.PortNameBox.Size = new System.Drawing.Size(274, 21);
+            this.PortNameBox.Size = new System.Drawing.Size(274, 28);
             this.PortNameBox.TabIndex = 33;
             // 
             // BaudrateBox
@@ -249,100 +250,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BaudrateBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.BaudrateBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BaudrateBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BaudrateBox.ForeColor = System.Drawing.Color.White;
             this.BaudrateBox.FormattingEnabled = true;
             this.BaudrateBox.Location = new System.Drawing.Point(506, 101);
             this.BaudrateBox.Name = "BaudrateBox";
-            this.BaudrateBox.Size = new System.Drawing.Size(274, 21);
+            this.BaudrateBox.Size = new System.Drawing.Size(274, 28);
             this.BaudrateBox.TabIndex = 33;
-            // 
-            // UpdateSP
-            // 
-            this.UpdateSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UpdateSP.BackColor = System.Drawing.Color.Transparent;
-            this.UpdateSP.Image = global::ThesisInterface.Properties.Resources.Restart_100px;
-            this.UpdateSP.ImageActive = null;
-            this.UpdateSP.Location = new System.Drawing.Point(791, 67);
-            this.UpdateSP.Name = "UpdateSP";
-            this.UpdateSP.Size = new System.Drawing.Size(25, 25);
-            this.UpdateSP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.UpdateSP.TabIndex = 34;
-            this.UpdateSP.TabStop = false;
-            this.UpdateSP.Zoom = 10;
-            // 
-            // SendBt
-            // 
-            this.SendBt.BackColor = System.Drawing.Color.Transparent;
-            this.SendBt.Image = global::ThesisInterface.Properties.Resources.Send_Letter_100px;
-            this.SendBt.ImageActive = null;
-            this.SendBt.Location = new System.Drawing.Point(54, 238);
-            this.SendBt.Name = "SendBt";
-            this.SendBt.Size = new System.Drawing.Size(35, 35);
-            this.SendBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.SendBt.TabIndex = 30;
-            this.SendBt.TabStop = false;
-            this.SendBt.Zoom = 10;
-            // 
-            // SaveBt
-            // 
-            this.SaveBt.BackColor = System.Drawing.Color.Transparent;
-            this.SaveBt.Image = global::ThesisInterface.Properties.Resources.Save_100px;
-            this.SaveBt.ImageActive = null;
-            this.SaveBt.Location = new System.Drawing.Point(54, 327);
-            this.SaveBt.Name = "SaveBt";
-            this.SaveBt.Size = new System.Drawing.Size(35, 35);
-            this.SaveBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.SaveBt.TabIndex = 31;
-            this.SaveBt.TabStop = false;
-            this.SaveBt.Zoom = 10;
-            // 
-            // CloseSPBt
-            // 
-            this.CloseSPBt.BackColor = System.Drawing.Color.AliceBlue;
-            this.CloseSPBt.Image = global::ThesisInterface.Properties.Resources.Stop_100px;
-            this.CloseSPBt.ImageActive = null;
-            this.CloseSPBt.Location = new System.Drawing.Point(450, 137);
-            this.CloseSPBt.Name = "CloseSPBt";
-            this.CloseSPBt.Size = new System.Drawing.Size(35, 35);
-            this.CloseSPBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.CloseSPBt.TabIndex = 22;
-            this.CloseSPBt.TabStop = false;
-            this.CloseSPBt.Zoom = 10;
-            // 
-            // OpenSPBt
-            // 
-            this.OpenSPBt.BackColor = System.Drawing.Color.AliceBlue;
-            this.OpenSPBt.Image = global::ThesisInterface.Properties.Resources.Play_100px;
-            this.OpenSPBt.ImageActive = null;
-            this.OpenSPBt.Location = new System.Drawing.Point(394, 137);
-            this.OpenSPBt.Name = "OpenSPBt";
-            this.OpenSPBt.Size = new System.Drawing.Size(34, 34);
-            this.OpenSPBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.OpenSPBt.TabIndex = 23;
-            this.OpenSPBt.TabStop = false;
-            this.OpenSPBt.Zoom = 10;
-            // 
-            // DisonnectedImage
-            // 
-            this.DisonnectedImage.BackColor = System.Drawing.Color.AliceBlue;
-            this.DisonnectedImage.Image = global::ThesisInterface.Properties.Resources.Connect_Develop_100px;
-            this.DisonnectedImage.Location = new System.Drawing.Point(55, 46);
-            this.DisonnectedImage.Name = "DisonnectedImage";
-            this.DisonnectedImage.Size = new System.Drawing.Size(215, 90);
-            this.DisonnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.DisonnectedImage.TabIndex = 19;
-            this.DisonnectedImage.TabStop = false;
-            // 
-            // ConnectedImage
-            // 
-            this.ConnectedImage.BackColor = System.Drawing.Color.AliceBlue;
-            this.ConnectedImage.Image = global::ThesisInterface.Properties.Resources.Connect_Develop_96px;
-            this.ConnectedImage.Location = new System.Drawing.Point(54, 46);
-            this.ConnectedImage.Name = "ConnectedImage";
-            this.ConnectedImage.Size = new System.Drawing.Size(215, 90);
-            this.ConnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ConnectedImage.TabIndex = 18;
-            this.ConnectedImage.TabStop = false;
             // 
             // panel1
             // 
@@ -392,7 +306,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label16.Location = new System.Drawing.Point(17, 86);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(48, 24);
@@ -405,7 +319,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label7.Location = new System.Drawing.Point(124, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 24);
@@ -438,7 +352,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label15.Location = new System.Drawing.Point(17, 55);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(63, 24);
@@ -492,7 +406,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label14.Location = new System.Drawing.Point(17, 23);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(45, 24);
@@ -520,7 +434,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label10.Location = new System.Drawing.Point(21, 85);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(27, 24);
@@ -532,7 +446,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label9.Location = new System.Drawing.Point(21, 55);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(23, 24);
@@ -544,7 +458,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label8.Location = new System.Drawing.Point(21, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(27, 24);
@@ -620,7 +534,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label6.Location = new System.Drawing.Point(118, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 24);
@@ -648,7 +562,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label13.Location = new System.Drawing.Point(21, 85);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(27, 24);
@@ -661,7 +575,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label11.Location = new System.Drawing.Point(118, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 24);
@@ -673,7 +587,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label12.Location = new System.Drawing.Point(21, 55);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(23, 24);
@@ -706,7 +620,7 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.75F);
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.label17.Location = new System.Drawing.Point(21, 23);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(27, 24);
@@ -774,7 +688,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.panel8.Controls.Add(this.label18);
             this.panel8.Controls.Add(this.ReceiveMessTextBox);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -801,7 +715,7 @@
             this.ReceiveMessTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReceiveMessTextBox.BackColor = System.Drawing.Color.AliceBlue;
+            this.ReceiveMessTextBox.BackColor = System.Drawing.Color.White;
             this.ReceiveMessTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ReceiveMessTextBox.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReceiveMessTextBox.ForeColor = System.Drawing.Color.Black;
@@ -813,7 +727,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.panel7.Controls.Add(this.label19);
             this.panel7.Controls.Add(this.SentMessTextBox);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -840,7 +754,7 @@
             this.SentMessTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SentMessTextBox.BackColor = System.Drawing.Color.AliceBlue;
+            this.SentMessTextBox.BackColor = System.Drawing.Color.White;
             this.SentMessTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SentMessTextBox.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SentMessTextBox.ForeColor = System.Drawing.Color.Black;
@@ -853,14 +767,102 @@
             // ConnectedLabel
             // 
             this.ConnectedLabel.AutoSize = true;
-            this.ConnectedLabel.BackColor = System.Drawing.Color.AliceBlue;
+            this.ConnectedLabel.BackColor = System.Drawing.Color.White;
             this.ConnectedLabel.Font = new System.Drawing.Font("Bahnschrift Condensed", 15.75F);
-            this.ConnectedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.ConnectedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(119)))), ((int)(((byte)(42)))));
             this.ConnectedLabel.Location = new System.Drawing.Point(118, 147);
             this.ConnectedLabel.Name = "ConnectedLabel";
             this.ConnectedLabel.Size = new System.Drawing.Size(89, 25);
             this.ConnectedLabel.TabIndex = 37;
             this.ConnectedLabel.Text = "CONNECTED";
+            // 
+            // UpdateSP
+            // 
+            this.UpdateSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UpdateSP.BackColor = System.Drawing.Color.Transparent;
+            this.UpdateSP.Image = global::ThesisInterface.Properties.Resources.Restart_100px;
+            this.UpdateSP.ImageActive = null;
+            this.UpdateSP.Location = new System.Drawing.Point(791, 67);
+            this.UpdateSP.Name = "UpdateSP";
+            this.UpdateSP.Size = new System.Drawing.Size(25, 25);
+            this.UpdateSP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.UpdateSP.TabIndex = 34;
+            this.UpdateSP.TabStop = false;
+            this.UpdateSP.Zoom = 10;
+            // 
+            // SendBt
+            // 
+            this.SendBt.BackColor = System.Drawing.Color.Transparent;
+            this.SendBt.Image = global::ThesisInterface.Properties.Resources.Send_Letter_100px;
+            this.SendBt.ImageActive = null;
+            this.SendBt.Location = new System.Drawing.Point(54, 238);
+            this.SendBt.Name = "SendBt";
+            this.SendBt.Size = new System.Drawing.Size(35, 35);
+            this.SendBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SendBt.TabIndex = 30;
+            this.SendBt.TabStop = false;
+            this.SendBt.Zoom = 10;
+            // 
+            // SaveBt
+            // 
+            this.SaveBt.BackColor = System.Drawing.Color.Transparent;
+            this.SaveBt.Image = global::ThesisInterface.Properties.Resources.Save_100px;
+            this.SaveBt.ImageActive = null;
+            this.SaveBt.Location = new System.Drawing.Point(54, 327);
+            this.SaveBt.Name = "SaveBt";
+            this.SaveBt.Size = new System.Drawing.Size(35, 35);
+            this.SaveBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SaveBt.TabIndex = 31;
+            this.SaveBt.TabStop = false;
+            this.SaveBt.Zoom = 10;
+            // 
+            // CloseSPBt
+            // 
+            this.CloseSPBt.BackColor = System.Drawing.Color.White;
+            this.CloseSPBt.Image = global::ThesisInterface.Properties.Resources.Stop_100px;
+            this.CloseSPBt.ImageActive = null;
+            this.CloseSPBt.Location = new System.Drawing.Point(450, 137);
+            this.CloseSPBt.Name = "CloseSPBt";
+            this.CloseSPBt.Size = new System.Drawing.Size(35, 35);
+            this.CloseSPBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.CloseSPBt.TabIndex = 22;
+            this.CloseSPBt.TabStop = false;
+            this.CloseSPBt.Zoom = 10;
+            // 
+            // OpenSPBt
+            // 
+            this.OpenSPBt.BackColor = System.Drawing.Color.White;
+            this.OpenSPBt.Image = global::ThesisInterface.Properties.Resources.Play_100px;
+            this.OpenSPBt.ImageActive = null;
+            this.OpenSPBt.Location = new System.Drawing.Point(394, 137);
+            this.OpenSPBt.Name = "OpenSPBt";
+            this.OpenSPBt.Size = new System.Drawing.Size(34, 34);
+            this.OpenSPBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.OpenSPBt.TabIndex = 23;
+            this.OpenSPBt.TabStop = false;
+            this.OpenSPBt.Zoom = 10;
+            // 
+            // DisonnectedImage
+            // 
+            this.DisonnectedImage.BackColor = System.Drawing.Color.White;
+            this.DisonnectedImage.Image = global::ThesisInterface.Properties.Resources.Connect_Develop_100px;
+            this.DisonnectedImage.Location = new System.Drawing.Point(55, 46);
+            this.DisonnectedImage.Name = "DisonnectedImage";
+            this.DisonnectedImage.Size = new System.Drawing.Size(215, 90);
+            this.DisonnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.DisonnectedImage.TabIndex = 19;
+            this.DisonnectedImage.TabStop = false;
+            // 
+            // ConnectedImage
+            // 
+            this.ConnectedImage.BackColor = System.Drawing.Color.AliceBlue;
+            this.ConnectedImage.Image = global::ThesisInterface.Properties.Resources.Connect_Develop_96px;
+            this.ConnectedImage.Location = new System.Drawing.Point(54, 46);
+            this.ConnectedImage.Name = "ConnectedImage";
+            this.ConnectedImage.Size = new System.Drawing.Size(215, 90);
+            this.ConnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ConnectedImage.TabIndex = 18;
+            this.ConnectedImage.TabStop = false;
             // 
             // VehicleSetting
             // 
@@ -890,13 +892,6 @@
             this.Controls.Add(this.bunifuMetroTextbox5);
             this.Name = "VehicleSetting";
             this.Size = new System.Drawing.Size(862, 506);
-            ((System.ComponentModel.ISupportInitialize)(this.UpdateSP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SendBt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CloseSPBt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OpenSPBt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DisonnectedImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -910,6 +905,13 @@
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpdateSP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SendBt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseSPBt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OpenSPBt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DisonnectedImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -29,25 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AutoUC));
-            this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.SaveBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.OpenBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.StopBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.StartBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.textO = new System.Windows.Forms.Label();
-            this.textT = new System.Windows.Forms.Label();
-            this.textU = new System.Windows.Forms.Label();
-            this.textA = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.PlanMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.ClearPlannedMap = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.ClearActualMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.SendMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuMetroTextbox2 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.VehicleStatusImage = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.bunifuMetroTextbox1 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -67,15 +52,24 @@
             this.ReceivedTb = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bunifuMetroTextbox3 = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.bunifuGradientPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OpenBt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StopBt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StartBt)).BeginInit();
+            this.PlanMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.ClearPlannedMap = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.ClearActualMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.SendMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.VehicleStatusImage = new System.Windows.Forms.PictureBox();
+            this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.SaveBt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.OpenBt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.StopBt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.StartBt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.textO = new System.Windows.Forms.Label();
+            this.textT = new System.Windows.Forms.Label();
+            this.textU = new System.Windows.Forms.Label();
+            this.textA = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VehicleStatusImage)).BeginInit();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -83,144 +77,13 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VehicleStatusImage)).BeginInit();
+            this.bunifuGradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OpenBt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StopBt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartBt)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bunifuGradientPanel2
-            // 
-            this.bunifuGradientPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel2.BackgroundImage")));
-            this.bunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuGradientPanel2.Controls.Add(this.SaveBt);
-            this.bunifuGradientPanel2.Controls.Add(this.OpenBt);
-            this.bunifuGradientPanel2.Controls.Add(this.StopBt);
-            this.bunifuGradientPanel2.Controls.Add(this.StartBt);
-            this.bunifuGradientPanel2.Controls.Add(this.textO);
-            this.bunifuGradientPanel2.Controls.Add(this.textT);
-            this.bunifuGradientPanel2.Controls.Add(this.textU);
-            this.bunifuGradientPanel2.Controls.Add(this.textA);
-            this.bunifuGradientPanel2.Controls.Add(this.tableLayoutPanel1);
-            this.bunifuGradientPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.bunifuGradientPanel2.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuGradientPanel2.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(88)))));
-            this.bunifuGradientPanel2.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuGradientPanel2.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(49)))), ((int)(((byte)(85)))));
-            this.bunifuGradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.bunifuGradientPanel2.Name = "bunifuGradientPanel2";
-            this.bunifuGradientPanel2.Quality = 10;
-            this.bunifuGradientPanel2.Size = new System.Drawing.Size(38, 460);
-            this.bunifuGradientPanel2.TabIndex = 2;
-            // 
-            // SaveBt
-            // 
-            this.SaveBt.BackColor = System.Drawing.Color.Transparent;
-            this.SaveBt.Image = global::ThesisInterface.Properties.Resources.savewhite;
-            this.SaveBt.ImageActive = null;
-            this.SaveBt.Location = new System.Drawing.Point(0, 304);
-            this.SaveBt.Name = "SaveBt";
-            this.SaveBt.Size = new System.Drawing.Size(38, 38);
-            this.SaveBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.SaveBt.TabIndex = 3;
-            this.SaveBt.TabStop = false;
-            this.SaveBt.Zoom = 10;
-            // 
-            // OpenBt
-            // 
-            this.OpenBt.BackColor = System.Drawing.Color.Transparent;
-            this.OpenBt.Image = global::ThesisInterface.Properties.Resources.openwhite;
-            this.OpenBt.ImageActive = null;
-            this.OpenBt.Location = new System.Drawing.Point(0, 260);
-            this.OpenBt.Name = "OpenBt";
-            this.OpenBt.Size = new System.Drawing.Size(38, 38);
-            this.OpenBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.OpenBt.TabIndex = 3;
-            this.OpenBt.TabStop = false;
-            this.OpenBt.Zoom = 10;
-            // 
-            // StopBt
-            // 
-            this.StopBt.BackColor = System.Drawing.Color.Transparent;
-            this.StopBt.Image = global::ThesisInterface.Properties.Resources.stopwhite;
-            this.StopBt.ImageActive = null;
-            this.StopBt.Location = new System.Drawing.Point(0, 216);
-            this.StopBt.Name = "StopBt";
-            this.StopBt.Size = new System.Drawing.Size(38, 38);
-            this.StopBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.StopBt.TabIndex = 3;
-            this.StopBt.TabStop = false;
-            this.StopBt.Zoom = 10;
-            // 
-            // StartBt
-            // 
-            this.StartBt.BackColor = System.Drawing.Color.Transparent;
-            this.StartBt.Image = global::ThesisInterface.Properties.Resources.startwhite;
-            this.StartBt.ImageActive = null;
-            this.StartBt.Location = new System.Drawing.Point(0, 172);
-            this.StartBt.Name = "StartBt";
-            this.StartBt.Size = new System.Drawing.Size(38, 38);
-            this.StartBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.StartBt.TabIndex = 3;
-            this.StartBt.TabStop = false;
-            this.StartBt.Zoom = 10;
-            // 
-            // textO
-            // 
-            this.textO.AutoSize = true;
-            this.textO.BackColor = System.Drawing.Color.Transparent;
-            this.textO.Font = new System.Drawing.Font("Libel Suit Rg", 24F, System.Drawing.FontStyle.Bold);
-            this.textO.ForeColor = System.Drawing.Color.White;
-            this.textO.Location = new System.Drawing.Point(6, 117);
-            this.textO.Name = "textO";
-            this.textO.Size = new System.Drawing.Size(31, 39);
-            this.textO.TabIndex = 10;
-            this.textO.Text = "O";
-            // 
-            // textT
-            // 
-            this.textT.AutoSize = true;
-            this.textT.BackColor = System.Drawing.Color.Transparent;
-            this.textT.Font = new System.Drawing.Font("Libel Suit Rg", 24F, System.Drawing.FontStyle.Bold);
-            this.textT.ForeColor = System.Drawing.Color.White;
-            this.textT.Location = new System.Drawing.Point(6, 78);
-            this.textT.Name = "textT";
-            this.textT.Size = new System.Drawing.Size(28, 39);
-            this.textT.TabIndex = 10;
-            this.textT.Text = "T";
-            // 
-            // textU
-            // 
-            this.textU.AutoSize = true;
-            this.textU.BackColor = System.Drawing.Color.Transparent;
-            this.textU.Font = new System.Drawing.Font("Libel Suit Rg", 24F, System.Drawing.FontStyle.Bold);
-            this.textU.ForeColor = System.Drawing.Color.White;
-            this.textU.Location = new System.Drawing.Point(6, 39);
-            this.textU.Name = "textU";
-            this.textU.Size = new System.Drawing.Size(31, 39);
-            this.textU.TabIndex = 10;
-            this.textU.Text = "U";
-            // 
-            // textA
-            // 
-            this.textA.AutoSize = true;
-            this.textA.BackColor = System.Drawing.Color.Transparent;
-            this.textA.Font = new System.Drawing.Font("Libel Suit Rg", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textA.ForeColor = System.Drawing.Color.White;
-            this.textA.Location = new System.Drawing.Point(7, 0);
-            this.textA.Name = "textA";
-            this.textA.Size = new System.Drawing.Size(31, 39);
-            this.textA.TabIndex = 10;
-            this.textA.Text = "A";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(172, 357);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(672, 100);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
@@ -251,142 +114,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(188, 139);
             this.panel5.TabIndex = 18;
-            // 
-            // PlanMapBt
-            // 
-            this.PlanMapBt.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
-            this.PlanMapBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.PlanMapBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PlanMapBt.BorderRadius = 0;
-            this.PlanMapBt.ButtonText = "Plan Routes";
-            this.PlanMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PlanMapBt.DisabledColor = System.Drawing.Color.Gray;
-            this.PlanMapBt.Iconcolor = System.Drawing.Color.Transparent;
-            this.PlanMapBt.Iconimage = ((System.Drawing.Image)(resources.GetObject("PlanMapBt.Iconimage")));
-            this.PlanMapBt.Iconimage_right = null;
-            this.PlanMapBt.Iconimage_right_Selected = null;
-            this.PlanMapBt.Iconimage_Selected = null;
-            this.PlanMapBt.IconMarginLeft = 0;
-            this.PlanMapBt.IconMarginRight = 0;
-            this.PlanMapBt.IconRightVisible = true;
-            this.PlanMapBt.IconRightZoom = 0D;
-            this.PlanMapBt.IconVisible = true;
-            this.PlanMapBt.IconZoom = 90D;
-            this.PlanMapBt.IsTab = false;
-            this.PlanMapBt.Location = new System.Drawing.Point(15, 11);
-            this.PlanMapBt.Name = "PlanMapBt";
-            this.PlanMapBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.PlanMapBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.PlanMapBt.OnHoverTextColor = System.Drawing.Color.White;
-            this.PlanMapBt.selected = false;
-            this.PlanMapBt.Size = new System.Drawing.Size(160, 24);
-            this.PlanMapBt.TabIndex = 0;
-            this.PlanMapBt.Text = "Plan Routes";
-            this.PlanMapBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PlanMapBt.Textcolor = System.Drawing.Color.White;
-            this.PlanMapBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // ClearPlannedMap
-            // 
-            this.ClearPlannedMap.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
-            this.ClearPlannedMap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.ClearPlannedMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClearPlannedMap.BorderRadius = 0;
-            this.ClearPlannedMap.ButtonText = "Clear Planned Map";
-            this.ClearPlannedMap.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ClearPlannedMap.DisabledColor = System.Drawing.Color.Gray;
-            this.ClearPlannedMap.Iconcolor = System.Drawing.Color.Transparent;
-            this.ClearPlannedMap.Iconimage = ((System.Drawing.Image)(resources.GetObject("ClearPlannedMap.Iconimage")));
-            this.ClearPlannedMap.Iconimage_right = null;
-            this.ClearPlannedMap.Iconimage_right_Selected = null;
-            this.ClearPlannedMap.Iconimage_Selected = null;
-            this.ClearPlannedMap.IconMarginLeft = 0;
-            this.ClearPlannedMap.IconMarginRight = 0;
-            this.ClearPlannedMap.IconRightVisible = true;
-            this.ClearPlannedMap.IconRightZoom = 0D;
-            this.ClearPlannedMap.IconVisible = true;
-            this.ClearPlannedMap.IconZoom = 90D;
-            this.ClearPlannedMap.IsTab = false;
-            this.ClearPlannedMap.Location = new System.Drawing.Point(15, 42);
-            this.ClearPlannedMap.Name = "ClearPlannedMap";
-            this.ClearPlannedMap.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.ClearPlannedMap.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.ClearPlannedMap.OnHoverTextColor = System.Drawing.Color.White;
-            this.ClearPlannedMap.selected = false;
-            this.ClearPlannedMap.Size = new System.Drawing.Size(160, 24);
-            this.ClearPlannedMap.TabIndex = 0;
-            this.ClearPlannedMap.Text = "Clear Planned Map";
-            this.ClearPlannedMap.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ClearPlannedMap.Textcolor = System.Drawing.Color.White;
-            this.ClearPlannedMap.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // ClearActualMapBt
-            // 
-            this.ClearActualMapBt.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
-            this.ClearActualMapBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.ClearActualMapBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClearActualMapBt.BorderRadius = 0;
-            this.ClearActualMapBt.ButtonText = "Clear Actual Map";
-            this.ClearActualMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ClearActualMapBt.DisabledColor = System.Drawing.Color.Gray;
-            this.ClearActualMapBt.Iconcolor = System.Drawing.Color.Transparent;
-            this.ClearActualMapBt.Iconimage = ((System.Drawing.Image)(resources.GetObject("ClearActualMapBt.Iconimage")));
-            this.ClearActualMapBt.Iconimage_right = null;
-            this.ClearActualMapBt.Iconimage_right_Selected = null;
-            this.ClearActualMapBt.Iconimage_Selected = null;
-            this.ClearActualMapBt.IconMarginLeft = 0;
-            this.ClearActualMapBt.IconMarginRight = 0;
-            this.ClearActualMapBt.IconRightVisible = true;
-            this.ClearActualMapBt.IconRightZoom = 0D;
-            this.ClearActualMapBt.IconVisible = true;
-            this.ClearActualMapBt.IconZoom = 90D;
-            this.ClearActualMapBt.IsTab = false;
-            this.ClearActualMapBt.Location = new System.Drawing.Point(15, 72);
-            this.ClearActualMapBt.Name = "ClearActualMapBt";
-            this.ClearActualMapBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.ClearActualMapBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.ClearActualMapBt.OnHoverTextColor = System.Drawing.Color.White;
-            this.ClearActualMapBt.selected = false;
-            this.ClearActualMapBt.Size = new System.Drawing.Size(160, 24);
-            this.ClearActualMapBt.TabIndex = 0;
-            this.ClearActualMapBt.Text = "Clear Actual Map";
-            this.ClearActualMapBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ClearActualMapBt.Textcolor = System.Drawing.Color.White;
-            this.ClearActualMapBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // SendMapBt
-            // 
-            this.SendMapBt.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
-            this.SendMapBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.SendMapBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SendMapBt.BorderRadius = 0;
-            this.SendMapBt.ButtonText = "Send Routes";
-            this.SendMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SendMapBt.DisabledColor = System.Drawing.Color.Gray;
-            this.SendMapBt.Iconcolor = System.Drawing.Color.Transparent;
-            this.SendMapBt.Iconimage = ((System.Drawing.Image)(resources.GetObject("SendMapBt.Iconimage")));
-            this.SendMapBt.Iconimage_right = null;
-            this.SendMapBt.Iconimage_right_Selected = null;
-            this.SendMapBt.Iconimage_Selected = null;
-            this.SendMapBt.IconMarginLeft = 0;
-            this.SendMapBt.IconMarginRight = 0;
-            this.SendMapBt.IconRightVisible = true;
-            this.SendMapBt.IconRightZoom = 0D;
-            this.SendMapBt.IconVisible = true;
-            this.SendMapBt.IconZoom = 90D;
-            this.SendMapBt.IsTab = false;
-            this.SendMapBt.Location = new System.Drawing.Point(15, 102);
-            this.SendMapBt.Name = "SendMapBt";
-            this.SendMapBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.SendMapBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.SendMapBt.OnHoverTextColor = System.Drawing.Color.White;
-            this.SendMapBt.selected = false;
-            this.SendMapBt.Size = new System.Drawing.Size(160, 24);
-            this.SendMapBt.TabIndex = 0;
-            this.SendMapBt.Text = "Send Routes";
-            this.SendMapBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SendMapBt.Textcolor = System.Drawing.Color.White;
-            this.SendMapBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // bunifuMetroTextbox2
             // 
@@ -419,19 +146,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(188, 176);
             this.panel2.TabIndex = 5;
-            // 
-            // VehicleStatusImage
-            // 
-            this.VehicleStatusImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.VehicleStatusImage.BackColor = System.Drawing.Color.White;
-            this.VehicleStatusImage.Image = global::ThesisInterface.Properties.Resources.do_extend;
-            this.VehicleStatusImage.Location = new System.Drawing.Point(25, 33);
-            this.VehicleStatusImage.Name = "VehicleStatusImage";
-            this.VehicleStatusImage.Size = new System.Drawing.Size(147, 117);
-            this.VehicleStatusImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.VehicleStatusImage.TabIndex = 4;
-            this.VehicleStatusImage.TabStop = false;
             // 
             // label5
             // 
@@ -598,7 +312,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(600, 160);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
@@ -618,6 +332,7 @@
             this.SentTb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SentTb.BackColor = System.Drawing.Color.White;
             this.SentTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SentTb.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.SentTb.Location = new System.Drawing.Point(16, 21);
@@ -675,6 +390,7 @@
             this.ReceivedTb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReceivedTb.BackColor = System.Drawing.Color.White;
             this.ReceivedTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ReceivedTb.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.ReceivedTb.Location = new System.Drawing.Point(16, 19);
@@ -716,6 +432,292 @@
             this.bunifuMetroTextbox3.TabIndex = 17;
             this.bunifuMetroTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // PlanMapBt
+            // 
+            this.PlanMapBt.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
+            this.PlanMapBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.PlanMapBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PlanMapBt.BorderRadius = 0;
+            this.PlanMapBt.ButtonText = "Plan Routes";
+            this.PlanMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PlanMapBt.DisabledColor = System.Drawing.Color.Gray;
+            this.PlanMapBt.Iconcolor = System.Drawing.Color.Transparent;
+            this.PlanMapBt.Iconimage = ((System.Drawing.Image)(resources.GetObject("PlanMapBt.Iconimage")));
+            this.PlanMapBt.Iconimage_right = null;
+            this.PlanMapBt.Iconimage_right_Selected = null;
+            this.PlanMapBt.Iconimage_Selected = null;
+            this.PlanMapBt.IconMarginLeft = 0;
+            this.PlanMapBt.IconMarginRight = 0;
+            this.PlanMapBt.IconRightVisible = true;
+            this.PlanMapBt.IconRightZoom = 0D;
+            this.PlanMapBt.IconVisible = true;
+            this.PlanMapBt.IconZoom = 90D;
+            this.PlanMapBt.IsTab = false;
+            this.PlanMapBt.Location = new System.Drawing.Point(15, 11);
+            this.PlanMapBt.Name = "PlanMapBt";
+            this.PlanMapBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.PlanMapBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.PlanMapBt.OnHoverTextColor = System.Drawing.Color.White;
+            this.PlanMapBt.selected = false;
+            this.PlanMapBt.Size = new System.Drawing.Size(160, 24);
+            this.PlanMapBt.TabIndex = 0;
+            this.PlanMapBt.Text = "Plan Routes";
+            this.PlanMapBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PlanMapBt.Textcolor = System.Drawing.Color.White;
+            this.PlanMapBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // ClearPlannedMap
+            // 
+            this.ClearPlannedMap.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
+            this.ClearPlannedMap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.ClearPlannedMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClearPlannedMap.BorderRadius = 0;
+            this.ClearPlannedMap.ButtonText = "Clear Planned Map";
+            this.ClearPlannedMap.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ClearPlannedMap.DisabledColor = System.Drawing.Color.Gray;
+            this.ClearPlannedMap.Iconcolor = System.Drawing.Color.Transparent;
+            this.ClearPlannedMap.Iconimage = ((System.Drawing.Image)(resources.GetObject("ClearPlannedMap.Iconimage")));
+            this.ClearPlannedMap.Iconimage_right = null;
+            this.ClearPlannedMap.Iconimage_right_Selected = null;
+            this.ClearPlannedMap.Iconimage_Selected = null;
+            this.ClearPlannedMap.IconMarginLeft = 0;
+            this.ClearPlannedMap.IconMarginRight = 0;
+            this.ClearPlannedMap.IconRightVisible = true;
+            this.ClearPlannedMap.IconRightZoom = 0D;
+            this.ClearPlannedMap.IconVisible = true;
+            this.ClearPlannedMap.IconZoom = 90D;
+            this.ClearPlannedMap.IsTab = false;
+            this.ClearPlannedMap.Location = new System.Drawing.Point(15, 42);
+            this.ClearPlannedMap.Name = "ClearPlannedMap";
+            this.ClearPlannedMap.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.ClearPlannedMap.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.ClearPlannedMap.OnHoverTextColor = System.Drawing.Color.White;
+            this.ClearPlannedMap.selected = false;
+            this.ClearPlannedMap.Size = new System.Drawing.Size(160, 24);
+            this.ClearPlannedMap.TabIndex = 0;
+            this.ClearPlannedMap.Text = "Clear Planned Map";
+            this.ClearPlannedMap.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ClearPlannedMap.Textcolor = System.Drawing.Color.White;
+            this.ClearPlannedMap.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // ClearActualMapBt
+            // 
+            this.ClearActualMapBt.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
+            this.ClearActualMapBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.ClearActualMapBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClearActualMapBt.BorderRadius = 0;
+            this.ClearActualMapBt.ButtonText = "Clear Actual Map";
+            this.ClearActualMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ClearActualMapBt.DisabledColor = System.Drawing.Color.Gray;
+            this.ClearActualMapBt.Iconcolor = System.Drawing.Color.Transparent;
+            this.ClearActualMapBt.Iconimage = ((System.Drawing.Image)(resources.GetObject("ClearActualMapBt.Iconimage")));
+            this.ClearActualMapBt.Iconimage_right = null;
+            this.ClearActualMapBt.Iconimage_right_Selected = null;
+            this.ClearActualMapBt.Iconimage_Selected = null;
+            this.ClearActualMapBt.IconMarginLeft = 0;
+            this.ClearActualMapBt.IconMarginRight = 0;
+            this.ClearActualMapBt.IconRightVisible = true;
+            this.ClearActualMapBt.IconRightZoom = 0D;
+            this.ClearActualMapBt.IconVisible = true;
+            this.ClearActualMapBt.IconZoom = 90D;
+            this.ClearActualMapBt.IsTab = false;
+            this.ClearActualMapBt.Location = new System.Drawing.Point(15, 72);
+            this.ClearActualMapBt.Name = "ClearActualMapBt";
+            this.ClearActualMapBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.ClearActualMapBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.ClearActualMapBt.OnHoverTextColor = System.Drawing.Color.White;
+            this.ClearActualMapBt.selected = false;
+            this.ClearActualMapBt.Size = new System.Drawing.Size(160, 24);
+            this.ClearActualMapBt.TabIndex = 0;
+            this.ClearActualMapBt.Text = "Clear Actual Map";
+            this.ClearActualMapBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ClearActualMapBt.Textcolor = System.Drawing.Color.White;
+            this.ClearActualMapBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // SendMapBt
+            // 
+            this.SendMapBt.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(142)))));
+            this.SendMapBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.SendMapBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SendMapBt.BorderRadius = 0;
+            this.SendMapBt.ButtonText = "Send Routes";
+            this.SendMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SendMapBt.DisabledColor = System.Drawing.Color.Gray;
+            this.SendMapBt.Iconcolor = System.Drawing.Color.Transparent;
+            this.SendMapBt.Iconimage = ((System.Drawing.Image)(resources.GetObject("SendMapBt.Iconimage")));
+            this.SendMapBt.Iconimage_right = null;
+            this.SendMapBt.Iconimage_right_Selected = null;
+            this.SendMapBt.Iconimage_Selected = null;
+            this.SendMapBt.IconMarginLeft = 0;
+            this.SendMapBt.IconMarginRight = 0;
+            this.SendMapBt.IconRightVisible = true;
+            this.SendMapBt.IconRightZoom = 0D;
+            this.SendMapBt.IconVisible = true;
+            this.SendMapBt.IconZoom = 90D;
+            this.SendMapBt.IsTab = false;
+            this.SendMapBt.Location = new System.Drawing.Point(15, 102);
+            this.SendMapBt.Name = "SendMapBt";
+            this.SendMapBt.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.SendMapBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.SendMapBt.OnHoverTextColor = System.Drawing.Color.White;
+            this.SendMapBt.selected = false;
+            this.SendMapBt.Size = new System.Drawing.Size(160, 24);
+            this.SendMapBt.TabIndex = 0;
+            this.SendMapBt.Text = "Send Routes";
+            this.SendMapBt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SendMapBt.Textcolor = System.Drawing.Color.White;
+            this.SendMapBt.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // VehicleStatusImage
+            // 
+            this.VehicleStatusImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.VehicleStatusImage.BackColor = System.Drawing.Color.White;
+            this.VehicleStatusImage.Image = global::ThesisInterface.Properties.Resources.do_extend;
+            this.VehicleStatusImage.Location = new System.Drawing.Point(25, 33);
+            this.VehicleStatusImage.Name = "VehicleStatusImage";
+            this.VehicleStatusImage.Size = new System.Drawing.Size(147, 117);
+            this.VehicleStatusImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.VehicleStatusImage.TabIndex = 4;
+            this.VehicleStatusImage.TabStop = false;
+            // 
+            // bunifuGradientPanel2
+            // 
+            this.bunifuGradientPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel2.BackgroundImage")));
+            this.bunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel2.Controls.Add(this.SaveBt);
+            this.bunifuGradientPanel2.Controls.Add(this.OpenBt);
+            this.bunifuGradientPanel2.Controls.Add(this.StopBt);
+            this.bunifuGradientPanel2.Controls.Add(this.StartBt);
+            this.bunifuGradientPanel2.Controls.Add(this.textO);
+            this.bunifuGradientPanel2.Controls.Add(this.textT);
+            this.bunifuGradientPanel2.Controls.Add(this.textU);
+            this.bunifuGradientPanel2.Controls.Add(this.textA);
+            this.bunifuGradientPanel2.Controls.Add(this.tableLayoutPanel1);
+            this.bunifuGradientPanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.bunifuGradientPanel2.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuGradientPanel2.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(88)))));
+            this.bunifuGradientPanel2.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuGradientPanel2.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(49)))), ((int)(((byte)(85)))));
+            this.bunifuGradientPanel2.Location = new System.Drawing.Point(0, 0);
+            this.bunifuGradientPanel2.Name = "bunifuGradientPanel2";
+            this.bunifuGradientPanel2.Quality = 10;
+            this.bunifuGradientPanel2.Size = new System.Drawing.Size(38, 460);
+            this.bunifuGradientPanel2.TabIndex = 2;
+            // 
+            // SaveBt
+            // 
+            this.SaveBt.BackColor = System.Drawing.Color.Transparent;
+            this.SaveBt.Image = global::ThesisInterface.Properties.Resources.savewhite;
+            this.SaveBt.ImageActive = null;
+            this.SaveBt.Location = new System.Drawing.Point(0, 304);
+            this.SaveBt.Name = "SaveBt";
+            this.SaveBt.Size = new System.Drawing.Size(38, 38);
+            this.SaveBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SaveBt.TabIndex = 3;
+            this.SaveBt.TabStop = false;
+            this.SaveBt.Zoom = 10;
+            // 
+            // OpenBt
+            // 
+            this.OpenBt.BackColor = System.Drawing.Color.Transparent;
+            this.OpenBt.Image = global::ThesisInterface.Properties.Resources.openwhite;
+            this.OpenBt.ImageActive = null;
+            this.OpenBt.Location = new System.Drawing.Point(0, 260);
+            this.OpenBt.Name = "OpenBt";
+            this.OpenBt.Size = new System.Drawing.Size(38, 38);
+            this.OpenBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.OpenBt.TabIndex = 3;
+            this.OpenBt.TabStop = false;
+            this.OpenBt.Zoom = 10;
+            // 
+            // StopBt
+            // 
+            this.StopBt.BackColor = System.Drawing.Color.Transparent;
+            this.StopBt.Image = global::ThesisInterface.Properties.Resources.stopwhite;
+            this.StopBt.ImageActive = null;
+            this.StopBt.Location = new System.Drawing.Point(0, 216);
+            this.StopBt.Name = "StopBt";
+            this.StopBt.Size = new System.Drawing.Size(38, 38);
+            this.StopBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.StopBt.TabIndex = 3;
+            this.StopBt.TabStop = false;
+            this.StopBt.Zoom = 10;
+            // 
+            // StartBt
+            // 
+            this.StartBt.BackColor = System.Drawing.Color.Transparent;
+            this.StartBt.Image = global::ThesisInterface.Properties.Resources.startwhite;
+            this.StartBt.ImageActive = null;
+            this.StartBt.Location = new System.Drawing.Point(0, 172);
+            this.StartBt.Name = "StartBt";
+            this.StartBt.Size = new System.Drawing.Size(38, 38);
+            this.StartBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.StartBt.TabIndex = 3;
+            this.StartBt.TabStop = false;
+            this.StartBt.Zoom = 10;
+            // 
+            // textO
+            // 
+            this.textO.AutoSize = true;
+            this.textO.BackColor = System.Drawing.Color.Transparent;
+            this.textO.Font = new System.Drawing.Font("Libel Suit Rg", 24F, System.Drawing.FontStyle.Bold);
+            this.textO.ForeColor = System.Drawing.Color.White;
+            this.textO.Location = new System.Drawing.Point(6, 117);
+            this.textO.Name = "textO";
+            this.textO.Size = new System.Drawing.Size(31, 39);
+            this.textO.TabIndex = 10;
+            this.textO.Text = "O";
+            // 
+            // textT
+            // 
+            this.textT.AutoSize = true;
+            this.textT.BackColor = System.Drawing.Color.Transparent;
+            this.textT.Font = new System.Drawing.Font("Libel Suit Rg", 24F, System.Drawing.FontStyle.Bold);
+            this.textT.ForeColor = System.Drawing.Color.White;
+            this.textT.Location = new System.Drawing.Point(6, 78);
+            this.textT.Name = "textT";
+            this.textT.Size = new System.Drawing.Size(28, 39);
+            this.textT.TabIndex = 10;
+            this.textT.Text = "T";
+            // 
+            // textU
+            // 
+            this.textU.AutoSize = true;
+            this.textU.BackColor = System.Drawing.Color.Transparent;
+            this.textU.Font = new System.Drawing.Font("Libel Suit Rg", 24F, System.Drawing.FontStyle.Bold);
+            this.textU.ForeColor = System.Drawing.Color.White;
+            this.textU.Location = new System.Drawing.Point(6, 39);
+            this.textU.Name = "textU";
+            this.textU.Size = new System.Drawing.Size(31, 39);
+            this.textU.TabIndex = 10;
+            this.textU.Text = "U";
+            // 
+            // textA
+            // 
+            this.textA.AutoSize = true;
+            this.textA.BackColor = System.Drawing.Color.Transparent;
+            this.textA.Font = new System.Drawing.Font("Libel Suit Rg", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textA.ForeColor = System.Drawing.Color.White;
+            this.textA.Location = new System.Drawing.Point(7, 0);
+            this.textA.Name = "textA";
+            this.textA.Size = new System.Drawing.Size(31, 39);
+            this.textA.TabIndex = 10;
+            this.textA.Text = "A";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(172, 357);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(672, 100);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
             // AutoUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -725,17 +727,10 @@
             this.Controls.Add(this.bunifuGradientPanel2);
             this.Name = "AutoUC";
             this.Size = new System.Drawing.Size(844, 460);
-            this.bunifuGradientPanel2.ResumeLayout(false);
-            this.bunifuGradientPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OpenBt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StopBt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StartBt)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VehicleStatusImage)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -746,6 +741,13 @@
             this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VehicleStatusImage)).EndInit();
+            this.bunifuGradientPanel2.ResumeLayout(false);
+            this.bunifuGradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OpenBt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StopBt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartBt)).EndInit();
             this.ResumeLayout(false);
 
         }
