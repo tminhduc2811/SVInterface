@@ -59,9 +59,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.DisconnectedImage = new System.Windows.Forms.PictureBox();
+            this.ConnectedImage = new System.Windows.Forms.PictureBox();
             this.DisconnectedLabel = new System.Windows.Forms.Label();
             this.ConnectedLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.CloseSPBt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.OpenSPBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BaudrateBox = new System.Windows.Forms.ComboBox();
@@ -74,28 +78,24 @@
             this.bunifuMetroTextbox2 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.bunifuMetroTextbox4 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.bunifuMetroTextbox5 = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.DisconnectedImage = new System.Windows.Forms.PictureBox();
             this.SendBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.SaveBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.ConnectedImage = new System.Windows.Forms.PictureBox();
-            this.CloseSPBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.OpenSPBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.panel6.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DisconnectedImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseSPBt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OpenSPBt)).BeginInit();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DisconnectedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SendBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CloseSPBt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OpenSPBt)).BeginInit();
             this.SuspendLayout();
             // 
             // label17
@@ -572,6 +572,27 @@
             this.panel1.Size = new System.Drawing.Size(215, 130);
             this.panel1.TabIndex = 6;
             // 
+            // DisconnectedImage
+            // 
+            this.DisconnectedImage.BackColor = System.Drawing.Color.White;
+            this.DisconnectedImage.Image = global::ThesisInterface.Properties.Resources.disconnected;
+            this.DisconnectedImage.Location = new System.Drawing.Point(0, 1);
+            this.DisconnectedImage.Name = "DisconnectedImage";
+            this.DisconnectedImage.Size = new System.Drawing.Size(215, 90);
+            this.DisconnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.DisconnectedImage.TabIndex = 1;
+            this.DisconnectedImage.TabStop = false;
+            // 
+            // ConnectedImage
+            // 
+            this.ConnectedImage.Image = global::ThesisInterface.Properties.Resources.connected;
+            this.ConnectedImage.Location = new System.Drawing.Point(0, 0);
+            this.ConnectedImage.Name = "ConnectedImage";
+            this.ConnectedImage.Size = new System.Drawing.Size(215, 90);
+            this.ConnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ConnectedImage.TabIndex = 1;
+            this.ConnectedImage.TabStop = false;
+            // 
             // DisconnectedLabel
             // 
             this.DisconnectedLabel.AutoSize = true;
@@ -612,6 +633,32 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(420, 130);
             this.panel2.TabIndex = 7;
+            // 
+            // CloseSPBt
+            // 
+            this.CloseSPBt.BackColor = System.Drawing.Color.Transparent;
+            this.CloseSPBt.Image = global::ThesisInterface.Properties.Resources.Pause_Button_100px;
+            this.CloseSPBt.ImageActive = null;
+            this.CloseSPBt.Location = new System.Drawing.Point(87, 86);
+            this.CloseSPBt.Name = "CloseSPBt";
+            this.CloseSPBt.Size = new System.Drawing.Size(35, 35);
+            this.CloseSPBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.CloseSPBt.TabIndex = 1;
+            this.CloseSPBt.TabStop = false;
+            this.CloseSPBt.Zoom = 10;
+            // 
+            // OpenSPBt
+            // 
+            this.OpenSPBt.BackColor = System.Drawing.Color.Transparent;
+            this.OpenSPBt.Image = global::ThesisInterface.Properties.Resources.play;
+            this.OpenSPBt.ImageActive = null;
+            this.OpenSPBt.Location = new System.Drawing.Point(31, 86);
+            this.OpenSPBt.Name = "OpenSPBt";
+            this.OpenSPBt.Size = new System.Drawing.Size(34, 34);
+            this.OpenSPBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.OpenSPBt.TabIndex = 1;
+            this.OpenSPBt.TabStop = false;
+            this.OpenSPBt.Zoom = 10;
             // 
             // label1
             // 
@@ -789,17 +836,6 @@
             this.bunifuMetroTextbox5.TabIndex = 15;
             this.bunifuMetroTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // DisconnectedImage
-            // 
-            this.DisconnectedImage.BackColor = System.Drawing.Color.White;
-            this.DisconnectedImage.Image = global::ThesisInterface.Properties.Resources.disconnected;
-            this.DisconnectedImage.Location = new System.Drawing.Point(0, 1);
-            this.DisconnectedImage.Name = "DisconnectedImage";
-            this.DisconnectedImage.Size = new System.Drawing.Size(215, 90);
-            this.DisconnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.DisconnectedImage.TabIndex = 1;
-            this.DisconnectedImage.TabStop = false;
-            // 
             // SendBt
             // 
             this.SendBt.BackColor = System.Drawing.Color.Transparent;
@@ -825,42 +861,6 @@
             this.SaveBt.TabIndex = 12;
             this.SaveBt.TabStop = false;
             this.SaveBt.Zoom = 10;
-            // 
-            // ConnectedImage
-            // 
-            this.ConnectedImage.Image = global::ThesisInterface.Properties.Resources.connected;
-            this.ConnectedImage.Location = new System.Drawing.Point(0, 0);
-            this.ConnectedImage.Name = "ConnectedImage";
-            this.ConnectedImage.Size = new System.Drawing.Size(215, 90);
-            this.ConnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ConnectedImage.TabIndex = 1;
-            this.ConnectedImage.TabStop = false;
-            // 
-            // CloseSPBt
-            // 
-            this.CloseSPBt.BackColor = System.Drawing.Color.Transparent;
-            this.CloseSPBt.Image = global::ThesisInterface.Properties.Resources.Pause_Button_100px;
-            this.CloseSPBt.ImageActive = null;
-            this.CloseSPBt.Location = new System.Drawing.Point(87, 86);
-            this.CloseSPBt.Name = "CloseSPBt";
-            this.CloseSPBt.Size = new System.Drawing.Size(35, 35);
-            this.CloseSPBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.CloseSPBt.TabIndex = 1;
-            this.CloseSPBt.TabStop = false;
-            this.CloseSPBt.Zoom = 10;
-            // 
-            // OpenSPBt
-            // 
-            this.OpenSPBt.BackColor = System.Drawing.Color.Transparent;
-            this.OpenSPBt.Image = global::ThesisInterface.Properties.Resources.play;
-            this.OpenSPBt.ImageActive = null;
-            this.OpenSPBt.Location = new System.Drawing.Point(31, 86);
-            this.OpenSPBt.Name = "OpenSPBt";
-            this.OpenSPBt.Size = new System.Drawing.Size(34, 34);
-            this.OpenSPBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.OpenSPBt.TabIndex = 1;
-            this.OpenSPBt.TabStop = false;
-            this.OpenSPBt.Zoom = 10;
             // 
             // Setting
             // 
@@ -891,18 +891,18 @@
             this.panel5.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DisconnectedImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseSPBt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OpenSPBt)).EndInit();
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DisconnectedImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SendBt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaveBt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CloseSPBt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OpenSPBt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

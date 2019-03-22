@@ -248,6 +248,7 @@ namespace ThesisInterface
             this.imuSetting1.CalibBtClickHandler(new EventHandler(CalibIMUBtClickHandler));
             this.imuSetting1.ReadConfigBtClickHandler(new EventHandler(ReadIMUConfigClickHandler));
             this.imuSetting1.StartBtClickHandler(new EventHandler(StartIMUBtClickHandler));
+            this.autoUC1.OnBtClickHandler(new EventHandler(OnBtAutoUCClickHandler));
             this.autoUC1.StartBtClickHandler(new EventHandler(StartBtAutoUCClickHandler));
             this.autoUC1.StopBtClickHandler(new EventHandler(StopBtAutoUCClickHandler));
             this.autoUC1.OpenBtClickHandler(new EventHandler(OpenBtAutoUCClickHandler));
@@ -621,18 +622,18 @@ namespace ThesisInterface
 
         // Handler for AUTO User Control -------------------------------------------//
 
-        private void StartBtAutoUCClickHandler(object sender, EventArgs e)
+        private void OnBtAutoUCClickHandler(object sender, EventArgs e)
         {
             try
             {
-                serialPort1.Write(MessagesDocker("AUCON,1"));
+                serialPort1.Write(MessagesDocker("AUCON,ON"));
                 OldMess = autoUC1.ReceivedTb.Text;
-                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Start auto mode\r\n";
+                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started auto mode\r\n";
                 AutoTimer.Enabled = true;
                 //test from here
                 AutoEnabled = true;
                 timer1.Enabled = true;
-            
+                
             }
 
             catch (Exception ex)
@@ -645,13 +646,46 @@ namespace ThesisInterface
         {
             try
             {
-                serialPort1.Write(MessagesDocker("AUCON,0"));
-                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stop auto mode\r\n";
+                serialPort1.Write(MessagesDocker("AUCON,OFF"));
+                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stoped auto mode\r\n";
             }
 
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void StartBtAutoUCClickHandler(object sender, EventArgs e)
+        {
+            if(autoUC1.StartBt.Text == "Start")
+            {
+                try
+                {
+                    serialPort1.Write(MessagesDocker("AUCON,START"));
+                    autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started vehicle...\r\n";
+                    autoUC1.StartBt.Text = "Stop";
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            else
+            {
+                try
+                {
+                    serialPort1.Write(MessagesDocker("AUCON,STOP"));
+                    autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped vehicle...\r\n";
+                    autoUC1.StartBt.Text = "Start";
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -697,7 +731,31 @@ namespace ThesisInterface
 
         private void SendRoutesBtAutoUCClickHandler(object sender, EventArgs e)
         {
+            if(AutoEnabled)
+            {
+                try
+                {
+                    string mess = "";
+                    for(int i = 0; i < PlanCooridnatesList.Count; i++)
+                    {
+                        mess += PlanCooridnatesList[i].Lat.ToString() + "," + PlanCooridnatesList[i].Lng.ToString() + ",";
+                    }
+                    mess = mess.Remove(mess.Count() - 1, 1);
+                    mess = "VPLAN," + PlanCooridnatesList.Count.ToString() + "," + mess;
+                    serialPort1.Write(MessagesDocker(mess));
+                    autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Sending map coordinates\r\n";
+                    autoUC1.SentTb.Text += "Message sent: " + MessagesDocker(mess);
+                }
 
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please start this mode first.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ClearPlannedMapBtAutoUCClickHandler(object sender, EventArgs e)

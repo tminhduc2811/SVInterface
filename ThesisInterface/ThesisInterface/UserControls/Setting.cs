@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Text;
+using System.Runtime.InteropServices;
 
 namespace ThesisInterface.UserControls
 {
     public partial class Setting : UserControl
     {
+        
         public Setting()
         {
             InitializeComponent();

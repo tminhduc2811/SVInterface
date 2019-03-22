@@ -71,6 +71,26 @@ namespace ThesisInterface.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Ailerons_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Ailerons_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] aqua {
+            get {
+                object obj = ResourceManager.GetObject("aqua", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Artificial_Intelligence_50px {
@@ -197,6 +217,16 @@ namespace ThesisInterface.Properties {
             get {
                 object obj = ResourceManager.GetObject("Inbox_96px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] makhina {
+            get {
+                object obj = ResourceManager.GetObject("makhina", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

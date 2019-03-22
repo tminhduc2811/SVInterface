@@ -17,9 +17,9 @@ namespace ThesisInterface.UserControls
             InitializeComponent();
         }
         
-        public void StartBtClickHandler(EventHandler handler)
+        public void OnBtClickHandler(EventHandler handler)
         {
-            this.StartBt.Click += handler;
+            this.Onbt.Click += handler;
         }
 
         public void StopBtClickHandler(EventHandler handler)
@@ -60,6 +60,11 @@ namespace ThesisInterface.UserControls
         public void ClearActualMapBtClickHandler(EventHandler handler)
         {
             this.ClearActualMapBt.Click += handler;
+        }
+
+        public void StartBtClickHandler(EventHandler handler)
+        {
+            this.StartBt.Click += handler;
         }
 
         private void ReceivedTb_TextChanged(object sender, EventArgs e)
