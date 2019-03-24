@@ -9,4 +9,4 @@
 <img src="Images/ManualUC.JPG">
 
 **Auto User Control**
-<img src="AutoUC.JPG">
+<img src="Images/AutoUC.JPG">
