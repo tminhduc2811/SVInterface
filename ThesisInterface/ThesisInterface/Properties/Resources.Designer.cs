@@ -113,6 +113,16 @@ namespace ThesisInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Available_Updates_50px {
+            get {
+                object obj = ResourceManager.GetObject("Available Updates_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_Window_64px {
             get {
                 object obj = ResourceManager.GetObject("Close Window_64px", resourceCulture);
@@ -313,6 +323,16 @@ namespace ThesisInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Play_Button_Circled_50px {
+            get {
+                object obj = ResourceManager.GetObject("Play Button Circled_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap play2 {
             get {
                 object obj = ResourceManager.GetObject("play2", resourceCulture);
@@ -446,6 +466,16 @@ namespace ThesisInterface.Properties {
         internal static System.Drawing.Bitmap Stop_100px {
             get {
                 object obj = ResourceManager.GetObject("Stop_100px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stop_Squared_50px {
+            get {
+                object obj = ResourceManager.GetObject("Stop Squared_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

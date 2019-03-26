@@ -182,6 +182,19 @@ namespace ThesisInterface
                 this.WindowState = FormWindowState.Maximized;
         }
 
+        private void ResetVehicleBt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort1.Write(MessagesDocker("RESET"));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
         //-------------------------------------------------------------------------//
 
         // Init Functions & Linking to events -------------------------------------//
@@ -260,6 +273,7 @@ namespace ThesisInterface
             this.autoUC1.SendRoutesBtClickHandler(new EventHandler(SendRoutesBtAutoUCClickHandler));
             this.autoUC1.ClearPlannedMapBtClickHandler(new EventHandler(ClearPlannedMapBtAutoUCClickHandler));
             this.autoUC1.ClearActualMapBtClickHandler(new EventHandler(ClearActualMapBtAutoUCClickHandler));
+            this.autoUC1.StopVehicleBtClickHandler(new EventHandler(StopVehicleBtAutoUCClickHandler));
         }
 
         //--------------------------------------------------------------------------//
@@ -638,6 +652,22 @@ namespace ThesisInterface
             timer1.Enabled = true;
         }
 
+        private void StopVehicleBtAutoUCClickHandler(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort1.Write(MessagesDocker("AUCON,STOP"));
+                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped vehicle...\r\n";
+                autoUC1.StartBt.Text = "Start";
+                StartWaitingForResponse();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void OnBtAutoUCClickHandler(object sender, EventArgs e)
         {
             try
@@ -671,36 +701,17 @@ namespace ThesisInterface
 
         private void StartBtAutoUCClickHandler(object sender, EventArgs e)
         {
-            if(autoUC1.StartBt.Text == "Start")
+            try
             {
-                try
-                {
-                    serialPort1.Write(MessagesDocker("AUCON,START"));
-                    autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started vehicle...\r\n";
-                    autoUC1.StartBt.Text = "Stop";
-                    StartWaitingForResponse();
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                
+                serialPort1.Write(MessagesDocker("AUCON,START"));
+                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started vehicle...\r\n";
+                autoUC1.StartBt.Text = "Stop";
+                StartWaitingForResponse();
             }
-            else
-            {
-                try
-                {
-                    serialPort1.Write(MessagesDocker("AUCON,STOP"));
-                    autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped vehicle...\r\n";
-                    autoUC1.StartBt.Text = "Start";
-                    StartWaitingForResponse();
-                }
 
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1089,7 +1100,6 @@ namespace ThesisInterface
 
             return "$" + MessWithoutKey + checksum(MessWithoutKey) + "\r\n";
         }
-
 
     }
 }

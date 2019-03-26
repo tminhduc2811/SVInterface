@@ -266,6 +266,9 @@
     <None Include="Resources\Save_1104px.png" />
     <None Include="Resources\Send Letter_100px.png" />
     <None Include="Resources\Save_100px.png" />
+    <None Include="Resources\Play Button Circled_50px.png" />
+    <None Include="Resources\Stop Squared_50px.png" />
+    <None Include="Resources\Available Updates_50px.png" />
     <Content Include="robot_qyi_icon.ico" />
   </ItemGroup>
   <ItemGroup>

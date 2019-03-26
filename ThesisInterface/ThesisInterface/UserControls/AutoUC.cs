@@ -78,5 +78,10 @@ namespace ThesisInterface.UserControls
             SentTb.SelectionStart = SentTb.Text.Length;
             SentTb.ScrollToCaret();
         }
+
+        public void StopVehicleBtClickHandler(EventHandler handler)
+        {
+            this.StopVehicleBt.Click += handler;
+        }
     }
 }
