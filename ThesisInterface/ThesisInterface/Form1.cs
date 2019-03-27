@@ -13,53 +13,18 @@ using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using GMap.NET.MapProviders;
+using System.Runtime.InteropServices;
+using Newtonsoft.Json;
 
 namespace ThesisInterface
 {
     public partial class Form1 : Form
     {
-        Vehicle MyVehicle;
-        
-        // SET DEFAULT IMAGE FOR VELOCITY OF VEHICLE, CONSIST OF: RED, ORANGE, YELLOW, GREEN
-        Image ZeroVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\ZERO.png");
-
-        Image LowVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\LOW.png");
-
-        Image MediumVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\MEDIUM.png");
-
-        Image HighVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\HIGH.png");
-
-        public string ConfigMessToWait = "";
-        
-        public int timeout = 40;
-
-        public int timeoutIMU = 40;
-
-        public int timeoutAuto = 40;
-
-        public string AutoWaitKey = "|";
-
-        public string IMUWaitKey = "|";  // This is used for creating waiting messages...
-
-        public string ConfigWaitKey = "|";
-
-        public string OldMess = "";
-
-        public bool PlanMapEnable = false;
-
-        public List<PointLatLng> PlanCooridnatesList = new List<PointLatLng>();
-
-        public List<PointLatLng> ActualCooridnatesList = new List<PointLatLng>();
-
-        public GMapOverlay PlanLines = new GMapOverlay("PlanLines");
-
-        public GMapOverlay ActualLines = new GMapOverlay("ActualLines");
-
         public class Vehicle
         {
             public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, M1Duty, M2Duty, RefAngle, Angle, PosX, PosY, Lat, Lng;
             public bool GPSStatus = false;
-            public Vehicle(string [] ArrayInfo)
+            public Vehicle(string[] ArrayInfo)
             {
                 try
                 {
@@ -102,16 +67,76 @@ namespace ThesisInterface
                 if (GPSStatus)
                 {
                     mess += "GPS Status: OK\r\n" +
-                            "Position(x, y): " + PosX.ToString() + ", " + PosY.ToString() + "\r\n" + "Lat,Lng: " 
+                            "Position(x, y): " + PosX.ToString() + ", " + PosY.ToString() + "\r\n" + "Lat,Lng: "
                             + Lat.ToString() + ", " + Lng.ToString() + "\r\n";
                 }
                 else
                     mess += "GPS Status: Lost";
-                    
+
                 return mess;
             }
 
         }
+
+        public class PlannedCoordinate
+        {
+            public double Lat { get; set; }
+            public double Lng { get; set; }
+        }
+
+        public class ActualCoordinate
+        {
+            public double Lat { get; set; }
+            public double Lng { get; set; }
+        }
+
+        public class CoordinatesInfo
+        {
+            public List<PlannedCoordinate> plannedCoordinate { get; set; }
+            public List<ActualCoordinate> actualCoordinates { get; set; }
+        }
+
+        public class RootObject
+        {
+            public CoordinatesInfo coordinatesInfo { get; set; }
+        }
+
+        Vehicle MyVehicle;
+        
+        // SET DEFAULT IMAGE FOR VELOCITY OF VEHICLE, CONSIST OF: RED, ORANGE, YELLOW, GREEN
+        Image ZeroVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\ZERO.png");
+
+        Image LowVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\LOW.png");
+
+        Image MediumVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\MEDIUM.png");
+
+        Image HighVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\HIGH.png");
+
+        public string ConfigMessToWait = "";
+        
+        public int timeout = 40;
+
+        public int timeoutIMU = 40;
+
+        public int timeoutAuto = 40;
+
+        public string AutoWaitKey = "|";
+
+        public string IMUWaitKey = "|";  // This is used for creating waiting messages...
+
+        public string ConfigWaitKey = "|";
+
+        public string OldMess = "";
+
+        public bool PlanMapEnable = false;
+
+        public List<PointLatLng> PlanCooridnatesList = new List<PointLatLng>();
+
+        public List<PointLatLng> ActualCooridnatesList = new List<PointLatLng>();
+
+        public GMapOverlay PlanLines = new GMapOverlay("PlanLines");
+
+        public GMapOverlay ActualLines = new GMapOverlay("ActualLines");
         
         public Form1()
         {
@@ -722,7 +747,18 @@ namespace ThesisInterface
 
         private void SaveBtAutoUCClickHandler(object sender, EventArgs e)
         {
+            
+            try
+            {
+                CoordinatesInfo coordinatesInformation = CreateCoordinatesInformation();
 
+                WriteJsonFile(coordinatesInformation);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void autoUC1_MouseClick(object sender, MouseEventArgs e)
@@ -1101,5 +1137,63 @@ namespace ThesisInterface
             return "$" + MessWithoutKey + checksum(MessWithoutKey) + "\r\n";
         }
 
+        public void WriteJsonFile(CoordinatesInfo listCoordinates)
+        {
+            try
+            {
+                using (var sfd = new SaveFileDialog())
+                {
+                    sfd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                    sfd.FilterIndex = 2;
+
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        File.WriteAllText(sfd.FileName, JsonConvert.SerializeObject(listCoordinates, Formatting.Indented));
+                    }
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public CoordinatesInfo CreateCoordinatesInformation()
+        {
+
+            ActualCoordinate actualCoordinates = new ActualCoordinate();
+
+            PlannedCoordinate plannedCoordinates = new PlannedCoordinate();
+
+            List<PlannedCoordinate> listPlanned = new List<PlannedCoordinate>();
+
+            List<ActualCoordinate> listActual = new List<ActualCoordinate>();
+
+            CoordinatesInfo CoordinatesInformation = new CoordinatesInfo();
+
+            for (int i = 0; i < PlanCooridnatesList.Count; i++)
+            {
+                plannedCoordinates.Lat = Convert.ToDouble(PlanCooridnatesList[i].Lat);
+                plannedCoordinates.Lng = Convert.ToDouble(PlanCooridnatesList[i].Lng);
+                listPlanned.Add(plannedCoordinates);
+                
+                
+            }
+
+            for (int i = 0; i < ActualCooridnatesList.Count; i++)
+            {
+                actualCoordinates.Lat = Convert.ToDouble(ActualCooridnatesList[i].Lat);
+                actualCoordinates.Lng = Convert.ToDouble(ActualCooridnatesList[i].Lng);
+                
+            }
+
+            CoordinatesInformation.plannedCoordinate=listPlanned;
+
+            CoordinatesInformation.actualCoordinates=listActual;
+
+            return CoordinatesInformation;
+        }
     }
 }

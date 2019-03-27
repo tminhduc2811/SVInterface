@@ -34,6 +34,14 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.TopPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.ResetVehicleBt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.ConnectedImage = new System.Windows.Forms.PictureBox();
+            this.closebt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.maxbt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.minbt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.menubt = new Bunifu.Framework.UI.BunifuImageButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse4 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
@@ -51,16 +59,6 @@
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.TopPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.ResetVehicleBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.ConnectedImage = new System.Windows.Forms.PictureBox();
-            this.closebt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.maxbt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.minbt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.menubt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.SidePanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResetVehicleBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
@@ -68,6 +66,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.maxbt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minbt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menubt)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.SidePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -90,6 +90,125 @@
             this.bunifuDragControl1.Horizontal = true;
             this.bunifuDragControl1.TargetControl = this.TopPanel;
             this.bunifuDragControl1.Vertical = true;
+            // 
+            // TopPanel
+            // 
+            this.TopPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TopPanel.BackgroundImage")));
+            this.TopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TopPanel.Controls.Add(this.ConnectedImage);
+            this.TopPanel.Controls.Add(this.closebt);
+            this.TopPanel.Controls.Add(this.maxbt);
+            this.TopPanel.Controls.Add(this.minbt);
+            this.TopPanel.Controls.Add(this.menubt);
+            this.TopPanel.Controls.Add(this.label1);
+            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TopPanel.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.TopPanel.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.TopPanel.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.TopPanel.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(49)))), ((int)(((byte)(85)))));
+            this.TopPanel.Location = new System.Drawing.Point(0, 0);
+            this.TopPanel.Name = "TopPanel";
+            this.TopPanel.Quality = 10;
+            this.TopPanel.Size = new System.Drawing.Size(1087, 47);
+            this.TopPanel.TabIndex = 9;
+            this.TopPanel.DoubleClick += new System.EventHandler(this.TopPanel_DoubleClick);
+            // 
+            // ResetVehicleBt
+            // 
+            this.ResetVehicleBt.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ResetVehicleBt.BackColor = System.Drawing.Color.Transparent;
+            this.ResetVehicleBt.Image = global::ThesisInterface.Properties.Resources.Available_Updates_50px;
+            this.ResetVehicleBt.ImageActive = null;
+            this.ResetVehicleBt.Location = new System.Drawing.Point(53, 423);
+            this.ResetVehicleBt.Name = "ResetVehicleBt";
+            this.ResetVehicleBt.Size = new System.Drawing.Size(45, 44);
+            this.ResetVehicleBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ResetVehicleBt.TabIndex = 20;
+            this.ResetVehicleBt.TabStop = false;
+            this.ResetVehicleBt.Zoom = 10;
+            this.ResetVehicleBt.Click += new System.EventHandler(this.ResetVehicleBt_Click);
+            // 
+            // ConnectedImage
+            // 
+            this.ConnectedImage.BackColor = System.Drawing.Color.Transparent;
+            this.ConnectedImage.Image = global::ThesisInterface.Properties.Resources.Connect_Develop_96px;
+            this.ConnectedImage.Location = new System.Drawing.Point(341, 1);
+            this.ConnectedImage.Name = "ConnectedImage";
+            this.ConnectedImage.Size = new System.Drawing.Size(106, 46);
+            this.ConnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ConnectedImage.TabIndex = 19;
+            this.ConnectedImage.TabStop = false;
+            // 
+            // closebt
+            // 
+            this.closebt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closebt.BackColor = System.Drawing.Color.Transparent;
+            this.closebt.Image = global::ThesisInterface.Properties.Resources.Close_Window_64px;
+            this.closebt.ImageActive = null;
+            this.closebt.Location = new System.Drawing.Point(1056, 7);
+            this.closebt.Name = "closebt";
+            this.closebt.Size = new System.Drawing.Size(25, 25);
+            this.closebt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.closebt.TabIndex = 9;
+            this.closebt.TabStop = false;
+            this.closebt.Zoom = 10;
+            this.closebt.Click += new System.EventHandler(this.closebt_Click);
+            // 
+            // maxbt
+            // 
+            this.maxbt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.maxbt.BackColor = System.Drawing.Color.Transparent;
+            this.maxbt.Image = global::ThesisInterface.Properties.Resources.Restore_Window_50px;
+            this.maxbt.ImageActive = null;
+            this.maxbt.Location = new System.Drawing.Point(1025, 7);
+            this.maxbt.Name = "maxbt";
+            this.maxbt.Size = new System.Drawing.Size(25, 25);
+            this.maxbt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.maxbt.TabIndex = 8;
+            this.maxbt.TabStop = false;
+            this.maxbt.Zoom = 10;
+            this.maxbt.Click += new System.EventHandler(this.maxbt_Click);
+            // 
+            // minbt
+            // 
+            this.minbt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.minbt.BackColor = System.Drawing.Color.Transparent;
+            this.minbt.Image = global::ThesisInterface.Properties.Resources.Minimize_Window_64px;
+            this.minbt.ImageActive = null;
+            this.minbt.Location = new System.Drawing.Point(994, 7);
+            this.minbt.Name = "minbt";
+            this.minbt.Size = new System.Drawing.Size(25, 25);
+            this.minbt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.minbt.TabIndex = 7;
+            this.minbt.TabStop = false;
+            this.minbt.Zoom = 10;
+            this.minbt.Click += new System.EventHandler(this.minbt_Click);
+            // 
+            // menubt
+            // 
+            this.menubt.BackColor = System.Drawing.Color.Transparent;
+            this.menubt.Image = global::ThesisInterface.Properties.Resources.Menu_64px;
+            this.menubt.ImageActive = null;
+            this.menubt.Location = new System.Drawing.Point(12, 7);
+            this.menubt.Name = "menubt";
+            this.menubt.Size = new System.Drawing.Size(30, 30);
+            this.menubt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.menubt.TabIndex = 2;
+            this.menubt.TabStop = false;
+            this.menubt.Zoom = 10;
+            this.menubt.Click += new System.EventHandler(this.menubt_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Ailerons", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
+            this.label1.Location = new System.Drawing.Point(58, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(277, 28);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "SELF-DRIVING VEHICLE";
             // 
             // bunifuElipse2
             // 
@@ -171,6 +290,7 @@
             // 
             this.SidePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SidePanel.BackgroundImage")));
             this.SidePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SidePanel.Controls.Add(this.ResetVehicleBt);
             this.SidePanel.Controls.Add(this.bunifuFlatButton4);
             this.SidePanel.Controls.Add(this.bunifuFlatButton3);
             this.SidePanel.Controls.Add(this.bunifuFlatButton1);
@@ -351,125 +471,6 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "BKU";
             // 
-            // TopPanel
-            // 
-            this.TopPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TopPanel.BackgroundImage")));
-            this.TopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.TopPanel.Controls.Add(this.ResetVehicleBt);
-            this.TopPanel.Controls.Add(this.ConnectedImage);
-            this.TopPanel.Controls.Add(this.closebt);
-            this.TopPanel.Controls.Add(this.maxbt);
-            this.TopPanel.Controls.Add(this.minbt);
-            this.TopPanel.Controls.Add(this.menubt);
-            this.TopPanel.Controls.Add(this.label1);
-            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.TopPanel.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.TopPanel.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.TopPanel.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(49)))), ((int)(((byte)(85)))));
-            this.TopPanel.Location = new System.Drawing.Point(0, 0);
-            this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Quality = 10;
-            this.TopPanel.Size = new System.Drawing.Size(1087, 47);
-            this.TopPanel.TabIndex = 9;
-            this.TopPanel.DoubleClick += new System.EventHandler(this.TopPanel_DoubleClick);
-            // 
-            // ResetVehicleBt
-            // 
-            this.ResetVehicleBt.BackColor = System.Drawing.Color.Transparent;
-            this.ResetVehicleBt.Image = global::ThesisInterface.Properties.Resources.Available_Updates_50px;
-            this.ResetVehicleBt.ImageActive = null;
-            this.ResetVehicleBt.Location = new System.Drawing.Point(919, 2);
-            this.ResetVehicleBt.Name = "ResetVehicleBt";
-            this.ResetVehicleBt.Size = new System.Drawing.Size(45, 44);
-            this.ResetVehicleBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ResetVehicleBt.TabIndex = 20;
-            this.ResetVehicleBt.TabStop = false;
-            this.ResetVehicleBt.Zoom = 10;
-            this.ResetVehicleBt.Click += new System.EventHandler(this.ResetVehicleBt_Click);
-            // 
-            // ConnectedImage
-            // 
-            this.ConnectedImage.BackColor = System.Drawing.Color.Transparent;
-            this.ConnectedImage.Image = global::ThesisInterface.Properties.Resources.Connect_Develop_96px;
-            this.ConnectedImage.Location = new System.Drawing.Point(341, 1);
-            this.ConnectedImage.Name = "ConnectedImage";
-            this.ConnectedImage.Size = new System.Drawing.Size(106, 46);
-            this.ConnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ConnectedImage.TabIndex = 19;
-            this.ConnectedImage.TabStop = false;
-            // 
-            // closebt
-            // 
-            this.closebt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closebt.BackColor = System.Drawing.Color.Transparent;
-            this.closebt.Image = global::ThesisInterface.Properties.Resources.Close_Window_64px;
-            this.closebt.ImageActive = null;
-            this.closebt.Location = new System.Drawing.Point(1056, 7);
-            this.closebt.Name = "closebt";
-            this.closebt.Size = new System.Drawing.Size(25, 25);
-            this.closebt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.closebt.TabIndex = 9;
-            this.closebt.TabStop = false;
-            this.closebt.Zoom = 10;
-            this.closebt.Click += new System.EventHandler(this.closebt_Click);
-            // 
-            // maxbt
-            // 
-            this.maxbt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maxbt.BackColor = System.Drawing.Color.Transparent;
-            this.maxbt.Image = global::ThesisInterface.Properties.Resources.Restore_Window_50px;
-            this.maxbt.ImageActive = null;
-            this.maxbt.Location = new System.Drawing.Point(1025, 7);
-            this.maxbt.Name = "maxbt";
-            this.maxbt.Size = new System.Drawing.Size(25, 25);
-            this.maxbt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.maxbt.TabIndex = 8;
-            this.maxbt.TabStop = false;
-            this.maxbt.Zoom = 10;
-            this.maxbt.Click += new System.EventHandler(this.maxbt_Click);
-            // 
-            // minbt
-            // 
-            this.minbt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.minbt.BackColor = System.Drawing.Color.Transparent;
-            this.minbt.Image = global::ThesisInterface.Properties.Resources.Minimize_Window_64px;
-            this.minbt.ImageActive = null;
-            this.minbt.Location = new System.Drawing.Point(994, 7);
-            this.minbt.Name = "minbt";
-            this.minbt.Size = new System.Drawing.Size(25, 25);
-            this.minbt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.minbt.TabIndex = 7;
-            this.minbt.TabStop = false;
-            this.minbt.Zoom = 10;
-            this.minbt.Click += new System.EventHandler(this.minbt_Click);
-            // 
-            // menubt
-            // 
-            this.menubt.BackColor = System.Drawing.Color.Transparent;
-            this.menubt.Image = global::ThesisInterface.Properties.Resources.Menu_64px;
-            this.menubt.ImageActive = null;
-            this.menubt.Location = new System.Drawing.Point(12, 7);
-            this.menubt.Name = "menubt";
-            this.menubt.Size = new System.Drawing.Size(30, 30);
-            this.menubt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.menubt.TabIndex = 2;
-            this.menubt.TabStop = false;
-            this.menubt.Zoom = 10;
-            this.menubt.Click += new System.EventHandler(this.menubt_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Ailerons", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
-            this.label1.Location = new System.Drawing.Point(58, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 28);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "SELF-DRIVING VEHICLE";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,9 +482,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.panel1.ResumeLayout(false);
-            this.SidePanel.ResumeLayout(false);
-            this.SidePanel.PerformLayout();
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResetVehicleBt)).EndInit();
@@ -492,6 +490,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.maxbt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minbt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menubt)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.SidePanel.ResumeLayout(false);
+            this.SidePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }

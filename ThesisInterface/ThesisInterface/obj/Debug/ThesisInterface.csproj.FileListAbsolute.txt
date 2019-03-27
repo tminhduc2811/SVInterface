@@ -147,3 +147,4 @@ D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csproj.CopyComplete
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb
+D:\Project\SVInterface\ThesisInterface\ThesisInterface\bin\Debug\Newtonsoft.Json.pdb
