@@ -1,8 +1,8 @@
 # SVInterface
 
+<h2 align="center">**Setting User Control**</h2>
 
 <p align="center">
-  <h2>**Setting User Control**</h2>
   <img src="Images/SettingUC.JPG" width="700" height="370">
 </p>
 
