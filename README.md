@@ -1,6 +1,6 @@
 # SVInterface
 **Setting User Control**
-<img src="Images/SettingUC.JPG" | width=300>
+<img src="Images/SettingUC.JPG" = 600x250>
 
 **Setting User Control for IMU**
 <img src="Images/SettingIMUUC.JPG">
