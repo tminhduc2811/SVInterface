@@ -92,7 +92,7 @@ namespace ThesisInterface
 
         public class CoordinatesInfo
         {
-            public List<PlannedCoordinate> plannedCoordinate { get; set; }
+            public List<PlannedCoordinate> plannedCoordinates { get; set; }
             public List<ActualCoordinate> actualCoordinates { get; set; }
         }
 
@@ -742,7 +742,33 @@ namespace ThesisInterface
 
         private void OpenBtAutoUCClickHandler(object sender, EventArgs e)
         {
+            try
+            {
+                string jsonfile = ReadJsonFile();
 
+                CoordinatesInfo coordinatesInformation = ParseCoordinatesInformation(jsonfile);
+
+                ClearPLannedData();
+
+                ClearActualData();
+
+                for(int i = 0; i < coordinatesInformation.plannedCoordinates.Count; i++)
+                {                    
+                    PlanCooridnatesList.Add(new PointLatLng(coordinatesInformation.plannedCoordinates[i].Lat, coordinatesInformation.plannedCoordinates[i].Lng));      
+                    DisplayRouteOnMap(new GMapRoute(PlanCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkRed, 2) }, "Planned");
+                }
+                
+                for(int i = 0; i < coordinatesInformation.actualCoordinates.Count; i++)
+                {
+                    ActualCooridnatesList.Add(new PointLatLng(coordinatesInformation.actualCoordinates[i].Lat, coordinatesInformation.actualCoordinates[i].Lng));
+                    DisplayRouteOnMap(new GMapRoute(PlanCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
+                }
+        
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void SaveBtAutoUCClickHandler(object sender, EventArgs e)
@@ -753,7 +779,6 @@ namespace ThesisInterface
                 CoordinatesInfo coordinatesInformation = CreateCoordinatesInformation();
 
                 WriteJsonFile(coordinatesInformation);
-
             }
             catch (Exception ex)
             {
@@ -765,15 +790,9 @@ namespace ThesisInterface
         {
             if(PlanMapEnable && (e.Button == MouseButtons.Right))
             {
-                //MessageBox.Show(autoUC1.gmap.FromLocalToLatLng(e.X, e.Y).ToString());
                 PlanCooridnatesList.Add(autoUC1.gmap.FromLocalToLatLng(e.X, e.Y));
-                var line = new GMapRoute(PlanCooridnatesList, "single_line")
-                {
-                    Stroke = new Pen(Color.DarkRed, 2)
-                };
-                PlanLines.Routes.Clear();
-                PlanLines.Routes.Add(line);
-                autoUC1.gmap.Overlays.Add(PlanLines);
+                
+                DisplayRouteOnMap(new GMapRoute(PlanCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkRed, 2) }, "Planned");
             }
         }
 
@@ -823,16 +842,12 @@ namespace ThesisInterface
 
         private void ClearPlannedMapBtAutoUCClickHandler(object sender, EventArgs e)
         {
-            autoUC1.gmap.Overlays.Clear();
-            PlanCooridnatesList.Clear();
-            PlanLines.Clear();
+            ClearPLannedData();
         }
 
         private void ClearActualMapBtAutoUCClickHandler(object sender, EventArgs e)
         {
-            autoUC1.gmap.Overlays.Clear();
-            ActualCooridnatesList.Clear();
-            ActualLines.Clear();
+            ClearActualData();
         }
 
         private void InitAutoUC()
@@ -859,7 +874,7 @@ namespace ThesisInterface
         
         // TIMERS ------------------------------------------------------------------//
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e) // Main timer for displaying data of vehicle
         {
             if (ManualEnabled)
             {
@@ -936,20 +951,19 @@ namespace ThesisInterface
                                 if (value[14].Contains(checksum(temp)))
                                 {
                                     MyVehicle = new Vehicle(value);
+                                    /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
                                     if(MyVehicle.GPSStatus)
                                     {
                                         autoUC1.ReceivedTb.Text = MyVehicle.GetVehicleStatus();
                                         // Save Position Data & Draw On Map
                                         autoUC1.ReceivedTb.Text += mess;
                                         ActualCooridnatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
-                                        var line = new GMapRoute(ActualCooridnatesList, "single_line")
-                                        {
-                                            Stroke = new Pen(Color.DarkGreen, 2)
-                                        };
-                                        ActualLines.Routes.Clear();
-                                        ActualLines.Routes.Add(line);
-                                        autoUC1.gmap.Overlays.Add(ActualLines);
+                                        DisplayRouteOnMap(new GMapRoute(ActualCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
                                     }
+                                    /*  Draw turning State of vehicle by subtracting the RefAngle and the ActualAngle
+                                        (It help users to understand whether the vehicle is turning left or right)      */
+                                    DrawVehicleTurningStatusOnImage(autoUC1.VehicleStatusImage, MyVehicle.RefAngle - MyVehicle.Angle, LowVelocity);
+                                    autoUC1.TurningState.Text = "Turning " + Math.Round(MyVehicle.RefAngle - MyVehicle.Angle, 4).ToString() + "°";
                                 }
                             }
                         }
@@ -1088,7 +1102,7 @@ namespace ThesisInterface
 
         // Other functions ----------------------------------------------------------//
 
-        public void DrawVehicleStatusOnImage(PictureBox ImgBox, float angle, Image image)
+        public void DrawVehicleTurningStatusOnImage(PictureBox ImgBox, double angle, Image image)
         {
             if (image == null)
                 throw new ArgumentNullException("image");
@@ -1107,7 +1121,7 @@ namespace ThesisInterface
             g.TranslateTransform(offset.X, offset.Y);
 
             //rotate the image
-            g.RotateTransform(angle);
+            g.RotateTransform((float)angle);
 
             //move the image back
             g.TranslateTransform(-offset.X, -offset.Y);
@@ -1115,7 +1129,7 @@ namespace ThesisInterface
             //draw passed in image onto graphics object
             g.DrawImage(image, new PointF(0, 0));
 
-            ImgBox.Image = rotatedBmp;
+            ImgBox.Image = rotatedBmp;  
         }
 
         public static string checksum(string message)
@@ -1130,14 +1144,14 @@ namespace ThesisInterface
             return sum.ToString("X");
         }
 
-        public string MessagesDocker(string RawMess)
+        private string MessagesDocker(string RawMess)
         {
             string MessWithoutKey = RawMess + ",";
 
             return "$" + MessWithoutKey + checksum(MessWithoutKey) + "\r\n";
         }
 
-        public void WriteJsonFile(CoordinatesInfo listCoordinates)
+        private void WriteJsonFile(CoordinatesInfo listCoordinates)
         {
             try
             {
@@ -1160,13 +1174,8 @@ namespace ThesisInterface
             }
         }
 
-        public CoordinatesInfo CreateCoordinatesInformation()
+        private CoordinatesInfo CreateCoordinatesInformation()
         {
-
-            ActualCoordinate actualCoordinates = new ActualCoordinate();
-
-            PlannedCoordinate plannedCoordinates = new PlannedCoordinate();
-
             List<PlannedCoordinate> listPlanned = new List<PlannedCoordinate>();
 
             List<ActualCoordinate> listActual = new List<ActualCoordinate>();
@@ -1175,25 +1184,86 @@ namespace ThesisInterface
 
             for (int i = 0; i < PlanCooridnatesList.Count; i++)
             {
-                plannedCoordinates.Lat = Convert.ToDouble(PlanCooridnatesList[i].Lat);
-                plannedCoordinates.Lng = Convert.ToDouble(PlanCooridnatesList[i].Lng);
-                listPlanned.Add(plannedCoordinates);
-                
-                
+                PlannedCoordinate plannedCoordinates = new PlannedCoordinate();
+                plannedCoordinates.Lat = PlanCooridnatesList[i].Lat;
+                plannedCoordinates.Lng = PlanCooridnatesList[i].Lng;
+                listPlanned.Add(plannedCoordinates);        
             }
 
             for (int i = 0; i < ActualCooridnatesList.Count; i++)
             {
+                ActualCoordinate actualCoordinates = new ActualCoordinate();
                 actualCoordinates.Lat = Convert.ToDouble(ActualCooridnatesList[i].Lat);
                 actualCoordinates.Lng = Convert.ToDouble(ActualCooridnatesList[i].Lng);
-                
+                listActual.Add(actualCoordinates);
             }
 
-            CoordinatesInformation.plannedCoordinate=listPlanned;
+            CoordinatesInformation.plannedCoordinates=listPlanned;
 
             CoordinatesInformation.actualCoordinates=listActual;
 
             return CoordinatesInformation;
+        }
+
+        private string ReadJsonFile()
+        {
+            string text = "";
+            try
+            {
+                using (var sfd = new OpenFileDialog())
+                {
+                    sfd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                    sfd.FilterIndex = 2;
+
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        text = File.ReadAllText(sfd.FileName);                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return text;
+        }
+
+        private CoordinatesInfo ParseCoordinatesInformation(string text)
+        {
+            CoordinatesInfo CoordinatesInformation = JsonConvert.DeserializeObject<CoordinatesInfo>(text);
+
+            return CoordinatesInformation;
+        }
+
+        private void ClearPLannedData()
+        {
+            autoUC1.gmap.Overlays.Clear();
+            PlanCooridnatesList.Clear();
+            PlanLines.Clear();
+        }
+
+        private void ClearActualData()
+        {
+            autoUC1.gmap.Overlays.Clear();
+            ActualCooridnatesList.Clear();
+            ActualLines.Clear();
+        }
+
+        private void DisplayRouteOnMap(GMapRoute route, string mode)
+        {
+            if(mode.Contains("Plan"))
+            {
+                PlanLines.Routes.Clear();
+                PlanLines.Routes.Add(route);
+                autoUC1.gmap.Overlays.Add(PlanLines);
+            }
+            else
+            {
+                ActualLines.Routes.Clear();
+                ActualLines.Routes.Add(route);
+                autoUC1.gmap.Overlays.Add(ActualLines);
+                autoUC1.gmap.Show();
+            }
         }
     }
 }
