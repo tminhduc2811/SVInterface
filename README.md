@@ -4,7 +4,7 @@
 
 [I. Setting User Control](#SettingUC)
 - [1. Port Info](#PortInfo)
-- [2.Vehicle Configuration](#VehicleConfiguration)
+- [2. Vehicle Configuration](#VehicleConfiguration)
 - [3. Message Boxes](#MessageSettingBoxes)
 
 [II. Setting IMU User Control](#SettingIMUUC)
