@@ -83,5 +83,15 @@ namespace ThesisInterface.UserControls
         {
             this.StopVehicleBt.Click += handler;
         }
+
+        private void DetailInfoTb_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.OnKeyDown(e);
+        }
+
+        private void DetailInfoTb_KeyUp(object sender, KeyEventArgs e)
+        {
+            this.OnKeyUp(e);
+        }
     }
 }

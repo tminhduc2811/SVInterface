@@ -36,6 +36,7 @@
             this.ClearActualMapBt = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuMetroTextbox3 = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.TurningState = new System.Windows.Forms.Label();
             this.VehicleStatusImage = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.bunifuMetroTextbox1 = new Bunifu.Framework.UI.BunifuMetroTextbox();
@@ -70,7 +71,6 @@
             this.textU = new System.Windows.Forms.Label();
             this.textA = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.TurningState = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -259,6 +259,15 @@
             this.panel2.Size = new System.Drawing.Size(188, 159);
             this.panel2.TabIndex = 5;
             // 
+            // TurningState
+            // 
+            this.TurningState.AutoSize = true;
+            this.TurningState.Location = new System.Drawing.Point(60, 21);
+            this.TurningState.Name = "TurningState";
+            this.TurningState.Size = new System.Drawing.Size(56, 13);
+            this.TurningState.TabIndex = 18;
+            this.TurningState.Text = "Turning 0°";
+            // 
             // VehicleStatusImage
             // 
             this.VehicleStatusImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -339,9 +348,12 @@
             this.DetailInfoTb.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.DetailInfoTb.Location = new System.Drawing.Point(16, 22);
             this.DetailInfoTb.Name = "DetailInfoTb";
+            this.DetailInfoTb.ReadOnly = true;
             this.DetailInfoTb.Size = new System.Drawing.Size(157, 134);
             this.DetailInfoTb.TabIndex = 7;
             this.DetailInfoTb.Text = "";
+            this.DetailInfoTb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DetailInfoTb_KeyDown);
+            this.DetailInfoTb.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DetailInfoTb_KeyUp);
             // 
             // bunifuMetroTextbox2
             // 
@@ -582,10 +594,10 @@
             this.ReceivedTb.BackColor = System.Drawing.Color.White;
             this.ReceivedTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ReceivedTb.Font = new System.Drawing.Font("Courier New", 13.8F);
-            this.ReceivedTb.Location = new System.Drawing.Point(93, 19);
+            this.ReceivedTb.Location = new System.Drawing.Point(80, 19);
             this.ReceivedTb.Name = "ReceivedTb";
             this.ReceivedTb.ReadOnly = true;
-            this.ReceivedTb.Size = new System.Drawing.Size(206, 122);
+            this.ReceivedTb.Size = new System.Drawing.Size(219, 122);
             this.ReceivedTb.TabIndex = 19;
             this.ReceivedTb.Text = "";
             this.ReceivedTb.TextChanged += new System.EventHandler(this.ReceivedTb_TextChanged);
@@ -759,15 +771,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(672, 100);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // TurningState
-            // 
-            this.TurningState.AutoSize = true;
-            this.TurningState.Location = new System.Drawing.Point(60, 21);
-            this.TurningState.Name = "TurningState";
-            this.TurningState.Size = new System.Drawing.Size(56, 13);
-            this.TurningState.TabIndex = 18;
-            this.TurningState.Text = "Turning 0°";
             // 
             // AutoUC
             // 

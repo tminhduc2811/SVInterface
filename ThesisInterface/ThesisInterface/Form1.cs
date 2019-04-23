@@ -51,7 +51,6 @@ namespace ThesisInterface
                     MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
             public string GetVehicleStatus()
             {
                 string mess;
@@ -75,7 +74,6 @@ namespace ThesisInterface
 
                 return mess;
             }
-
         }
 
         public class PlannedCoordinate
@@ -112,6 +110,24 @@ namespace ThesisInterface
 
         Image HighVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\HIGH.png");
 
+        //TODO: Set temporarily, fix later
+        char KeyW = '!', KeyS = '!', KeyA = '!', KeyD = '!';
+        int level = 5;
+        private void SendCommandAsync()
+        {
+            if (serialPort1.IsOpen)
+            {
+                try
+                {
+                    serialPort1.Write("$KCTRL," + KeyW.ToString() + "," + KeyS.ToString() + "," + KeyA.ToString() + "," + KeyD.ToString() + "," + level.ToString() + "\r\n");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        //---------------------------------------------------------------------------------------------------------------
         public string ConfigMessToWait = "";
         
         public int timeout = 40;
@@ -127,6 +143,8 @@ namespace ThesisInterface
         public string ConfigWaitKey = "|";
 
         public string OldMess = "";
+
+        public int KcontrolWaitTimes = 3;
 
         public bool PlanMapEnable = false;
 
@@ -148,6 +166,7 @@ namespace ThesisInterface
 
         private bool AutoEnabled = false;
 
+        private bool SendCommandSuccessfully = false;
         // Main form buttons click events ----------------------------------------//
 
         private void menubt_Click(object sender, EventArgs e)
@@ -219,6 +238,25 @@ namespace ThesisInterface
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+
+        private void ManualBtClickHandler(object sender, EventArgs e)
+        {
+            // TODO: Add disable for this mode latter
+            try
+            {
+                serialPort1.Write(MessagesDocker("KCTRL,1"));
+                manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started to control manually\r\n";
+                manualUC1.FormStatus.Text = "STARTED";
+                AutoEnabled = true;
+                timer1.Enabled = true;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         //-------------------------------------------------------------------------//
 
@@ -693,14 +731,14 @@ namespace ThesisInterface
             }
         }
 
-        private void OnBtAutoUCClickHandler(object sender, EventArgs e)
+        private void OnBtAutoUCClickHandler(object sender, EventArgs e)  // TODO: Change it back later
         {
             try
             {
                 serialPort1.Write(MessagesDocker("AUCON,ON"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started auto mode\r\n";
                 StartWaitingForResponse();
-                
+
             }
 
             catch (Exception ex)
@@ -738,6 +776,7 @@ namespace ThesisInterface
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void OpenBtAutoUCClickHandler(object sender, EventArgs e)
@@ -850,6 +889,83 @@ namespace ThesisInterface
             ClearActualData();
         }
 
+        private void AutoUCControlByKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.W)
+            {
+                if (KeyW != 'W')
+                {
+                    KeyW = 'W';
+                    SetCommandForKcontrol();
+
+                }
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                if (KeyS != 'S')
+                {
+                    KeyS = 'S';
+                    SetCommandForKcontrol();
+                }
+            }
+            else if (e.KeyCode == Keys.A)
+            {
+                if (KeyA != 'A')
+                {
+                    KeyA = 'A';
+                    SetCommandForKcontrol();
+                }
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                if (KeyD != 'D')
+                {
+                    KeyD = 'D';
+                    SetCommandForKcontrol();
+                }
+            }
+            else if (e.KeyCode == Keys.E)
+            {
+                if (level >= 10)
+                    level = 10;
+                else
+                    level++;
+                SetCommandForKcontrol();
+            }
+            else if (e.KeyCode == Keys.Q)
+            {
+                if (level <= 0)
+                    level = 0;
+                else
+                    level--;
+                SetCommandForKcontrol();
+            }
+        }
+
+        private void AutoUCControlByKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.W)
+            {
+                KeyW = '!';
+                SetCommandForKcontrol();
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                KeyS = '!';
+                SetCommandForKcontrol();
+            }
+            else if (e.KeyCode == Keys.A)
+            {
+                KeyA = '!';
+                SetCommandForKcontrol();
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                KeyD = '!';
+                SetCommandForKcontrol();
+            }
+        }
+        
         private void InitAutoUC()
         {
             AutoTimer.Interval = 20;
@@ -910,7 +1026,7 @@ namespace ThesisInterface
                     }
                 }
             }
-            else if(AutoEnabled)
+            else if(AutoEnabled)              //Change mode a little bit here, *TODO: Change it back later
             {
                 if (serialPort1.IsOpen)
                 {
@@ -948,7 +1064,8 @@ namespace ThesisInterface
                                 temp = mess;
                                 temp = temp.Remove(temp.Length - 3, 3);
                                 temp = temp.Remove(0, 1);
-                                if (value[14].Contains(checksum(temp)))
+                                //if (value[14].Contains(checksum(temp)))
+                                if(true)    //TODO: CHange it back later
                                 {
                                     MyVehicle = new Vehicle(value);
                                     /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
@@ -965,6 +1082,10 @@ namespace ThesisInterface
                                     DrawVehicleTurningStatusOnImage(autoUC1.VehicleStatusImage, MyVehicle.RefAngle - MyVehicle.Angle, LowVelocity);
                                     autoUC1.TurningState.Text = "Turning " + Math.Round(MyVehicle.RefAngle - MyVehicle.Angle, 4).ToString() + "°";
                                 }
+                            }
+                            if(value[0] == "$KCTRL")
+                            {
+                                SendCommandSuccessfully = true;
                             }
                         }
                         catch (Exception ex)
@@ -1095,6 +1216,30 @@ namespace ThesisInterface
                 timeoutAuto = 40;
                 autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Request failed\r\n";
                 AutoTimer.Enabled = false;
+            }
+        }
+
+        private void KcontrolTimer_Tick(object sender, EventArgs e)
+        {
+            KcontrolWaitTimes--;
+            if (KcontrolWaitTimes >= 0)
+            {
+                if(SendCommandSuccessfully)
+                {
+                    KcontrolWaitTimes = 3;
+                    SendCommandSuccessfully = false;
+                    KcontrolTimer.Enabled = false;
+                }
+                else
+                {
+                    SendCommandAsync();
+                }
+            }
+            else
+            {
+                KcontrolWaitTimes = 3;
+                SendCommandSuccessfully = false;
+                KcontrolTimer.Enabled = false;                
             }
         }
 
@@ -1264,6 +1409,13 @@ namespace ThesisInterface
                 autoUC1.gmap.Overlays.Add(ActualLines);
                 autoUC1.gmap.Show();
             }
+        }
+
+        private void SetCommandForKcontrol()
+        {
+            KcontrolWaitTimes = 3;
+            KcontrolTimer.Enabled = true;
+            SendCommandAsync();
         }
     }
 }
