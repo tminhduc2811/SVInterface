@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManualUC));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ExportBt = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -56,6 +56,8 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel7 = new System.Windows.Forms.Panel();
             this.FormStatus = new System.Windows.Forms.Label();
+            this.modeBt = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.gmap = new GMap.NET.WindowsForms.GMapControl();
             this.bunifuGradientPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -84,10 +86,9 @@
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(49)))), ((int)(((byte)(85)))));
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(229, 566);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(172, 460);
             this.bunifuGradientPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -95,13 +96,12 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(229, 439);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(172, 357);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(896, 123);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(672, 100);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // ExportBt
@@ -127,14 +127,14 @@
             this.ExportBt.IconVisible = true;
             this.ExportBt.IconZoom = 50D;
             this.ExportBt.IsTab = false;
-            this.ExportBt.Location = new System.Drawing.Point(0, 276);
-            this.ExportBt.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.ExportBt.Location = new System.Drawing.Point(0, 224);
+            this.ExportBt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ExportBt.Name = "ExportBt";
             this.ExportBt.Normalcolor = System.Drawing.Color.Transparent;
             this.ExportBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.ExportBt.OnHoverTextColor = System.Drawing.Color.White;
             this.ExportBt.selected = false;
-            this.ExportBt.Size = new System.Drawing.Size(229, 58);
+            this.ExportBt.Size = new System.Drawing.Size(172, 47);
             this.ExportBt.TabIndex = 9;
             this.ExportBt.Text = "Export Map";
             this.ExportBt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -164,14 +164,14 @@
             this.ImportBt.IconVisible = true;
             this.ImportBt.IconZoom = 50D;
             this.ImportBt.IsTab = false;
-            this.ImportBt.Location = new System.Drawing.Point(0, 219);
-            this.ImportBt.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.ImportBt.Location = new System.Drawing.Point(0, 178);
+            this.ImportBt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ImportBt.Name = "ImportBt";
             this.ImportBt.Normalcolor = System.Drawing.Color.Transparent;
             this.ImportBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.ImportBt.OnHoverTextColor = System.Drawing.Color.White;
             this.ImportBt.selected = false;
-            this.ImportBt.Size = new System.Drawing.Size(229, 58);
+            this.ImportBt.Size = new System.Drawing.Size(172, 47);
             this.ImportBt.TabIndex = 9;
             this.ImportBt.Text = "Import Map";
             this.ImportBt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -201,14 +201,14 @@
             this.StopBt.IconVisible = true;
             this.StopBt.IconZoom = 50D;
             this.StopBt.IsTab = false;
-            this.StopBt.Location = new System.Drawing.Point(0, 164);
-            this.StopBt.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.StopBt.Location = new System.Drawing.Point(0, 133);
+            this.StopBt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.StopBt.Name = "StopBt";
             this.StopBt.Normalcolor = System.Drawing.Color.Transparent;
             this.StopBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.StopBt.OnHoverTextColor = System.Drawing.Color.White;
             this.StopBt.selected = false;
-            this.StopBt.Size = new System.Drawing.Size(229, 58);
+            this.StopBt.Size = new System.Drawing.Size(172, 47);
             this.StopBt.TabIndex = 9;
             this.StopBt.Text = "Stop";
             this.StopBt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -238,14 +238,14 @@
             this.StartBt.IconVisible = true;
             this.StartBt.IconZoom = 50D;
             this.StartBt.IsTab = false;
-            this.StartBt.Location = new System.Drawing.Point(0, 107);
-            this.StartBt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.StartBt.Location = new System.Drawing.Point(0, 87);
+            this.StartBt.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.StartBt.Name = "StartBt";
             this.StartBt.Normalcolor = System.Drawing.Color.Transparent;
             this.StartBt.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.StartBt.OnHoverTextColor = System.Drawing.Color.White;
             this.StartBt.selected = false;
-            this.StartBt.Size = new System.Drawing.Size(229, 58);
+            this.StartBt.Size = new System.Drawing.Size(172, 47);
             this.StartBt.TabIndex = 9;
             this.StartBt.Text = "Start";
             this.StartBt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -258,10 +258,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Ailerons", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(20, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(15, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 53);
+            this.label1.Size = new System.Drawing.Size(141, 42);
             this.label1.TabIndex = 2;
             this.label1.Text = "MANUAL";
             // 
@@ -269,10 +268,9 @@
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(229, 401);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(172, 326);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(896, 165);
+            this.panel1.Size = new System.Drawing.Size(672, 134);
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -284,12 +282,11 @@
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 165F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(896, 165);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(672, 134);
             this.tableLayoutPanel2.TabIndex = 0;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
@@ -298,29 +295,26 @@
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(452, 4);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(339, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(440, 157);
+            this.panel3.Size = new System.Drawing.Size(330, 128);
             this.panel3.TabIndex = 3;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.PositionBox);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 34);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Location = new System.Drawing.Point(0, 28);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(440, 123);
+            this.panel5.Size = new System.Drawing.Size(330, 100);
             this.panel5.TabIndex = 16;
             // 
             // PositionBox
             // 
             this.PositionBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PositionBox.Location = new System.Drawing.Point(0, 0);
-            this.PositionBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PositionBox.Name = "PositionBox";
-            this.PositionBox.Size = new System.Drawing.Size(440, 123);
+            this.PositionBox.Size = new System.Drawing.Size(330, 100);
             this.PositionBox.TabIndex = 2;
             this.PositionBox.Text = "";
             this.PositionBox.TextChanged += new System.EventHandler(this.PositionBox_TextChanged);
@@ -332,41 +326,37 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
-            this.label2.Location = new System.Drawing.Point(165, 4);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(124, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 27);
+            this.label2.Size = new System.Drawing.Size(98, 21);
             this.label2.TabIndex = 14;
-            this.label2.Text = "POSITION";
+            this.label2.Text = "RECEIVED";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(4, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(440, 157);
+            this.panel2.Size = new System.Drawing.Size(330, 128);
             this.panel2.TabIndex = 2;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.SentBox);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 34);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Location = new System.Drawing.Point(0, 28);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(440, 123);
+            this.panel4.Size = new System.Drawing.Size(330, 100);
             this.panel4.TabIndex = 15;
             // 
             // SentBox
             // 
             this.SentBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SentBox.Location = new System.Drawing.Point(0, 0);
-            this.SentBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SentBox.Name = "SentBox";
-            this.SentBox.Size = new System.Drawing.Size(440, 123);
+            this.SentBox.Size = new System.Drawing.Size(330, 100);
             this.SentBox.TabIndex = 1;
             this.SentBox.Text = "";
             this.SentBox.TextChanged += new System.EventHandler(this.SentBox_TextChanged);
@@ -378,10 +368,9 @@
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
-            this.label17.Location = new System.Drawing.Point(184, 4);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(138, 3);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 27);
+            this.label17.Size = new System.Drawing.Size(54, 21);
             this.label17.TabIndex = 15;
             this.label17.Text = "SENT";
             // 
@@ -390,26 +379,22 @@
             this.panel6.Controls.Add(this.VehicleStatusBox);
             this.panel6.Controls.Add(this.label3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(229, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Location = new System.Drawing.Point(172, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(255, 401);
+            this.panel6.Size = new System.Drawing.Size(191, 326);
             this.panel6.TabIndex = 3;
             // 
             // VehicleStatusBox
             // 
-            this.VehicleStatusBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.VehicleStatusBox.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VehicleStatusBox.Location = new System.Drawing.Point(0, 57);
-            this.VehicleStatusBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.VehicleStatusBox.Location = new System.Drawing.Point(0, 46);
             this.VehicleStatusBox.Name = "VehicleStatusBox";
-            this.VehicleStatusBox.Size = new System.Drawing.Size(253, 340);
+            this.VehicleStatusBox.Size = new System.Drawing.Size(191, 277);
             this.VehicleStatusBox.TabIndex = 14;
             this.VehicleStatusBox.Text = "";
             this.VehicleStatusBox.TextChanged += new System.EventHandler(this.VehicleStatusBox_TextChanged);
             this.VehicleStatusBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VehicleStatusBox_KeyDown);
+            this.VehicleStatusBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.VehicleStatusBox_KeyUp);
             // 
             // label3
             // 
@@ -418,46 +403,45 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
-            this.label3.Location = new System.Drawing.Point(21, 17);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(16, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(208, 27);
+            this.label3.Size = new System.Drawing.Size(164, 21);
             this.label3.TabIndex = 13;
             this.label3.Text = "VEHICLE STATUS";
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
             this.chart1.Location = new System.Drawing.Point(0, 0);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Position";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Map";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(641, 401);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series9.Legend = "Legend1";
+            series9.Name = "Position";
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series10.Legend = "Legend1";
+            series10.Name = "Map";
+            this.chart1.Series.Add(series9);
+            this.chart1.Series.Add(series10);
+            this.chart1.Size = new System.Drawing.Size(481, 326);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.modeBt);
             this.panel7.Controls.Add(this.FormStatus);
+            this.panel7.Controls.Add(this.gmap);
             this.panel7.Controls.Add(this.chart1);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(484, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Location = new System.Drawing.Point(363, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(641, 401);
+            this.panel7.Size = new System.Drawing.Size(481, 326);
             this.panel7.TabIndex = 4;
             // 
             // FormStatus
@@ -467,25 +451,76 @@
             this.FormStatus.BackColor = System.Drawing.Color.Transparent;
             this.FormStatus.Font = new System.Drawing.Font("Courier New", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
-            this.FormStatus.Location = new System.Drawing.Point(521, 82);
-            this.FormStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.FormStatus.Location = new System.Drawing.Point(405, 34);
             this.FormStatus.Name = "FormStatus";
-            this.FormStatus.Size = new System.Drawing.Size(96, 27);
+            this.FormStatus.Size = new System.Drawing.Size(76, 21);
             this.FormStatus.TabIndex = 14;
             this.FormStatus.Text = "STOPED";
             // 
+            // modeBt
+            // 
+            this.modeBt.ActiveBorderThickness = 1;
+            this.modeBt.ActiveCornerRadius = 20;
+            this.modeBt.ActiveFillColor = System.Drawing.Color.SeaGreen;
+            this.modeBt.ActiveForecolor = System.Drawing.Color.White;
+            this.modeBt.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.modeBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modeBt.BackColor = System.Drawing.Color.Transparent;
+            this.modeBt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("modeBt.BackgroundImage")));
+            this.modeBt.ButtonText = "Online";
+            this.modeBt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.modeBt.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modeBt.ForeColor = System.Drawing.Color.SeaGreen;
+            this.modeBt.IdleBorderThickness = 1;
+            this.modeBt.IdleCornerRadius = 20;
+            this.modeBt.IdleFillColor = System.Drawing.Color.Transparent;
+            this.modeBt.IdleForecolor = System.Drawing.Color.SeaGreen;
+            this.modeBt.IdleLineColor = System.Drawing.Color.SeaGreen;
+            this.modeBt.Location = new System.Drawing.Point(394, 289);
+            this.modeBt.Margin = new System.Windows.Forms.Padding(5);
+            this.modeBt.Name = "modeBt";
+            this.modeBt.Size = new System.Drawing.Size(82, 32);
+            this.modeBt.TabIndex = 15;
+            this.modeBt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gmap
+            // 
+            this.gmap.Bearing = 0F;
+            this.gmap.CanDragMap = true;
+            this.gmap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gmap.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gmap.GrayScaleMode = false;
+            this.gmap.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gmap.LevelsKeepInMemmory = 5;
+            this.gmap.Location = new System.Drawing.Point(0, 0);
+            this.gmap.MarkersEnabled = true;
+            this.gmap.MaxZoom = 100;
+            this.gmap.MinZoom = 2;
+            this.gmap.MouseWheelZoomEnabled = true;
+            this.gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gmap.Name = "gmap";
+            this.gmap.NegativeMode = false;
+            this.gmap.PolygonsEnabled = true;
+            this.gmap.RetryLoadTile = 0;
+            this.gmap.RoutesEnabled = true;
+            this.gmap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gmap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gmap.ShowTileGridLines = false;
+            this.gmap.Size = new System.Drawing.Size(481, 326);
+            this.gmap.TabIndex = 18;
+            this.gmap.Zoom = 0D;
+            // 
             // ManualUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bunifuGradientPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ManualUC";
-            this.Size = new System.Drawing.Size(1125, 566);
+            this.Size = new System.Drawing.Size(844, 460);
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -530,5 +565,7 @@
         public System.Windows.Forms.RichTextBox SentBox;
         private System.Windows.Forms.Label label17;
         public System.Windows.Forms.Label FormStatus;
+        public GMap.NET.WindowsForms.GMapControl gmap;
+        public Bunifu.Framework.UI.BunifuThinButton2 modeBt;
     }
 }

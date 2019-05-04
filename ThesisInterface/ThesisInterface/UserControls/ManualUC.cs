@@ -64,9 +64,19 @@ namespace ThesisInterface.UserControls
             this.ExportBt.Click += handler;
         }
 
+        public void ChangeModeBtClickHandler(EventHandler handler)
+        {
+            this.modeBt.Click += handler;
+        }
+
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        public void VehicleStatusBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            this.OnKeyUp(e);
         }
     }
 }

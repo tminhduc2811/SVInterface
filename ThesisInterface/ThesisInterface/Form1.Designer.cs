@@ -54,13 +54,13 @@
             this.IMUConfigWaitForRespond = new System.Windows.Forms.Timer(this.components);
             this.AutoTimer = new System.Windows.Forms.Timer(this.components);
             this.SidePanel = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.ManualBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.ManualBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.KcontrolTimer = new System.Windows.Forms.Timer(this.components);
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
@@ -71,8 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ResetVehicleBt)).BeginInit();
             this.panel1.SuspendLayout();
             this.SidePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ManualBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ManualBt)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -228,10 +228,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(11)))), ((int)(((byte)(42)))));
-            this.panel1.Controls.Add(this.autoUC1);
-            this.panel1.Controls.Add(this.imuSetting1);
             this.panel1.Controls.Add(this.manualUC1);
             this.panel1.Controls.Add(this.vehicleSetting1);
+            this.panel1.Controls.Add(this.autoUC1);
+            this.panel1.Controls.Add(this.imuSetting1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(156, 47);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -269,6 +269,7 @@
             this.manualUC1.Size = new System.Drawing.Size(931, 537);
             this.manualUC1.TabIndex = 0;
             this.manualUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyDown);
+            this.manualUC1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyUp);
             // 
             // vehicleSetting1
             // 
@@ -315,6 +316,36 @@
             this.SidePanel.Quality = 10;
             this.SidePanel.Size = new System.Drawing.Size(156, 537);
             this.SidePanel.TabIndex = 10;
+            // 
+            // bunifuImageButton2
+            // 
+            this.bunifuImageButton2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.bunifuImageButton2.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButton2.Image = global::ThesisInterface.Properties.Resources.Available_Updates_50px;
+            this.bunifuImageButton2.ImageActive = null;
+            this.bunifuImageButton2.Location = new System.Drawing.Point(121, 492);
+            this.bunifuImageButton2.Name = "bunifuImageButton2";
+            this.bunifuImageButton2.Size = new System.Drawing.Size(29, 33);
+            this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButton2.TabIndex = 20;
+            this.bunifuImageButton2.TabStop = false;
+            this.bunifuImageButton2.Zoom = 10;
+            this.bunifuImageButton2.Click += new System.EventHandler(this.ResetVehicleBt_Click);
+            // 
+            // ManualBt
+            // 
+            this.ManualBt.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ManualBt.BackColor = System.Drawing.Color.Transparent;
+            this.ManualBt.Image = global::ThesisInterface.Properties.Resources.Available_Updates_50px;
+            this.ManualBt.ImageActive = null;
+            this.ManualBt.Location = new System.Drawing.Point(64, 492);
+            this.ManualBt.Name = "ManualBt";
+            this.ManualBt.Size = new System.Drawing.Size(29, 33);
+            this.ManualBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ManualBt.TabIndex = 20;
+            this.ManualBt.TabStop = false;
+            this.ManualBt.Zoom = 10;
+            this.ManualBt.Click += new System.EventHandler(this.ManualBtClickHandler);
             // 
             // bunifuFlatButton4
             // 
@@ -480,39 +511,9 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "BKU";
             // 
-            // ManualBt
-            // 
-            this.ManualBt.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ManualBt.BackColor = System.Drawing.Color.Transparent;
-            this.ManualBt.Image = global::ThesisInterface.Properties.Resources.Available_Updates_50px;
-            this.ManualBt.ImageActive = null;
-            this.ManualBt.Location = new System.Drawing.Point(64, 492);
-            this.ManualBt.Name = "ManualBt";
-            this.ManualBt.Size = new System.Drawing.Size(29, 33);
-            this.ManualBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ManualBt.TabIndex = 20;
-            this.ManualBt.TabStop = false;
-            this.ManualBt.Zoom = 10;
-            this.ManualBt.Click += new System.EventHandler(this.ManualBtClickHandler);
-            // 
-            // bunifuImageButton2
-            // 
-            this.bunifuImageButton2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.bunifuImageButton2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButton2.Image = global::ThesisInterface.Properties.Resources.Available_Updates_50px;
-            this.bunifuImageButton2.ImageActive = null;
-            this.bunifuImageButton2.Location = new System.Drawing.Point(121, 492);
-            this.bunifuImageButton2.Name = "bunifuImageButton2";
-            this.bunifuImageButton2.Size = new System.Drawing.Size(29, 33);
-            this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton2.TabIndex = 20;
-            this.bunifuImageButton2.TabStop = false;
-            this.bunifuImageButton2.Zoom = 10;
-            this.bunifuImageButton2.Click += new System.EventHandler(this.ResetVehicleBt_Click);
-            // 
             // KcontrolTimer
             // 
-            this.KcontrolTimer.Interval = 10;
+            this.KcontrolTimer.Interval = 80;
             this.KcontrolTimer.Tick += new System.EventHandler(this.KcontrolTimer_Tick);
             // 
             // Form1
@@ -537,8 +538,8 @@
             this.panel1.ResumeLayout(false);
             this.SidePanel.ResumeLayout(false);
             this.SidePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ManualBt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ManualBt)).EndInit();
             this.ResumeLayout(false);
 
         }

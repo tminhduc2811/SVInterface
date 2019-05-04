@@ -40,7 +40,7 @@ namespace ThesisInterface
                     PosY = double.Parse(ArrayInfo[11], System.Globalization.CultureInfo.InvariantCulture);
                     Lat = double.Parse(ArrayInfo[12], System.Globalization.CultureInfo.InvariantCulture);
                     Lng = double.Parse(ArrayInfo[13], System.Globalization.CultureInfo.InvariantCulture);
-                    if (ArrayInfo[9] == "Y")
+                    if (ArrayInfo[9].Contains("Y"))
                         GPSStatus = true;
                     else
                         GPSStatus = false;
@@ -112,7 +112,7 @@ namespace ThesisInterface
 
         //TODO: Set temporarily, fix later
         char KeyW = '!', KeyS = '!', KeyA = '!', KeyD = '!';
-        int level = 5;
+        int level = 6;
         private void SendCommandAsync()
         {
             if (serialPort1.IsOpen)
@@ -144,9 +144,9 @@ namespace ThesisInterface
 
         public string OldMess = "";
 
-        public int KcontrolWaitTimes = 3;
+        public int KcontrolWaitTimes = 1, defaultwaitTimes = 1;
 
-        public bool PlanMapEnable = false;
+        public bool PlanMapEnable = false, online = false;
 
         public List<PointLatLng> PlanCooridnatesList = new List<PointLatLng>();
 
@@ -308,6 +308,7 @@ namespace ThesisInterface
         private void InitManualUC()
         {
             timer1.Enabled = false;
+            InitManual();
         }
 
         private void LinkToUCEvents()
@@ -321,6 +322,7 @@ namespace ThesisInterface
             this.manualUC1.StopBtClickHandler(new EventHandler(StopBtManualUCClickHandler));
             this.manualUC1.ImportBtClickHandler(new EventHandler(ImportBtManualUCClickHandler));
             this.manualUC1.ExportBtClickHandler(new EventHandler(ExportBtManualUCClickHandler));
+            this.manualUC1.ChangeModeBtClickHandler(new EventHandler(ChangeModeBtManualUCClickHandler));
             this.imuSetting1.SendMessConfigBtClickHandler(new EventHandler(SendMessConfigIMUClickHandler));
             this.imuSetting1.SendBaudrateConfigBtClickHandler(new EventHandler(SendBaudrateConfigClickHandler));
             this.imuSetting1.SendFreqBtClickHandler(new EventHandler(SendFreqIMUClickHandler));
@@ -623,7 +625,7 @@ namespace ThesisInterface
             // Write start command to MCU
             try
             {
-                serialPort1.Write(MessagesDocker("MACON,1"));
+                serialPort1.Write(MessagesDocker("KCTRL,1"));
                 manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started to control manually\r\n";
                 manualUC1.FormStatus.Text = "STARTED";
                 ManualEnabled = true;
@@ -642,7 +644,7 @@ namespace ThesisInterface
             
             try
             {
-                serialPort1.Write(MessagesDocker("MACON,0"));
+                serialPort1.Write(MessagesDocker("KCTRL,0"));
                 ManualEnabled = false;
                 timer1.Enabled = false;
                 manualUC1.FormStatus.Text = "STOPED";
@@ -660,36 +662,60 @@ namespace ThesisInterface
             {
                 try
                 {
-                    string key = e.KeyData.ToString().ToUpper();
-                    if (key == "W")
+                    if (e.KeyCode == Keys.W)
                     {
-                        serialPort1.Write(MessagesDocker("MACON,W"));
-                        manualUC1.SentBox.Text += "Increasing velocity...\r\n(Messages Sent: " + "$MACON," + key + "," + checksum("MACON,W,")+"\r\n";
+                        if (KeyW != 'W')
+                        {
+                            KeyW = 'W';
+                            SetCommandForKcontrol();
+
+                        }
                     }
-                    if (key == "A")
+                    else if (e.KeyCode == Keys.S)
                     {
-                        serialPort1.Write(MessagesDocker("MACON,A"));
-                        manualUC1.SentBox.Text += "Turning Left...\r\n(Messages Sent: $MACON,A)\r\n";
+                        if (KeyS != 'S')
+                        {
+                            KeyS = 'S';
+                            SetCommandForKcontrol();
+                        }
                     }
-                    if (key == "D")
+                    else if (e.KeyCode == Keys.A)
                     {
-                        serialPort1.Write(MessagesDocker("MACON,D"));
-                        manualUC1.SentBox.Text += "Turning Right...\r\n(Messages Sent: $MACON,D)\r\n";
+                        if (KeyA != 'A')
+                        {
+                            KeyA = 'A';
+                            int oldLevel = level;
+                            level = 3;
+                            SetCommandForKcontrol();
+                            level = oldLevel;
+                        }
                     }
-                    if (key == "S")
+                    else if (e.KeyCode == Keys.D)
                     {
-                        serialPort1.Write(MessagesDocker("MACON,S"));
-                        manualUC1.SentBox.Text += "Decreasing Velocity...\r\n(Messages Sent: $MACON,S)\r\n";
+                        if (KeyD != 'D')
+                        {
+                            KeyD = 'D';
+                            int oldLevel = level;
+                            level = 3;
+                            SetCommandForKcontrol();
+                            level = oldLevel;
+                        }
                     }
-                    if (key == "F")
+                    else if (e.KeyCode == Keys.E)
                     {
-                        serialPort1.Write(MessagesDocker("MACON,F"));
-                        manualUC1.SentBox.Text += "RESET VEHICLE...\r\n(Messages Sent: $MACON,F)\r\n";
+                        if (level >= 10)
+                            level = 10;
+                        else
+                            level++;
+                        SetCommandForKcontrol();
                     }
-                    if (key == "Q")
+                    else if (e.KeyCode == Keys.Q)
                     {
-                        serialPort1.Write(MessagesDocker("MACON,1"));
-                        manualUC1.SentBox.Text += "Starting vehicle...\r\n";
+                        if (level <= 0)
+                            level = 0;
+                        else
+                            level--;
+                        SetCommandForKcontrol();
                     }
                 }
                 catch (Exception ex)
@@ -703,6 +729,55 @@ namespace ThesisInterface
             }
         }
 
+        private void manualUC1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.W)
+            {
+                KeyW = '!';
+                SetCommandForKcontrol();
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                KeyS = '!';
+                SetCommandForKcontrol();
+            }
+            else if (e.KeyCode == Keys.A)
+            {
+                KeyA = '!';
+                SetCommandForKcontrol();
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                KeyD = '!';
+                SetCommandForKcontrol();
+            }
+        }
+
+        private void ChangeModeBtManualUCClickHandler(object sender, EventArgs e)
+        {
+            if(online)
+            {
+                manualUC1.modeBt.ButtonText = "Offline";
+                manualUC1.gmap.SendToBack();
+                online = false;
+            }
+            else
+            {
+                manualUC1.modeBt.ButtonText = "Online";
+                manualUC1.chart1.SendToBack();
+                online = true;
+            }
+        }
+
+        private void InitManual()
+        {
+            manualUC1.gmap.DragButton = MouseButtons.Left;
+            manualUC1.gmap.MapProvider = GMap.NET.MapProviders.GoogleSatelliteMapProvider.Instance;
+            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
+            manualUC1.gmap.SetPositionByKeywords("Vietnam, Ho Chi Minh");
+            manualUC1.gmap.Position = new PointLatLng(10.772801, 106.659273);
+            manualUC1.gmap.Zoom = 19;
+        }
         //--------------------------------------------------------------------------//
 
         // Handler for AUTO User Control -------------------------------------------//
@@ -793,14 +868,14 @@ namespace ThesisInterface
 
                 for(int i = 0; i < coordinatesInformation.plannedCoordinates.Count; i++)
                 {                    
-                    PlanCooridnatesList.Add(new PointLatLng(coordinatesInformation.plannedCoordinates[i].Lat, coordinatesInformation.plannedCoordinates[i].Lng));      
-                    DisplayRouteOnMap(new GMapRoute(PlanCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkRed, 2) }, "Planned");
+                    PlanCooridnatesList.Add(new PointLatLng(coordinatesInformation.plannedCoordinates[i].Lat, coordinatesInformation.plannedCoordinates[i].Lng));
+                    DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkRed, 2) }, "Planned");
                 }
                 
                 for(int i = 0; i < coordinatesInformation.actualCoordinates.Count; i++)
                 {
                     ActualCooridnatesList.Add(new PointLatLng(coordinatesInformation.actualCoordinates[i].Lat, coordinatesInformation.actualCoordinates[i].Lng));
-                    DisplayRouteOnMap(new GMapRoute(PlanCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
+                    DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
                 }
         
             }
@@ -831,7 +906,7 @@ namespace ThesisInterface
             {
                 PlanCooridnatesList.Add(autoUC1.gmap.FromLocalToLatLng(e.X, e.Y));
                 
-                DisplayRouteOnMap(new GMapRoute(PlanCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkRed, 2) }, "Planned");
+                DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkRed, 2) }, "Planned");
             }
         }
 
@@ -913,7 +988,10 @@ namespace ThesisInterface
                 if (KeyA != 'A')
                 {
                     KeyA = 'A';
+                    int oldLevel = level;
+                    level = 3;
                     SetCommandForKcontrol();
+                    level = oldLevel;
                 }
             }
             else if (e.KeyCode == Keys.D)
@@ -921,7 +999,10 @@ namespace ThesisInterface
                 if (KeyD != 'D')
                 {
                     KeyD = 'D';
+                    int oldLevel = level;
+                    level = 3;
                     SetCommandForKcontrol();
+                    level = oldLevel;
                 }
             }
             else if (e.KeyCode == Keys.E)
@@ -1014,8 +1095,23 @@ namespace ThesisInterface
                                     MyVehicle = new Vehicle(value);
                                     manualUC1.VehicleStatusBox.Text = MyVehicle.GetVehicleStatus();
                                     // Save Position Data & Draw On Map
+                                    manualUC1.PositionBox.Text += mess + "\r\n";
                                     manualUC1.PositionBox.Text += MyVehicle.PosX.ToString() + "," + MyVehicle.PosY.ToString() + "\r\n";
-                                    manualUC1.chart1.Series["Position"].Points.AddXY(MyVehicle.PosX, MyVehicle.PosY);
+                                    if (MyVehicle.GPSStatus)
+                                    {
+                                        // Save Position Data & Draw On Map
+                                        ActualCooridnatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
+                                        if (online)
+                                        {
+                                            DisplayRouteOnMap(manualUC1.gmap, new GMapRoute(ActualCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
+                                        }
+                                        else
+                                        {
+                                            manualUC1.chart1.Series["Position"].Points.AddXY(MyVehicle.PosX, MyVehicle.PosY);
+                                        }
+                                    }
+
+                                    
                                 }
                             }
                         }
@@ -1061,11 +1157,12 @@ namespace ThesisInterface
                             value = mess.Split(',');
                             if (value[0] == "$VINFO" && (value.Count() == 15))
                             {
+                                autoUC1.ReceivedTb.Text += mess + "\r\n";
                                 temp = mess;
                                 temp = temp.Remove(temp.Length - 3, 3);
                                 temp = temp.Remove(0, 1);
                                 //if (value[14].Contains(checksum(temp)))
-                                if(true)    //TODO: CHange it back later
+                                if(value[14].Contains(checksum(temp)))
                                 {
                                     MyVehicle = new Vehicle(value);
                                     /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
@@ -1075,7 +1172,7 @@ namespace ThesisInterface
                                         // Save Position Data & Draw On Map
                                         autoUC1.ReceivedTb.Text += mess;
                                         ActualCooridnatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
-                                        DisplayRouteOnMap(new GMapRoute(ActualCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
+                                        DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
                                     }
                                     /*  Draw turning State of vehicle by subtracting the RefAngle and the ActualAngle
                                         (It help users to understand whether the vehicle is turning left or right)      */
@@ -1226,7 +1323,7 @@ namespace ThesisInterface
             {
                 if(SendCommandSuccessfully)
                 {
-                    KcontrolWaitTimes = 3;
+                    KcontrolWaitTimes = defaultwaitTimes;
                     SendCommandSuccessfully = false;
                     KcontrolTimer.Enabled = false;
                 }
@@ -1237,7 +1334,7 @@ namespace ThesisInterface
             }
             else
             {
-                KcontrolWaitTimes = 3;
+                KcontrolWaitTimes = defaultwaitTimes;
                 SendCommandSuccessfully = false;
                 KcontrolTimer.Enabled = false;                
             }
@@ -1394,26 +1491,26 @@ namespace ThesisInterface
             ActualLines.Clear();
         }
 
-        private void DisplayRouteOnMap(GMapRoute route, string mode)
+        private void DisplayRouteOnMap(GMapControl map, GMapRoute route, string mode)
         {
             if(mode.Contains("Plan"))
             {
                 PlanLines.Routes.Clear();
                 PlanLines.Routes.Add(route);
-                autoUC1.gmap.Overlays.Add(PlanLines);
+                map.Overlays.Add(PlanLines);
             }
             else
             {
                 ActualLines.Routes.Clear();
                 ActualLines.Routes.Add(route);
-                autoUC1.gmap.Overlays.Add(ActualLines);
-                autoUC1.gmap.Show();
+                map.Overlays.Add(ActualLines);
+                map.Show();
             }
         }
 
         private void SetCommandForKcontrol()
         {
-            KcontrolWaitTimes = 3;
+            KcontrolWaitTimes = defaultwaitTimes;
             KcontrolTimer.Enabled = true;
             SendCommandAsync();
         }
