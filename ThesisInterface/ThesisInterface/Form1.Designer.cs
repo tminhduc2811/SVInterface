@@ -30,76 +30,57 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.TopPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.ResetVehicleBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.ConnectedImage = new System.Windows.Forms.PictureBox();
             this.closebt = new Bunifu.Framework.UI.BunifuImageButton();
             this.maxbt = new Bunifu.Framework.UI.BunifuImageButton();
             this.minbt = new Bunifu.Framework.UI.BunifuImageButton();
             this.menubt = new Bunifu.Framework.UI.BunifuImageButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.ResetVehicleBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.bunifuElipse4 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.autoUC1 = new ThesisInterface.UserControls.AutoUC();
-            this.imuSetting1 = new ThesisInterface.UserControls.IMUSetting();
-            this.manualUC1 = new ThesisInterface.UserControls.ManualUC();
-            this.vehicleSetting1 = new ThesisInterface.UserControls.VehicleSetting();
             this.ConfigWaitForRespond = new System.Windows.Forms.Timer(this.components);
             this.IMUConfigWaitForRespond = new System.Windows.Forms.Timer(this.components);
             this.AutoTimer = new System.Windows.Forms.Timer(this.components);
             this.SidePanel = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
-            this.ManualBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label2 = new System.Windows.Forms.Label();
             this.KcontrolTimer = new System.Windows.Forms.Timer(this.components);
+            this.TopDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.StartKctrlTimer = new System.Windows.Forms.Timer(this.components);
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.manualUC1 = new ThesisInterface.UserControls.ManualUC();
+            this.vehicleSetting1 = new ThesisInterface.UserControls.VehicleSetting();
+            this.autoUC1 = new ThesisInterface.UserControls.AutoUC();
+            this.imuSetting1 = new ThesisInterface.UserControls.IMUSetting();
+            this.helperControls1 = new ThesisInterface.UserControls.HelperControls();
+            this.ControlPanelDrag = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.TopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ResetVehicleBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closebt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxbt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minbt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menubt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ResetVehicleBt)).BeginInit();
             this.panel1.SuspendLayout();
             this.SidePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ManualBt)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 5;
-            this.bunifuElipse1.TargetControl = this;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // bunifuElipse3
-            // 
-            this.bunifuElipse3.ElipseRadius = 5;
-            this.bunifuElipse3.TargetControl = this;
-            // 
-            // bunifuDragControl1
-            // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this.TopPanel;
-            this.bunifuDragControl1.Vertical = true;
-            // 
             // TopPanel
             // 
             this.TopPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TopPanel.BackgroundImage")));
             this.TopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TopPanel.Controls.Add(this.ResetVehicleBt);
             this.TopPanel.Controls.Add(this.ConnectedImage);
             this.TopPanel.Controls.Add(this.closebt);
             this.TopPanel.Controls.Add(this.maxbt);
@@ -118,6 +99,22 @@
             this.TopPanel.TabIndex = 9;
             this.TopPanel.DoubleClick += new System.EventHandler(this.TopPanel_DoubleClick);
             // 
+            // ResetVehicleBt
+            // 
+            this.ResetVehicleBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResetVehicleBt.BackColor = System.Drawing.Color.Transparent;
+            this.ResetVehicleBt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ResetVehicleBt.Image = global::ThesisInterface.Properties.Resources.Available_Updates_50px;
+            this.ResetVehicleBt.ImageActive = null;
+            this.ResetVehicleBt.Location = new System.Drawing.Point(966, 8);
+            this.ResetVehicleBt.Name = "ResetVehicleBt";
+            this.ResetVehicleBt.Size = new System.Drawing.Size(23, 23);
+            this.ResetVehicleBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ResetVehicleBt.TabIndex = 20;
+            this.ResetVehicleBt.TabStop = false;
+            this.ResetVehicleBt.Zoom = 10;
+            this.ResetVehicleBt.Click += new System.EventHandler(this.ResetVehicleBt_Click);
+            // 
             // ConnectedImage
             // 
             this.ConnectedImage.BackColor = System.Drawing.Color.Transparent;
@@ -133,6 +130,7 @@
             // 
             this.closebt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closebt.BackColor = System.Drawing.Color.Transparent;
+            this.closebt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closebt.Image = global::ThesisInterface.Properties.Resources.Close_Window_64px;
             this.closebt.ImageActive = null;
             this.closebt.Location = new System.Drawing.Point(1056, 7);
@@ -148,6 +146,7 @@
             // 
             this.maxbt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.maxbt.BackColor = System.Drawing.Color.Transparent;
+            this.maxbt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maxbt.Image = global::ThesisInterface.Properties.Resources.Restore_Window_50px;
             this.maxbt.ImageActive = null;
             this.maxbt.Location = new System.Drawing.Point(1025, 7);
@@ -163,6 +162,7 @@
             // 
             this.minbt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.minbt.BackColor = System.Drawing.Color.Transparent;
+            this.minbt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minbt.Image = global::ThesisInterface.Properties.Resources.Minimize_Window_64px;
             this.minbt.ImageActive = null;
             this.minbt.Location = new System.Drawing.Point(994, 7);
@@ -177,6 +177,7 @@
             // menubt
             // 
             this.menubt.BackColor = System.Drawing.Color.Transparent;
+            this.menubt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menubt.Image = global::ThesisInterface.Properties.Resources.Menu_64px;
             this.menubt.ImageActive = null;
             this.menubt.Location = new System.Drawing.Point(12, 7);
@@ -200,34 +201,10 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "SELF-DRIVING VEHICLE";
             // 
-            // ResetVehicleBt
-            // 
-            this.ResetVehicleBt.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ResetVehicleBt.BackColor = System.Drawing.Color.Transparent;
-            this.ResetVehicleBt.Image = global::ThesisInterface.Properties.Resources.Available_Updates_50px;
-            this.ResetVehicleBt.ImageActive = null;
-            this.ResetVehicleBt.Location = new System.Drawing.Point(8, 492);
-            this.ResetVehicleBt.Name = "ResetVehicleBt";
-            this.ResetVehicleBt.Size = new System.Drawing.Size(29, 33);
-            this.ResetVehicleBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ResetVehicleBt.TabIndex = 20;
-            this.ResetVehicleBt.TabStop = false;
-            this.ResetVehicleBt.Zoom = 10;
-            this.ResetVehicleBt.Click += new System.EventHandler(this.ResetVehicleBt_Click);
-            // 
-            // bunifuElipse2
-            // 
-            this.bunifuElipse2.ElipseRadius = 5;
-            this.bunifuElipse2.TargetControl = this;
-            // 
-            // bunifuElipse4
-            // 
-            this.bunifuElipse4.ElipseRadius = 5;
-            this.bunifuElipse4.TargetControl = this;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(11)))), ((int)(((byte)(42)))));
+            this.panel1.Controls.Add(this.helperControls1);
             this.panel1.Controls.Add(this.manualUC1);
             this.panel1.Controls.Add(this.vehicleSetting1);
             this.panel1.Controls.Add(this.autoUC1);
@@ -238,47 +215,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(931, 537);
             this.panel1.TabIndex = 11;
-            // 
-            // autoUC1
-            // 
-            this.autoUC1.BackColor = System.Drawing.Color.White;
-            this.autoUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.autoUC1.Location = new System.Drawing.Point(0, 0);
-            this.autoUC1.Name = "autoUC1";
-            this.autoUC1.Size = new System.Drawing.Size(931, 537);
-            this.autoUC1.TabIndex = 12;
-            this.autoUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AutoUCControlByKeyDown);
-            this.autoUC1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AutoUCControlByKeyUp);
-            this.autoUC1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.autoUC1_MouseClick);
-            // 
-            // imuSetting1
-            // 
-            this.imuSetting1.BackColor = System.Drawing.Color.White;
-            this.imuSetting1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imuSetting1.Location = new System.Drawing.Point(0, 0);
-            this.imuSetting1.Name = "imuSetting1";
-            this.imuSetting1.Size = new System.Drawing.Size(931, 537);
-            this.imuSetting1.TabIndex = 2;
-            // 
-            // manualUC1
-            // 
-            this.manualUC1.BackColor = System.Drawing.Color.White;
-            this.manualUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.manualUC1.Location = new System.Drawing.Point(0, 0);
-            this.manualUC1.Name = "manualUC1";
-            this.manualUC1.Size = new System.Drawing.Size(931, 537);
-            this.manualUC1.TabIndex = 0;
-            this.manualUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyDown);
-            this.manualUC1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyUp);
-            // 
-            // vehicleSetting1
-            // 
-            this.vehicleSetting1.BackColor = System.Drawing.Color.White;
-            this.vehicleSetting1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vehicleSetting1.Location = new System.Drawing.Point(0, 0);
-            this.vehicleSetting1.Name = "vehicleSetting1";
-            this.vehicleSetting1.Size = new System.Drawing.Size(931, 537);
-            this.vehicleSetting1.TabIndex = 13;
             // 
             // ConfigWaitForRespond
             // 
@@ -298,9 +234,6 @@
             // 
             this.SidePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SidePanel.BackgroundImage")));
             this.SidePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SidePanel.Controls.Add(this.bunifuImageButton2);
-            this.SidePanel.Controls.Add(this.ManualBt);
-            this.SidePanel.Controls.Add(this.ResetVehicleBt);
             this.SidePanel.Controls.Add(this.bunifuFlatButton4);
             this.SidePanel.Controls.Add(this.bunifuFlatButton3);
             this.SidePanel.Controls.Add(this.bunifuFlatButton1);
@@ -316,36 +249,6 @@
             this.SidePanel.Quality = 10;
             this.SidePanel.Size = new System.Drawing.Size(156, 537);
             this.SidePanel.TabIndex = 10;
-            // 
-            // bunifuImageButton2
-            // 
-            this.bunifuImageButton2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.bunifuImageButton2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButton2.Image = global::ThesisInterface.Properties.Resources.Available_Updates_50px;
-            this.bunifuImageButton2.ImageActive = null;
-            this.bunifuImageButton2.Location = new System.Drawing.Point(121, 492);
-            this.bunifuImageButton2.Name = "bunifuImageButton2";
-            this.bunifuImageButton2.Size = new System.Drawing.Size(29, 33);
-            this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton2.TabIndex = 20;
-            this.bunifuImageButton2.TabStop = false;
-            this.bunifuImageButton2.Zoom = 10;
-            this.bunifuImageButton2.Click += new System.EventHandler(this.ResetVehicleBt_Click);
-            // 
-            // ManualBt
-            // 
-            this.ManualBt.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ManualBt.BackColor = System.Drawing.Color.Transparent;
-            this.ManualBt.Image = global::ThesisInterface.Properties.Resources.Available_Updates_50px;
-            this.ManualBt.ImageActive = null;
-            this.ManualBt.Location = new System.Drawing.Point(64, 492);
-            this.ManualBt.Name = "ManualBt";
-            this.ManualBt.Size = new System.Drawing.Size(29, 33);
-            this.ManualBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ManualBt.TabIndex = 20;
-            this.ManualBt.TabStop = false;
-            this.ManualBt.Zoom = 10;
-            this.ManualBt.Click += new System.EventHandler(this.ManualBtClickHandler);
             // 
             // bunifuFlatButton4
             // 
@@ -516,6 +419,89 @@
             this.KcontrolTimer.Interval = 80;
             this.KcontrolTimer.Tick += new System.EventHandler(this.KcontrolTimer_Tick);
             // 
+            // TopDragControl
+            // 
+            this.TopDragControl.Fixed = true;
+            this.TopDragControl.Horizontal = true;
+            this.TopDragControl.TargetControl = this.TopPanel;
+            this.TopDragControl.Vertical = true;
+            // 
+            // StartKctrlTimer
+            // 
+            this.StartKctrlTimer.Interval = 45;
+            this.StartKctrlTimer.Tick += new System.EventHandler(this.StartKctrlTimer_Tick);
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 25;
+            this.bunifuElipse1.TargetControl = this;
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.TopPanel;
+            this.bunifuDragControl1.Vertical = true;
+            // 
+            // manualUC1
+            // 
+            this.manualUC1.BackColor = System.Drawing.Color.White;
+            this.manualUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.manualUC1.Location = new System.Drawing.Point(0, 0);
+            this.manualUC1.Name = "manualUC1";
+            this.manualUC1.Size = new System.Drawing.Size(931, 537);
+            this.manualUC1.TabIndex = 0;
+            this.manualUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyDown);
+            this.manualUC1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyUp);
+            // 
+            // vehicleSetting1
+            // 
+            this.vehicleSetting1.BackColor = System.Drawing.Color.White;
+            this.vehicleSetting1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vehicleSetting1.Location = new System.Drawing.Point(0, 0);
+            this.vehicleSetting1.Name = "vehicleSetting1";
+            this.vehicleSetting1.Size = new System.Drawing.Size(931, 537);
+            this.vehicleSetting1.TabIndex = 13;
+            // 
+            // autoUC1
+            // 
+            this.autoUC1.BackColor = System.Drawing.Color.White;
+            this.autoUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoUC1.Location = new System.Drawing.Point(0, 0);
+            this.autoUC1.Name = "autoUC1";
+            this.autoUC1.Size = new System.Drawing.Size(931, 537);
+            this.autoUC1.TabIndex = 12;
+            this.autoUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AutoUCControlByKeyDown);
+            this.autoUC1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AutoUCControlByKeyUp);
+            this.autoUC1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.autoUC1_MouseClick);
+            // 
+            // imuSetting1
+            // 
+            this.imuSetting1.BackColor = System.Drawing.Color.White;
+            this.imuSetting1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imuSetting1.Location = new System.Drawing.Point(0, 0);
+            this.imuSetting1.Name = "imuSetting1";
+            this.imuSetting1.Size = new System.Drawing.Size(931, 537);
+            this.imuSetting1.TabIndex = 2;
+            // 
+            // helperControls1
+            // 
+            this.helperControls1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.helperControls1.BackColor = System.Drawing.Color.White;
+            this.helperControls1.Location = new System.Drawing.Point(166, 0);
+            this.helperControls1.Name = "helperControls1";
+            this.helperControls1.Size = new System.Drawing.Size(533, 513);
+            this.helperControls1.TabIndex = 14;
+            // 
+            // ControlPanelDrag
+            // 
+            this.ControlPanelDrag.Fixed = true;
+            this.ControlPanelDrag.Horizontal = true;
+            this.ControlPanelDrag.TargetControl = this.helperControls1;
+            this.ControlPanelDrag.Vertical = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,24 +515,20 @@
             this.Text = "Form1";
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ResetVehicleBt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closebt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxbt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minbt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menubt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ResetVehicleBt)).EndInit();
             this.panel1.ResumeLayout(false);
             this.SidePanel.ResumeLayout(false);
             this.SidePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ManualBt)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuGradientPanel SidePanel;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton4;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton3;
@@ -560,10 +542,6 @@
         private Bunifu.Framework.UI.BunifuImageButton menubt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse3;
-        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse4;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Panel panel1;
         private UserControls.ManualUC manualUC1;
@@ -575,9 +553,13 @@
         private UserControls.VehicleSetting vehicleSetting1;
         public System.Windows.Forms.PictureBox ConnectedImage;
         private Bunifu.Framework.UI.BunifuImageButton ResetVehicleBt;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton2;
-        private Bunifu.Framework.UI.BunifuImageButton ManualBt;
         private System.Windows.Forms.Timer KcontrolTimer;
+        private Bunifu.Framework.UI.BunifuDragControl TopDragControl;
+        private System.Windows.Forms.Timer StartKctrlTimer;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
+        private UserControls.HelperControls helperControls1;
+        private Bunifu.Framework.UI.BunifuDragControl ControlPanelDrag;
     }
 }
 

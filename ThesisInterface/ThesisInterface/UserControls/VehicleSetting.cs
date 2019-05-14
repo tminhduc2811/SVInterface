@@ -16,7 +16,7 @@ namespace ThesisInterface.UserControls
         {
             InitializeComponent();
         }
-
+        
         public void OpenSPBtClickHandler(EventHandler handler)
         {
             this.OpenSPBt.Click += handler;

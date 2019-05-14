@@ -134,7 +134,6 @@ D:\Project\SVInterface\ThesisInterface\ThesisInterface\bin\Debug\EntityFramework
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\bin\Debug\Newtonsoft.Json.xml
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\bin\Debug\System.Data.SQLite.xml
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\bin\Debug\System.Data.SQLite.dll.config
-D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Form1.resources
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.Properties.Resources.resources
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoUC.resources
@@ -148,3 +147,4 @@ D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.exe
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.pdb
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\bin\Debug\Newtonsoft.Json.pdb
+D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.HelperControls.resources

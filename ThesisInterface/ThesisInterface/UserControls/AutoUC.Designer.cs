@@ -303,7 +303,8 @@
             this.bunifuMetroTextbox1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox1.BorderColorMouseHover = System.Drawing.Color.BlueViolet;
             this.bunifuMetroTextbox1.BorderThickness = 3;
-            this.bunifuMetroTextbox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextbox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bunifuMetroTextbox1.Enabled = false;
             this.bunifuMetroTextbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.bunifuMetroTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox1.isPassword = false;
@@ -345,6 +346,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DetailInfoTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DetailInfoTb.Cursor = System.Windows.Forms.Cursors.Default;
             this.DetailInfoTb.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.DetailInfoTb.Location = new System.Drawing.Point(16, 22);
             this.DetailInfoTb.Name = "DetailInfoTb";
@@ -364,7 +366,8 @@
             this.bunifuMetroTextbox2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox2.BorderColorMouseHover = System.Drawing.Color.BlueViolet;
             this.bunifuMetroTextbox2.BorderThickness = 3;
-            this.bunifuMetroTextbox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextbox2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bunifuMetroTextbox2.Enabled = false;
             this.bunifuMetroTextbox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.bunifuMetroTextbox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox2.isPassword = false;
@@ -471,6 +474,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SentTb.BackColor = System.Drawing.Color.White;
             this.SentTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SentTb.Cursor = System.Windows.Forms.Cursors.Default;
             this.SentTb.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.SentTb.Location = new System.Drawing.Point(16, 21);
             this.SentTb.Name = "SentTb";
@@ -502,7 +506,8 @@
             this.bunifuMetroTextbox5.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox5.BorderColorMouseHover = System.Drawing.Color.BlueViolet;
             this.bunifuMetroTextbox5.BorderThickness = 3;
-            this.bunifuMetroTextbox5.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextbox5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bunifuMetroTextbox5.Enabled = false;
             this.bunifuMetroTextbox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.bunifuMetroTextbox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox5.isPassword = false;
@@ -593,6 +598,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ReceivedTb.BackColor = System.Drawing.Color.White;
             this.ReceivedTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ReceivedTb.Cursor = System.Windows.Forms.Cursors.Default;
             this.ReceivedTb.Font = new System.Drawing.Font("Courier New", 13.8F);
             this.ReceivedTb.Location = new System.Drawing.Point(80, 19);
             this.ReceivedTb.Name = "ReceivedTb";
@@ -624,7 +630,8 @@
             this.bunifuMetroTextbox4.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox4.BorderColorMouseHover = System.Drawing.Color.BlueViolet;
             this.bunifuMetroTextbox4.BorderThickness = 3;
-            this.bunifuMetroTextbox4.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextbox4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bunifuMetroTextbox4.Enabled = false;
             this.bunifuMetroTextbox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.bunifuMetroTextbox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox4.isPassword = false;
@@ -662,6 +669,7 @@
             // SaveBt
             // 
             this.SaveBt.BackColor = System.Drawing.Color.Transparent;
+            this.SaveBt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SaveBt.Image = global::ThesisInterface.Properties.Resources.savewhite;
             this.SaveBt.ImageActive = null;
             this.SaveBt.Location = new System.Drawing.Point(0, 304);
@@ -675,6 +683,7 @@
             // OpenBt
             // 
             this.OpenBt.BackColor = System.Drawing.Color.Transparent;
+            this.OpenBt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.OpenBt.Image = global::ThesisInterface.Properties.Resources.openwhite;
             this.OpenBt.ImageActive = null;
             this.OpenBt.Location = new System.Drawing.Point(0, 260);
@@ -688,6 +697,7 @@
             // StopBt
             // 
             this.StopBt.BackColor = System.Drawing.Color.Transparent;
+            this.StopBt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.StopBt.Image = global::ThesisInterface.Properties.Resources.stopwhite;
             this.StopBt.ImageActive = null;
             this.StopBt.Location = new System.Drawing.Point(0, 216);
@@ -701,6 +711,7 @@
             // Onbt
             // 
             this.Onbt.BackColor = System.Drawing.Color.Transparent;
+            this.Onbt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Onbt.Image = global::ThesisInterface.Properties.Resources.startwhite;
             this.Onbt.ImageActive = null;
             this.Onbt.Location = new System.Drawing.Point(0, 172);

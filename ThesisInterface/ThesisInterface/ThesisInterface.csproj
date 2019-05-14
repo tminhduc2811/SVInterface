@@ -117,6 +117,12 @@
     <Compile Include="UserControls\AutoUC.Designer.cs">
       <DependentUpon>AutoUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HelperControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\HelperControls.Designer.cs">
+      <DependentUpon>HelperControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\VehicleSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\AutoUC.resx">
       <DependentUpon>AutoUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\HelperControls.resx">
+      <DependentUpon>HelperControls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\IMUSetting.resx">
       <DependentUpon>IMUSetting.cs</DependentUpon>

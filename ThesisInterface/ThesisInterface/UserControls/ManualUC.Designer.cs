@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManualUC));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ExportBt = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -55,8 +55,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.FormStatus = new System.Windows.Forms.Label();
             this.modeBt = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.FormStatus = new System.Windows.Forms.Label();
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
             this.bunifuGradientPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -386,6 +386,9 @@
             // 
             // VehicleStatusBox
             // 
+            this.VehicleStatusBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.VehicleStatusBox.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VehicleStatusBox.Location = new System.Drawing.Point(0, 46);
             this.VehicleStatusBox.Name = "VehicleStatusBox";
@@ -411,23 +414,23 @@
             // 
             // chart1
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Name = "Legend1";
-            this.chart1.Legends.Add(legend5);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Name = "chart1";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series9.Legend = "Legend1";
-            series9.Name = "Position";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series10.Legend = "Legend1";
-            series10.Name = "Map";
-            this.chart1.Series.Add(series9);
-            this.chart1.Series.Add(series10);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Position";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Map";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(481, 326);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -436,26 +439,13 @@
             // 
             this.panel7.Controls.Add(this.modeBt);
             this.panel7.Controls.Add(this.FormStatus);
-            this.panel7.Controls.Add(this.gmap);
             this.panel7.Controls.Add(this.chart1);
+            this.panel7.Controls.Add(this.gmap);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(363, 0);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(481, 326);
             this.panel7.TabIndex = 4;
-            // 
-            // FormStatus
-            // 
-            this.FormStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FormStatus.AutoSize = true;
-            this.FormStatus.BackColor = System.Drawing.Color.Transparent;
-            this.FormStatus.Font = new System.Drawing.Font("Courier New", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
-            this.FormStatus.Location = new System.Drawing.Point(405, 34);
-            this.FormStatus.Name = "FormStatus";
-            this.FormStatus.Size = new System.Drawing.Size(76, 21);
-            this.FormStatus.TabIndex = 14;
-            this.FormStatus.Text = "STOPED";
             // 
             // modeBt
             // 
@@ -465,7 +455,7 @@
             this.modeBt.ActiveForecolor = System.Drawing.Color.White;
             this.modeBt.ActiveLineColor = System.Drawing.Color.SeaGreen;
             this.modeBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.modeBt.BackColor = System.Drawing.Color.Transparent;
+            this.modeBt.BackColor = System.Drawing.Color.White;
             this.modeBt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("modeBt.BackgroundImage")));
             this.modeBt.ButtonText = "Online";
             this.modeBt.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -482,6 +472,19 @@
             this.modeBt.Size = new System.Drawing.Size(82, 32);
             this.modeBt.TabIndex = 15;
             this.modeBt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FormStatus
+            // 
+            this.FormStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.FormStatus.AutoSize = true;
+            this.FormStatus.BackColor = System.Drawing.Color.Transparent;
+            this.FormStatus.Font = new System.Drawing.Font("Courier New", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
+            this.FormStatus.Location = new System.Drawing.Point(310, 294);
+            this.FormStatus.Name = "FormStatus";
+            this.FormStatus.Size = new System.Drawing.Size(76, 21);
+            this.FormStatus.TabIndex = 14;
+            this.FormStatus.Text = "STOPED";
             // 
             // gmap
             // 

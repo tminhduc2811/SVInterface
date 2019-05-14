@@ -105,6 +105,7 @@
             this.bunifuMetroTextbox5.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(29)))), ((int)(((byte)(42)))));
             this.bunifuMetroTextbox5.BorderThickness = 2;
             this.bunifuMetroTextbox5.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextbox5.Enabled = false;
             this.bunifuMetroTextbox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.bunifuMetroTextbox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox5.isPassword = false;
@@ -132,7 +133,7 @@
             // DisconnectedLabel
             // 
             this.DisconnectedLabel.AutoSize = true;
-            this.DisconnectedLabel.BackColor = System.Drawing.Color.AliceBlue;
+            this.DisconnectedLabel.BackColor = System.Drawing.Color.White;
             this.DisconnectedLabel.Font = new System.Drawing.Font("Bahnschrift Condensed", 15.75F);
             this.DisconnectedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.DisconnectedLabel.Location = new System.Drawing.Point(108, 146);
@@ -151,6 +152,7 @@
             this.bunifuMetroTextbox4.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(29)))), ((int)(((byte)(42)))));
             this.bunifuMetroTextbox4.BorderThickness = 2;
             this.bunifuMetroTextbox4.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextbox4.Enabled = false;
             this.bunifuMetroTextbox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.bunifuMetroTextbox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox4.isPassword = false;
@@ -207,6 +209,7 @@
             this.bunifuMetroTextbox2.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(29)))), ((int)(((byte)(42)))));
             this.bunifuMetroTextbox2.BorderThickness = 2;
             this.bunifuMetroTextbox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextbox2.Enabled = false;
             this.bunifuMetroTextbox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.bunifuMetroTextbox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuMetroTextbox2.isPassword = false;
@@ -238,7 +241,6 @@
             this.PortNameBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PortNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PortNameBox.ForeColor = System.Drawing.Color.White;
-            this.PortNameBox.FormattingEnabled = true;
             this.PortNameBox.Location = new System.Drawing.Point(506, 67);
             this.PortNameBox.Name = "PortNameBox";
             this.PortNameBox.Size = new System.Drawing.Size(274, 28);
@@ -721,6 +723,7 @@
             this.ReceiveMessTextBox.ForeColor = System.Drawing.Color.Black;
             this.ReceiveMessTextBox.Location = new System.Drawing.Point(0, 25);
             this.ReceiveMessTextBox.Name = "ReceiveMessTextBox";
+            this.ReceiveMessTextBox.ReadOnly = true;
             this.ReceiveMessTextBox.Size = new System.Drawing.Size(359, 77);
             this.ReceiveMessTextBox.TabIndex = 0;
             this.ReceiveMessTextBox.Text = "";
@@ -760,6 +763,7 @@
             this.SentMessTextBox.ForeColor = System.Drawing.Color.Black;
             this.SentMessTextBox.Location = new System.Drawing.Point(0, 25);
             this.SentMessTextBox.Name = "SentMessTextBox";
+            this.SentMessTextBox.ReadOnly = true;
             this.SentMessTextBox.Size = new System.Drawing.Size(359, 77);
             this.SentMessTextBox.TabIndex = 0;
             this.SentMessTextBox.Text = "";
@@ -780,6 +784,7 @@
             // 
             this.UpdateSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UpdateSP.BackColor = System.Drawing.Color.Transparent;
+            this.UpdateSP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UpdateSP.Image = global::ThesisInterface.Properties.Resources.Restart_100px;
             this.UpdateSP.ImageActive = null;
             this.UpdateSP.Location = new System.Drawing.Point(791, 67);
@@ -793,6 +798,7 @@
             // SendBt
             // 
             this.SendBt.BackColor = System.Drawing.Color.Transparent;
+            this.SendBt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SendBt.Image = global::ThesisInterface.Properties.Resources.Send_Letter_100px;
             this.SendBt.ImageActive = null;
             this.SendBt.Location = new System.Drawing.Point(54, 238);
@@ -806,6 +812,7 @@
             // SaveBt
             // 
             this.SaveBt.BackColor = System.Drawing.Color.Transparent;
+            this.SaveBt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SaveBt.Image = global::ThesisInterface.Properties.Resources.Save_100px;
             this.SaveBt.ImageActive = null;
             this.SaveBt.Location = new System.Drawing.Point(54, 327);
@@ -819,6 +826,7 @@
             // CloseSPBt
             // 
             this.CloseSPBt.BackColor = System.Drawing.Color.White;
+            this.CloseSPBt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseSPBt.Image = global::ThesisInterface.Properties.Resources.Stop_100px;
             this.CloseSPBt.ImageActive = null;
             this.CloseSPBt.Location = new System.Drawing.Point(450, 137);
@@ -832,6 +840,7 @@
             // OpenSPBt
             // 
             this.OpenSPBt.BackColor = System.Drawing.Color.White;
+            this.OpenSPBt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.OpenSPBt.Image = global::ThesisInterface.Properties.Resources.Play_100px;
             this.OpenSPBt.ImageActive = null;
             this.OpenSPBt.Location = new System.Drawing.Point(394, 137);
@@ -846,7 +855,7 @@
             // 
             this.DisonnectedImage.BackColor = System.Drawing.Color.White;
             this.DisonnectedImage.Image = global::ThesisInterface.Properties.Resources.Connect_Develop_100px;
-            this.DisonnectedImage.Location = new System.Drawing.Point(55, 46);
+            this.DisonnectedImage.Location = new System.Drawing.Point(54, 46);
             this.DisonnectedImage.Name = "DisonnectedImage";
             this.DisonnectedImage.Size = new System.Drawing.Size(215, 90);
             this.DisonnectedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -855,7 +864,7 @@
             // 
             // ConnectedImage
             // 
-            this.ConnectedImage.BackColor = System.Drawing.Color.AliceBlue;
+            this.ConnectedImage.BackColor = System.Drawing.Color.White;
             this.ConnectedImage.Image = global::ThesisInterface.Properties.Resources.Connect_Develop_96px;
             this.ConnectedImage.Location = new System.Drawing.Point(54, 46);
             this.ConnectedImage.Name = "ConnectedImage";
