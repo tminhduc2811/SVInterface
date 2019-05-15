@@ -99,6 +99,8 @@ namespace ThesisInterface
             public CoordinatesInfo coordinatesInfo { get; set; }
         }
 
+
+
         Vehicle MyVehicle;
         
         // SET DEFAULT IMAGE FOR VELOCITY OF VEHICLE, CONSIST OF: RED, ORANGE, YELLOW, GREEN
@@ -161,6 +163,9 @@ namespace ThesisInterface
         public int KctrlTimerTimes = 20;
 
         private bool OnHelperPanel = false;
+
+        private int DefaultWaitTimes = 20;
+
         public Form1()
         {
             InitializeComponent();
@@ -187,37 +192,17 @@ namespace ThesisInterface
                     autoUC1.BringToFront();
                     break;
                 case 116: // Key = F5
-                    if(!KctrlEnabled && StartKctrlTimer.Enabled == false)
-                    {
-                        try
-                        {
-                            DisableAllTimers();
-                            serialPort1.Write(MessagesDocker("KCTRL,1"));
-                            StartKctrlTimer.Enabled = true;
-                            break;
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        }
-                    }
-                    if(KctrlEnabled && StartKctrlTimer.Enabled == false)
-                    {
-                        try
-                        {
-                            serialPort1.Write(MessagesDocker("KCTRL,0"));
-                            StartKctrlTimer.Enabled = true;
-                            break;
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        }
-                    }
+                    KctrlChangeMode();
                     break;
-                case 122: // Key = F11
+                case 117: // Key = F6, Get all vehicle information
+
+                    break;
+
+                case 118: // Key = F7, ON Send data from vehicle
+                    ControlSendDataFromVehicle(0);
+                    break;
+                case 119: // Key = F8, OFF Send data from vehicle
+                    ControlSendDataFromVehicle(1);
                     break;
                 case 123: // Key = F12, Get all help controls
                     if(OnHelperPanel)
@@ -231,7 +216,9 @@ namespace ThesisInterface
                         helperControls1.BringToFront();
                     }
                     break;
-                 
+                case 27: // Key = Escape
+                    helperControls1.SendToBack();
+                    break;
             }
             if(KctrlEnabled)
             {
@@ -451,7 +438,8 @@ namespace ThesisInterface
             // Add items to combo box
             string[] Ports = SerialPort.GetPortNames();
             vehicleSetting1.PortNameBox.Items.AddRange(Ports);
-            vehicleSetting1.BaudrateBox.Text = "9600";
+            vehicleSetting1.PortNameBox.Text = "COM4";
+            vehicleSetting1.BaudrateBox.Text = "115200";
             // Read txt file
             StreamReader sr = new StreamReader(Application.StartupPath + @"\Config.txt");
 
@@ -508,6 +496,14 @@ namespace ThesisInterface
             this.autoUC1.ClearPlannedMapBtClickHandler(new EventHandler(ClearPlannedMapBtAutoUCClickHandler));
             this.autoUC1.ClearActualMapBtClickHandler(new EventHandler(ClearActualMapBtAutoUCClickHandler));
             this.autoUC1.StopVehicleBtClickHandler(new EventHandler(StopVehicleBtAutoUCClickHandler));
+            this.helperControls1.CloseBtClickHandler(new EventHandler(CloseBtHelperUCClickHandler));
+            this.helperControls1.SettingVehicleBtClickHandler(new EventHandler(SettingVehicleHelperUCClickHandler));
+            this.helperControls1.IMUSettingBtClickHandler(new EventHandler(IMUSettingHelperUCClickHandler));
+            this.helperControls1.ManualBtClickHandler(new EventHandler(ManualBtHelperUCClickHandler));
+            this.helperControls1.AutoBtClickHandler(new EventHandler(AutoBtHelperUCClickHandler));
+            this.helperControls1.KctrlBtClickHandler(new EventHandler(KctrlBtHelperUCClickHandler));
+            this.helperControls1.OnSendDataBtClickHandler(new EventHandler(OnSendDataBtHelperUCClickHandler));
+            this.helperControls1.OffSendDataBtClickHandler(new EventHandler(OffSendDataBtHelperUCClickHandler));
         }
 
         //--------------------------------------------------------------------------//
@@ -1131,7 +1127,7 @@ namespace ThesisInterface
             autoUC1.gmap.SetPositionByKeywords("Vietnam, Ho Chi Minh");
             autoUC1.gmap.Position = new PointLatLng(10.772801, 106.659273);
             autoUC1.gmap.Zoom = 19;
-            
+
             //GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
             //GMap.NET.WindowsForms.GMapMarker marker =
             //    new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
@@ -1140,9 +1136,52 @@ namespace ThesisInterface
             //markers.Markers.Add(marker);
             //autoUC1.gmap.Overlays.Add(markers);
         }
-
-        //--------------------------------------------------------------------------//
         
+        //---------------------------------------------------------------------------//
+        // Helper Control
+
+        private void CloseBtHelperUCClickHandler(object sender, EventArgs e)
+        {
+            helperControls1.SendToBack();
+        }
+
+        private void SettingVehicleHelperUCClickHandler(object sender, EventArgs e)
+        {
+            vehicleSetting1.BringToFront();
+        }
+
+        private void IMUSettingHelperUCClickHandler(object sender, EventArgs e)
+        {
+            imuSetting1.BringToFront();
+        }
+
+        private void ManualBtHelperUCClickHandler(object sender, EventArgs e)
+        {
+            manualUC1.BringToFront();
+        }
+
+        private void AutoBtHelperUCClickHandler(object sender, EventArgs e)
+        {
+            autoUC1.BringToFront();
+        }
+
+        private void KctrlBtHelperUCClickHandler(object sender, EventArgs e)
+        {
+            KctrlChangeMode();
+        }
+
+        private void OnSendDataBtHelperUCClickHandler(object sender, EventArgs e)
+        {
+            ControlSendDataFromVehicle(0);
+        }
+
+        private void OffSendDataBtHelperUCClickHandler(object sender, EventArgs e)
+        {
+            ControlSendDataFromVehicle(1);
+        }
+        
+        //--------------------------------------------------------------------------//
+
         // TIMERS ------------------------------------------------------------------//
 
         private void timer1_Tick(object sender, EventArgs e) // Main timer for displaying data of vehicle
@@ -1402,7 +1441,6 @@ namespace ThesisInterface
                 KcontrolTimer.Enabled = false;                
             }
         }
-
         
         private void StartKctrlTimer_Tick(object sender, EventArgs e)
         {
@@ -1423,6 +1461,7 @@ namespace ThesisInterface
                                 StartKctrlTimer.Enabled = false;
                                 KctrlEnabled = false;
                                 KctrlTimerTimes = 20;
+                                helperControls1.KctrlBt.LabelText = "KCTRL-OFF (F5)";
                                 MessageBox.Show("Stoped KCTRL successfully");
                                 return;
                             }
@@ -1445,6 +1484,7 @@ namespace ThesisInterface
                                 StartKctrlTimer.Enabled = false;
                                 KctrlEnabled = true;
                                 KctrlTimerTimes = 20;
+                                helperControls1.KctrlBt.LabelText = "KCTRL-ON (F5)";
                                 MessageBox.Show("Started KCTRL successfully");
                                 return;
                             }
@@ -1465,8 +1505,35 @@ namespace ThesisInterface
             }
         }
 
+        private void DefaultWaitForResponseTimer_Tick(object sender, EventArgs e)
+        {
+            if(DefaultWaitTimes > 0)
+            {
+                DefaultWaitTimes--;
+                if(serialPort1.IsOpen && serialPort1.BytesToRead != 0)
+                {
+                    string mess = serialPort1.ReadLine();
+                    string[] value;
+                    value = mess.Split(',');
+                    if (value[0] == "$SINFO")
+                    {
+                        DefaultWaitForResponseTimer.Enabled = false;
+                        DefaultWaitTimes = 20;
+                        MessageBox.Show("Command sent to vehicle successfully");
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                DefaultWaitForResponseTimer.Enabled = false;
+                DefaultWaitTimes = 20;
+                MessageBox.Show("Command sent to vehicle failed");
+            }
+        }
+
         //---------------------------------------------------------------------------//
-        
+
         // Other functions ----------------------------------------------------------//
 
         public void DrawVehicleTurningStatusOnImage(PictureBox ImgBox, double angle, Image image)
@@ -1659,8 +1726,11 @@ namespace ThesisInterface
         {
             timer1.Enabled = false;
             KcontrolTimer.Enabled = false;
+            StartKctrlTimer.Enabled = false;
+            DefaultWaitForResponseTimer.Enabled = false;
             ManualEnabled = false;
             AutoEnabled = false;
+            KctrlEnabled = false;
         }
 
         private void DisableAllConfigTextBoxes()
@@ -1687,6 +1757,68 @@ namespace ThesisInterface
             vehicleSetting1.Velocity.Enabled = true;
             vehicleSetting1.Angle.Enabled = true;
             vehicleSetting1.Mode.Enabled = true;
+        }
+
+        private void KctrlChangeMode()
+        {
+            if (!KctrlEnabled && StartKctrlTimer.Enabled == false)
+            {
+                try
+                {
+                    DisableAllTimers();
+                    serialPort1.Write(MessagesDocker("KCTRL,1"));
+                    StartKctrlTimer.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            if (KctrlEnabled && StartKctrlTimer.Enabled == false)
+            {
+                try
+                {
+                    serialPort1.Write(MessagesDocker("KCTRL,0"));
+                    StartKctrlTimer.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void ControlSendDataFromVehicle(int mode)
+        {
+            if(mode == 0)
+            {
+                // Allow vehicle to send data
+                try
+                {
+                    serialPort1.Write(MessagesDocker("VEHCF,DATA,1"));
+                    DisableAllTimers();
+                    DefaultWaitForResponseTimer.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    DefaultWaitForResponseTimer.Enabled = false;
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                try
+                {
+                    serialPort1.Write(MessagesDocker("VEHCF,DATA,0"));
+                    DisableAllTimers();
+                    DefaultWaitForResponseTimer.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    DefaultWaitForResponseTimer.Enabled = false;
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

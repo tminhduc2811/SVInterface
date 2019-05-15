@@ -345,6 +345,7 @@
             this.DetailInfoTb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.DetailInfoTb.BackColor = System.Drawing.Color.White;
             this.DetailInfoTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DetailInfoTb.Cursor = System.Windows.Forms.Cursors.Default;
             this.DetailInfoTb.Font = new System.Drawing.Font("Courier New", 13.8F);
@@ -658,7 +659,7 @@
             this.bunifuGradientPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.bunifuGradientPanel2.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
             this.bunifuGradientPanel2.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(88)))));
-            this.bunifuGradientPanel2.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.bunifuGradientPanel2.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(14)))), ((int)(((byte)(79)))));
             this.bunifuGradientPanel2.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(49)))), ((int)(((byte)(85)))));
             this.bunifuGradientPanel2.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel2.Name = "bunifuGradientPanel2";
@@ -740,7 +741,7 @@
             this.textT.BackColor = System.Drawing.Color.Transparent;
             this.textT.Font = new System.Drawing.Font("Libel Suit Rg", 24F, System.Drawing.FontStyle.Bold);
             this.textT.ForeColor = System.Drawing.Color.White;
-            this.textT.Location = new System.Drawing.Point(6, 78);
+            this.textT.Location = new System.Drawing.Point(7, 78);
             this.textT.Name = "textT";
             this.textT.Size = new System.Drawing.Size(28, 39);
             this.textT.TabIndex = 10;
