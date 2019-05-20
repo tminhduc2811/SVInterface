@@ -131,6 +131,7 @@ namespace ThesisInterface
             }
         }
         //---------------------------------------------------------------------------------------------------------------
+        private bool AutoSetting = false;
         public string ConfigMessToWait = "";
         
         public int timeout = 40;
@@ -146,6 +147,8 @@ namespace ThesisInterface
         public string ConfigWaitKey = "|";
 
         public string OldMess = "";
+
+        private string PrevMode;
 
         public int KcontrolWaitTimes = 3, defaultwaitTimes = 3;
 
@@ -178,7 +181,7 @@ namespace ThesisInterface
 
         void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            switch(e.KeyValue)
+            switch (e.KeyValue)
             {
                 case 112: //Key = F1
                     vehicleSetting1.BringToFront();
@@ -207,8 +210,9 @@ namespace ThesisInterface
                     break;
                 case 121:
                     serialPort1.Write("$SFRST\r\n");
-                    DisableAllTimers();
+                    DisableAllTimers("auto");
                     DefaultWaitForResponseTimer.Enabled = true;
+                    SetPreviousMode();
                     break;
                 case 123: // Key = F12, Get all help controls
                     if(OnHelperPanel)
@@ -224,6 +228,11 @@ namespace ThesisInterface
                     break;
                 case 27: // Key = Escape
                     helperControls1.SendToBack();
+                    if(AutoSetting)
+                    {
+                        autoSetting1.SendToBack();
+                        AutoSetting = false;
+                    }
                     break;
             }
             if(KctrlEnabled)
@@ -493,17 +502,23 @@ namespace ThesisInterface
             this.vehicleSetting1.SendBtClickHandler(new EventHandler(SendBtSettingUCClickHandler));
             this.vehicleSetting1.SaveBtClickHandler(new EventHandler(SaveBtSettingUCClickHandler));
             this.vehicleSetting1.UpdateSPBtClickHandler(new EventHandler(UpdateSPBtSettingUCClickHandler));
+
+
             this.manualUC1.StartBtClickHandler(new EventHandler(StartBtManualUCClickHandler));
             this.manualUC1.StopBtClickHandler(new EventHandler(StopBtManualUCClickHandler));
             this.manualUC1.ImportBtClickHandler(new EventHandler(ImportBtManualUCClickHandler));
             this.manualUC1.ExportBtClickHandler(new EventHandler(ExportBtManualUCClickHandler));
             this.manualUC1.ChangeModeBtClickHandler(new EventHandler(ChangeModeBtManualUCClickHandler));
+
+
             this.imuSetting1.SendMessConfigBtClickHandler(new EventHandler(SendMessConfigIMUClickHandler));
             this.imuSetting1.SendBaudrateConfigBtClickHandler(new EventHandler(SendBaudrateConfigClickHandler));
             this.imuSetting1.SendFreqBtClickHandler(new EventHandler(SendFreqIMUClickHandler));
             this.imuSetting1.CalibBtClickHandler(new EventHandler(CalibIMUBtClickHandler));
             this.imuSetting1.ReadConfigBtClickHandler(new EventHandler(ReadIMUConfigClickHandler));
             this.imuSetting1.StartBtClickHandler(new EventHandler(StartIMUBtClickHandler));
+
+
             this.autoUC1.OnBtClickHandler(new EventHandler(OnBtAutoUCClickHandler));
             this.autoUC1.StartBtClickHandler(new EventHandler(StartBtAutoUCClickHandler));
             this.autoUC1.StopBtClickHandler(new EventHandler(StopBtAutoUCClickHandler));
@@ -514,6 +529,10 @@ namespace ThesisInterface
             this.autoUC1.ClearPlannedMapBtClickHandler(new EventHandler(ClearPlannedMapBtAutoUCClickHandler));
             this.autoUC1.ClearActualMapBtClickHandler(new EventHandler(ClearActualMapBtAutoUCClickHandler));
             this.autoUC1.StopVehicleBtClickHandler(new EventHandler(StopVehicleBtAutoUCClickHandler));
+            this.autoUC1.SettingBtClickHandler(new EventHandler(SettingBtAutoUCClickHandler));
+            this.autoSetting1.CancelButtonClickHandler(new EventHandler(CancelBtAutoUCClickHandler));
+            this.autoSetting1.OkButtonClickHandler(new EventHandler(OkBtAutoUCClickHandler));
+
             this.helperControls1.CloseBtClickHandler(new EventHandler(CloseBtHelperUCClickHandler));
             this.helperControls1.SettingVehicleBtClickHandler(new EventHandler(SettingVehicleHelperUCClickHandler));
             this.helperControls1.IMUSettingBtClickHandler(new EventHandler(IMUSettingHelperUCClickHandler));
@@ -823,7 +842,7 @@ namespace ThesisInterface
                 serialPort1.Write(MessagesDocker("MACON,1"));
                 manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started to control manually\r\n";
                 manualUC1.FormStatus.Text = "STARTED";
-                DisableAllTimers();
+                DisableAllTimers("manual");
                 ManualEnabled = true;
                 timer1.Enabled = true;
             }
@@ -841,7 +860,7 @@ namespace ThesisInterface
             try
             {
                 serialPort1.Write(MessagesDocker("KCTRL,0"));
-                DisableAllTimers();
+                DisableAllTimers("manual");
                 manualUC1.FormStatus.Text = "STOPED";
                 manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Stop controlling manually\r\n";
             }
@@ -938,7 +957,7 @@ namespace ThesisInterface
 
         private void StartWaitingForResponse()
         {
-            DisableAllTimers();
+            DisableAllTimers("auto");
             OldMess = autoUC1.ReceivedTb.Text;
             AutoTimer.Enabled = true;
             
@@ -964,7 +983,7 @@ namespace ThesisInterface
         {
             try
             {
-                DisableAllTimers();
+                DisableAllTimers("auto");
                 serialPort1.Write(MessagesDocker("AUCON,1"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started auto mode\r\n";
                 StartWaitingForResponse();
@@ -980,7 +999,7 @@ namespace ThesisInterface
         {
             try
             {
-                DisableAllTimers();
+                DisableAllTimers("none");
                 serialPort1.Write(MessagesDocker("AUCON,0"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped auto mode\r\n";
                 DefaultWaitForResponseTimer.Enabled = true;
@@ -1128,7 +1147,39 @@ namespace ThesisInterface
         {
             
         }
-        
+
+        private void SettingBtAutoUCClickHandler(object sender, EventArgs e)
+        {
+            if(AutoSetting)
+            {
+                this.autoSetting1.SendToBack();
+                AutoSetting = false;
+            }
+            else
+            {
+                this.autoSetting1.BringToFront();
+                AutoSetting = true;
+            }
+        }
+
+        private void OkBtAutoUCClickHandler(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort1.Write(MessagesDocker("AUCON,DATA," + autoSetting1.VelocityTb.Text + "," + autoSetting1.KGainTb.Text));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CancelBtAutoUCClickHandler(object sender, EventArgs e)
+        {
+            this.autoSetting1.SendToBack();
+        }
+
         private void InitAutoUC()
         {
             AutoTimer.Interval = 20;
@@ -1272,7 +1323,7 @@ namespace ThesisInterface
                                     MyVehicle = new Vehicle(value);
                                     autoUC1.DetailInfoTb.Text = MyVehicle.GetVehicleStatus();
                                     /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
-                                    if (MyVehicle.GPSStatus && AutoStarted)
+                                    if (true)
                                     {
                                         
                                         // Save Position Data & Draw On Map
@@ -1753,8 +1804,9 @@ namespace ThesisInterface
             SendCommandAsync();
         }
 
-        private void DisableAllTimers()
+        private void DisableAllTimers(string previousMode)
         {
+            PrevMode = previousMode;
             timer1.Enabled = false;
             KcontrolTimer.Enabled = false;
             StartKctrlTimer.Enabled = false;
@@ -1797,7 +1849,7 @@ namespace ThesisInterface
             {
                 try
                 {
-                    DisableAllTimers();
+                    DisableAllTimers("auto");
                     serialPort1.Write(MessagesDocker("KCTRL,1,1"));
                     StartKctrlTimer.Enabled = true;
                 }
@@ -1810,7 +1862,7 @@ namespace ThesisInterface
             {
                 try
                 {
-                    DisableAllTimers();
+                    DisableAllTimers("none");
                     serialPort1.Write(MessagesDocker("KCTRL,0"));
                     StopKctrlTimer.Enabled = true;
                 }
@@ -1829,7 +1881,8 @@ namespace ThesisInterface
                 try
                 {
                     serialPort1.Write(MessagesDocker("VEHCF,DATA,1"));
-                    DisableAllTimers();
+                    DisableAllTimers("auto");
+                    SetPreviousMode();
                     DefaultWaitForResponseTimer.Enabled = true;
                 }
                 catch (Exception ex)
@@ -1843,7 +1896,8 @@ namespace ThesisInterface
                 try
                 {
                     serialPort1.Write(MessagesDocker("VEHCF,DATA,0"));
-                    DisableAllTimers();
+                    DisableAllTimers("auto");
+                    SetPreviousMode();
                     DefaultWaitForResponseTimer.Enabled = true;
                 }
                 catch (Exception ex)
@@ -1856,8 +1910,17 @@ namespace ThesisInterface
 
         private void SetPreviousMode()
         {
+            switch(PrevMode)
+            {
+                case "auto":
+                    AutoEnabled = true;
+                    timer1.Enabled = true;
+                    break;
+
+            }
+                
             AutoEnabled = true;
-            timer1.Enabled = true;
         }
+        
     }
 }

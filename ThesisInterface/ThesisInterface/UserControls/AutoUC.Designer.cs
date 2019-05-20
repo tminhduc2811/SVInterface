@@ -71,6 +71,7 @@
             this.textU = new System.Windows.Forms.Label();
             this.textA = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.SettingBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -90,6 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.OpenBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StopBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Onbt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingBt)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -647,6 +649,7 @@
             // 
             this.bunifuGradientPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel2.BackgroundImage")));
             this.bunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel2.Controls.Add(this.SettingBt);
             this.bunifuGradientPanel2.Controls.Add(this.SaveBt);
             this.bunifuGradientPanel2.Controls.Add(this.OpenBt);
             this.bunifuGradientPanel2.Controls.Add(this.StopBt);
@@ -784,6 +787,20 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(672, 100);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // SettingBt
+            // 
+            this.SettingBt.BackColor = System.Drawing.Color.Transparent;
+            this.SettingBt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SettingBt.Image = global::ThesisInterface.Properties.Resources.savewhite;
+            this.SettingBt.ImageActive = null;
+            this.SettingBt.Location = new System.Drawing.Point(0, 349);
+            this.SettingBt.Name = "SettingBt";
+            this.SettingBt.Size = new System.Drawing.Size(38, 38);
+            this.SettingBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SettingBt.TabIndex = 3;
+            this.SettingBt.TabStop = false;
+            this.SettingBt.Zoom = 10;
+            // 
             // AutoUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -817,6 +834,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.OpenBt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StopBt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Onbt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingBt)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -865,5 +883,6 @@
         public Bunifu.Framework.UI.BunifuImageButton StartBt;
         public Bunifu.Framework.UI.BunifuImageButton SendMapBt;
         public System.Windows.Forms.Label TurningState;
+        public Bunifu.Framework.UI.BunifuImageButton SettingBt;
     }
 }

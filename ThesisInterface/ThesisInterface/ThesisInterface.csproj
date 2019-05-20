@@ -123,6 +123,12 @@
     <Compile Include="UserControls\HelperControls.Designer.cs">
       <DependentUpon>HelperControls.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AutoSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AutoSetting.Designer.cs">
+      <DependentUpon>AutoSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\VehicleSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,6 +148,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\AutoSetting.resx">
+      <DependentUpon>AutoSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AutoUC.resx">
       <DependentUpon>AutoUC.cs</DependentUpon>
     </EmbeddedResource>

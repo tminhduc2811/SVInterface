@@ -93,5 +93,10 @@ namespace ThesisInterface.UserControls
         {
             this.OnKeyUp(e);
         }
+
+        public void SettingBtClickHandler(EventHandler handler)
+        {
+            this.SettingBt.Click += handler;
+        }
     }
 }
