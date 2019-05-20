@@ -115,13 +115,14 @@ namespace ThesisInterface
         //TODO: Set temporarily, fix later
         char KeyW = '!', KeyS = '!', KeyA = '!', KeyD = '!';
         int level = 4;
+        int defaultLevel = 4;
         private void SendCommandAsync()
         {
             if (serialPort1.IsOpen)
             {
                 try
                 {
-                    serialPort1.Write("$KCTRL," + KeyW.ToString() + "," + KeyS.ToString() + "," + KeyA.ToString() + "," + KeyD.ToString() + "," + level.ToString() + "\r\n");
+                    serialPort1.Write(MessagesDocker("KCTRL," + KeyW.ToString() + "," + KeyS.ToString() + "," + KeyA.ToString() + "," + KeyD.ToString() + "," + level.ToString()));
                 }
                 catch (Exception ex)
                 {
@@ -146,13 +147,13 @@ namespace ThesisInterface
 
         public string OldMess = "";
 
-        public int KcontrolWaitTimes = 2, defaultwaitTimes = 2;
+        public int KcontrolWaitTimes = 3, defaultwaitTimes = 3;
 
         public bool PlanMapEnable = false, online = false;
 
-        public List<PointLatLng> PlanCooridnatesList = new List<PointLatLng>();
+        public List<PointLatLng> PlanCoordinatesList = new List<PointLatLng>();
 
-        public List<PointLatLng> ActualCooridnatesList = new List<PointLatLng>();
+        public List<PointLatLng> ActualCoordinatesList = new List<PointLatLng>();
 
         public GMapOverlay PlanLines = new GMapOverlay("PlanLines");
 
@@ -192,10 +193,10 @@ namespace ThesisInterface
                     autoUC1.BringToFront();
                     break;
                 case 116: // Key = F5
-                    KctrlChangeMode();
+                    KctrlChangeMode(0);
                     break;
                 case 117: // Key = F6, Get all vehicle information
-
+                    KctrlChangeMode(1);
                     break;
 
                 case 118: // Key = F7, ON Send data from vehicle
@@ -203,6 +204,11 @@ namespace ThesisInterface
                     break;
                 case 119: // Key = F8, OFF Send data from vehicle
                     ControlSendDataFromVehicle(1);
+                    break;
+                case 121:
+                    serialPort1.Write("$SFRST\r\n");
+                    DisableAllTimers();
+                    DefaultWaitForResponseTimer.Enabled = true;
                     break;
                 case 123: // Key = F12, Get all help controls
                     if(OnHelperPanel)
@@ -227,6 +233,7 @@ namespace ThesisInterface
                     if (KeyW != 'W')
                     {
                         KeyW = 'W';
+                        level = defaultLevel;
                         SetCommandForKcontrol();
 
                     }
@@ -236,6 +243,7 @@ namespace ThesisInterface
                     if (KeyS != 'S')
                     {
                         KeyS = 'S';
+                        level = defaultLevel;
                         SetCommandForKcontrol();
                     }
                 }
@@ -244,10 +252,8 @@ namespace ThesisInterface
                     if (KeyA != 'A')
                     {
                         KeyA = 'A';
-                        int oldLevel = level;
-                        level = Convert.ToInt16(0.5 * level);
+                        level = Convert.ToInt16(0.5 * defaultLevel);
                         SetCommandForKcontrol();
-                        level = oldLevel;
                     }
                 }
                 else if (e.KeyCode == Keys.D)
@@ -255,26 +261,36 @@ namespace ThesisInterface
                     if (KeyD != 'D')
                     {
                         KeyD = 'D';
-                        int oldLevel = level;
-                        level = Convert.ToInt16(0.5 * level);
+                        level = Convert.ToInt16(0.5 * defaultLevel);
                         SetCommandForKcontrol();
-                        level = oldLevel;
                     }
                 }
                 else if (e.KeyCode == Keys.E)
                 {
-                    if (level >= 10)
-                        level = 10;
+                    if (defaultLevel >= 10)
+                    {
+                        defaultLevel = 10;
+                        level = defaultLevel;
+                    }
                     else
-                        level++;
+                    {
+                        defaultLevel++;
+                        level = defaultLevel;
+                    }
                     SetCommandForKcontrol();
                 }
                 else if (e.KeyCode == Keys.Q)
                 {
-                    if (level <= 0)
-                        level = 0;
+                    if (defaultLevel <= 0)
+                    {
+                        defaultLevel = 0;
+                        level = defaultLevel;
+                    }
                     else
-                        level--;
+                    {
+                        defaultLevel--;
+                        level = defaultLevel;
+                    }
                     SetCommandForKcontrol();
                 }
             }
@@ -297,11 +313,13 @@ namespace ThesisInterface
                 else if (e.KeyCode == Keys.A)
                 {
                     KeyA = '!';
+                    level = defaultLevel;
                     SetCommandForKcontrol();
                 }
                 else if (e.KeyCode == Keys.D)
                 {
                     KeyD = '!';
+                    level = defaultLevel;
                     SetCommandForKcontrol();
                 }
             }
@@ -309,7 +327,7 @@ namespace ThesisInterface
 
         private bool ManualEnabled = false;
 
-        private bool AutoEnabled = false;
+        private bool AutoEnabled = false, AutoStarted = false;
 
         private bool SendCommandSuccessfully = false;
         // Main form buttons click events ----------------------------------------//
@@ -920,10 +938,10 @@ namespace ThesisInterface
 
         private void StartWaitingForResponse()
         {
+            DisableAllTimers();
             OldMess = autoUC1.ReceivedTb.Text;
             AutoTimer.Enabled = true;
-            AutoEnabled = true;
-            timer1.Enabled = true;
+            
         }
 
         private void StopVehicleBtAutoUCClickHandler(object sender, EventArgs e)
@@ -933,7 +951,7 @@ namespace ThesisInterface
                 serialPort1.Write(MessagesDocker("AUCON,STOP"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped vehicle...\r\n";
                 autoUC1.StartBt.Text = "Start";
-                StartWaitingForResponse();
+                AutoStarted = false;
             }
 
             catch (Exception ex)
@@ -949,10 +967,7 @@ namespace ThesisInterface
                 DisableAllTimers();
                 serialPort1.Write(MessagesDocker("AUCON,1"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started auto mode\r\n";
-                AutoEnabled = true;
-                timer1.Enabled = true;
                 StartWaitingForResponse();
-
             }
 
             catch (Exception ex)
@@ -968,7 +983,7 @@ namespace ThesisInterface
                 DisableAllTimers();
                 serialPort1.Write(MessagesDocker("AUCON,0"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped auto mode\r\n";
-                StartWaitingForResponse();
+                DefaultWaitForResponseTimer.Enabled = true;
             }
 
             catch (Exception ex)
@@ -984,7 +999,8 @@ namespace ThesisInterface
                 serialPort1.Write(MessagesDocker("AUCON,START"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started vehicle...\r\n";
                 autoUC1.StartBt.Text = "Stop";
-                StartWaitingForResponse();
+                AutoStarted = true;
+                DefaultWaitForResponseTimer.Enabled = true;
             }
 
             catch (Exception ex)
@@ -999,25 +1015,21 @@ namespace ThesisInterface
             try
             {
                 string jsonfile = ReadJsonFile();
-
                 CoordinatesInfo coordinatesInformation = ParseCoordinatesInformation(jsonfile);
-
                 ClearPLannedData();
 
                 ClearActualData();
-
-                for(int i = 0; i < coordinatesInformation.plannedCoordinates.Count; i++)
-                {                    
-                    PlanCooridnatesList.Add(new PointLatLng(coordinatesInformation.plannedCoordinates[i].Lat, coordinatesInformation.plannedCoordinates[i].Lng));
-                    DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkRed, 2) }, "Planned");
+                for(int i = 0; i < coordinatesInformation.plannedCoordinates.Count(); i++)
+                {
+                    PlanCoordinatesList.Add(new PointLatLng(coordinatesInformation.plannedCoordinates[i].Lat, coordinatesInformation.plannedCoordinates[i].Lng));
+                    DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCoordinatesList, "single_line") { Stroke = new Pen(Color.LightGoldenrodYellow, 3) }, "Planned");
                 }
                 
-                for(int i = 0; i < coordinatesInformation.actualCoordinates.Count; i++)
+                for (int i = 0; i < coordinatesInformation.actualCoordinates.Count; i++)
                 {
-                    ActualCooridnatesList.Add(new PointLatLng(coordinatesInformation.actualCoordinates[i].Lat, coordinatesInformation.actualCoordinates[i].Lng));
-                    DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
-                }
-        
+                    ActualCoordinatesList.Add(new PointLatLng(coordinatesInformation.actualCoordinates[i].Lat, coordinatesInformation.actualCoordinates[i].Lng));
+                    DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual");
+                }               
             }
             catch (Exception ex)
             {
@@ -1045,11 +1057,11 @@ namespace ThesisInterface
             if(PlanMapEnable && (e.Button == MouseButtons.Right))
             {
                 autoUC1.gmap.Overlays.Clear();
-                PlanCooridnatesList.Add(autoUC1.gmap.FromLocalToLatLng(e.X, e.Y));
+                PlanCoordinatesList.Add(autoUC1.gmap.FromLocalToLatLng(e.X, e.Y));
                 GMap.NET.WindowsForms.GMapMarker marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
-                    PlanCooridnatesList[PlanCooridnatesList.Count - 1],
+                    PlanCoordinatesList[PlanCoordinatesList.Count - 1],
                     GMap.NET.WindowsForms.Markers.GMarkerGoogleType.red_big_stop);
-                DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCooridnatesList, "single_line") { Stroke = new Pen(Color.LightGoldenrodYellow, 3) }, "Planned", marker);
+                DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCoordinatesList, "single_line") { Stroke = new Pen(Color.LightGoldenrodYellow, 3) }, "Planned", marker);
             }
         }
 
@@ -1073,17 +1085,17 @@ namespace ThesisInterface
             {
                 try
                 {
-                    string mess = "";
-                    for(int i = 0; i < PlanCooridnatesList.Count; i++)
+                    serialPort1.Write(MessagesDocker("VPLAN,START"));
+                    System.Threading.Thread.Sleep(500);
+                    for (int i = 0; i < PlanCoordinatesList.Count; i++)
                     {
-                        mess += PlanCooridnatesList[i].Lat.ToString() + "," + PlanCooridnatesList[i].Lng.ToString() + ",";
+                        serialPort1.Write(MessagesDocker("VPLAN," + PlanCoordinatesList[i].Lat.ToString() + "," + PlanCoordinatesList[i].Lng.ToString()));
+                        System.Threading.Thread.Sleep(500);
                     }
-                    mess = mess.Remove(mess.Count() - 1, 1);
-                    mess = "VPLAN," + PlanCooridnatesList.Count.ToString() + "," + mess;
-                    serialPort1.Write(MessagesDocker(mess));
+
+                    serialPort1.Write(MessagesDocker("VPLAN,STOP"));
+
                     autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Sending map coordinates\r\n";
-                    autoUC1.SentTb.Text += "Message sent: " + MessagesDocker(mess);
-                    StartWaitingForResponse();
                 }
 
                 catch (Exception ex)
@@ -1167,7 +1179,7 @@ namespace ThesisInterface
 
         private void KctrlBtHelperUCClickHandler(object sender, EventArgs e)
         {
-            KctrlChangeMode();
+            KctrlChangeMode(0);
         }
 
         private void OnSendDataBtHelperUCClickHandler(object sender, EventArgs e)
@@ -1214,10 +1226,10 @@ namespace ThesisInterface
                                     if (MyVehicle.GPSStatus)
                                     {
                                         // Save Position Data & Draw On Map
-                                        ActualCooridnatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
+                                        ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
                                         if (online)
                                         {
-                                            DisplayRouteOnMap(manualUC1.gmap, new GMapRoute(ActualCooridnatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
+                                            DisplayRouteOnMap(manualUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
                                         }
                                         else
                                         {
@@ -1255,21 +1267,21 @@ namespace ThesisInterface
                                 temp = temp.Remove(temp.Length - 3, 3);
                                 temp = temp.Remove(0, 1);
                                 //if (value[14].Contains(checksum(temp)))
-                                if(true)
+                                if (true)
                                 {
                                     MyVehicle = new Vehicle(value);
                                     autoUC1.DetailInfoTb.Text = MyVehicle.GetVehicleStatus();
                                     /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
-                                    if (MyVehicle.GPSStatus)
+                                    if (MyVehicle.GPSStatus && AutoStarted)
                                     {
                                         
                                         // Save Position Data & Draw On Map
                                         autoUC1.ReceivedTb.Text += mess;
-                                        ActualCooridnatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
+                                        ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
                                         GMap.NET.WindowsForms.GMapMarker marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
                                             new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng),
                                             GMap.NET.WindowsForms.Markers.GMarkerGoogleType.orange_dot);
-                                        DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCooridnatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual", marker);
+                                        DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual", marker);
                                     }
                                     /*  Draw turning State of vehicle by subtracting the RefAngle and the ActualAngle
                                         (It help users to understand whether the vehicle is turning left or right)      */
@@ -1277,13 +1289,10 @@ namespace ThesisInterface
                                     autoUC1.TurningState.Text = "Turning " + Math.Round(- MyVehicle.RefAngle + MyVehicle.Angle, 4).ToString() + "°";
                                 }
                             }
-                            if(value[0] == "$KCTRL")
+                            if (mess.Contains("SINFO,1")) 
                             {
                                 SendCommandSuccessfully = true;
-                            }
-                            if(value[0] == "$SINFO")
-                            {
-                                autoUC1.ReceivedTb.Text += mess + "\r\n";
+                                autoUC1.SentTb.Text += "Command sent successfully\r\n";
                             }
                         }
                         catch (Exception ex)
@@ -1387,34 +1396,25 @@ namespace ThesisInterface
             if (timeoutAuto > 0)
             {
                 timeoutAuto--;
-                if (AutoWaitKey == "|")
-                {
-                    autoUC1.ReceivedTb.Text = OldMess + "Waiting for respond" + AutoWaitKey;
-                    AutoWaitKey = "-";
-
-                }
-                else
-                {
-                    autoUC1.ReceivedTb.Text = OldMess + "Waiting for respond" + AutoWaitKey;
-                    AutoWaitKey = "|";
-                }
                 if (serialPort1.BytesToRead != 0)
                 {
                     string mess = serialPort1.ReadLine();
-                    string[] messParsed = mess.Split(',');
-                    if (messParsed[0].Contains("$SINFO") && messParsed[1].Contains("1"))
+                    if (mess.Contains("$SINFO,1"))
                     {
+                        AutoTimer.Enabled = false;
                         autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Done.\r\n";
                         timeoutAuto = 40;
-                        AutoTimer.Enabled = false;
+                        AutoEnabled = true;
+                        timer1.Enabled = true;
                     }
                 }
             }
             else
             {
+                AutoTimer.Enabled = false;
                 timeoutAuto = 40;
                 autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Request failed\r\n";
-                AutoTimer.Enabled = false;
+                
             }
         }
 
@@ -1425,9 +1425,9 @@ namespace ThesisInterface
             {
                 if(SendCommandSuccessfully)
                 {
+                    KcontrolTimer.Enabled = false;
                     KcontrolWaitTimes = defaultwaitTimes;
                     SendCommandSuccessfully = false;
-                    KcontrolTimer.Enabled = false;
                 }
                 else
                 {
@@ -1436,9 +1436,9 @@ namespace ThesisInterface
             }
             else
             {
+                KcontrolTimer.Enabled = false;
                 KcontrolWaitTimes = defaultwaitTimes;
                 SendCommandSuccessfully = false;
-                KcontrolTimer.Enabled = false;                
             }
         }
         
@@ -1449,43 +1449,19 @@ namespace ThesisInterface
                 KctrlTimerTimes--;
                 if(serialPort1.IsOpen && serialPort1.BytesToRead != 0)
                 {
-                    if (KctrlEnabled)
-                    {
                         try
                         {
                             string mess = serialPort1.ReadLine();
                             string[] value;
                             value = mess.Split(',');
-                            if (value[0] == "$SINFO")
-                            {
-                                StartKctrlTimer.Enabled = false;
-                                KctrlEnabled = false;
-                                KctrlTimerTimes = 20;
-                                helperControls1.KctrlBt.LabelText = "KCTRL-OFF (F5)";
-                                MessageBox.Show("Stoped KCTRL successfully");
-                                return;
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            StartKctrlTimer.Enabled = false;
-                            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            string mess = serialPort1.ReadLine();
-                            string[] value;
-                            value = mess.Split(',');
-                            if (value[0] == "$SINFO")
+                            if (mess.Contains("$SINFO,1"))
                             {
                                 StartKctrlTimer.Enabled = false;
                                 KctrlEnabled = true;
                                 KctrlTimerTimes = 20;
-                                helperControls1.KctrlBt.LabelText = "KCTRL-ON (F5)";
+                                //helperControls1.KctrlBt.LabelText = "KCTRL-OFF (F5)";
                                 MessageBox.Show("Started KCTRL successfully");
+                                SetPreviousMode();
                                 return;
                             }
                         }
@@ -1493,15 +1469,56 @@ namespace ThesisInterface
                         {
                             StartKctrlTimer.Enabled = false;
                             MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            SetPreviousMode();
                         }
                     }
-                }
             }
             else
             {
                 StartKctrlTimer.Enabled = false;
                 KctrlTimerTimes = 20;
                 MessageBox.Show("No respone from vehicle");
+                SetPreviousMode();
+            }
+        }
+
+        private void StopKctrlTimer_Tick(object sender, EventArgs e)
+        {
+            if (KctrlTimerTimes > 0)
+            {
+                KctrlTimerTimes--;
+                if (serialPort1.IsOpen && serialPort1.BytesToRead != 0)
+                {
+                    try
+                    {
+                        string mess = serialPort1.ReadLine();
+                        string[] value;
+                        value = mess.Split(',');
+                        if (mess.Contains("$SINFO,1"))
+                        {
+                            StopKctrlTimer.Enabled = false;
+                            KctrlEnabled = false;
+                            KctrlTimerTimes = 20;
+                            //helperControls1.KctrlBt.LabelText = "KCTRL-OFF (F5)";
+                            MessageBox.Show("Stoped KCTRL successfully");
+                            SetPreviousMode();
+                            return;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        StopKctrlTimer.Enabled = false;
+                        MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        SetPreviousMode();
+                    }
+                }
+            }
+            else
+            {
+                StopKctrlTimer.Enabled = false;
+                KctrlTimerTimes = 20;
+                MessageBox.Show("No respone from vehicle");
+                SetPreviousMode();
             }
         }
 
@@ -1513,9 +1530,7 @@ namespace ThesisInterface
                 if(serialPort1.IsOpen && serialPort1.BytesToRead != 0)
                 {
                     string mess = serialPort1.ReadLine();
-                    string[] value;
-                    value = mess.Split(',');
-                    if (value[0] == "$SINFO")
+                    if (mess.Contains("$SINFO,1"))
                     {
                         DefaultWaitForResponseTimer.Enabled = false;
                         DefaultWaitTimes = 20;
@@ -1616,19 +1631,19 @@ namespace ThesisInterface
 
             CoordinatesInfo CoordinatesInformation = new CoordinatesInfo();
 
-            for (int i = 0; i < PlanCooridnatesList.Count; i++)
+            for (int i = 0; i < PlanCoordinatesList.Count; i++)
             {
                 PlannedCoordinate plannedCoordinates = new PlannedCoordinate();
-                plannedCoordinates.Lat = PlanCooridnatesList[i].Lat;
-                plannedCoordinates.Lng = PlanCooridnatesList[i].Lng;
+                plannedCoordinates.Lat = PlanCoordinatesList[i].Lat;
+                plannedCoordinates.Lng = PlanCoordinatesList[i].Lng;
                 listPlanned.Add(plannedCoordinates);        
             }
 
-            for (int i = 0; i < ActualCooridnatesList.Count; i++)
+            for (int i = 0; i < ActualCoordinatesList.Count; i++)
             {
                 ActualCoordinate actualCoordinates = new ActualCoordinate();
-                actualCoordinates.Lat = Convert.ToDouble(ActualCooridnatesList[i].Lat);
-                actualCoordinates.Lng = Convert.ToDouble(ActualCooridnatesList[i].Lng);
+                actualCoordinates.Lat = Convert.ToDouble(ActualCoordinatesList[i].Lat);
+                actualCoordinates.Lng = Convert.ToDouble(ActualCoordinatesList[i].Lng);
                 listActual.Add(actualCoordinates);
             }
 
@@ -1665,53 +1680,69 @@ namespace ThesisInterface
         private CoordinatesInfo ParseCoordinatesInformation(string text)
         {
             CoordinatesInfo CoordinatesInformation = JsonConvert.DeserializeObject<CoordinatesInfo>(text);
-
             return CoordinatesInformation;
         }
 
         private void ClearPLannedData()
         {
             autoUC1.gmap.Overlays.Clear();
-            PlanCooridnatesList.Clear();
+            PlanCoordinatesList.Clear();
             PlanLines.Clear();
         }
 
         private void ClearActualData()
         {
             autoUC1.gmap.Overlays.Clear();
-            ActualCooridnatesList.Clear();
+            ActualCoordinatesList.Clear();
             ActualLines.Clear();
         }
 
         private void DisplayRouteOnMap(GMapControl map, GMapRoute route, string mode, GMapMarker marker=null)
         {
-            if(mode.Contains("Plan"))
+            try
             {
-                PlanLines.Routes.Clear();
-                PlanLines.Routes.Add(route);
-                GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
-                markers.Markers.Add(marker);
-                map.Overlays.Add(markers);
-                map.Overlays.Add(PlanLines);
-                double zoom = autoUC1.gmap.Zoom;
+                if (mode.Contains("Plan"))
+                {
+                    
+                    //PlanLines.Routes.Clear();
+                    PlanLines.Routes.Add(route);
+                    if(marker != null)
+                    {
+                        GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
+                        markers.Markers.Add(marker);
+                        map.Overlays.Add(markers);
+                    }
+                    map.Overlays.Add(PlanLines);
+                    //double zoom = autoUC1.gmap.Zoom;
 
-                autoUC1.gmap.Zoom = 18;
-                autoUC1.gmap.Zoom = zoom;
-                //map.Show();
+                    //autoUC1.gmap.Zoom = 18;
+                    //autoUC1.gmap.Zoom = zoom;
+                    map.Show();
+                }
+                else
+                {
+                    map.Overlays.Clear();
+                    ActualLines.Routes.Clear();
+                    ActualLines.Routes.Add(route);
+                    if(marker != null)
+                    {
+                        GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
+                        markers.Markers.Add(marker);
+                        map.Overlays.Add(markers);
+                    }
+                    map.Overlays.Add(ActualLines);
+                    map.Overlays.Add(PlanLines);
+                    //double zoom = map.Zoom;
+                    //map.Zoom = zoom - 1;
+                    //map.Zoom = zoom;
+                    //autoUC1.gmap.Zoom = 18;
+                    //autoUC1.gmap.Zoom = zoom;
+                    map.Show();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ActualLines.Routes.Clear();
-                ActualLines.Routes.Add(route);
-                GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
-                markers.Markers.Add(marker);
-                map.Overlays.Add(markers);
-                map.Overlays.Add(ActualLines);
-                double zoom = autoUC1.gmap.Zoom;
-
-                autoUC1.gmap.Zoom = 18;
-                autoUC1.gmap.Zoom = zoom;
-                //map.Show();
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1728,10 +1759,11 @@ namespace ThesisInterface
             KcontrolTimer.Enabled = false;
             StartKctrlTimer.Enabled = false;
             DefaultWaitForResponseTimer.Enabled = false;
-            ManualEnabled = false;
-            AutoEnabled = false;
-            KctrlEnabled = false;
+            //ManualEnabled = false;
+            //AutoEnabled = false;
+            //KctrlEnabled = false;
         }
+
 
         private void DisableAllConfigTextBoxes()
         {
@@ -1759,14 +1791,14 @@ namespace ThesisInterface
             vehicleSetting1.Mode.Enabled = true;
         }
 
-        private void KctrlChangeMode()
+        private void KctrlChangeMode(int mode)
         {
-            if (!KctrlEnabled && StartKctrlTimer.Enabled == false)
+            if (mode == 0)
             {
                 try
                 {
                     DisableAllTimers();
-                    serialPort1.Write(MessagesDocker("KCTRL,1"));
+                    serialPort1.Write(MessagesDocker("KCTRL,1,1"));
                     StartKctrlTimer.Enabled = true;
                 }
                 catch (Exception ex)
@@ -1774,12 +1806,13 @@ namespace ThesisInterface
                     MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if (KctrlEnabled && StartKctrlTimer.Enabled == false)
+            if (mode == 1)
             {
                 try
                 {
+                    DisableAllTimers();
                     serialPort1.Write(MessagesDocker("KCTRL,0"));
-                    StartKctrlTimer.Enabled = true;
+                    StopKctrlTimer.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -1819,6 +1852,12 @@ namespace ThesisInterface
                     MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void SetPreviousMode()
+        {
+            AutoEnabled = true;
+            timer1.Enabled = true;
         }
     }
 }

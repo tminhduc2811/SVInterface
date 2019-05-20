@@ -222,7 +222,7 @@
             this.KctrlBt.ImagePosition = 0;
             this.KctrlBt.ImageZoom = 50;
             this.KctrlBt.LabelPosition = 65;
-            this.KctrlBt.LabelText = "KCTRL -OFF (F5)";
+            this.KctrlBt.LabelText = "KCTRL - ON (F5)";
             this.KctrlBt.Location = new System.Drawing.Point(203, 211);
             this.KctrlBt.Margin = new System.Windows.Forms.Padding(6);
             this.KctrlBt.Name = "KctrlBt";
@@ -241,8 +241,8 @@
             this.GetVehicleInfoBt.Image = null;
             this.GetVehicleInfoBt.ImagePosition = 20;
             this.GetVehicleInfoBt.ImageZoom = 50;
-            this.GetVehicleInfoBt.LabelPosition = 80;
-            this.GetVehicleInfoBt.LabelText = "Get Vehicle Info (F6)";
+            this.GetVehicleInfoBt.LabelPosition = 65;
+            this.GetVehicleInfoBt.LabelText = "KCTRL - OFF (F6)";
             this.GetVehicleInfoBt.Location = new System.Drawing.Point(358, 211);
             this.GetVehicleInfoBt.Margin = new System.Windows.Forms.Padding(6);
             this.GetVehicleInfoBt.Name = "GetVehicleInfoBt";
@@ -285,7 +285,7 @@
             // OffSendDataBt
             // 
             this.OffSendDataBt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.OffSendDataBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
+            this.OffSendDataBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(220)))), ((int)(((byte)(57)))));
             this.OffSendDataBt.color = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(220)))), ((int)(((byte)(57)))));
             this.OffSendDataBt.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(255)))), ((int)(((byte)(129)))));
             this.OffSendDataBt.Cursor = System.Windows.Forms.Cursors.Hand;

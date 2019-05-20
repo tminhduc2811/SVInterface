@@ -42,10 +42,10 @@
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.helperControls1 = new ThesisInterface.UserControls.HelperControls();
-            this.manualUC1 = new ThesisInterface.UserControls.ManualUC();
             this.vehicleSetting1 = new ThesisInterface.UserControls.VehicleSetting();
             this.autoUC1 = new ThesisInterface.UserControls.AutoUC();
             this.imuSetting1 = new ThesisInterface.UserControls.IMUSetting();
+            this.manualUC1 = new ThesisInterface.UserControls.ManualUC();
             this.ConfigWaitForRespond = new System.Windows.Forms.Timer(this.components);
             this.IMUConfigWaitForRespond = new System.Windows.Forms.Timer(this.components);
             this.AutoTimer = new System.Windows.Forms.Timer(this.components);
@@ -60,8 +60,10 @@
             this.StartKctrlTimer = new System.Windows.Forms.Timer(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.ControlPanelDrag = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.DefaultWaitForResponseTimer = new System.Windows.Forms.Timer(this.components);
+            this.ControlPanelDrag = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.StopKctrlTimer = new System.Windows.Forms.Timer(this.components);
+            this.MapPlanTimer = new System.Windows.Forms.Timer(this.components);
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResetVehicleBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
@@ -205,11 +207,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(11)))), ((int)(((byte)(42)))));
+            this.panel1.Controls.Add(this.helperControls1);
             this.panel1.Controls.Add(this.vehicleSetting1);
             this.panel1.Controls.Add(this.autoUC1);
             this.panel1.Controls.Add(this.imuSetting1);
             this.panel1.Controls.Add(this.manualUC1);
-            this.panel1.Controls.Add(this.helperControls1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(156, 47);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -226,17 +228,6 @@
             this.helperControls1.Name = "helperControls1";
             this.helperControls1.Size = new System.Drawing.Size(533, 513);
             this.helperControls1.TabIndex = 14;
-            // 
-            // manualUC1
-            // 
-            this.manualUC1.BackColor = System.Drawing.Color.White;
-            this.manualUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.manualUC1.Location = new System.Drawing.Point(0, 0);
-            this.manualUC1.Name = "manualUC1";
-            this.manualUC1.Size = new System.Drawing.Size(931, 537);
-            this.manualUC1.TabIndex = 0;
-            this.manualUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyDown);
-            this.manualUC1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyUp);
             // 
             // vehicleSetting1
             // 
@@ -267,6 +258,17 @@
             this.imuSetting1.Name = "imuSetting1";
             this.imuSetting1.Size = new System.Drawing.Size(931, 537);
             this.imuSetting1.TabIndex = 2;
+            // 
+            // manualUC1
+            // 
+            this.manualUC1.BackColor = System.Drawing.Color.White;
+            this.manualUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.manualUC1.Location = new System.Drawing.Point(0, 0);
+            this.manualUC1.Name = "manualUC1";
+            this.manualUC1.Size = new System.Drawing.Size(931, 537);
+            this.manualUC1.TabIndex = 0;
+            this.manualUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyDown);
+            this.manualUC1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyUp);
             // 
             // ConfigWaitForRespond
             // 
@@ -495,6 +497,11 @@
             this.bunifuDragControl1.TargetControl = this.TopPanel;
             this.bunifuDragControl1.Vertical = true;
             // 
+            // DefaultWaitForResponseTimer
+            // 
+            this.DefaultWaitForResponseTimer.Interval = 20;
+            this.DefaultWaitForResponseTimer.Tick += new System.EventHandler(this.DefaultWaitForResponseTimer_Tick);
+            // 
             // ControlPanelDrag
             // 
             this.ControlPanelDrag.Fixed = true;
@@ -502,10 +509,14 @@
             this.ControlPanelDrag.TargetControl = this.helperControls1;
             this.ControlPanelDrag.Vertical = true;
             // 
-            // DefaultWaitForResponseTimer
+            // StopKctrlTimer
             // 
-            this.DefaultWaitForResponseTimer.Interval = 40;
-            this.DefaultWaitForResponseTimer.Tick += new System.EventHandler(this.DefaultWaitForResponseTimer_Tick);
+            this.StopKctrlTimer.Interval = 45;
+            this.StopKctrlTimer.Tick += new System.EventHandler(this.StopKctrlTimer_Tick);
+            // 
+            // MapPlanTimer
+            // 
+            this.MapPlanTimer.Interval = 20;
             // 
             // Form1
             // 
@@ -566,6 +577,8 @@
         private UserControls.HelperControls helperControls1;
         private Bunifu.Framework.UI.BunifuDragControl ControlPanelDrag;
         private System.Windows.Forms.Timer DefaultWaitForResponseTimer;
+        private System.Windows.Forms.Timer StopKctrlTimer;
+        private System.Windows.Forms.Timer MapPlanTimer;
     }
 }
 
