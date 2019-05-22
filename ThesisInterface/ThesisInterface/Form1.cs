@@ -209,8 +209,8 @@ namespace ThesisInterface
                     ControlSendDataFromVehicle(1);
                     break;
                 case 121:
+                    //DisableAllTimers("auto");
                     serialPort1.Write("$SFRST\r\n");
-                    DisableAllTimers("auto");
                     DefaultWaitForResponseTimer.Enabled = true;
                     SetPreviousMode();
                     break;
@@ -336,7 +336,7 @@ namespace ThesisInterface
 
         private bool ManualEnabled = false;
 
-        private bool AutoEnabled = false, AutoStarted = false;
+        private bool AutoEnabled = false;
 
         private bool SendCommandSuccessfully = false;
         // Main form buttons click events ----------------------------------------//
@@ -970,7 +970,6 @@ namespace ThesisInterface
                 serialPort1.Write(MessagesDocker("AUCON,STOP"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped vehicle...\r\n";
                 autoUC1.StartBt.Text = "Start";
-                AutoStarted = false;
             }
 
             catch (Exception ex)
@@ -1018,7 +1017,6 @@ namespace ThesisInterface
                 serialPort1.Write(MessagesDocker("AUCON,START"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started vehicle...\r\n";
                 autoUC1.StartBt.Text = "Stop";
-                AutoStarted = true;
                 DefaultWaitForResponseTimer.Enabled = true;
             }
 
@@ -1105,16 +1103,17 @@ namespace ThesisInterface
                 try
                 {
                     serialPort1.Write(MessagesDocker("VPLAN,START"));
-                    System.Threading.Thread.Sleep(500);
+                    System.Threading.Thread.Sleep(300);
                     for (int i = 0; i < PlanCoordinatesList.Count; i++)
                     {
                         serialPort1.Write(MessagesDocker("VPLAN," + PlanCoordinatesList[i].Lat.ToString() + "," + PlanCoordinatesList[i].Lng.ToString()));
-                        System.Threading.Thread.Sleep(500);
+                        System.Threading.Thread.Sleep(300);
                     }
 
                     serialPort1.Write(MessagesDocker("VPLAN,STOP"));
 
                     autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Sending map coordinates\r\n";
+                    
                 }
 
                 catch (Exception ex)
@@ -1340,11 +1339,19 @@ namespace ThesisInterface
                                     autoUC1.TurningState.Text = "Turning " + Math.Round(- MyVehicle.RefAngle + MyVehicle.Angle, 4).ToString() + "°";
                                 }
                             }
-                            if (mess.Contains("SINFO,1")) 
+
+                            else if(mess.Contains("SINFO,VPLAN,1"))
+                            {
+                                SendCommandSuccessfully = true;
+                                autoUC1.ReceivedTb.Text += "Map planned successfully, ready to go\r\n";
+                            }
+
+                            else if (mess.Contains("SINFO,1")) 
                             {
                                 SendCommandSuccessfully = true;
                                 autoUC1.SentTb.Text += "Command sent successfully\r\n";
                             }
+                            
                         }
                         catch (Exception ex)
                         {
@@ -1584,10 +1591,19 @@ namespace ThesisInterface
                     if (mess.Contains("$SINFO,1"))
                     {
                         DefaultWaitForResponseTimer.Enabled = false;
+                        SendCommandSuccessfully = false;
                         DefaultWaitTimes = 20;
                         MessageBox.Show("Command sent to vehicle successfully");
                         return;
                     }
+                }
+                else if (SendCommandSuccessfully)
+                {
+                    DefaultWaitForResponseTimer.Enabled = false;
+                    SendCommandSuccessfully = false;
+                    DefaultWaitTimes = 20;
+                    MessageBox.Show("Command sent to vehicle successfully");
+                    return;
                 }
             }
             else
@@ -1597,6 +1613,7 @@ namespace ThesisInterface
                 MessageBox.Show("Command sent to vehicle failed");
             }
         }
+
 
         //---------------------------------------------------------------------------//
 
@@ -1736,14 +1753,14 @@ namespace ThesisInterface
 
         private void ClearPLannedData()
         {
-            autoUC1.gmap.Overlays.Clear();
+            //autoUC1.gmap.Overlays.Clear();
             PlanCoordinatesList.Clear();
             PlanLines.Clear();
         }
 
         private void ClearActualData()
         {
-            autoUC1.gmap.Overlays.Clear();
+            //autoUC1.gmap.Overlays.Clear();
             ActualCoordinatesList.Clear();
             ActualLines.Clear();
         }
@@ -1756,39 +1773,40 @@ namespace ThesisInterface
                 {
                     
                     //PlanLines.Routes.Clear();
-                    PlanLines.Routes.Add(route);
                     if(marker != null)
                     {
                         GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
-                        markers.Markers.Add(marker);
                         map.Overlays.Add(markers);
+                        markers.Markers.Add(marker);
                     }
                     map.Overlays.Add(PlanLines);
+                    map.Overlays.Add(ActualLines);
+                    PlanLines.Routes.Add(route);
                     //double zoom = autoUC1.gmap.Zoom;
 
                     //autoUC1.gmap.Zoom = 18;
                     //autoUC1.gmap.Zoom = zoom;
-                    map.Show();
+                    //map.Show();
                 }
                 else
                 {
-                    map.Overlays.Clear();
+                    //map.Overlays.Clear();
                     ActualLines.Routes.Clear();
-                    ActualLines.Routes.Add(route);
                     if(marker != null)
                     {
                         GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
-                        markers.Markers.Add(marker);
                         map.Overlays.Add(markers);
+                        markers.Markers.Add(marker);
                     }
                     map.Overlays.Add(ActualLines);
                     map.Overlays.Add(PlanLines);
+                    ActualLines.Routes.Add(route);
                     //double zoom = map.Zoom;
                     //map.Zoom = zoom - 1;
                     //map.Zoom = zoom;
                     //autoUC1.gmap.Zoom = 18;
                     //autoUC1.gmap.Zoom = zoom;
-                    map.Show();
+                    //map.Show();
                 }
             }
             catch (Exception ex)
@@ -1807,6 +1825,7 @@ namespace ThesisInterface
         private void DisableAllTimers(string previousMode)
         {
             PrevMode = previousMode;
+            SendCommandSuccessfully = false;
             timer1.Enabled = false;
             KcontrolTimer.Enabled = false;
             StartKctrlTimer.Enabled = false;
@@ -1881,8 +1900,9 @@ namespace ThesisInterface
                 try
                 {
                     serialPort1.Write(MessagesDocker("VEHCF,DATA,1"));
-                    DisableAllTimers("auto");
-                    SetPreviousMode();
+                    serialPort1.Write(MessagesDocker("VEHCF,DATA,1"));
+                    //DisableAllTimers("auto");
+                    SendCommandSuccessfully = false;
                     DefaultWaitForResponseTimer.Enabled = true;
                 }
                 catch (Exception ex)
@@ -1896,8 +1916,9 @@ namespace ThesisInterface
                 try
                 {
                     serialPort1.Write(MessagesDocker("VEHCF,DATA,0"));
-                    DisableAllTimers("auto");
-                    SetPreviousMode();
+                    serialPort1.Write(MessagesDocker("VEHCF,DATA,0"));
+                    //DisableAllTimers("auto");
+                    SendCommandSuccessfully = false;
                     DefaultWaitForResponseTimer.Enabled = true;
                 }
                 catch (Exception ex)
