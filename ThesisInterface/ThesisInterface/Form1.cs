@@ -22,8 +22,9 @@ namespace ThesisInterface
     {
         public class Vehicle
         {
-            public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, M1Duty, M2Duty, RefAngle, Angle, PosX, PosY, Lat, Lng;
+            public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, M1Duty, M2Duty, RefAngle, Angle, PosX, PosY, Lat, Lng, ThetaE, ThetaD, Delta;
             public bool GPSStatus = false;
+            public int GPSMode;
             public Vehicle(string[] ArrayInfo)
             {
                 try
@@ -36,10 +37,14 @@ namespace ThesisInterface
                     M2Duty = double.Parse(ArrayInfo[6], System.Globalization.CultureInfo.InvariantCulture);
                     RefAngle = double.Parse(ArrayInfo[7], System.Globalization.CultureInfo.InvariantCulture);
                     Angle = double.Parse(ArrayInfo[8], System.Globalization.CultureInfo.InvariantCulture);
+                    GPSMode = int.Parse(ArrayInfo[10], System.Globalization.CultureInfo.InvariantCulture);
                     PosX = double.Parse(ArrayInfo[11], System.Globalization.CultureInfo.InvariantCulture);
                     PosY = double.Parse(ArrayInfo[12], System.Globalization.CultureInfo.InvariantCulture);
                     Lat = double.Parse(ArrayInfo[13], System.Globalization.CultureInfo.InvariantCulture);
                     Lng = double.Parse(ArrayInfo[14], System.Globalization.CultureInfo.InvariantCulture);
+                    ThetaE = double.Parse(ArrayInfo[15], System.Globalization.CultureInfo.InvariantCulture);
+                    ThetaD = double.Parse(ArrayInfo[16], System.Globalization.CultureInfo.InvariantCulture);
+                    Delta = double.Parse(ArrayInfo[17], System.Globalization.CultureInfo.InvariantCulture);
                     if (ArrayInfo[9].Contains("Y"))
                         GPSStatus = true;
                     else
@@ -61,13 +66,15 @@ namespace ThesisInterface
                     + "M1 Duty Cycle: " + M1Duty.ToString() + "\r\n"
                     + "M2 Duty Cycle: " + M2Duty.ToString() + "\r\n"
                     + "Set Angle: " + RefAngle.ToString() + "\r\n"
-                    + "Current Angle: " + Angle.ToString() + "\r\n";
-
+                    + "Current Angle: " + Angle.ToString() + "\r\n"
+                    + "ThetaE: " + ThetaE.ToString() + "\r\n"
+                    + "ThetaD: " + ThetaD.ToString() + "\r\n"
+                    + "Delta: " + Delta.ToString() + "\r\n"; 
                 if (GPSStatus)
                 {
                     mess += "GPS Status: OK\r\n" +
                             "Position(x, y): " + PosX.ToString() + ", " + PosY.ToString() + "\r\n" + "Lat,Lng: "
-                            + Lat.ToString() + ", " + Lng.ToString() + "\r\n";
+                            + Lat.ToString() + ", " + Lng.ToString() + "\r\n" + "GPS Mode: " + GPSMode.ToString() + "\r\n";
                 }
                 else
                     mess += "GPS Status: Lost";
@@ -1111,9 +1118,9 @@ namespace ThesisInterface
                     }
 
                     serialPort1.Write(MessagesDocker("VPLAN,STOP"));
-
+                    //DisableAllTimers("auto");
+                    //DefaultWaitForResponseTimer.Enabled = true;
                     autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Sending map coordinates\r\n";
-                    
                 }
 
                 catch (Exception ex)
@@ -1791,6 +1798,7 @@ namespace ThesisInterface
                 else
                 {
                     //map.Overlays.Clear();
+                    map.Overlays.Clear();
                     ActualLines.Routes.Clear();
                     if(marker != null)
                     {
