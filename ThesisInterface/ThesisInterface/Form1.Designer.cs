@@ -61,9 +61,9 @@
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.DefaultWaitForResponseTimer = new System.Windows.Forms.Timer(this.components);
             this.StopKctrlTimer = new System.Windows.Forms.Timer(this.components);
-            this.TopDrag = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.ControlPanelDrag = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.autoSettingDrag = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResetVehicleBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectedImage)).BeginInit();
@@ -497,20 +497,13 @@
             // 
             // DefaultWaitForResponseTimer
             // 
-            this.DefaultWaitForResponseTimer.Interval = 20;
+            this.DefaultWaitForResponseTimer.Interval = 120;
             this.DefaultWaitForResponseTimer.Tick += new System.EventHandler(this.DefaultWaitForResponseTimer_Tick);
             // 
             // StopKctrlTimer
             // 
             this.StopKctrlTimer.Interval = 45;
             this.StopKctrlTimer.Tick += new System.EventHandler(this.StopKctrlTimer_Tick);
-            // 
-            // TopDrag
-            // 
-            this.TopDrag.Fixed = true;
-            this.TopDrag.Horizontal = true;
-            this.TopDrag.TargetControl = this.TopPanel;
-            this.TopDrag.Vertical = true;
             // 
             // ControlPanelDrag
             // 
@@ -525,6 +518,13 @@
             this.autoSettingDrag.Horizontal = true;
             this.autoSettingDrag.TargetControl = this.autoSetting1;
             this.autoSettingDrag.Vertical = true;
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.TopPanel;
+            this.bunifuDragControl1.Vertical = true;
             // 
             // Form1
             // 
@@ -586,7 +586,7 @@
         private System.Windows.Forms.Timer StopKctrlTimer;
         private UserControls.AutoSetting autoSetting1;
         private Bunifu.Framework.UI.BunifuDragControl autoSettingDrag;
-        private Bunifu.Framework.UI.BunifuDragControl TopDrag;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
     }
 }
 

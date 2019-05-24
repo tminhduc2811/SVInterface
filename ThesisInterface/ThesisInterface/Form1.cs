@@ -22,7 +22,7 @@ namespace ThesisInterface
     {
         public class Vehicle
         {
-            public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, M1Duty, M2Duty, RefAngle, Angle, PosX, PosY, Lat, Lng, ThetaE, ThetaD, Delta;
+            public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, M1Duty, M2Duty, RefAngle, Angle, PosX, PosY, Lat, Lng, ThetaE, ThetaD, Delta, PathYaw;
             public bool GPSStatus = false;
             public int GPSMode;
             public Vehicle(string[] ArrayInfo)
@@ -45,6 +45,7 @@ namespace ThesisInterface
                     ThetaE = double.Parse(ArrayInfo[15], System.Globalization.CultureInfo.InvariantCulture);
                     ThetaD = double.Parse(ArrayInfo[16], System.Globalization.CultureInfo.InvariantCulture);
                     Delta = double.Parse(ArrayInfo[17], System.Globalization.CultureInfo.InvariantCulture);
+                    PathYaw = double.Parse(ArrayInfo[17], System.Globalization.CultureInfo.InvariantCulture)*180/3.14;
                     if (ArrayInfo[9].Contains("Y"))
                         GPSStatus = true;
                     else
@@ -69,7 +70,8 @@ namespace ThesisInterface
                     + "Current Angle: " + Angle.ToString() + "\r\n"
                     + "ThetaE: " + ThetaE.ToString() + "\r\n"
                     + "ThetaD: " + ThetaD.ToString() + "\r\n"
-                    + "Delta: " + Delta.ToString() + "\r\n"; 
+                    + "Delta: " + Delta.ToString() + "\r\n"
+                    + "Path Yaw: " + PathYaw.ToString() + "\r\n";
                 if (GPSStatus)
                 {
                     mess += "GPS Status: OK\r\n" +
@@ -145,8 +147,6 @@ namespace ThesisInterface
 
         public int timeoutIMU = 40;
 
-        public int timeoutAuto = 40;
-
         public string AutoWaitKey = "|";
 
         public string IMUWaitKey = "|";  // This is used for creating waiting messages...
@@ -155,7 +155,7 @@ namespace ThesisInterface
 
         public string OldMess = "";
 
-        private string PrevMode;
+        private string PrevMode, NewMode;
 
         public int KcontrolWaitTimes = 3, defaultwaitTimes = 3;
 
@@ -175,7 +175,14 @@ namespace ThesisInterface
 
         private bool OnHelperPanel = false;
 
-        private int DefaultWaitTimes = 20;
+        private int DefaultWaitTimes = 6;
+
+        private string DefaultSendMessages = "";
+
+        private string AutoWaitMess = "";
+
+        public int TimeOutAuto = 10;
+
 
         public Form1()
         {
@@ -217,7 +224,8 @@ namespace ThesisInterface
                     break;
                 case 121:
                     //DisableAllTimers("auto");
-                    serialPort1.Write("$SFRST\r\n");
+                    serialPort1.Write(MessagesDocker("$SFRST\r\n"));
+                    DefaultSendMessages = MessagesDocker("$SFRST\r\n");
                     DefaultWaitForResponseTimer.Enabled = true;
                     SetPreviousMode();
                     break;
@@ -849,7 +857,7 @@ namespace ThesisInterface
                 serialPort1.Write(MessagesDocker("MACON,1"));
                 manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started to control manually\r\n";
                 manualUC1.FormStatus.Text = "STARTED";
-                DisableAllTimers("manual");
+                DisableAllTimers("none", "manual");
                 ManualEnabled = true;
                 timer1.Enabled = true;
             }
@@ -867,7 +875,7 @@ namespace ThesisInterface
             try
             {
                 serialPort1.Write(MessagesDocker("KCTRL,0"));
-                DisableAllTimers("manual");
+                DisableAllTimers("none", "none");
                 manualUC1.FormStatus.Text = "STOPED";
                 manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Stop controlling manually\r\n";
             }
@@ -962,21 +970,15 @@ namespace ThesisInterface
 
         // Handler for AUTO User Control -------------------------------------------//
 
-        private void StartWaitingForResponse()
-        {
-            DisableAllTimers("auto");
-            OldMess = autoUC1.ReceivedTb.Text;
-            AutoTimer.Enabled = true;
-            
-        }
-
         private void StopVehicleBtAutoUCClickHandler(object sender, EventArgs e)
         {
             try
             {
-                serialPort1.Write(MessagesDocker("AUCON,STOP"));
-                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped vehicle...\r\n";
-                autoUC1.StartBt.Text = "Start";
+                DisableAllTimers("auto", "auto");
+                string mess = MessagesDocker("AUCON,STOP");
+                serialPort1.Write(mess);
+                autoUC1.SentTb.Text += DateTime.Now.ToString("hh:mm:ss ") + " Stopping vehicle...\r\n";
+                SetMessageAutoToSend(mess, "Stop vehicle");
             }
 
             catch (Exception ex)
@@ -989,10 +991,11 @@ namespace ThesisInterface
         {
             try
             {
-                DisableAllTimers("auto");
-                serialPort1.Write(MessagesDocker("AUCON,1"));
-                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started auto mode\r\n";
-                StartWaitingForResponse();
+                DisableAllTimers("none", "auto");
+                string mess = MessagesDocker("AUCON,1");
+                serialPort1.Write(mess);
+                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Starting auto mode\r\n";
+                SetMessageAutoToSend(mess, "Turning mode auto");
             }
 
             catch (Exception ex)
@@ -1005,10 +1008,11 @@ namespace ThesisInterface
         {
             try
             {
-                DisableAllTimers("none");
-                serialPort1.Write(MessagesDocker("AUCON,0"));
-                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped auto mode\r\n";
-                DefaultWaitForResponseTimer.Enabled = true;
+                DisableAllTimers("none", "none");
+                string mess = MessagesDocker("AUCON,0");
+                serialPort1.Write(mess);
+                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Turning auto mode off\r\n";
+                SetMessageAutoToSend(mess, "Turning off auto mode");
             }
 
             catch (Exception ex)
@@ -1021,10 +1025,11 @@ namespace ThesisInterface
         {
             try
             {
-                serialPort1.Write(MessagesDocker("AUCON,START"));
-                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started vehicle...\r\n";
-                autoUC1.StartBt.Text = "Stop";
-                DefaultWaitForResponseTimer.Enabled = true;
+                string mess = MessagesDocker("AUCON,START");
+                DisableAllTimers("auto", "auto");
+                serialPort1.Write(mess);
+                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss ") + " Starting auto mode for vehicle...\r\n";
+                SetMessageAutoToSend(mess, "Start to run");
             }
 
             catch (Exception ex)
@@ -1188,7 +1193,7 @@ namespace ThesisInterface
 
         private void InitAutoUC()
         {
-            AutoTimer.Interval = 20;
+            AutoTimer.Interval = 120;
             AutoTimer.Enabled = false;
             autoUC1.gmap.DragButton = MouseButtons.Left;
             autoUC1.gmap.MapProvider = GMap.NET.MapProviders.GoogleSatelliteMapProvider.Instance;
@@ -1268,7 +1273,7 @@ namespace ThesisInterface
                             string mess = serialPort1.ReadLine();
                             string[] value;
                             value = mess.Split(',');
-                            if(value[0] == "$VINFO" && (value.Count() == 16))
+                            if(value[0] == "$VINFO" && (value.Count() == 19))
                             {
                                 temp = mess;
                                 temp = temp.Remove(temp.Length - 3, 3);
@@ -1317,7 +1322,7 @@ namespace ThesisInterface
                             string mess = serialPort1.ReadLine();
                             string[] value;
                             value = mess.Split(',');
-                            if (value[0] == "$VINFO" && (value.Count() == 16))
+                            if (value[0] == "$VINFO" && (value.Count() == 20))
                             {
                                 autoUC1.ReceivedTb.Text += mess + "\r\n";
                                 temp = mess;
@@ -1344,16 +1349,17 @@ namespace ThesisInterface
                                         (It help users to understand whether the vehicle is turning left or right)      */
                                     DrawVehicleTurningStatusOnImage(autoUC1.VehicleStatusImage, - MyVehicle.RefAngle + MyVehicle.Angle, LowVelocity);
                                     autoUC1.TurningState.Text = "Turning " + Math.Round(- MyVehicle.RefAngle + MyVehicle.Angle, 4).ToString() + "°";
+                                    autoUC1.TurningState.Text = "Turning " + Math.Round(- MyVehicle.RefAngle + MyVehicle.Angle, 4).ToString() + "°";
                                 }
                             }
 
-                            else if(mess.Contains("SINFO,VPLAN,1"))
+                            if(mess.Contains("SINFO,VPLAN,1"))
                             {
                                 SendCommandSuccessfully = true;
                                 autoUC1.ReceivedTb.Text += "Map planned successfully, ready to go\r\n";
                             }
 
-                            else if (mess.Contains("SINFO,1")) 
+                            if (mess.Contains("SINFO,1")) 
                             {
                                 SendCommandSuccessfully = true;
                                 autoUC1.SentTb.Text += "Command sent successfully\r\n";
@@ -1458,28 +1464,47 @@ namespace ThesisInterface
 
         private void AutoTimer_Tick(object sender, EventArgs e)
         {
-            if (timeoutAuto > 0)
+            if (TimeOutAuto > 0)
             {
-                timeoutAuto--;
+                TimeOutAuto--;
                 if (serialPort1.BytesToRead != 0)
                 {
                     string mess = serialPort1.ReadLine();
                     if (mess.Contains("$SINFO,1"))
                     {
                         AutoTimer.Enabled = false;
-                        autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Done.\r\n";
-                        timeoutAuto = 40;
-                        AutoEnabled = true;
-                        timer1.Enabled = true;
+                        DefaultSendMessages = "";
+                        SendCommandSuccessfully = false;
+                        autoUC1.ReceivedTb.Text += DateTime.Now.ToString("hh:mm:ss ") + AutoWaitMess + " successfully\r\n";
+                        TimeOutAuto = 10;
+                        SetNewMode();
+                    }
+                }
+
+                if(SendCommandSuccessfully)
+                {
+                    AutoTimer.Enabled = false;
+                    DefaultSendMessages = "";
+                    SendCommandSuccessfully = false;
+                    autoUC1.ReceivedTb.Text += DateTime.Now.ToString("hh:mm:ss ") + AutoWaitMess + " successfully\r\n";
+                    TimeOutAuto = 10;
+                    SetNewMode();
+                }
+                else
+                {
+                    if(DefaultSendMessages != "")
+                    {
+                        serialPort1.Write(DefaultSendMessages);
                     }
                 }
             }
             else
             {
                 AutoTimer.Enabled = false;
-                timeoutAuto = 40;
-                autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Request failed\r\n";
-                
+                TimeOutAuto = 10;
+                DefaultSendMessages = "";
+                autoUC1.ReceivedTb.Text += DateTime.Now.ToString("hh:mm:ss ") + AutoWaitMess + " failed\r\n";
+                SetPreviousMode();
             }
         }
 
@@ -1592,36 +1617,45 @@ namespace ThesisInterface
             if(DefaultWaitTimes > 0)
             {
                 DefaultWaitTimes--;
-                if(serialPort1.IsOpen && serialPort1.BytesToRead != 0)
+                if (SendCommandSuccessfully)
+                {
+                    DefaultWaitForResponseTimer.Enabled = false;
+                    SendCommandSuccessfully = false;
+                    DefaultSendMessages = "";
+                    DefaultWaitTimes = 6;
+                    MessageBox.Show("Command sent to vehicle successfully");
+                    SetPreviousMode();
+                }
+                if (serialPort1.IsOpen && serialPort1.BytesToRead != 0)
                 {
                     string mess = serialPort1.ReadLine();
                     if (mess.Contains("$SINFO,1"))
                     {
                         DefaultWaitForResponseTimer.Enabled = false;
+                        DefaultSendMessages = "";
+                        DefaultWaitTimes = 6;
                         SendCommandSuccessfully = false;
-                        DefaultWaitTimes = 20;
                         MessageBox.Show("Command sent to vehicle successfully");
-                        return;
+                        SetPreviousMode();
                     }
                 }
-                else if (SendCommandSuccessfully)
+                else
                 {
-                    DefaultWaitForResponseTimer.Enabled = false;
-                    SendCommandSuccessfully = false;
-                    DefaultWaitTimes = 20;
-                    MessageBox.Show("Command sent to vehicle successfully");
-                    return;
+                    if (DefaultSendMessages != "")
+                        serialPort1.Write(DefaultSendMessages);
                 }
             }
             else
             {
                 DefaultWaitForResponseTimer.Enabled = false;
-                DefaultWaitTimes = 20;
-                MessageBox.Show("Command sent to vehicle failed");
+                DefaultSendMessages = "";
+                DefaultWaitTimes = 6;
+                if(SendCommandSuccessfully == false)
+                    MessageBox.Show("Command sent to vehicle failed");
+                SetPreviousMode();
             }
         }
-
-
+        
         //---------------------------------------------------------------------------//
 
         // Other functions ----------------------------------------------------------//
@@ -1830,20 +1864,20 @@ namespace ThesisInterface
             SendCommandAsync();
         }
 
-        private void DisableAllTimers(string previousMode)
+        private void DisableAllTimers(string previousMode, string newMode)
         {
             PrevMode = previousMode;
-            SendCommandSuccessfully = false;
+            NewMode = newMode;
+            //SendCommandSuccessfully = false;
             timer1.Enabled = false;
             KcontrolTimer.Enabled = false;
             StartKctrlTimer.Enabled = false;
             DefaultWaitForResponseTimer.Enabled = false;
-            //ManualEnabled = false;
-            //AutoEnabled = false;
-            //KctrlEnabled = false;
+            ManualEnabled = false;
+            AutoEnabled = false;
+            KctrlEnabled = false;
         }
-
-
+        
         private void DisableAllConfigTextBoxes()
         {
             vehicleSetting1.Kp1.Enabled = false;
@@ -1876,7 +1910,7 @@ namespace ThesisInterface
             {
                 try
                 {
-                    DisableAllTimers("auto");
+                    DisableAllTimers("none", "none");
                     serialPort1.Write(MessagesDocker("KCTRL,1,1"));
                     StartKctrlTimer.Enabled = true;
                 }
@@ -1889,7 +1923,7 @@ namespace ThesisInterface
             {
                 try
                 {
-                    DisableAllTimers("none");
+                    DisableAllTimers("none", "none");
                     serialPort1.Write(MessagesDocker("KCTRL,0"));
                     StopKctrlTimer.Enabled = true;
                 }
@@ -1907,10 +1941,11 @@ namespace ThesisInterface
                 // Allow vehicle to send data
                 try
                 {
-                    serialPort1.Write(MessagesDocker("VEHCF,DATA,1"));
-                    serialPort1.Write(MessagesDocker("VEHCF,DATA,1"));
-                    //DisableAllTimers("auto");
+                    DisableAllTimers("auto", "auto");
+                    string mess = MessagesDocker("VEHCF,DATA,1");
+                    serialPort1.Write(MessagesDocker(mess));
                     SendCommandSuccessfully = false;
+                    DefaultSendMessages = mess;
                     DefaultWaitForResponseTimer.Enabled = true;
                 }
                 catch (Exception ex)
@@ -1923,10 +1958,11 @@ namespace ThesisInterface
             {
                 try
                 {
-                    serialPort1.Write(MessagesDocker("VEHCF,DATA,0"));
-                    serialPort1.Write(MessagesDocker("VEHCF,DATA,0"));
-                    //DisableAllTimers("auto");
+                    DisableAllTimers("auto", "auto");
+                    string mess = MessagesDocker("VEHCF,DATA,0");
+                    serialPort1.Write(mess);
                     SendCommandSuccessfully = false;
+                    DefaultSendMessages = mess;
                     DefaultWaitForResponseTimer.Enabled = true;
                 }
                 catch (Exception ex)
@@ -1945,10 +1981,38 @@ namespace ThesisInterface
                     AutoEnabled = true;
                     timer1.Enabled = true;
                     break;
+                case "manual":
+                    timer1.Enabled = true;
+                    ManualEnabled = true;
+                    break;
+                case "none":
+                    break;
 
             }
-                
-            AutoEnabled = true;
+        }
+
+        private void SetNewMode()
+        {
+            switch (NewMode)
+            {
+                case "auto":
+                    AutoEnabled = true;
+                    timer1.Enabled = true;
+                    break;
+                case "manual":
+                    timer1.Enabled = true;
+                    ManualEnabled = true;
+                    break;
+                case "none":
+                    break;
+            }
+        }
+
+        private void SetMessageAutoToSend(string defaultSend, string waitMess)
+        {
+            DefaultSendMessages = defaultSend;
+            AutoWaitMess = waitMess;
+            AutoTimer.Enabled = true;
         }
         
     }
