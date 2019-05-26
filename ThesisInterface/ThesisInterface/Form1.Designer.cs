@@ -62,6 +62,7 @@
             this.DefaultWaitForResponseTimer = new System.Windows.Forms.Timer(this.components);
             this.StopKctrlTimer = new System.Windows.Forms.Timer(this.components);
             this.TopDrag = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.SendWithResTimer = new System.Windows.Forms.Timer(this.components);
             this.ControlPanelDrag = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.autoSettingDrag = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.TopPanel.SuspendLayout();
@@ -77,6 +78,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 20;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // TopPanel
@@ -512,6 +514,11 @@
             this.TopDrag.TargetControl = this.TopPanel;
             this.TopDrag.Vertical = true;
             // 
+            // SendWithResTimer
+            // 
+            this.SendWithResTimer.Interval = 20;
+            this.SendWithResTimer.Tick += new System.EventHandler(this.SendWithResTimer_Tick);
+            // 
             // ControlPanelDrag
             // 
             this.ControlPanelDrag.Fixed = true;
@@ -587,6 +594,7 @@
         private UserControls.AutoSetting autoSetting1;
         private Bunifu.Framework.UI.BunifuDragControl autoSettingDrag;
         private Bunifu.Framework.UI.BunifuDragControl TopDrag;
+        private System.Windows.Forms.Timer SendWithResTimer;
     }
 }
 

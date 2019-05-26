@@ -22,33 +22,17 @@ namespace ThesisInterface
     {
         public class Vehicle
         {
-            public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, M1Duty, M2Duty, RefAngle, Angle, PosX, PosY, Lat, Lng, ThetaE, ThetaD, Delta;
-            public bool GPSStatus = false;
-            public int GPSMode;
+            public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, RefAngle, Angle;
             public Vehicle(string[] ArrayInfo)
             {
                 try
                 {
-                    M1RefVelocity = double.Parse(ArrayInfo[1], System.Globalization.CultureInfo.InvariantCulture);
-                    M2RefVelocity = double.Parse(ArrayInfo[2], System.Globalization.CultureInfo.InvariantCulture);
-                    M1Velocity = double.Parse(ArrayInfo[3], System.Globalization.CultureInfo.InvariantCulture);
-                    M2Velocity = double.Parse(ArrayInfo[4], System.Globalization.CultureInfo.InvariantCulture);
-                    M1Duty = double.Parse(ArrayInfo[5], System.Globalization.CultureInfo.InvariantCulture);
-                    M2Duty = double.Parse(ArrayInfo[6], System.Globalization.CultureInfo.InvariantCulture);
-                    RefAngle = double.Parse(ArrayInfo[7], System.Globalization.CultureInfo.InvariantCulture);
-                    Angle = double.Parse(ArrayInfo[8], System.Globalization.CultureInfo.InvariantCulture);
-                    GPSMode = int.Parse(ArrayInfo[10], System.Globalization.CultureInfo.InvariantCulture);
-                    PosX = double.Parse(ArrayInfo[11], System.Globalization.CultureInfo.InvariantCulture);
-                    PosY = double.Parse(ArrayInfo[12], System.Globalization.CultureInfo.InvariantCulture);
-                    Lat = double.Parse(ArrayInfo[13], System.Globalization.CultureInfo.InvariantCulture);
-                    Lng = double.Parse(ArrayInfo[14], System.Globalization.CultureInfo.InvariantCulture);
-                    ThetaE = double.Parse(ArrayInfo[15], System.Globalization.CultureInfo.InvariantCulture);
-                    ThetaD = double.Parse(ArrayInfo[16], System.Globalization.CultureInfo.InvariantCulture);
-                    Delta = double.Parse(ArrayInfo[17], System.Globalization.CultureInfo.InvariantCulture);
-                    if (ArrayInfo[9].Contains("Y"))
-                        GPSStatus = true;
-                    else
-                        GPSStatus = false;
+                    M1RefVelocity = double.Parse(ArrayInfo[2], System.Globalization.CultureInfo.InvariantCulture);
+                    M2RefVelocity = double.Parse(ArrayInfo[3], System.Globalization.CultureInfo.InvariantCulture);
+                    M1Velocity = double.Parse(ArrayInfo[4], System.Globalization.CultureInfo.InvariantCulture);
+                    M2Velocity = double.Parse(ArrayInfo[5], System.Globalization.CultureInfo.InvariantCulture);
+                    RefAngle = double.Parse(ArrayInfo[6], System.Globalization.CultureInfo.InvariantCulture);
+                    Angle = double.Parse(ArrayInfo[7], System.Globalization.CultureInfo.InvariantCulture);
                 }
 
                 catch (Exception ex)
@@ -63,22 +47,82 @@ namespace ThesisInterface
                     + "M1 Velocity: " + M1Velocity.ToString() + "\r\n"
                     + "M2 Velocity Ref: " + M2RefVelocity.ToString() + "\r\n"
                     + "M2 Velocity: " + M2Velocity.ToString() + "\r\n"
-                    + "M1 Duty Cycle: " + M1Duty.ToString() + "\r\n"
-                    + "M2 Duty Cycle: " + M2Duty.ToString() + "\r\n"
                     + "Set Angle: " + RefAngle.ToString() + "\r\n"
-                    + "Current Angle: " + Angle.ToString() + "\r\n"
-                    + "ThetaE: " + ThetaE.ToString() + "\r\n"
-                    + "ThetaD: " + ThetaD.ToString() + "\r\n"
-                    + "Delta: " + Delta.ToString() + "\r\n"; 
-                if (GPSStatus)
+                    + "Current Angle: " + Angle.ToString() + "\r\n";
+
+                return mess;
+            }
+        }
+
+        public class GPS
+        {
+            public string GPS_Available, GPS_Mode;
+            public double GPS_Lat, GPS_Lng;
+            public GPS(string[] ArrayInfo)
+            {
+                try
                 {
-                    mess += "GPS Status: OK\r\n" +
-                            "Position(x, y): " + PosX.ToString() + ", " + PosY.ToString() + "\r\n" + "Lat,Lng: "
-                            + Lat.ToString() + ", " + Lng.ToString() + "\r\n" + "GPS Mode: " + GPSMode.ToString() + "\r\n";
+                    GPS_Available = ArrayInfo[2];
+                    GPS_Lat = double.Parse(ArrayInfo[4], System.Globalization.CultureInfo.InvariantCulture);
+                    GPS_Lng = double.Parse(ArrayInfo[5], System.Globalization.CultureInfo.InvariantCulture);
+                    switch (ArrayInfo[3])
+                    {
+                        case "0":
+                            GPS_Mode = "GPS Not Available";
+                            break;
+                        case "1":
+                            GPS_Mode = "GPS Available";
+                            break;
+                        case "2":
+                            GPS_Mode = "DGNSS";
+                            break;
+                        case "4":
+                            GPS_Mode = "Fixed";
+                            break;
+                        case "5":
+                            GPS_Mode = "Float";
+                            break;
+                        default:
+                            GPS_Mode = "Parsed Error";
+                            break;
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            public string GetGPSStatus()
+            {
+                string mess;
+                if (GPS_Available.Contains("Y"))
+                {
+                    mess = "GPS Mode: " + GPS_Mode + "\r\nPosition: " + GPS_Lat.ToString() + ", " + GPS_Lng.ToString() + "\r\n";
                 }
                 else
-                    mess += "GPS Status: Lost";
+                {
+                    mess = "GPS is not available\r\n";
+                }
 
+                return mess;
+            }
+        }
+
+        public class StanleyControl
+        {
+            public string thetaE, thetaD, Delta;
+
+            public StanleyControl(string []ArrayInfo)
+            {
+                thetaE = ArrayInfo[2];
+                thetaD = ArrayInfo[3];
+                Delta = ArrayInfo[4];
+            }
+
+            public string GetStanleyControlStatus()
+            {
+                string mess = "Theta E: " + thetaE + "\r\nTheta D: " + thetaD + "\r\nDelta Angle: " + Delta + "\r\n";
                 return mess;
             }
         }
@@ -109,7 +153,9 @@ namespace ThesisInterface
 
 
         Vehicle MyVehicle;
-        
+        GPS MyGPS;
+        StanleyControl MyStanleyControl;
+
         // SET DEFAULT IMAGE FOR VELOCITY OF VEHICLE, CONSIST OF: RED, ORANGE, YELLOW, GREEN
         Image ZeroVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\ZERO.png");
 
@@ -118,6 +164,8 @@ namespace ThesisInterface
         Image MediumVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\MEDIUM.png");
 
         Image HighVelocity = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + @"\HIGH.png");
+
+        public string Vehicle_Information = "", GPS_Information = "", StanleyControl_Information = "";
 
         //TODO: Set temporarily, fix later
         char KeyW = '!', KeyS = '!', KeyA = '!', KeyD = '!';
@@ -139,6 +187,7 @@ namespace ThesisInterface
         }
         //---------------------------------------------------------------------------------------------------------------
         private bool AutoSetting = false;
+
         public string ConfigMessToWait = "";
         
         public int timeout = 40;
@@ -176,6 +225,10 @@ namespace ThesisInterface
         private bool OnHelperPanel = false;
 
         private int DefaultWaitTimes = 20;
+
+        private int ResendTimes = 8, ResendDefaultTimes = 8, ReWaitTimes = 45, ReWaitDefault = 45;
+
+        private string ResendMess = "";
 
         public Form1()
         {
@@ -216,8 +269,7 @@ namespace ThesisInterface
                     ControlSendDataFromVehicle(1);
                     break;
                 case 121:
-                    //DisableAllTimers("auto");
-                    serialPort1.Write("$SFRST\r\n");
+                    serialPort1.Write(MessagesDocker("SFRST"));
                     DefaultWaitForResponseTimer.Enabled = true;
                     SetPreviousMode();
                     break;
@@ -849,7 +901,7 @@ namespace ThesisInterface
                 serialPort1.Write(MessagesDocker("MACON,1"));
                 manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started to control manually\r\n";
                 manualUC1.FormStatus.Text = "STARTED";
-                DisableAllTimers("manual");
+                DisableAllTimers();
                 ManualEnabled = true;
                 timer1.Enabled = true;
             }
@@ -867,7 +919,7 @@ namespace ThesisInterface
             try
             {
                 serialPort1.Write(MessagesDocker("KCTRL,0"));
-                DisableAllTimers("manual");
+                DisableAllTimers();
                 manualUC1.FormStatus.Text = "STOPED";
                 manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Stop controlling manually\r\n";
             }
@@ -964,7 +1016,7 @@ namespace ThesisInterface
 
         private void StartWaitingForResponse()
         {
-            DisableAllTimers("auto");
+            DisableAllTimers();
             OldMess = autoUC1.ReceivedTb.Text;
             AutoTimer.Enabled = true;
             
@@ -989,7 +1041,7 @@ namespace ThesisInterface
         {
             try
             {
-                DisableAllTimers("auto");
+                DisableAllTimers();
                 serialPort1.Write(MessagesDocker("AUCON,1"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started auto mode\r\n";
                 StartWaitingForResponse();
@@ -1005,7 +1057,7 @@ namespace ThesisInterface
         {
             try
             {
-                DisableAllTimers("none");
+                DisableAllTimers();
                 serialPort1.Write(MessagesDocker("AUCON,0"));
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped auto mode\r\n";
                 DefaultWaitForResponseTimer.Enabled = true;
@@ -1051,7 +1103,24 @@ namespace ThesisInterface
                 
                 for (int i = 0; i < coordinatesInformation.actualCoordinates.Count; i++)
                 {
-                    ActualCoordinatesList.Add(new PointLatLng(coordinatesInformation.actualCoordinates[i].Lat, coordinatesInformation.actualCoordinates[i].Lng));
+                    
+                    if (i>0)
+                    {
+                        double [] utm1 = LatLonToUTM(coordinatesInformation.actualCoordinates[i - 1].Lat, coordinatesInformation.actualCoordinates[i - 1].Lng);
+                        double [] utm2 = LatLonToUTM(coordinatesInformation.actualCoordinates[i].Lat, coordinatesInformation.actualCoordinates[i].Lng);
+                        double deltaError = Math.Abs(utm1[0] - utm2[0]);
+                        if (deltaError > 10)
+                        {
+                            coordinatesInformation.actualCoordinates[i].Lat = coordinatesInformation.actualCoordinates[i - 1].Lat;
+                            coordinatesInformation.actualCoordinates[i].Lng = coordinatesInformation.actualCoordinates[i - 1].Lng;
+                        }
+                        ActualCoordinatesList.Add(new PointLatLng(coordinatesInformation.actualCoordinates[i].Lat, coordinatesInformation.actualCoordinates[i].Lng));
+                    }
+                    else
+                    {
+                        ActualCoordinatesList.Add(new PointLatLng(coordinatesInformation.actualCoordinates[i].Lat, coordinatesInformation.actualCoordinates[i].Lng));
+                    }
+                    
                     DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual");
                 }               
             }
@@ -1118,11 +1187,8 @@ namespace ThesisInterface
                     }
 
                     serialPort1.Write(MessagesDocker("VPLAN,STOP"));
-                    //DisableAllTimers("auto");
-                    //DefaultWaitForResponseTimer.Enabled = true;
                     autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Sending map coordinates\r\n";
                 }
-
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1268,34 +1334,63 @@ namespace ThesisInterface
                             string mess = serialPort1.ReadLine();
                             string[] value;
                             value = mess.Split(',');
-                            if(value[0] == "$VINFO" && (value.Count() == 16))
+                            temp = mess;
+                            if(mess.Length >= 5)
                             {
-                                temp = mess;
                                 temp = temp.Remove(temp.Length - 3, 3);
                                 temp = temp.Remove(0, 1);
-                                if (true)
-                                {
-                                    MyVehicle = new Vehicle(value);
-                                    manualUC1.VehicleStatusBox.Text = MyVehicle.GetVehicleStatus();
-                                    // Save Position Data & Draw On Map
-                                    manualUC1.PositionBox.Text += mess + "\r\n";
-                                    manualUC1.PositionBox.Text += MyVehicle.PosX.ToString() + "," + MyVehicle.PosY.ToString() + "\r\n";
-                                    if (MyVehicle.GPSStatus)
-                                    {
-                                        // Save Position Data & Draw On Map
-                                        ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
-                                        if (online)
-                                        {
-                                            DisplayRouteOnMap(manualUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
-                                        }
-                                        else
-                                        {
-                                            manualUC1.chart1.Series["Position"].Points.AddXY(MyVehicle.PosX/100000, MyVehicle.PosY/100000);
-                                        }
-                                    }
+                            }
+                            string CC = checksum(temp);
 
-                                    
-                                }
+                            //if(value[0] == "$VINFO")
+                            //{
+                            //    temp = mess;
+                            //    temp = temp.Remove(temp.Length - 3, 3);
+                            //    temp = temp.Remove(0, 1);
+                            //    //if (true)
+                            //    //{
+                            //    //    MyVehicle = new Vehicle(value);
+                            //    //    manualUC1.VehicleStatusBox.Text = MyVehicle.GetVehicleStatus();
+                            //    //    // Save Position Data & Draw On Map
+                            //    //    manualUC1.PositionBox.Text += mess + "\r\n";
+                            //    //    manualUC1.PositionBox.Text += MyVehicle.PosX.ToString() + "," + MyVehicle.PosY.ToString() + "\r\n";
+                            //    //    if (MyVehicle.GPSStatus)
+                            //    //    {
+                            //    //        // Save Position Data & Draw On Map
+                            //    //        ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
+                            //    //        if (online)
+                            //    //        {
+                            //    //            DisplayRouteOnMap(manualUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
+                            //    //        }
+                            //    //        else
+                            //    //        {
+                            //    //            manualUC1.chart1.Series["Position"].Points.AddXY(MyVehicle.PosX/100000, MyVehicle.PosY/100000);
+                            //    //        }
+                            //    //    }
+
+
+                            //    //}
+                            //}
+
+                            // Update Vehicle Information
+                            if (mess.Contains("$VINFO,0") && mess.Contains(CC))
+                            {
+                                MyVehicle = new Vehicle(value);
+                                Vehicle_Information = MyVehicle.GetVehicleStatus();
+                            }
+
+                            // Update GPS Information
+                            if (mess.Contains("$VINFO,1") && mess.Contains(CC))
+                            {
+                                MyGPS = new GPS(value);
+                                GPS_Information = MyGPS.GetGPSStatus();
+                            }
+
+                            // Update Stanley Information
+                            if (mess.Contains("$VINFO,2") && mess.Contains(CC))
+                            {
+                                MyStanleyControl = new StanleyControl(value);
+                                StanleyControl_Information = MyStanleyControl.GetStanleyControlStatus();
                             }
                         }
                         catch (Exception ex)
@@ -1310,51 +1405,127 @@ namespace ThesisInterface
                 if (serialPort1.IsOpen)
                 {
                     if (serialPort1.BytesToRead != 0)
-                    {                
+                    {
+                        //try
+                        //{
+                        //    string temp;
+                        //    string mess = serialPort1.ReadLine();
+                        //    string[] value;
+                        //    value = mess.Split(',');
+                        //    if (value[0] == "$VINFO" && (value.Count() == 20))
+                        //    {
+                        //        autoUC1.ReceivedTb.Text += mess + "\r\n";
+                        //        temp = mess;
+                        //        temp = temp.Remove(temp.Length - 3, 3);
+                        //        temp = temp.Remove(0, 1);
+                        //        if (true)
+                        //        //if (true)
+                        //        {
+                        //            MyVehicle = new Vehicle(value);
+                        //            autoUC1.DetailInfoTb.Text = MyVehicle.GetVehicleStatus();
+                        //            /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
+                        //            if (MyVehicle.GPSStatus)
+                        //            {
+
+                        //                // Save Position Data & Draw On Map
+
+                        //                ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
+                        //                GMap.NET.WindowsForms.GMapMarker marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
+                        //                    new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng),
+                        //                    GMap.NET.WindowsForms.Markers.GMarkerGoogleType.orange_dot);
+                        //                DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual", marker);
+                        //            }
+                        //            autoUC1.ReceivedTb.Text += mess;
+                        //            /*  Draw turning State of vehicle by subtracting the RefAngle and the ActualAngle
+                        //                (It help users to understand whether the vehicle is turning left or right)      */
+                        //            DrawVehicleTurningStatusOnImage(autoUC1.VehicleStatusImage, - MyVehicle.RefAngle + MyVehicle.Angle, LowVelocity);
+                        //            autoUC1.TurningState.Text = "Turning " + Math.Round(- MyVehicle.RefAngle + MyVehicle.Angle, 4).ToString() + "°";
+                        //        }
+                        //    }
+
+                        //    if(mess.Contains("SINFO,VPLAN,1"))
+                        //    {
+                        //        SendCommandSuccessfully = true;
+                        //        autoUC1.ReceivedTb.Text += "Map planned successfully, ready to go\r\n";
+                        //    }
+
+                        //    if (mess.Contains("SINFO,1")) 
+                        //    {
+                        //        //MessageBox.Show("checked");
+                        //        SendCommandSuccessfully = true;
+                        //        autoUC1.SentTb.Text += "Command sent successfully\r\n";
+                        //    }
+
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //}
                         try
                         {
                             string temp;
                             string mess = serialPort1.ReadLine();
                             string[] value;
                             value = mess.Split(',');
-                            if (value[0] == "$VINFO" && (value.Count() == 16))
+                            temp = mess;
+                            if (mess.Length >= 5)
                             {
-                                autoUC1.ReceivedTb.Text += mess + "\r\n";
-                                temp = mess;
                                 temp = temp.Remove(temp.Length - 3, 3);
                                 temp = temp.Remove(0, 1);
-                                //if (value[14].Contains(checksum(temp)))
-                                if (true)
+                            }
+                            string CC = checksum(temp);
+
+                            // Update Vehicle Information
+                            if (mess.Contains("$VINFO,0") && mess.Contains(CC))
+                            {
+                                MyVehicle = new Vehicle(value);
+                                Vehicle_Information = MyVehicle.GetVehicleStatus();
+
+                                /*  Draw turning State of vehicle by subtracting the RefAngle and the ActualAngle
+                                (It help users to understand whether the vehicle is turning left or right)      */
+                                DrawVehicleTurningStatusOnImage(autoUC1.VehicleStatusImage, -MyVehicle.RefAngle + MyVehicle.Angle, LowVelocity);
+                                autoUC1.TurningState.Text = "Turning " + Math.Round(-MyVehicle.RefAngle + MyVehicle.Angle, 4).ToString() + "°";
+                                autoUC1.ReceivedTb.Text += mess;
+                            }
+
+                            // Update GPS Information
+                            if (mess.Contains("$VINFO,1") && mess.Contains(CC))
+                            {
+                                MyGPS = new GPS(value);
+                                GPS_Information = MyGPS.GetGPSStatus();
+                                //autoUC1.ReceivedTb.Text += mess;
+                                if (MyGPS.GPS_Available.Contains("Y"))
                                 {
-                                    MyVehicle = new Vehicle(value);
-                                    autoUC1.DetailInfoTb.Text = MyVehicle.GetVehicleStatus();
-                                    /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
-                                    if (true)
-                                    {
-                                        
-                                        // Save Position Data & Draw On Map
-                                        autoUC1.ReceivedTb.Text += mess;
-                                        ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
-                                        GMap.NET.WindowsForms.GMapMarker marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
-                                            new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng),
-                                            GMap.NET.WindowsForms.Markers.GMarkerGoogleType.orange_dot);
-                                        DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual", marker);
-                                    }
-                                    /*  Draw turning State of vehicle by subtracting the RefAngle and the ActualAngle
-                                        (It help users to understand whether the vehicle is turning left or right)      */
-                                    DrawVehicleTurningStatusOnImage(autoUC1.VehicleStatusImage, - MyVehicle.RefAngle + MyVehicle.Angle, LowVelocity);
-                                    autoUC1.TurningState.Text = "Turning " + Math.Round(- MyVehicle.RefAngle + MyVehicle.Angle, 4).ToString() + "°";
+
+                                    // Save Position Data & Draw On Map
+
+                                    ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyGPS.GPS_Lat, MyGPS.GPS_Lng));
+                                    GMap.NET.WindowsForms.GMapMarker marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
+                                        new GMap.NET.PointLatLng(MyGPS.GPS_Lat, MyGPS.GPS_Lng),
+                                        GMap.NET.WindowsForms.Markers.GMarkerGoogleType.orange_dot);
+                                    DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual", marker);
                                 }
                             }
 
-                            else if(mess.Contains("SINFO,VPLAN,1"))
+                            // Update Stanley Information
+                            if (mess.Contains("$VINFO,2") && mess.Contains(CC))
+                            {
+                                MyStanleyControl = new StanleyControl(value);
+                                StanleyControl_Information = MyStanleyControl.GetStanleyControlStatus();
+                            }
+
+                            autoUC1.DetailInfoTb.Text = Vehicle_Information + GPS_Information + StanleyControl_Information;
+                            /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
+                            
+                            if (mess.Contains("SINFO,VPLAN,1"))
                             {
                                 SendCommandSuccessfully = true;
                                 autoUC1.ReceivedTb.Text += "Map planned successfully, ready to go\r\n";
                             }
 
-                            else if (mess.Contains("SINFO,1")) 
+                            if (mess.Contains("SINFO,1"))
                             {
+                                //MessageBox.Show("checked");
                                 SendCommandSuccessfully = true;
                                 autoUC1.SentTb.Text += "Command sent successfully\r\n";
                             }
@@ -1468,6 +1639,7 @@ namespace ThesisInterface
                     {
                         AutoTimer.Enabled = false;
                         autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Done.\r\n";
+                        PrevMode = "auto";
                         timeoutAuto = 40;
                         AutoEnabled = true;
                         timer1.Enabled = true;
@@ -1621,6 +1793,48 @@ namespace ThesisInterface
             }
         }
 
+
+        private void SendWithResTimer_Tick(object sender, EventArgs e)
+        {
+            if (ReWaitTimes > 0)
+            {
+                ReWaitTimes--;
+                if (ResendTimes > 0)
+                {
+                    ResendTimes--;
+                }
+                else
+                {
+                    if (ResendMess != "")
+                    {
+                        serialPort1.Write(ResendMess);
+                    }
+                    ResendTimes = ResendDefaultTimes;
+                }
+
+                if (serialPort1.BytesToRead != 0)
+                {
+                    string mess = serialPort1.ReadLine();
+                    if (mess.Contains("$SINFO,1"))
+                    {
+                        SendWithResTimer.Enabled = false;
+                        ReWaitTimes = ReWaitDefault;
+                        ResendTimes = ResendDefaultTimes;
+                        MessageBox.Show("Command sent to vehicle successfully");
+                        SetPreviousMode();
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                SendWithResTimer.Enabled = false;
+                ReWaitTimes = ReWaitDefault;
+                ResendTimes = ResendDefaultTimes;
+                MessageBox.Show("Command sent to vehicle failed");
+                SetPreviousMode();
+            }
+        }
 
         //---------------------------------------------------------------------------//
 
@@ -1789,15 +2003,9 @@ namespace ThesisInterface
                     map.Overlays.Add(PlanLines);
                     map.Overlays.Add(ActualLines);
                     PlanLines.Routes.Add(route);
-                    //double zoom = autoUC1.gmap.Zoom;
-
-                    //autoUC1.gmap.Zoom = 18;
-                    //autoUC1.gmap.Zoom = zoom;
-                    //map.Show();
                 }
                 else
                 {
-                    //map.Overlays.Clear();
                     map.Overlays.Clear();
                     ActualLines.Routes.Clear();
                     if(marker != null)
@@ -1809,12 +2017,6 @@ namespace ThesisInterface
                     map.Overlays.Add(ActualLines);
                     map.Overlays.Add(PlanLines);
                     ActualLines.Routes.Add(route);
-                    //double zoom = map.Zoom;
-                    //map.Zoom = zoom - 1;
-                    //map.Zoom = zoom;
-                    //autoUC1.gmap.Zoom = 18;
-                    //autoUC1.gmap.Zoom = zoom;
-                    //map.Show();
                 }
             }
             catch (Exception ex)
@@ -1830,19 +2032,14 @@ namespace ThesisInterface
             SendCommandAsync();
         }
 
-        private void DisableAllTimers(string previousMode)
+        private void DisableAllTimers()
         {
-            PrevMode = previousMode;
-            SendCommandSuccessfully = false;
             timer1.Enabled = false;
+            AutoEnabled = false;
             KcontrolTimer.Enabled = false;
             StartKctrlTimer.Enabled = false;
             DefaultWaitForResponseTimer.Enabled = false;
-            //ManualEnabled = false;
-            //AutoEnabled = false;
-            //KctrlEnabled = false;
         }
-
 
         private void DisableAllConfigTextBoxes()
         {
@@ -1876,7 +2073,7 @@ namespace ThesisInterface
             {
                 try
                 {
-                    DisableAllTimers("auto");
+                    DisableAllTimers();
                     serialPort1.Write(MessagesDocker("KCTRL,1,1"));
                     StartKctrlTimer.Enabled = true;
                 }
@@ -1889,7 +2086,7 @@ namespace ThesisInterface
             {
                 try
                 {
-                    DisableAllTimers("none");
+                    DisableAllTimers();
                     serialPort1.Write(MessagesDocker("KCTRL,0"));
                     StopKctrlTimer.Enabled = true;
                 }
@@ -1907,15 +2104,14 @@ namespace ThesisInterface
                 // Allow vehicle to send data
                 try
                 {
-                    serialPort1.Write(MessagesDocker("VEHCF,DATA,1"));
-                    serialPort1.Write(MessagesDocker("VEHCF,DATA,1"));
-                    //DisableAllTimers("auto");
-                    SendCommandSuccessfully = false;
-                    DefaultWaitForResponseTimer.Enabled = true;
+                    DisableAllTimers();
+                    string mess = MessagesDocker("VEHCF,DATA,1");
+                    serialPort1.Write(mess);
+                    ResendMess = mess;
+                    SendWithResTimer.Enabled = true;
                 }
                 catch (Exception ex)
                 {
-                    DefaultWaitForResponseTimer.Enabled = false;
                     MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -1923,15 +2119,14 @@ namespace ThesisInterface
             {
                 try
                 {
-                    serialPort1.Write(MessagesDocker("VEHCF,DATA,0"));
-                    serialPort1.Write(MessagesDocker("VEHCF,DATA,0"));
-                    //DisableAllTimers("auto");
-                    SendCommandSuccessfully = false;
-                    DefaultWaitForResponseTimer.Enabled = true;
+                    DisableAllTimers();
+                    string mess = MessagesDocker("VEHCF,DATA,0");
+                    serialPort1.Write(mess);
+                    ResendMess = mess;
+                    SendWithResTimer.Enabled = true;
                 }
                 catch (Exception ex)
                 {
-                    DefaultWaitForResponseTimer.Enabled = false;
                     MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -1945,11 +2140,53 @@ namespace ThesisInterface
                     AutoEnabled = true;
                     timer1.Enabled = true;
                     break;
+                case "":
+                    break;
 
             }
                 
             AutoEnabled = true;
         }
-        
+        private double[] LatLonToUTM(double Lat, double Lon)
+        {
+            double[] result = new double[2];
+            double la, lo, lat, lon, sa, sb, e2, e2cuadrada, c, Huso, S, deltaS, a, epsilon, nu, v, ta, a1, a2, j2, j4, j6, alfa, beta, gama, Bm, xx, yy;
+            la = Lat;
+            lo = Lon;
+            sa = 6378137.000000;
+            sb = 6356752.314245;
+            e2 = Math.Pow((Math.Pow(sa, 2) - Math.Pow(sb, 2)), 0.5) / sb;
+            e2cuadrada = Math.Pow(e2, 2);
+            c = Math.Pow(sa, 2) / sb;
+            lat = la * (Math.PI / 180);
+            lon = lo * (Math.PI / 180);
+            Huso = Math.Round(lo / 6, 0) + 31;
+            S = ((Huso * 6) - 183);
+            deltaS = lon - (S * (Math.PI / 180));
+            a = Math.Cos(lat) * Math.Sin(deltaS);
+            epsilon = 0.5 * Math.Log((1 + a) / (1 - a));
+            nu = Math.Atan(Math.Tan(lat) / Math.Cos(deltaS)) - lat;
+            v = (c / Math.Pow((1 + (e2cuadrada * Math.Pow(Math.Cos(lat), 2))), 0.5d)) * 0.9996;
+            ta = (e2cuadrada / 2) * Math.Pow(epsilon, 2) * Math.Pow(Math.Cos(lat), 2);
+            a1 = Math.Sin(2 * lat);
+            a2 = a1 * Math.Pow(Math.Cos(lat), 2);
+            j2 = lat + (a1 / 2);
+            j4 = ((3 * j2) + a2) / 4;
+            j6 = ((5 * j4) + (a2 * Math.Pow(Math.Cos(lat), 2))) / 3;
+            alfa = (3d / 4) * e2cuadrada;
+            beta = (5d / 3) * Math.Pow(alfa, 2);
+            gama = (35d / 27) * Math.Pow(alfa, 3);
+            Bm = 0.9996 * c * (lat - alfa * j2 + beta * j4 - gama * j6);
+            xx = epsilon * v * (1 + (ta / 3)) + 500000;
+            yy = nu * v * (1 + ta) + Bm;
+            if (yy < 0)
+            {
+                yy = 9999999 + yy;
+            }
+            result[0] = xx;
+            result[1] = yy;
+            return result;
+        }
+
     }
 }
