@@ -194,7 +194,7 @@ namespace ThesisInterface
 
         public int timeoutIMU = 40;
 
-        public int timeoutAuto = 40;
+        public int timeoutAuto = 9;
 
         public string AutoWaitKey = "|";
 
@@ -1026,9 +1026,12 @@ namespace ThesisInterface
         {
             try
             {
-                serialPort1.Write(MessagesDocker("AUCON,STOP"));
-                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped vehicle...\r\n";
-                autoUC1.StartBt.Text = "Start";
+                DisableAllTimers();
+                string mess = MessagesDocker("AUCON,STOP");
+                serialPort1.Write(mess);
+                autoUC1.SentTb.Text += DateTime.Now.ToString("hh:mm:ss") + " Stopping vehicle...\r\n";
+                ResendMess = mess;
+                SendWithResTimer.Enabled = true;
             }
 
             catch (Exception ex)
@@ -1041,10 +1044,12 @@ namespace ThesisInterface
         {
             try
             {
+
                 DisableAllTimers();
-                serialPort1.Write(MessagesDocker("AUCON,1"));
-                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started auto mode\r\n";
-                StartWaitingForResponse();
+                string mess = MessagesDocker("AUCON,1");
+                serialPort1.Write(mess);
+                autoUC1.SentTb.Text += DateTime.Now.ToString("hh:mm:ss") + " Turning on auto mode\r\n";
+                AutoTimer.Enabled = true;
             }
 
             catch (Exception ex)
@@ -1058,9 +1063,11 @@ namespace ThesisInterface
             try
             {
                 DisableAllTimers();
-                serialPort1.Write(MessagesDocker("AUCON,0"));
-                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Stopped auto mode\r\n";
-                DefaultWaitForResponseTimer.Enabled = true;
+                string mess = MessagesDocker("AUCON,0");
+                serialPort1.Write(mess);
+                autoUC1.SentTb.Text += DateTime.Now.ToString("hh:mm:ss") + " Turning off auto mode\r\n";
+                ResendMess = mess;
+                SendWithResTimer.Enabled = true;
             }
 
             catch (Exception ex)
@@ -1073,10 +1080,12 @@ namespace ThesisInterface
         {
             try
             {
-                serialPort1.Write(MessagesDocker("AUCON,START"));
-                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Started vehicle...\r\n";
-                autoUC1.StartBt.Text = "Stop";
-                DefaultWaitForResponseTimer.Enabled = true;
+                DisableAllTimers();
+                string mess = MessagesDocker("AUCON,START");
+                serialPort1.Write(mess);
+                autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Starting to run...\r\n";
+                ResendMess = mess;
+                SendWithResTimer.Enabled = true;
             }
 
             catch (Exception ex)
@@ -1262,14 +1271,6 @@ namespace ThesisInterface
             autoUC1.gmap.SetPositionByKeywords("Vietnam, Ho Chi Minh");
             autoUC1.gmap.Position = new PointLatLng(10.772801, 106.659273);
             autoUC1.gmap.Zoom = 19;
-
-            //GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
-            //GMap.NET.WindowsForms.GMapMarker marker =
-            //    new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
-            //        new GMap.NET.PointLatLng(10.772801, 106.659273),
-            //        GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin);
-            //markers.Markers.Add(marker);
-            //autoUC1.gmap.Overlays.Add(markers);
         }
         
         //---------------------------------------------------------------------------//
@@ -1342,36 +1343,6 @@ namespace ThesisInterface
                             }
                             string CC = checksum(temp);
 
-                            //if(value[0] == "$VINFO")
-                            //{
-                            //    temp = mess;
-                            //    temp = temp.Remove(temp.Length - 3, 3);
-                            //    temp = temp.Remove(0, 1);
-                            //    //if (true)
-                            //    //{
-                            //    //    MyVehicle = new Vehicle(value);
-                            //    //    manualUC1.VehicleStatusBox.Text = MyVehicle.GetVehicleStatus();
-                            //    //    // Save Position Data & Draw On Map
-                            //    //    manualUC1.PositionBox.Text += mess + "\r\n";
-                            //    //    manualUC1.PositionBox.Text += MyVehicle.PosX.ToString() + "," + MyVehicle.PosY.ToString() + "\r\n";
-                            //    //    if (MyVehicle.GPSStatus)
-                            //    //    {
-                            //    //        // Save Position Data & Draw On Map
-                            //    //        ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
-                            //    //        if (online)
-                            //    //        {
-                            //    //            DisplayRouteOnMap(manualUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.DarkGreen, 2) }, "Actual");
-                            //    //        }
-                            //    //        else
-                            //    //        {
-                            //    //            manualUC1.chart1.Series["Position"].Points.AddXY(MyVehicle.PosX/100000, MyVehicle.PosY/100000);
-                            //    //        }
-                            //    //    }
-
-
-                            //    //}
-                            //}
-
                             // Update Vehicle Information
                             if (mess.Contains("$VINFO,0") && mess.Contains(CC))
                             {
@@ -1406,128 +1377,77 @@ namespace ThesisInterface
                 {
                     if (serialPort1.BytesToRead != 0)
                     {
-                        //try
-                        //{
-                        //    string temp;
-                        //    string mess = serialPort1.ReadLine();
-                        //    string[] value;
-                        //    value = mess.Split(',');
-                        //    if (value[0] == "$VINFO" && (value.Count() == 20))
-                        //    {
-                        //        autoUC1.ReceivedTb.Text += mess + "\r\n";
-                        //        temp = mess;
-                        //        temp = temp.Remove(temp.Length - 3, 3);
-                        //        temp = temp.Remove(0, 1);
-                        //        if (true)
-                        //        //if (true)
-                        //        {
-                        //            MyVehicle = new Vehicle(value);
-                        //            autoUC1.DetailInfoTb.Text = MyVehicle.GetVehicleStatus();
-                        //            /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
-                        //            if (MyVehicle.GPSStatus)
-                        //            {
-
-                        //                // Save Position Data & Draw On Map
-
-                        //                ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng));
-                        //                GMap.NET.WindowsForms.GMapMarker marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
-                        //                    new GMap.NET.PointLatLng(MyVehicle.Lat, MyVehicle.Lng),
-                        //                    GMap.NET.WindowsForms.Markers.GMarkerGoogleType.orange_dot);
-                        //                DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual", marker);
-                        //            }
-                        //            autoUC1.ReceivedTb.Text += mess;
-                        //            /*  Draw turning State of vehicle by subtracting the RefAngle and the ActualAngle
-                        //                (It help users to understand whether the vehicle is turning left or right)      */
-                        //            DrawVehicleTurningStatusOnImage(autoUC1.VehicleStatusImage, - MyVehicle.RefAngle + MyVehicle.Angle, LowVelocity);
-                        //            autoUC1.TurningState.Text = "Turning " + Math.Round(- MyVehicle.RefAngle + MyVehicle.Angle, 4).ToString() + "°";
-                        //        }
-                        //    }
-
-                        //    if(mess.Contains("SINFO,VPLAN,1"))
-                        //    {
-                        //        SendCommandSuccessfully = true;
-                        //        autoUC1.ReceivedTb.Text += "Map planned successfully, ready to go\r\n";
-                        //    }
-
-                        //    if (mess.Contains("SINFO,1")) 
-                        //    {
-                        //        //MessageBox.Show("checked");
-                        //        SendCommandSuccessfully = true;
-                        //        autoUC1.SentTb.Text += "Command sent successfully\r\n";
-                        //    }
-
-                        //}
-                        //catch (Exception ex)
-                        //{
-                        //    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
+                        
                         try
                         {
                             string temp;
                             string mess = serialPort1.ReadLine();
                             string[] value;
-                            value = mess.Split(',');
-                            temp = mess;
-                            if (mess.Length >= 5)
+                            if(mess.Contains("$"))
                             {
-                                temp = temp.Remove(temp.Length - 3, 3);
-                                temp = temp.Remove(0, 1);
-                            }
-                            string CC = checksum(temp);
-
-                            // Update Vehicle Information
-                            if (mess.Contains("$VINFO,0") && mess.Contains(CC))
-                            {
-                                MyVehicle = new Vehicle(value);
-                                Vehicle_Information = MyVehicle.GetVehicleStatus();
-
-                                /*  Draw turning State of vehicle by subtracting the RefAngle and the ActualAngle
-                                (It help users to understand whether the vehicle is turning left or right)      */
-                                DrawVehicleTurningStatusOnImage(autoUC1.VehicleStatusImage, -MyVehicle.RefAngle + MyVehicle.Angle, LowVelocity);
-                                autoUC1.TurningState.Text = "Turning " + Math.Round(-MyVehicle.RefAngle + MyVehicle.Angle, 4).ToString() + "°";
-                                autoUC1.ReceivedTb.Text += mess;
-                            }
-
-                            // Update GPS Information
-                            if (mess.Contains("$VINFO,1") && mess.Contains(CC))
-                            {
-                                MyGPS = new GPS(value);
-                                GPS_Information = MyGPS.GetGPSStatus();
-                                //autoUC1.ReceivedTb.Text += mess;
-                                if (MyGPS.GPS_Available.Contains("Y"))
+                                value = mess.Split(',');
+                                temp = mess;
+                                if (mess.Length >= 5)
                                 {
-
-                                    // Save Position Data & Draw On Map
-
-                                    ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyGPS.GPS_Lat, MyGPS.GPS_Lng));
-                                    GMap.NET.WindowsForms.GMapMarker marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
-                                        new GMap.NET.PointLatLng(MyGPS.GPS_Lat, MyGPS.GPS_Lng),
-                                        GMap.NET.WindowsForms.Markers.GMarkerGoogleType.orange_dot);
-                                    DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual", marker);
+                                    temp = temp.Remove(temp.Length - 3, 3);
+                                    temp = temp.Remove(0, 1);
                                 }
-                            }
+                                string CC = checksum(temp);
 
-                            // Update Stanley Information
-                            if (mess.Contains("$VINFO,2") && mess.Contains(CC))
-                            {
-                                MyStanleyControl = new StanleyControl(value);
-                                StanleyControl_Information = MyStanleyControl.GetStanleyControlStatus();
-                            }
+                                // Update Vehicle Information
+                                if (mess.Contains("$VINFO,0") && mess.Contains(CC))
+                                {
+                                    MyVehicle = new Vehicle(value);
+                                    Vehicle_Information = MyVehicle.GetVehicleStatus();
 
-                            autoUC1.DetailInfoTb.Text = Vehicle_Information + GPS_Information + StanleyControl_Information;
-                            /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
-                            
-                            if (mess.Contains("SINFO,VPLAN,1"))
-                            {
-                                SendCommandSuccessfully = true;
-                                autoUC1.ReceivedTb.Text += "Map planned successfully, ready to go\r\n";
-                            }
+                                    /*  Draw turning State of vehicle by subtracting the RefAngle and the ActualAngle
+                                    (It help users to understand whether the vehicle is turning left or right)      */
+                                    DrawVehicleTurningStatusOnImage(autoUC1.VehicleStatusImage, -MyVehicle.RefAngle + MyVehicle.Angle, LowVelocity);
+                                    autoUC1.TurningState.Text = "Turning " + Math.Round(-MyVehicle.RefAngle + MyVehicle.Angle, 4).ToString() + "°";
+                                    //autoUC1.ReceivedTb.Text += mess;
+                                }
 
-                            if (mess.Contains("SINFO,1"))
-                            {
-                                //MessageBox.Show("checked");
-                                SendCommandSuccessfully = true;
-                                autoUC1.SentTb.Text += "Command sent successfully\r\n";
+                                // Update GPS Information
+                                if (mess.Contains("$VINFO,1") && mess.Contains(CC))
+                                {
+                                    MyGPS = new GPS(value);
+                                    GPS_Information = MyGPS.GetGPSStatus();
+                                    autoUC1.ReceivedTb.Text += mess;
+                                    if (MyGPS.GPS_Available.Contains("Y"))
+                                    {
+
+                                        // Save Position Data & Draw On Map
+
+                                        ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyGPS.GPS_Lat, MyGPS.GPS_Lng));
+                                        GMap.NET.WindowsForms.GMapMarker marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
+                                            new GMap.NET.PointLatLng(MyGPS.GPS_Lat, MyGPS.GPS_Lng),
+                                            GMap.NET.WindowsForms.Markers.GMarkerGoogleType.orange_dot);
+                                        DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual", marker);
+                                    }
+                                }
+
+                                // Update Stanley Information
+                                if (mess.Contains("$VINFO,2") && mess.Contains(CC))
+                                {
+                                    MyStanleyControl = new StanleyControl(value);
+                                    StanleyControl_Information = MyStanleyControl.GetStanleyControlStatus();
+                                }
+
+                                autoUC1.DetailInfoTb.Text = Vehicle_Information + GPS_Information + StanleyControl_Information;
+                                /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
+
+                                if (mess.Contains("SINFO,VPLAN,1"))
+                                {
+                                    SendCommandSuccessfully = true;
+                                    autoUC1.ReceivedTb.Text += "Map planned successfully, ready to go\r\n";
+                                }
+
+                                if (mess.Contains("SINFO,1"))
+                                {
+                                    //MessageBox.Show("checked");
+                                    SendCommandSuccessfully = true;
+                                    autoUC1.SentTb.Text += "Command sent successfully\r\n";
+                                }
                             }
                             
                         }
@@ -1638,9 +1558,9 @@ namespace ThesisInterface
                     if (mess.Contains("$SINFO,1"))
                     {
                         AutoTimer.Enabled = false;
-                        autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Done.\r\n";
+                        autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("hh:mm:ss") + " Done.\r\n";
                         PrevMode = "auto";
-                        timeoutAuto = 40;
+                        timeoutAuto = 9;
                         AutoEnabled = true;
                         timer1.Enabled = true;
                     }
@@ -1649,8 +1569,8 @@ namespace ThesisInterface
             else
             {
                 AutoTimer.Enabled = false;
-                timeoutAuto = 40;
-                autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("h:mm:ss tt") + " Request failed\r\n";
+                timeoutAuto = 9;
+                autoUC1.ReceivedTb.Text = OldMess + DateTime.Now.ToString("hh:mm:ss") + " Request failed\r\n";
                 
             }
         }
