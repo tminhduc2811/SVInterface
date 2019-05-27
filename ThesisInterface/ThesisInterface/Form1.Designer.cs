@@ -219,7 +219,7 @@
             this.panel1.Location = new System.Drawing.Point(156, 47);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(931, 537);
+            this.panel1.Size = new System.Drawing.Size(931, 603);
             this.panel1.TabIndex = 11;
             // 
             // vehicleSetting1
@@ -228,7 +228,7 @@
             this.vehicleSetting1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vehicleSetting1.Location = new System.Drawing.Point(0, 0);
             this.vehicleSetting1.Name = "vehicleSetting1";
-            this.vehicleSetting1.Size = new System.Drawing.Size(931, 537);
+            this.vehicleSetting1.Size = new System.Drawing.Size(931, 603);
             this.vehicleSetting1.TabIndex = 13;
             // 
             // autoUC1
@@ -237,7 +237,7 @@
             this.autoUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.autoUC1.Location = new System.Drawing.Point(0, 0);
             this.autoUC1.Name = "autoUC1";
-            this.autoUC1.Size = new System.Drawing.Size(931, 537);
+            this.autoUC1.Size = new System.Drawing.Size(931, 603);
             this.autoUC1.TabIndex = 12;
             this.autoUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AutoUCControlByKeyDown);
             this.autoUC1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AutoUCControlByKeyUp);
@@ -249,7 +249,7 @@
             this.imuSetting1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imuSetting1.Location = new System.Drawing.Point(0, 0);
             this.imuSetting1.Name = "imuSetting1";
-            this.imuSetting1.Size = new System.Drawing.Size(931, 537);
+            this.imuSetting1.Size = new System.Drawing.Size(931, 603);
             this.imuSetting1.TabIndex = 2;
             // 
             // manualUC1
@@ -258,7 +258,7 @@
             this.manualUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.manualUC1.Location = new System.Drawing.Point(0, 0);
             this.manualUC1.Name = "manualUC1";
-            this.manualUC1.Size = new System.Drawing.Size(931, 537);
+            this.manualUC1.Size = new System.Drawing.Size(931, 603);
             this.manualUC1.TabIndex = 0;
             this.manualUC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyDown);
             this.manualUC1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.manualUC1_KeyUp);
@@ -267,7 +267,7 @@
             // 
             this.helperControls1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.helperControls1.BackColor = System.Drawing.Color.White;
-            this.helperControls1.Location = new System.Drawing.Point(166, 0);
+            this.helperControls1.Location = new System.Drawing.Point(166, 66);
             this.helperControls1.MaximumSize = new System.Drawing.Size(650, 650);
             this.helperControls1.Name = "helperControls1";
             this.helperControls1.Size = new System.Drawing.Size(533, 513);
@@ -277,7 +277,7 @@
             // 
             this.autoSetting1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.autoSetting1.BackColor = System.Drawing.SystemColors.Control;
-            this.autoSetting1.Location = new System.Drawing.Point(292, 188);
+            this.autoSetting1.Location = new System.Drawing.Point(292, 254);
             this.autoSetting1.MaximumSize = new System.Drawing.Size(344, 115);
             this.autoSetting1.MinimumSize = new System.Drawing.Size(344, 115);
             this.autoSetting1.Name = "autoSetting1";
@@ -315,7 +315,7 @@
             this.SidePanel.Location = new System.Drawing.Point(0, 47);
             this.SidePanel.Name = "SidePanel";
             this.SidePanel.Quality = 10;
-            this.SidePanel.Size = new System.Drawing.Size(156, 537);
+            this.SidePanel.Size = new System.Drawing.Size(156, 603);
             this.SidePanel.TabIndex = 10;
             // 
             // bunifuFlatButton4
@@ -537,7 +537,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1087, 584);
+            this.ClientSize = new System.Drawing.Size(1087, 650);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SidePanel);
             this.Controls.Add(this.TopPanel);

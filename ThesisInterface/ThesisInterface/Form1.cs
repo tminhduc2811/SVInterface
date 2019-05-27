@@ -23,6 +23,7 @@ namespace ThesisInterface
         public class Vehicle
         {
             public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, RefAngle, Angle;
+
             public Vehicle(string[] ArrayInfo)
             {
                 try
@@ -111,18 +112,30 @@ namespace ThesisInterface
 
         public class StanleyControl
         {
-            public string thetaE, thetaD, Delta;
-
+            public double thetaE, thetaD, Delta, ErrorDistance;
+            
             public StanleyControl(string []ArrayInfo)
             {
-                thetaE = ArrayInfo[2];
-                thetaD = ArrayInfo[3];
-                Delta = ArrayInfo[4];
+                try
+                {
+                    thetaE = double.Parse(ArrayInfo[2], System.Globalization.CultureInfo.InvariantCulture);
+                    thetaD = double.Parse(ArrayInfo[3], System.Globalization.CultureInfo.InvariantCulture);
+                    Delta = double.Parse(ArrayInfo[4], System.Globalization.CultureInfo.InvariantCulture);
+                    ErrorDistance = double.Parse(ArrayInfo[5], System.Globalization.CultureInfo.InvariantCulture);
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             public string GetStanleyControlStatus()
             {
-                string mess = "Theta E: " + thetaE + "\r\nTheta D: " + thetaD + "\r\nDelta Angle: " + Delta + "\r\n";
+                string mess = "Theta E: " + thetaE.ToString() + "\r\nTheta D: " 
+                        + thetaD.ToString() + "\r\nDelta Angle: " 
+                        + Delta.ToString() + "\r\nDistance Error: "
+                        + ErrorDistance.ToString() + "\r\n";
                 return mess;
             }
         }
@@ -213,6 +226,8 @@ namespace ThesisInterface
         public List<PointLatLng> PlanCoordinatesList = new List<PointLatLng>();
 
         public List<PointLatLng> ActualCoordinatesList = new List<PointLatLng>();
+
+        public List<double> DistanceErrors = new List<double>();
 
         public GMapOverlay PlanLines = new GMapOverlay("PlanLines");
 
@@ -1263,7 +1278,7 @@ namespace ThesisInterface
 
         private void InitAutoUC()
         {
-            AutoTimer.Interval = 20;
+            AutoTimer.Interval = 100;
             AutoTimer.Enabled = false;
             autoUC1.gmap.DragButton = MouseButtons.Left;
             autoUC1.gmap.MapProvider = GMap.NET.MapProviders.GoogleSatelliteMapProvider.Instance;
@@ -1377,7 +1392,6 @@ namespace ThesisInterface
                 {
                     if (serialPort1.BytesToRead != 0)
                     {
-                        
                         try
                         {
                             string temp;
@@ -1432,8 +1446,7 @@ namespace ThesisInterface
                                     MyStanleyControl = new StanleyControl(value);
                                     StanleyControl_Information = MyStanleyControl.GetStanleyControlStatus();
                                 }
-
-                                autoUC1.DetailInfoTb.Text = Vehicle_Information + GPS_Information + StanleyControl_Information;
+                                
                                 /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
 
                                 if (mess.Contains("SINFO,VPLAN,1"))
@@ -1448,6 +1461,10 @@ namespace ThesisInterface
                                     SendCommandSuccessfully = true;
                                     autoUC1.SentTb.Text += "Command sent successfully\r\n";
                                 }
+
+                                autoUC1.DetailInfoTb.Text = Vehicle_Information;
+                                autoUC1.PosTb.Text = GPS_Information;
+                                autoUC1.StanleyControlTb.Text = StanleyControl_Information;
                             }
                             
                         }
