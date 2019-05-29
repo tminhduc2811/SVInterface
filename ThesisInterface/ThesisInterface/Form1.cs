@@ -540,7 +540,7 @@ namespace ThesisInterface
             string[] Ports = SerialPort.GetPortNames();
             vehicleSetting1.PortNameBox.Items.AddRange(Ports);
             vehicleSetting1.PortNameBox.Text = "COM4";
-            vehicleSetting1.BaudrateBox.Text = "115200";
+            vehicleSetting1.BaudrateBox.Text = "9600";
             // Read txt file
             StreamReader sr = new StreamReader(Application.StartupPath + @"\Config.txt");
 
@@ -606,6 +606,8 @@ namespace ThesisInterface
             this.autoUC1.SettingBtClickHandler(new EventHandler(SettingBtAutoUCClickHandler));
             this.autoSetting1.CancelButtonClickHandler(new EventHandler(CancelBtAutoUCClickHandler));
             this.autoSetting1.OkButtonClickHandler(new EventHandler(OkBtAutoUCClickHandler));
+            this.autoSetting1.OffSelfUpdateBtClickHandler(new EventHandler(OffSelfUpdateAutoClickHandler));
+            this.autoSetting1.OnSelfUpdateBtClickHandler(new EventHandler(OnSelfUpdateAutoClickHandler));
 
             this.helperControls1.CloseBtClickHandler(new EventHandler(CloseBtHelperUCClickHandler));
             this.helperControls1.SettingVehicleBtClickHandler(new EventHandler(SettingVehicleHelperUCClickHandler));
@@ -913,7 +915,7 @@ namespace ThesisInterface
             // Write start command to MCU
             try
             {
-                serialPort1.Write(MessagesDocker("MACON,1"));
+                serialPort1.Write(MessagesDocker("MACON,START"));
                 manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Started to control manually\r\n";
                 manualUC1.FormStatus.Text = "STARTED";
                 DisableAllTimers();
@@ -933,7 +935,7 @@ namespace ThesisInterface
             
             try
             {
-                serialPort1.Write(MessagesDocker("KCTRL,0"));
+                serialPort1.Write(MessagesDocker("MACON,STOP"));
                 DisableAllTimers();
                 manualUC1.FormStatus.Text = "STOPED";
                 manualUC1.SentBox.Text += DateTime.Now.ToString("h:mm:ss tt") + ": Stop controlling manually\r\n";
@@ -1042,7 +1044,7 @@ namespace ThesisInterface
             try
             {
                 DisableAllTimers();
-                string mess = MessagesDocker("AUCON,STOP");
+                string mess = MessagesDocker("AUCON,PAUSE");
                 serialPort1.Write(mess);
                 autoUC1.SentTb.Text += DateTime.Now.ToString("hh:mm:ss") + " Stopping vehicle...\r\n";
                 ResendMess = mess;
@@ -1061,7 +1063,7 @@ namespace ThesisInterface
             {
 
                 DisableAllTimers();
-                string mess = MessagesDocker("AUCON,1");
+                string mess = MessagesDocker("AUCON,START");
                 serialPort1.Write(mess);
                 autoUC1.SentTb.Text += DateTime.Now.ToString("hh:mm:ss") + " Turning on auto mode\r\n";
                 AutoTimer.Enabled = true;
@@ -1078,7 +1080,7 @@ namespace ThesisInterface
             try
             {
                 DisableAllTimers();
-                string mess = MessagesDocker("AUCON,0");
+                string mess = MessagesDocker("AUCON,STOP");
                 serialPort1.Write(mess);
                 autoUC1.SentTb.Text += DateTime.Now.ToString("hh:mm:ss") + " Turning off auto mode\r\n";
                 ResendMess = mess;
@@ -1096,7 +1098,7 @@ namespace ThesisInterface
             try
             {
                 DisableAllTimers();
-                string mess = MessagesDocker("AUCON,START");
+                string mess = MessagesDocker("AUCON,RUN");
                 serialPort1.Write(mess);
                 autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Starting to run...\r\n";
                 ResendMess = mess;
@@ -1274,6 +1276,32 @@ namespace ThesisInterface
         private void CancelBtAutoUCClickHandler(object sender, EventArgs e)
         {
             this.autoSetting1.SendToBack();
+        }
+
+        private void OffSelfUpdateAutoClickHandler(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort1.Write(MessagesDocker("AUCON,SUPDT,0"));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void OnSelfUpdateAutoClickHandler(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort1.Write(MessagesDocker("AUCON,SUPDT,1"));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void InitAutoUC()
@@ -2011,7 +2039,7 @@ namespace ThesisInterface
                 try
                 {
                     DisableAllTimers();
-                    serialPort1.Write(MessagesDocker("KCTRL,1,1"));
+                    serialPort1.Write(MessagesDocker("KCTRL,START,1"));
                     StartKctrlTimer.Enabled = true;
                 }
                 catch (Exception ex)
@@ -2024,7 +2052,7 @@ namespace ThesisInterface
                 try
                 {
                     DisableAllTimers();
-                    serialPort1.Write(MessagesDocker("KCTRL,0"));
+                    serialPort1.Write(MessagesDocker("KCTRL,STOP"));
                     StopKctrlTimer.Enabled = true;
                 }
                 catch (Exception ex)

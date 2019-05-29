@@ -149,4 +149,3 @@ D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\bin\Debug\Newtonsoft.Json.pdb
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.HelperControls.resources
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoSetting.resources
-D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache

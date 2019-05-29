@@ -26,5 +26,15 @@ namespace ThesisInterface.UserControls
         {
             this.CancelBt.Click += e;
         }
+
+        public void OnSelfUpdateBtClickHandler(EventHandler e)
+        {
+            this.OffSelfUpdateBt.Click += e;
+        }
+
+        public void OffSelfUpdateBtClickHandler(EventHandler e)
+        {
+            this.OffSelfUpdateBt.Click += e;
+        }
     }
 }

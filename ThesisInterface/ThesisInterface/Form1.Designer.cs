@@ -209,12 +209,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(11)))), ((int)(((byte)(42)))));
+            this.panel1.Controls.Add(this.autoSetting1);
             this.panel1.Controls.Add(this.vehicleSetting1);
             this.panel1.Controls.Add(this.autoUC1);
             this.panel1.Controls.Add(this.imuSetting1);
             this.panel1.Controls.Add(this.manualUC1);
             this.panel1.Controls.Add(this.helperControls1);
-            this.panel1.Controls.Add(this.autoSetting1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(156, 47);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -276,12 +276,13 @@
             // autoSetting1
             // 
             this.autoSetting1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.autoSetting1.BackColor = System.Drawing.SystemColors.Control;
+            this.autoSetting1.BackColor = System.Drawing.Color.White;
+            this.autoSetting1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.autoSetting1.Location = new System.Drawing.Point(292, 254);
-            this.autoSetting1.MaximumSize = new System.Drawing.Size(344, 115);
-            this.autoSetting1.MinimumSize = new System.Drawing.Size(344, 115);
+            this.autoSetting1.MaximumSize = new System.Drawing.Size(344, 200);
+            this.autoSetting1.MinimumSize = new System.Drawing.Size(344, 200);
             this.autoSetting1.Name = "autoSetting1";
-            this.autoSetting1.Size = new System.Drawing.Size(344, 115);
+            this.autoSetting1.Size = new System.Drawing.Size(344, 200);
             this.autoSetting1.TabIndex = 0;
             // 
             // ConfigWaitForRespond
