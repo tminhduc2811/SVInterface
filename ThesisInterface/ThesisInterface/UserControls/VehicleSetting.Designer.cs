@@ -799,7 +799,7 @@
             // 
             this.SendBt.BackColor = System.Drawing.Color.Transparent;
             this.SendBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SendBt.Image = global::ThesisInterface.Properties.Resources.Send_Letter_100px;
+            this.SendBt.Image = global::ThesisInterface.Properties.Resources.Email_Send_50px1;
             this.SendBt.ImageActive = null;
             this.SendBt.Location = new System.Drawing.Point(54, 238);
             this.SendBt.Name = "SendBt";
@@ -813,7 +813,7 @@
             // 
             this.SaveBt.BackColor = System.Drawing.Color.Transparent;
             this.SaveBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SaveBt.Image = global::ThesisInterface.Properties.Resources.Save_100px;
+            this.SaveBt.Image = global::ThesisInterface.Properties.Resources.Save_1104px;
             this.SaveBt.ImageActive = null;
             this.SaveBt.Location = new System.Drawing.Point(54, 327);
             this.SaveBt.Name = "SaveBt";

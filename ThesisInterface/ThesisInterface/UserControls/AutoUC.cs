@@ -16,7 +16,7 @@ namespace ThesisInterface.UserControls
         {
             InitializeComponent();
         }
-        
+
         public void OnBtClickHandler(EventHandler handler)
         {
             this.Onbt.Click += handler;
@@ -97,6 +97,16 @@ namespace ThesisInterface.UserControls
         public void SettingBtClickHandler(EventHandler handler)
         {
             this.SettingBt.Click += handler;
+        }
+
+        public void CreatePreProcessingBtClickHandler(EventHandler handler)
+        {
+            this.CreatePreProcessingBt.Click += handler;
+        }
+
+        public void ImportProcessedMapBtClickHandler(EventHandler handler)
+        {
+            this.ImportProcessedMapBt.Click += handler;
         }
     }
 }

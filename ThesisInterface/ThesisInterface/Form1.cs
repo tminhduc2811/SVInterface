@@ -15,6 +15,7 @@ using GMap.NET.WindowsForms.Markers;
 using GMap.NET.MapProviders;
 using System.Runtime.InteropServices;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace ThesisInterface
 {
@@ -22,7 +23,7 @@ namespace ThesisInterface
     {
         public class Vehicle
         {
-            public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, RefAngle, Angle;
+            public double M1RefVelocity, M2RefVelocity, M1Velocity, M2Velocity, RefAngle, Angle, Test;
 
             public Vehicle(string[] ArrayInfo)
             {
@@ -34,6 +35,7 @@ namespace ThesisInterface
                     M2Velocity = double.Parse(ArrayInfo[5], System.Globalization.CultureInfo.InvariantCulture);
                     RefAngle = double.Parse(ArrayInfo[6], System.Globalization.CultureInfo.InvariantCulture);
                     Angle = double.Parse(ArrayInfo[7], System.Globalization.CultureInfo.InvariantCulture);
+                    Test = double.Parse(ArrayInfo[8], System.Globalization.CultureInfo.InvariantCulture);
                 }
 
                 catch (Exception ex)
@@ -49,7 +51,8 @@ namespace ThesisInterface
                     + "M2 Velocity Ref: " + M2RefVelocity.ToString() + "\r\n"
                     + "M2 Velocity: " + M2Velocity.ToString() + "\r\n"
                     + "Set Angle: " + RefAngle.ToString() + "\r\n"
-                    + "Current Angle: " + Angle.ToString() + "\r\n";
+                    + "Current Angle: " + Angle.ToString() + "\r\n"
+                    +"Obstacle angle: " + Test.ToString() + "\r\n";
 
                 return mess;
             }
@@ -151,11 +154,13 @@ namespace ThesisInterface
             public double Lat { get; set; }
             public double Lng { get; set; }
         }
+        public bool NoError = true;
 
         public class CoordinatesInfo
         {
             public List<PlannedCoordinate> plannedCoordinates { get; set; }
             public List<ActualCoordinate> actualCoordinates { get; set; }
+            public List<double> ErrorDistances { get; set; }
         }
 
         public class RootObject
@@ -163,8 +168,14 @@ namespace ThesisInterface
             public CoordinatesInfo coordinatesInfo { get; set; }
         }
 
-
-
+        public class ProcessedMap
+        {
+            public List<double> lat { get; set; }
+            public List<double> lng { get; set; }
+            public List<double> x { get; set; }
+            public List<double> y { get; set; }
+        }
+        ProcessedMap processedMap = new ProcessedMap();
         Vehicle MyVehicle;
         GPS MyGPS;
         StanleyControl MyStanleyControl;
@@ -223,6 +234,8 @@ namespace ThesisInterface
 
         public bool PlanMapEnable = false, online = false;
 
+        public List<PointLatLng> ProcessLatLng = new List<PointLatLng>();
+
         public List<PointLatLng> PlanCoordinatesList = new List<PointLatLng>();
 
         public List<PointLatLng> ActualCoordinatesList = new List<PointLatLng>();
@@ -245,6 +258,7 @@ namespace ThesisInterface
 
         private string ResendMess = "";
 
+        BackgroundWorker TransferMapBackGroundWorker;
         public Form1()
         {
             InitializeComponent();
@@ -252,8 +266,102 @@ namespace ThesisInterface
             KeyPreview = true;
             KeyDown += new KeyEventHandler(Form1_KeyDown);
             KeyUp += new KeyEventHandler(Form1_KeyUp);
+            TransferMapBackGroundWorker = new BackgroundWorker();
+            TransferMapBackGroundWorker.WorkerReportsProgress = true;
+            TransferMapBackGroundWorker.WorkerSupportsCancellation = true;
+
+            TransferMapBackGroundWorker.DoWork += TransferMapBackGroundWorker_DoWork;
+            TransferMapBackGroundWorker.ProgressChanged += TransferMapBackGroundWorker_ProgressChanged;
+            TransferMapBackGroundWorker.RunWorkerCompleted += TransferMapBackGroundWorker_RunWorkerCompleted;
+        }
+        private void TransferMapBackGroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            //string[] dirs = Directory.GetDirectories(txtFolderPath.Text);
+            //float length = dirs.Length;
+            //progressBar1.Invoke((Action)(() => progressBar1.Maximum = dirs.Length));
+            //for (int i = 0; i < dirs.Length; i++)
+            //{
+            //    backgroundWorker1.ReportProgress((int)(i / length * 100));
+            //    ScanDirectory(dirs[i], txtSearch.Text);
+            //}
+
+            //backgroundWorker1.ReportProgress(100);
+            try
+            {
+                string text = File.ReadAllText(@"D:\Project\CubicSpline\map_out.txt");
+                //MessageBox.Show(text.ToString());
+                ProcessedMap processedMap = ParseProcessedMapInfo(text);
+                //MessageBox.Show(processedMap.lng[0].ToString());
+                List<PointLatLng> ProcessLatLng = new List<PointLatLng>();
+                //PointLatLng point = new PointLatLng();
+                ClearPLannedData();
+                //ClearActualData();
+                for (int i = 0; i < processedMap.lat.Count(); i++)
+                {
+
+                    double a = processedMap.lat[i];
+                    double b = processedMap.lng[i];
+                    PlanCoordinatesList.Add(new PointLatLng(a, b));
+                }
+                DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCoordinatesList, "single_line") { Stroke = new Pen(Color.LightGoldenrodYellow, 3) }, "Planned");
+                //MessageBox.Show("Starting to send to vehicle...");
+
+                if (AutoEnabled)
+                {
+                    try
+                    {
+                        serialPort1.Write(MessagesDocker("VPLAN,SPLINE," + processedMap.x.Count().ToString()));
+                        System.Threading.Thread.Sleep(200);
+                        for (int i = 0; (i < processedMap.x.Count) && !TransferMapBackGroundWorker.CancellationPending; i++)
+                        {
+                            TransferMapBackGroundWorker.ReportProgress((int)(100*i/processedMap.x.Count));
+                            serialPort1.Write(MessagesDocker("VPLAN," + i.ToString() + "," + processedMap.x[i].ToString() + "," + processedMap.y[i].ToString()));
+                            System.Threading.Thread.Sleep(200);
+
+                        }
+                        TransferMapBackGroundWorker.ReportProgress(100);
+                        //serialPort1.Write(MessagesDocker("VPLAN,STOP"));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please start this mode first.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void TransferMapBackGroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            if (!TransferMapBackGroundWorker.CancellationPending)
+            {
+                //MessageBox.Show(e.ProgressPercentage.ToString());
+                progressUC1.ProgressBar.Value = e.ProgressPercentage;
+                progressUC1.ProgressBar.Update();
+                progressUC1.ProgressBar.PerformLayout();
+            }
+        }
+
+        private void TransferMapBackGroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (progressUC1.ProgressBar.Value < 100)
+            {
+                MessageBox.Show("Transfering map has been cancelled");
+            }
+            
+            else
+            {
+                progressUC1.BringToFront();
+            }
+        }
         void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyValue)
@@ -519,6 +627,12 @@ namespace ThesisInterface
             ConfigWaitForRespond.Enabled = false;
             IMUConfigWaitForRespond.Enabled = false;
             InitAutoUC();
+            
+        }
+        
+        private void InitProgressBar()
+        {
+            progressUC1.ProgressBar.MaxValue = 100;
         }
 
         private void InitSettingUC()
@@ -608,6 +722,9 @@ namespace ThesisInterface
             this.autoSetting1.OkButtonClickHandler(new EventHandler(OkBtAutoUCClickHandler));
             this.autoSetting1.OffSelfUpdateBtClickHandler(new EventHandler(OffSelfUpdateAutoClickHandler));
             this.autoSetting1.OnSelfUpdateBtClickHandler(new EventHandler(OnSelfUpdateAutoClickHandler));
+            this.autoUC1.CreatePreProcessingBtClickHandler(new EventHandler(CreatePreProcessingMapHandler));
+            this.autoUC1.ImportProcessedMapBtClickHandler(new EventHandler(ImportProcessedMapHandler));
+
 
             this.helperControls1.CloseBtClickHandler(new EventHandler(CloseBtHelperUCClickHandler));
             this.helperControls1.SettingVehicleBtClickHandler(new EventHandler(SettingVehicleHelperUCClickHandler));
@@ -617,10 +734,29 @@ namespace ThesisInterface
             this.helperControls1.KctrlBtClickHandler(new EventHandler(KctrlBtHelperUCClickHandler));
             this.helperControls1.OnSendDataBtClickHandler(new EventHandler(OnSendDataBtHelperUCClickHandler));
             this.helperControls1.OffSendDataBtClickHandler(new EventHandler(OffSendDataBtHelperUCClickHandler));
+
+            this.progressUC1.HideBtClickHandler(new EventHandler(HideProgressBarBtClickHandler));
+            this.progressUC1.CancelBtClickHandler(new EventHandler(CancelProgressBarBtClickHandler));
         }
 
         //--------------------------------------------------------------------------//
-       
+        //Handler for progress UC
+        private void HideProgressBarBtClickHandler(object sender, EventArgs e)
+        {
+            this.progressUC1.SendToBack();
+        }
+
+        private void CancelProgressBarBtClickHandler(object sender, EventArgs e)
+        {
+            if(TransferMapBackGroundWorker.IsBusy)
+            {
+                TransferMapBackGroundWorker.CancelAsync();
+                progressUC1.SendToBack();
+                progressUC1.ProgressBar.Value = 0;
+                progressUC1.ProgressBar.Update();
+            }
+        }
+
         // Handler for SETTING User Control-----------------------------------------//
 
         private void UpdateSPBtSettingUCClickHandler(object sender, EventArgs e)
@@ -1148,7 +1284,9 @@ namespace ThesisInterface
                     }
                     
                     DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual");
-                }               
+                }
+                DistanceErrors.Clear();
+                DistanceErrors = coordinatesInformation.ErrorDistances;
             }
             catch (Exception ex)
             {
@@ -1264,7 +1402,7 @@ namespace ThesisInterface
         {
             try
             {
-                serialPort1.Write(MessagesDocker("AUCON,DATA," + autoSetting1.VelocityTb.Text + "," + autoSetting1.KGainTb.Text));
+                serialPort1.Write(MessagesDocker("AUCON,DATA," + autoSetting1.VelocityTb.Text + "," + autoSetting1.KGainTb.Text + ",0.5"));
 
             }
             catch (Exception ex)
@@ -1302,6 +1440,122 @@ namespace ThesisInterface
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CreatePreProcessingMapHandler(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                if (PlanCoordinatesList.Count > 0)
+                {
+                    ProcessedMap processedMap = new ProcessedMap();
+                    List<double> listLat = new List<double>();
+                    List<double> listLng = new List<double>();
+
+                    for (int i = 0; i < PlanCoordinatesList.Count; i++)
+                    {
+                        double lat, lng;
+                        lat = PlanCoordinatesList[i].Lat;
+                        lng = PlanCoordinatesList[i].Lng;
+                        listLat.Add(lat);
+                        listLng.Add(lng);
+                    }
+                    processedMap.lat = listLat;
+                    processedMap.lng = listLng;
+
+                    File.WriteAllText(@"D:\Project\CubicSpline\pre_map.txt", JsonConvert.SerializeObject(processedMap, Formatting.Indented));
+                    MessageBox.Show("Processing Map...");
+                }
+                else
+                {
+                    MessageBox.Show("No map to process");
+                    return;
+                }
+                var processInfo = new ProcessStartInfo("cmd.exe", "D:/Project/CubicSpline/cmd.bat");
+                processInfo.WorkingDirectory = "D:/Project/CubicSpline/";
+                processInfo.FileName = "execute_creating_map.bat";
+                //Do not create command propmpt window 
+                processInfo.CreateNoWindow = true;
+
+                //Do not use shell execution
+                processInfo.UseShellExecute = false;
+
+                //Redirects error and output of the process (command prompt).
+                processInfo.RedirectStandardError = true;
+                processInfo.RedirectStandardOutput = true;
+
+                //start a new process
+                var process = Process.Start(processInfo);
+
+                //wait until process is running
+                process.WaitForExit();
+
+                //reads output and error of command prompt to string.
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ImportProcessedMapHandler(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    string text = File.ReadAllText(@"D:\Project\CubicSpline\map_out.txt");
+            //    //MessageBox.Show(text.ToString());
+            //    ProcessedMap processedMap = ParseProcessedMapInfo(text);
+            //    //MessageBox.Show(processedMap.lng[0].ToString());
+            //    List<PointLatLng> ProcessLatLng = new List<PointLatLng>();
+            //    //PointLatLng point = new PointLatLng();
+            //    ClearPLannedData();
+            //    //ClearActualData();
+            //    for (int i = 0; i < processedMap.lat.Count(); i++)
+            //    {
+
+            //        double a = processedMap.lat[i];
+            //        double b = processedMap.lng[i];
+            //        PlanCoordinatesList.Add(new PointLatLng(a, b));
+            //    }
+            //    DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCoordinatesList, "single_line") { Stroke = new Pen(Color.LightGoldenrodYellow, 3) }, "Planned");
+            //    MessageBox.Show("Starting to send to vehicle...");
+
+            //    if (AutoEnabled)
+            //    {
+            //        try
+            //        {
+            //            serialPort1.Write(MessagesDocker("VPLAN,SPLINE," + processedMap.x.Count().ToString()));
+            //            System.Threading.Thread.Sleep(200);
+            //            for (int i = 0; i < processedMap.x.Count; i++)
+            //            {
+            //                serialPort1.Write(MessagesDocker("VPLAN," + i.ToString() + "," + processedMap.x[i].ToString() + "," + processedMap.y[i].ToString()));
+            //                System.Threading.Thread.Sleep(200);
+            //            }
+
+            //            //serialPort1.Write(MessagesDocker("VPLAN,STOP"));
+            //            autoUC1.SentTb.Text += DateTime.Now.ToString("h:mm:ss tt") + " Sent map coordinates\r\n";
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Please start this mode first.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            progressUC1.ProgressBar.Value = 0;
+            progressUC1.ProgressBar.Update();
+            TransferMapBackGroundWorker.RunWorkerAsync();
+            progressUC1.BringToFront();
         }
 
         private void InitAutoUC()
@@ -1473,6 +1727,7 @@ namespace ThesisInterface
                                 {
                                     MyStanleyControl = new StanleyControl(value);
                                     StanleyControl_Information = MyStanleyControl.GetStanleyControlStatus();
+                                    DistanceErrors.Add(MyStanleyControl.ErrorDistance);
                                 }
                                 
                                 /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
@@ -1488,6 +1743,19 @@ namespace ThesisInterface
                                     //MessageBox.Show("checked");
                                     SendCommandSuccessfully = true;
                                     autoUC1.SentTb.Text += "Command sent successfully\r\n";
+                                }
+
+                                if (mess.Contains("SINFO,VPLAN,0"))
+                                {
+                                    TransferMapBackGroundWorker.CancelAsync();
+                                    autoUC1.ReceivedTb.Text += "Some errors happened when sending map\r\n";
+                                    //NoError = false;
+                                }
+
+                                if(mess.Contains("SINFO,0"))
+                                {
+                                    autoUC1.SentTb.Text += "Command Error\r\n";
+
                                 }
 
                                 autoUC1.DetailInfoTb.Text = Vehicle_Information;
@@ -1868,8 +2136,6 @@ namespace ThesisInterface
                         File.WriteAllText(sfd.FileName, JsonConvert.SerializeObject(listCoordinates, Formatting.Indented));
                     }
                 }
-                
-
             }
             catch (Exception ex)
             {
@@ -1901,13 +2167,15 @@ namespace ThesisInterface
                 listActual.Add(actualCoordinates);
             }
 
-            CoordinatesInformation.plannedCoordinates=listPlanned;
+            CoordinatesInformation.plannedCoordinates = listPlanned;
 
-            CoordinatesInformation.actualCoordinates=listActual;
+            CoordinatesInformation.actualCoordinates = listActual;
+
+            CoordinatesInformation.ErrorDistances = DistanceErrors;
 
             return CoordinatesInformation;
         }
-
+        
         private string ReadJsonFile()
         {
             string text = "";
@@ -1937,6 +2205,12 @@ namespace ThesisInterface
             return CoordinatesInformation;
         }
 
+        private ProcessedMap ParseProcessedMapInfo(string text)
+        {
+            ProcessedMap processedMap = JsonConvert.DeserializeObject<ProcessedMap>(text);
+            return processedMap;
+        }
+
         private void ClearPLannedData()
         {
             //autoUC1.gmap.Overlays.Clear();
@@ -1944,11 +2218,20 @@ namespace ThesisInterface
             PlanLines.Clear();
         }
 
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            progressUC1.Location = new Point(this.Width / 2 - progressUC1.Width / 2, this.Height/2 - progressUC1.Height/2);
+            autoSetting1.Location = new Point(this.Width / 2 - autoSetting1.Width / 2, this.Height / 2 - autoSetting1.Height / 2);
+            helperControls1.Location = new Point(this.Width / 2 - helperControls1.Width / 2, this.Height / 2 - helperControls1.Height / 2);
+            //MessageBox.Show(this.Height.ToString());
+        }
+
         private void ClearActualData()
         {
             //autoUC1.gmap.Overlays.Clear();
             ActualCoordinatesList.Clear();
             ActualLines.Clear();
+            DistanceErrors.Clear();
         }
 
         private void DisplayRouteOnMap(GMapControl map, GMapRoute route, string mode, GMapMarker marker=null)
@@ -2112,6 +2395,7 @@ namespace ThesisInterface
                 
             AutoEnabled = true;
         }
+
         private double[] LatLonToUTM(double Lat, double Lon)
         {
             double[] result = new double[2];

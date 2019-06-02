@@ -149,3 +149,7 @@ D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\bin\Debug\Newtonsoft.Json.pdb
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.HelperControls.resources
 D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.AutoSetting.resources
+D:\Project\SVInterface\ThesisInterface\ThesisInterface\bin\Debug\CircularProgressBar.dll
+D:\Project\SVInterface\ThesisInterface\ThesisInterface\bin\Debug\WinFormAnimation.dll
+D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.UserControls.ProgressUC.resources
+D:\Project\SVInterface\ThesisInterface\ThesisInterface\obj\Debug\ThesisInterface.csprojAssemblyReference.cache

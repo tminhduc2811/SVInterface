@@ -29,7 +29,7 @@ namespace ThesisInterface.UserControls
 
         public void OnSelfUpdateBtClickHandler(EventHandler e)
         {
-            this.OffSelfUpdateBt.Click += e;
+            this.OnSelfUpdateBt.Click += e;
         }
 
         public void OffSelfUpdateBtClickHandler(EventHandler e)

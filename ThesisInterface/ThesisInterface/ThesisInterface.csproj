@@ -42,6 +42,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
+    <Reference Include="CircularProgressBar, Version=2.7.0.7, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.7.0.7\lib\net40\CircularProgressBar.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -83,6 +86,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WinFormAnimation, Version=1.6.0.4, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.6.0.4\lib\net40\WinFormAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
@@ -129,6 +135,12 @@
     <Compile Include="UserControls\AutoSetting.Designer.cs">
       <DependentUpon>AutoSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ProgressUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ProgressUC.Designer.cs">
+      <DependentUpon>ProgressUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\VehicleSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -162,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ManualUC.resx">
       <DependentUpon>ManualUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ProgressUC.resx">
+      <DependentUpon>ProgressUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
@@ -287,6 +302,21 @@
     <None Include="Resources\Play Button Circled_50px.png" />
     <None Include="Resources\Stop Squared_50px.png" />
     <None Include="Resources\Available Updates_50px.png" />
+    <None Include="Resources\Place Marker_64px.png" />
+    <None Include="Resources\place.png" />
+    <None Include="Resources\Mesh_50px.png" />
+    <None Include="Resources\Opened Folder_50px.png" />
+    <None Include="Resources\Save Close_50px.png" />
+    <None Include="Resources\Google Play_50px.png" />
+    <None Include="Resources\Pause_50px.png" />
+    <None Include="Resources\Administrative Tools_50px.png" />
+    <None Include="Resources\Place Marker_50px.png" />
+    <None Include="Resources\Place Marker_48px.png" />
+    <None Include="Resources\Save Close_48px.png" />
+    <None Include="Resources\Map Marker_50px.png" />
+    <None Include="Resources\Google Maps_50px.png" />
+    <None Include="Resources\Map Pinpoint_50px.png" />
+    <None Include="Resources\Location_50px.png" />
     <Content Include="robot_qyi_icon.ico" />
   </ItemGroup>
   <ItemGroup>
