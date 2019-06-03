@@ -33,7 +33,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.SidePanelManual = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ExportBt = new Bunifu.Framework.UI.BunifuFlatButton();
             this.ImportBt = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -58,7 +58,7 @@
             this.modeBt = new Bunifu.Framework.UI.BunifuThinButton2();
             this.FormStatus = new System.Windows.Forms.Label();
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
-            this.bunifuGradientPanel1.SuspendLayout();
+            this.SidePanelManual.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -70,26 +70,26 @@
             this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
-            // bunifuGradientPanel1
+            // SidePanelManual
             // 
-            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
-            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuGradientPanel1.Controls.Add(this.tableLayoutPanel1);
-            this.bunifuGradientPanel1.Controls.Add(this.ExportBt);
-            this.bunifuGradientPanel1.Controls.Add(this.ImportBt);
-            this.bunifuGradientPanel1.Controls.Add(this.StopBt);
-            this.bunifuGradientPanel1.Controls.Add(this.StartBt);
-            this.bunifuGradientPanel1.Controls.Add(this.label1);
-            this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(88)))));
-            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(49)))), ((int)(((byte)(85)))));
-            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
-            this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(172, 460);
-            this.bunifuGradientPanel1.TabIndex = 1;
+            this.SidePanelManual.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SidePanelManual.BackgroundImage")));
+            this.SidePanelManual.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SidePanelManual.Controls.Add(this.tableLayoutPanel1);
+            this.SidePanelManual.Controls.Add(this.ExportBt);
+            this.SidePanelManual.Controls.Add(this.ImportBt);
+            this.SidePanelManual.Controls.Add(this.StopBt);
+            this.SidePanelManual.Controls.Add(this.StartBt);
+            this.SidePanelManual.Controls.Add(this.label1);
+            this.SidePanelManual.Dock = System.Windows.Forms.DockStyle.Left;
+            this.SidePanelManual.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.SidePanelManual.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(88)))));
+            this.SidePanelManual.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.SidePanelManual.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(49)))), ((int)(((byte)(85)))));
+            this.SidePanelManual.Location = new System.Drawing.Point(0, 0);
+            this.SidePanelManual.Name = "SidePanelManual";
+            this.SidePanelManual.Quality = 10;
+            this.SidePanelManual.Size = new System.Drawing.Size(172, 460);
+            this.SidePanelManual.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
@@ -524,11 +524,11 @@
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.bunifuGradientPanel1);
+            this.Controls.Add(this.SidePanelManual);
             this.Name = "ManualUC";
             this.Size = new System.Drawing.Size(844, 460);
-            this.bunifuGradientPanel1.ResumeLayout(false);
-            this.bunifuGradientPanel1.PerformLayout();
+            this.SidePanelManual.ResumeLayout(false);
+            this.SidePanelManual.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -547,8 +547,6 @@
         }
 
         #endregion
-
-        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public Bunifu.Framework.UI.BunifuFlatButton ExportBt;
         public Bunifu.Framework.UI.BunifuFlatButton ImportBt;
@@ -573,5 +571,6 @@
         public System.Windows.Forms.Label FormStatus;
         public GMap.NET.WindowsForms.GMapControl gmap;
         public Bunifu.Framework.UI.BunifuThinButton2 modeBt;
+        public Bunifu.Framework.UI.BunifuGradientPanel SidePanelManual;
     }
 }

@@ -126,9 +126,6 @@
   <metadata name="panel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="autoSetting1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="autoUC1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -142,6 +139,9 @@
     <value>True</value>
   </metadata>
   <metadata name="helperControls1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="autoSetting1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="ConfigWaitForRespond.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -200,6 +200,16 @@
   <metadata name="TopPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="TopPanel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADrSURBVChTFcrZSkJRAABAP6FoofIhiKLd0jTN9V73Jc1S
+        FMMogv7/E05z5nkyfzvt8LPbDtu9dljvp+HjIA3TwzSMjpLQPU5C6yQJ1WwSMr/il7gRl+KbOBb7YirW
+        xXKM3+KnuBLfxVdxIHbEpvgiFmPcimtxIc7EkdgVE7EmPov5GDfiUpyLE7EvpmJDrIhPYi7GlfguTsWh
+        2BGbYlUsiY/ibYwLcSaOxZ6YiDWxLBbEe/Eqxrk4EQdiW2yIFbEoPog34kWMU3EodsWWWBVLYl68Ey/F
+        sxjHYk9MxbpYFgtiTrwWz8XTbBL+Ad8dn01amWGKAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="ResetVehicleBt.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -218,16 +228,6 @@
   <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="TopPanel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADrSURBVChTFcrZSkJRAABAP6FoofIhiKLd0jTN9V73Jc1S
-        FMMogv7/E05z5nkyfzvt8LPbDtu9dljvp+HjIA3TwzSMjpLQPU5C6yQJ1WwSMr/il7gRl+KbOBb7YirW
-        xXKM3+KnuBLfxVdxIHbEpvgiFmPcimtxIc7EkdgVE7EmPov5GDfiUpyLE7EvpmJDrIhPYi7GlfguTsWh
-        2BGbYlUsiY/ibYwLcSaOxZ6YiDWxLBbEe/Eqxrk4EQdiW2yIFbEoPog34kWMU3EodsWWWBVLYl68Ey/F
-        sxjHYk9MxbpYFgtiTrwWz8XTbBL+Ad8dn01amWGKAAAAAElFTkSuQmCC
-</value>
-  </data>
   <metadata name="DefaultWaitForResponseTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1248, 56</value>
   </metadata>
@@ -239,24 +239,6 @@
   </metadata>
   <metadata name="SendWithResTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>568, 95</value>
-  </metadata>
-  <metadata name="ResetVehicleBt.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="closebt.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="maxbt.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="minbt.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="menubt.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="ControlPanelDrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 95</value>

@@ -526,7 +526,10 @@ namespace ThesisInterface
         private void menubt_Click(object sender, EventArgs e)
         {
             if (SidePanel.Width == 0)
+            {
                 SidePanel.Width = 156;
+                
+            }
             else
                 SidePanel.Width = 0;
         }
@@ -2224,6 +2227,20 @@ namespace ThesisInterface
             autoSetting1.Location = new Point(this.Width / 2 - autoSetting1.Width / 2, this.Height / 2 - autoSetting1.Height / 2);
             helperControls1.Location = new Point(this.Width / 2 - helperControls1.Width / 2, this.Height / 2 - helperControls1.Height / 2);
             //MessageBox.Show(this.Height.ToString());
+        }
+
+        private void SidePanel_SizeChanged(object sender, EventArgs e)
+        {
+            if(SidePanel.Width > 100)
+            {
+                autoUC1.SidePanelAuto.Width = 0;
+                manualUC1.SidePanelManual.Width = 0;
+            }
+            else
+            {
+                autoUC1.SidePanelAuto.Width = 38;
+                manualUC1.SidePanelManual.Width = 172;
+            }
         }
 
         private void ClearActualData()

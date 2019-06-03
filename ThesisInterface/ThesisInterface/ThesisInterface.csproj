@@ -317,6 +317,25 @@
     <None Include="Resources\Google Maps_50px.png" />
     <None Include="Resources\Map Pinpoint_50px.png" />
     <None Include="Resources\Location_50px.png" />
+    <None Include="Resources\Play_64px.png" />
+    <None Include="Resources\Pause Button_32px.png" />
+    <None Include="Resources\Folder_52px.png" />
+    <None Include="Resources\Play_26px.png" />
+    <None Include="Resources\Circled Play_64px.png" />
+    <None Include="Resources\Start_100px.png" />
+    <None Include="Resources\Pause Squared_100px.png" />
+    <None Include="Resources\Documents Folder_100px.png" />
+    <None Include="Resources\Save_100px2.png" />
+    <None Include="Resources\Administrative Tools_100px.png" />
+    <None Include="Resources\Place Marker_100px.png" />
+    <None Include="Resources\Play_1100px.png" />
+    <None Include="Resources\Data Transfer_100px.png" />
+    <None Include="Resources\Email Send_96px.png" />
+    <None Include="Resources\Circled Play_100px.png" />
+    <None Include="Resources\Pause Butto1n_100px.png" />
+    <None Include="Resources\Satellites_100px.png" />
+    <None Include="Resources\Navigate_100px.png" />
+    <None Include="Resources\Login_100px.png" />
     <Content Include="robot_qyi_icon.ico" />
   </ItemGroup>
   <ItemGroup>

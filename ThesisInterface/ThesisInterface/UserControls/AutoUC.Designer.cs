@@ -69,7 +69,7 @@
             this.StopVehicleBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.StartBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.SendMapBt = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.SidePanelAuto = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.ImportProcessedMapBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.CreatePreProcessingBt = new Bunifu.Framework.UI.BunifuImageButton();
             this.SettingBt = new Bunifu.Framework.UI.BunifuImageButton();
@@ -98,7 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.StopVehicleBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SendMapBt)).BeginInit();
-            this.bunifuGradientPanel2.SuspendLayout();
+            this.SidePanelAuto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImportProcessedMapBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreatePreProcessingBt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingBt)).BeginInit();
@@ -161,11 +161,11 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Courier New", 13.8F);
+            this.label6.Font = new System.Drawing.Font("Ailerons", 13.75F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
             this.label6.Location = new System.Drawing.Point(10, 2);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(175, 21);
+            this.label6.Size = new System.Drawing.Size(170, 23);
             this.label6.TabIndex = 23;
             this.label6.Text = "Stanley Control";
             // 
@@ -215,11 +215,11 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Courier New", 13.8F);
+            this.label5.Font = new System.Drawing.Font("Ailerons", 13.75F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
             this.label5.Location = new System.Drawing.Point(14, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 21);
+            this.label5.Size = new System.Drawing.Size(160, 23);
             this.label5.TabIndex = 14;
             this.label5.Text = "VEHICLE STATUS";
             // 
@@ -240,7 +240,7 @@
             this.bunifuMetroTextbox1.Location = new System.Drawing.Point(-1, 4);
             this.bunifuMetroTextbox1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuMetroTextbox1.Name = "bunifuMetroTextbox1";
-            this.bunifuMetroTextbox1.Size = new System.Drawing.Size(192, 133);
+            this.bunifuMetroTextbox1.Size = new System.Drawing.Size(197, 133);
             this.bunifuMetroTextbox1.TabIndex = 18;
             this.bunifuMetroTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -261,11 +261,11 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Courier New", 13.8F);
+            this.label1.Font = new System.Drawing.Font("Ailerons", 13.75F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
             this.label1.Location = new System.Drawing.Point(28, -5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 21);
+            this.label1.Size = new System.Drawing.Size(139, 23);
             this.label1.TabIndex = 17;
             this.label1.Text = "Vehicle Info";
             // 
@@ -368,11 +368,11 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Courier New", 13.8F);
+            this.label4.Font = new System.Drawing.Font("Ailerons", 13.75F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
             this.label4.Location = new System.Drawing.Point(22, -1);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(153, 21);
+            this.label4.Size = new System.Drawing.Size(149, 23);
             this.label4.TabIndex = 23;
             this.label4.Text = "Position Info";
             // 
@@ -506,11 +506,11 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Courier New", 13.8F);
+            this.label3.Font = new System.Drawing.Font("Ailerons", 13.75F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
             this.label3.Location = new System.Drawing.Point(109, -5);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 21);
+            this.label3.Size = new System.Drawing.Size(53, 23);
             this.label3.TabIndex = 17;
             this.label3.Text = "SENT";
             // 
@@ -591,11 +591,11 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Courier New", 13.8F);
+            this.label2.Font = new System.Drawing.Font("Ailerons", 13.75F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
             this.label2.Location = new System.Drawing.Point(144, -5);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 21);
+            this.label2.Size = new System.Drawing.Size(97, 23);
             this.label2.TabIndex = 18;
             this.label2.Text = "RECEIVED";
             // 
@@ -741,7 +741,7 @@
             // StopVehicleBt
             // 
             this.StopVehicleBt.BackColor = System.Drawing.Color.Transparent;
-            this.StopVehicleBt.Image = global::ThesisInterface.Properties.Resources.Stop_Squared_50px;
+            this.StopVehicleBt.Image = global::ThesisInterface.Properties.Resources.Pause_Butto1n_100px;
             this.StopVehicleBt.ImageActive = null;
             this.StopVehicleBt.Location = new System.Drawing.Point(10, 108);
             this.StopVehicleBt.Name = "StopVehicleBt";
@@ -754,7 +754,7 @@
             // StartBt
             // 
             this.StartBt.BackColor = System.Drawing.Color.Transparent;
-            this.StartBt.Image = global::ThesisInterface.Properties.Resources.Play_Button_Circled_50px;
+            this.StartBt.Image = global::ThesisInterface.Properties.Resources.Circled_Play_100px;
             this.StartBt.ImageActive = null;
             this.StartBt.Location = new System.Drawing.Point(10, 60);
             this.StartBt.Name = "StartBt";
@@ -767,7 +767,7 @@
             // SendMapBt
             // 
             this.SendMapBt.BackColor = System.Drawing.Color.Transparent;
-            this.SendMapBt.Image = global::ThesisInterface.Properties.Resources.Send_Letter_100px;
+            this.SendMapBt.Image = global::ThesisInterface.Properties.Resources.Email_Send_96px;
             this.SendMapBt.ImageActive = null;
             this.SendMapBt.Location = new System.Drawing.Point(10, 10);
             this.SendMapBt.Name = "SendMapBt";
@@ -777,42 +777,42 @@
             this.SendMapBt.TabStop = false;
             this.SendMapBt.Zoom = 10;
             // 
-            // bunifuGradientPanel2
+            // SidePanelAuto
             // 
-            this.bunifuGradientPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel2.BackgroundImage")));
-            this.bunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuGradientPanel2.Controls.Add(this.ImportProcessedMapBt);
-            this.bunifuGradientPanel2.Controls.Add(this.CreatePreProcessingBt);
-            this.bunifuGradientPanel2.Controls.Add(this.SettingBt);
-            this.bunifuGradientPanel2.Controls.Add(this.SaveBt);
-            this.bunifuGradientPanel2.Controls.Add(this.OpenBt);
-            this.bunifuGradientPanel2.Controls.Add(this.StopBt);
-            this.bunifuGradientPanel2.Controls.Add(this.Onbt);
-            this.bunifuGradientPanel2.Controls.Add(this.textO);
-            this.bunifuGradientPanel2.Controls.Add(this.textT);
-            this.bunifuGradientPanel2.Controls.Add(this.textU);
-            this.bunifuGradientPanel2.Controls.Add(this.textA);
-            this.bunifuGradientPanel2.Controls.Add(this.tableLayoutPanel1);
-            this.bunifuGradientPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.bunifuGradientPanel2.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
-            this.bunifuGradientPanel2.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(88)))));
-            this.bunifuGradientPanel2.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(14)))), ((int)(((byte)(79)))));
-            this.bunifuGradientPanel2.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(49)))), ((int)(((byte)(85)))));
-            this.bunifuGradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.bunifuGradientPanel2.Name = "bunifuGradientPanel2";
-            this.bunifuGradientPanel2.Quality = 10;
-            this.bunifuGradientPanel2.Size = new System.Drawing.Size(38, 600);
-            this.bunifuGradientPanel2.TabIndex = 2;
+            this.SidePanelAuto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SidePanelAuto.BackgroundImage")));
+            this.SidePanelAuto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SidePanelAuto.Controls.Add(this.ImportProcessedMapBt);
+            this.SidePanelAuto.Controls.Add(this.CreatePreProcessingBt);
+            this.SidePanelAuto.Controls.Add(this.SettingBt);
+            this.SidePanelAuto.Controls.Add(this.SaveBt);
+            this.SidePanelAuto.Controls.Add(this.OpenBt);
+            this.SidePanelAuto.Controls.Add(this.StopBt);
+            this.SidePanelAuto.Controls.Add(this.Onbt);
+            this.SidePanelAuto.Controls.Add(this.textO);
+            this.SidePanelAuto.Controls.Add(this.textT);
+            this.SidePanelAuto.Controls.Add(this.textU);
+            this.SidePanelAuto.Controls.Add(this.textA);
+            this.SidePanelAuto.Controls.Add(this.tableLayoutPanel1);
+            this.SidePanelAuto.Dock = System.Windows.Forms.DockStyle.Left;
+            this.SidePanelAuto.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(9)))), ((int)(((byte)(42)))));
+            this.SidePanelAuto.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(9)))), ((int)(((byte)(88)))));
+            this.SidePanelAuto.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(14)))), ((int)(((byte)(79)))));
+            this.SidePanelAuto.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(49)))), ((int)(((byte)(85)))));
+            this.SidePanelAuto.Location = new System.Drawing.Point(0, 0);
+            this.SidePanelAuto.Name = "SidePanelAuto";
+            this.SidePanelAuto.Quality = 10;
+            this.SidePanelAuto.Size = new System.Drawing.Size(38, 600);
+            this.SidePanelAuto.TabIndex = 2;
             // 
             // ImportProcessedMapBt
             // 
             this.ImportProcessedMapBt.BackColor = System.Drawing.Color.Transparent;
             this.ImportProcessedMapBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ImportProcessedMapBt.Image = global::ThesisInterface.Properties.Resources.Settings_64px;
+            this.ImportProcessedMapBt.Image = global::ThesisInterface.Properties.Resources.Login_100px;
             this.ImportProcessedMapBt.ImageActive = null;
-            this.ImportProcessedMapBt.Location = new System.Drawing.Point(0, 442);
+            this.ImportProcessedMapBt.Location = new System.Drawing.Point(3, 444);
             this.ImportProcessedMapBt.Name = "ImportProcessedMapBt";
-            this.ImportProcessedMapBt.Size = new System.Drawing.Size(38, 38);
+            this.ImportProcessedMapBt.Size = new System.Drawing.Size(32, 32);
             this.ImportProcessedMapBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ImportProcessedMapBt.TabIndex = 3;
             this.ImportProcessedMapBt.TabStop = false;
@@ -822,11 +822,11 @@
             // 
             this.CreatePreProcessingBt.BackColor = System.Drawing.Color.Transparent;
             this.CreatePreProcessingBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CreatePreProcessingBt.Image = global::ThesisInterface.Properties.Resources.Location_50px;
+            this.CreatePreProcessingBt.Image = global::ThesisInterface.Properties.Resources.Google_Maps_50px2;
             this.CreatePreProcessingBt.ImageActive = null;
-            this.CreatePreProcessingBt.Location = new System.Drawing.Point(0, 396);
+            this.CreatePreProcessingBt.Location = new System.Drawing.Point(3, 398);
             this.CreatePreProcessingBt.Name = "CreatePreProcessingBt";
-            this.CreatePreProcessingBt.Size = new System.Drawing.Size(38, 38);
+            this.CreatePreProcessingBt.Size = new System.Drawing.Size(32, 32);
             this.CreatePreProcessingBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.CreatePreProcessingBt.TabIndex = 3;
             this.CreatePreProcessingBt.TabStop = false;
@@ -836,11 +836,11 @@
             // 
             this.SettingBt.BackColor = System.Drawing.Color.Transparent;
             this.SettingBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SettingBt.Image = global::ThesisInterface.Properties.Resources.Settings_64px;
+            this.SettingBt.Image = global::ThesisInterface.Properties.Resources.Administrative_Tools_100px;
             this.SettingBt.ImageActive = null;
-            this.SettingBt.Location = new System.Drawing.Point(0, 349);
+            this.SettingBt.Location = new System.Drawing.Point(3, 351);
             this.SettingBt.Name = "SettingBt";
-            this.SettingBt.Size = new System.Drawing.Size(38, 38);
+            this.SettingBt.Size = new System.Drawing.Size(32, 32);
             this.SettingBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SettingBt.TabIndex = 3;
             this.SettingBt.TabStop = false;
@@ -850,11 +850,11 @@
             // 
             this.SaveBt.BackColor = System.Drawing.Color.Transparent;
             this.SaveBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SaveBt.Image = global::ThesisInterface.Properties.Resources.savewhite;
+            this.SaveBt.Image = global::ThesisInterface.Properties.Resources.Save_100px2;
             this.SaveBt.ImageActive = null;
-            this.SaveBt.Location = new System.Drawing.Point(0, 304);
+            this.SaveBt.Location = new System.Drawing.Point(3, 306);
             this.SaveBt.Name = "SaveBt";
-            this.SaveBt.Size = new System.Drawing.Size(38, 38);
+            this.SaveBt.Size = new System.Drawing.Size(32, 32);
             this.SaveBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SaveBt.TabIndex = 3;
             this.SaveBt.TabStop = false;
@@ -864,25 +864,25 @@
             // 
             this.OpenBt.BackColor = System.Drawing.Color.Transparent;
             this.OpenBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.OpenBt.Image = global::ThesisInterface.Properties.Resources.openwhite;
+            this.OpenBt.Image = global::ThesisInterface.Properties.Resources.Documents_Folder_100px;
             this.OpenBt.ImageActive = null;
-            this.OpenBt.Location = new System.Drawing.Point(0, 260);
+            this.OpenBt.Location = new System.Drawing.Point(3, 262);
             this.OpenBt.Name = "OpenBt";
-            this.OpenBt.Size = new System.Drawing.Size(38, 38);
+            this.OpenBt.Size = new System.Drawing.Size(32, 32);
             this.OpenBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.OpenBt.TabIndex = 3;
             this.OpenBt.TabStop = false;
-            this.OpenBt.Zoom = 10;
+            this.OpenBt.Zoom = 8;
             // 
             // StopBt
             // 
             this.StopBt.BackColor = System.Drawing.Color.Transparent;
             this.StopBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.StopBt.Image = global::ThesisInterface.Properties.Resources.stopwhite;
+            this.StopBt.Image = global::ThesisInterface.Properties.Resources.Pause_Squared_100px;
             this.StopBt.ImageActive = null;
-            this.StopBt.Location = new System.Drawing.Point(0, 216);
+            this.StopBt.Location = new System.Drawing.Point(3, 218);
             this.StopBt.Name = "StopBt";
-            this.StopBt.Size = new System.Drawing.Size(38, 38);
+            this.StopBt.Size = new System.Drawing.Size(32, 32);
             this.StopBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.StopBt.TabIndex = 3;
             this.StopBt.TabStop = false;
@@ -892,11 +892,11 @@
             // 
             this.Onbt.BackColor = System.Drawing.Color.Transparent;
             this.Onbt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Onbt.Image = global::ThesisInterface.Properties.Resources.startwhite;
+            this.Onbt.Image = global::ThesisInterface.Properties.Resources.Play_100px1;
             this.Onbt.ImageActive = null;
-            this.Onbt.Location = new System.Drawing.Point(0, 172);
+            this.Onbt.Location = new System.Drawing.Point(3, 172);
             this.Onbt.Name = "Onbt";
-            this.Onbt.Size = new System.Drawing.Size(38, 38);
+            this.Onbt.Size = new System.Drawing.Size(32, 32);
             this.Onbt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Onbt.TabIndex = 3;
             this.Onbt.TabStop = false;
@@ -969,7 +969,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.bunifuGradientPanel2);
+            this.Controls.Add(this.SidePanelAuto);
             this.Name = "AutoUC";
             this.Size = new System.Drawing.Size(844, 600);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -994,8 +994,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.StopVehicleBt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartBt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SendMapBt)).EndInit();
-            this.bunifuGradientPanel2.ResumeLayout(false);
-            this.bunifuGradientPanel2.PerformLayout();
+            this.SidePanelAuto.ResumeLayout(false);
+            this.SidePanelAuto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImportProcessedMapBt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreatePreProcessingBt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingBt)).EndInit();
@@ -1008,8 +1008,6 @@
         }
 
         #endregion
-
-        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public Bunifu.Framework.UI.BunifuImageButton SaveBt;
         public Bunifu.Framework.UI.BunifuImageButton OpenBt;
@@ -1062,5 +1060,6 @@
         public System.Windows.Forms.RichTextBox PosTb;
         public Bunifu.Framework.UI.BunifuImageButton ImportProcessedMapBt;
         public Bunifu.Framework.UI.BunifuImageButton CreatePreProcessingBt;
+        public Bunifu.Framework.UI.BunifuGradientPanel SidePanelAuto;
     }
 }
