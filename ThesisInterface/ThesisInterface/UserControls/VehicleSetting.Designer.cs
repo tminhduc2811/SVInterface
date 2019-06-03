@@ -841,7 +841,7 @@
             // 
             this.OpenSPBt.BackColor = System.Drawing.Color.White;
             this.OpenSPBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.OpenSPBt.Image = global::ThesisInterface.Properties.Resources.Play_100px;
+            this.OpenSPBt.Image = global::ThesisInterface.Properties.Resources.Play_100px2;
             this.OpenSPBt.ImageActive = null;
             this.OpenSPBt.Location = new System.Drawing.Point(394, 137);
             this.OpenSPBt.Name = "OpenSPBt";

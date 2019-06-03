@@ -259,6 +259,7 @@ namespace ThesisInterface
         private string ResendMess = "";
 
         BackgroundWorker TransferMapBackGroundWorker;
+        BackgroundWorker PreprocessBackGroundWorker;
         public Form1()
         {
             InitializeComponent();
@@ -273,7 +274,83 @@ namespace ThesisInterface
             TransferMapBackGroundWorker.DoWork += TransferMapBackGroundWorker_DoWork;
             TransferMapBackGroundWorker.ProgressChanged += TransferMapBackGroundWorker_ProgressChanged;
             TransferMapBackGroundWorker.RunWorkerCompleted += TransferMapBackGroundWorker_RunWorkerCompleted;
+
+            PreprocessBackGroundWorker = new BackgroundWorker();
+            PreprocessBackGroundWorker.WorkerReportsProgress = true;
+            PreprocessBackGroundWorker.WorkerSupportsCancellation = true;
+
+            PreprocessBackGroundWorker.DoWork += PreprocessBackGroundWorker_DoWork;
+            PreprocessBackGroundWorker.ProgressChanged += PreprocessBackGroundWorker_ProgressChanged;
+            PreprocessBackGroundWorker.RunWorkerCompleted += PreprocessBackGroundWorker_RunWorkerCompleted;
         }
+        private void PreprocessBackGroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                if (PlanCoordinatesList.Count > 0)
+                {
+                    ProcessedMap processedMap = new ProcessedMap();
+                    List<double> listLat = new List<double>();
+                    List<double> listLng = new List<double>();
+
+                    for (int i = 0; i < PlanCoordinatesList.Count; i++)
+                    {
+                        double lat, lng;
+                        lat = PlanCoordinatesList[i].Lat;
+                        lng = PlanCoordinatesList[i].Lng;
+                        listLat.Add(lat);
+                        listLng.Add(lng);
+                    }
+                    processedMap.lat = listLat;
+                    processedMap.lng = listLng;
+
+                    File.WriteAllText(@"D:\Project\CubicSpline\pre_map.txt", JsonConvert.SerializeObject(processedMap, Formatting.Indented));
+                    MessageBox.Show("Processing Map...");
+                }
+                else
+                {
+                    MessageBox.Show("No map to process");
+                    return;
+                }
+                var processInfo = new ProcessStartInfo("cmd.exe", "D:/Project/CubicSpline/cmd.bat");
+                processInfo.WorkingDirectory = "D:/Project/CubicSpline/";
+                processInfo.FileName = "execute_creating_map.bat";
+                //Do not create command propmpt window 
+                processInfo.CreateNoWindow = true;
+
+                //Do not use shell execution
+                processInfo.UseShellExecute = false;
+
+                //Redirects error and output of the process (command prompt).
+                processInfo.RedirectStandardError = true;
+                processInfo.RedirectStandardOutput = true;
+
+                //start a new process
+                var process = Process.Start(processInfo);
+
+                //wait until process is running
+                process.WaitForExit();
+
+                //reads output and error of command prompt to string.
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PreprocessBackGroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void PreprocessBackGroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
+
         private void TransferMapBackGroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
 
@@ -582,21 +659,6 @@ namespace ThesisInterface
             else
                 this.WindowState = FormWindowState.Maximized;
         }
-
-        private void ResetVehicleBt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                serialPort1.Write(MessagesDocker("RESET"));
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
 
         private void ManualBtClickHandler(object sender, EventArgs e)
         {
@@ -1257,6 +1319,8 @@ namespace ThesisInterface
             {
                 string jsonfile = ReadJsonFile();
                 CoordinatesInfo coordinatesInformation = ParseCoordinatesInformation(jsonfile);
+                
+                
                 ClearPLannedData();
 
                 ClearActualData();
@@ -1266,6 +1330,7 @@ namespace ThesisInterface
                     DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCoordinatesList, "single_line") { Stroke = new Pen(Color.LightGoldenrodYellow, 3) }, "Planned");
                 }
                 
+
                 for (int i = 0; i < coordinatesInformation.actualCoordinates.Count; i++)
                 {
                     
@@ -1447,61 +1512,61 @@ namespace ThesisInterface
 
         private void CreatePreProcessingMapHandler(object sender, EventArgs e)
         {
-            
-            try
-            {
-                if (PlanCoordinatesList.Count > 0)
-                {
-                    ProcessedMap processedMap = new ProcessedMap();
-                    List<double> listLat = new List<double>();
-                    List<double> listLng = new List<double>();
+            PreprocessBackGroundWorker.RunWorkerAsync();
+            //try
+            //{
+            //    if (PlanCoordinatesList.Count > 0)
+            //    {
+            //        ProcessedMap processedMap = new ProcessedMap();
+            //        List<double> listLat = new List<double>();
+            //        List<double> listLng = new List<double>();
 
-                    for (int i = 0; i < PlanCoordinatesList.Count; i++)
-                    {
-                        double lat, lng;
-                        lat = PlanCoordinatesList[i].Lat;
-                        lng = PlanCoordinatesList[i].Lng;
-                        listLat.Add(lat);
-                        listLng.Add(lng);
-                    }
-                    processedMap.lat = listLat;
-                    processedMap.lng = listLng;
+            //        for (int i = 0; i < PlanCoordinatesList.Count; i++)
+            //        {
+            //            double lat, lng;
+            //            lat = PlanCoordinatesList[i].Lat;
+            //            lng = PlanCoordinatesList[i].Lng;
+            //            listLat.Add(lat);
+            //            listLng.Add(lng);
+            //        }
+            //        processedMap.lat = listLat;
+            //        processedMap.lng = listLng;
 
-                    File.WriteAllText(@"D:\Project\CubicSpline\pre_map.txt", JsonConvert.SerializeObject(processedMap, Formatting.Indented));
-                    MessageBox.Show("Processing Map...");
-                }
-                else
-                {
-                    MessageBox.Show("No map to process");
-                    return;
-                }
-                var processInfo = new ProcessStartInfo("cmd.exe", "D:/Project/CubicSpline/cmd.bat");
-                processInfo.WorkingDirectory = "D:/Project/CubicSpline/";
-                processInfo.FileName = "execute_creating_map.bat";
-                //Do not create command propmpt window 
-                processInfo.CreateNoWindow = true;
+            //        File.WriteAllText(@"D:\Project\CubicSpline\pre_map.txt", JsonConvert.SerializeObject(processedMap, Formatting.Indented));
+            //        MessageBox.Show("Processing Map...");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("No map to process");
+            //        return;
+            //    }
+            //    var processInfo = new ProcessStartInfo("cmd.exe", "D:/Project/CubicSpline/cmd.bat");
+            //    processInfo.WorkingDirectory = "D:/Project/CubicSpline/";
+            //    processInfo.FileName = "execute_creating_map.bat";
+            //    //Do not create command propmpt window 
+            //    processInfo.CreateNoWindow = true;
 
-                //Do not use shell execution
-                processInfo.UseShellExecute = false;
+            //    //Do not use shell execution
+            //    processInfo.UseShellExecute = false;
 
-                //Redirects error and output of the process (command prompt).
-                processInfo.RedirectStandardError = true;
-                processInfo.RedirectStandardOutput = true;
+            //    //Redirects error and output of the process (command prompt).
+            //    processInfo.RedirectStandardError = true;
+            //    processInfo.RedirectStandardOutput = true;
 
-                //start a new process
-                var process = Process.Start(processInfo);
+            //    //start a new process
+            //    var process = Process.Start(processInfo);
 
-                //wait until process is running
-                process.WaitForExit();
+            //    //wait until process is running
+            //    process.WaitForExit();
 
-                //reads output and error of command prompt to string.
-                string output = process.StandardOutput.ReadToEnd();
-                string error = process.StandardError.ReadToEnd();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //    //reads output and error of command prompt to string.
+            //    string output = process.StandardOutput.ReadToEnd();
+            //    string error = process.StandardError.ReadToEnd();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void ImportProcessedMapHandler(object sender, EventArgs e)

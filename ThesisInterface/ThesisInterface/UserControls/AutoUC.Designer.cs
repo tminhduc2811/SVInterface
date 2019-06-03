@@ -403,11 +403,11 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(38, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(36, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(806, 600);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(808, 600);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // panel1
@@ -417,7 +417,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(210, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(593, 594);
+            this.panel1.Size = new System.Drawing.Size(595, 594);
             this.panel1.TabIndex = 1;
             // 
             // gmap
@@ -443,7 +443,7 @@
             this.gmap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gmap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gmap.ShowTileGridLines = false;
-            this.gmap.Size = new System.Drawing.Size(593, 434);
+            this.gmap.Size = new System.Drawing.Size(595, 434);
             this.gmap.TabIndex = 17;
             this.gmap.Zoom = 0D;
             this.gmap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseClick);
@@ -454,7 +454,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 434);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(593, 160);
+            this.panel4.Size = new System.Drawing.Size(595, 160);
             this.panel4.TabIndex = 16;
             // 
             // tableLayoutPanel4
@@ -470,7 +470,7 @@
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(593, 160);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(595, 160);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // panel7
@@ -479,9 +479,9 @@
             this.panel7.Controls.Add(this.label3);
             this.panel7.Controls.Add(this.bunifuMetroTextbox5);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(322, 3);
+            this.panel7.Location = new System.Drawing.Point(323, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(268, 154);
+            this.panel7.Size = new System.Drawing.Size(269, 154);
             this.panel7.TabIndex = 1;
             // 
             // SentTb
@@ -496,7 +496,7 @@
             this.SentTb.Location = new System.Drawing.Point(16, 21);
             this.SentTb.Name = "SentTb";
             this.SentTb.ReadOnly = true;
-            this.SentTb.Size = new System.Drawing.Size(240, 122);
+            this.SentTb.Size = new System.Drawing.Size(241, 122);
             this.SentTb.TabIndex = 19;
             this.SentTb.Text = "";
             this.SentTb.TextChanged += new System.EventHandler(this.SentTb_TextChanged);
@@ -531,7 +531,7 @@
             this.bunifuMetroTextbox5.Location = new System.Drawing.Point(4, 2);
             this.bunifuMetroTextbox5.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuMetroTextbox5.Name = "bunifuMetroTextbox5";
-            this.bunifuMetroTextbox5.Size = new System.Drawing.Size(260, 151);
+            this.bunifuMetroTextbox5.Size = new System.Drawing.Size(261, 151);
             this.bunifuMetroTextbox5.TabIndex = 21;
             this.bunifuMetroTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -547,7 +547,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(313, 154);
+            this.panel6.Size = new System.Drawing.Size(314, 154);
             this.panel6.TabIndex = 0;
             // 
             // bunifuMetroTextbox6
@@ -581,7 +581,7 @@
             this.ReceivedTb.Location = new System.Drawing.Point(80, 19);
             this.ReceivedTb.Name = "ReceivedTb";
             this.ReceivedTb.ReadOnly = true;
-            this.ReceivedTb.Size = new System.Drawing.Size(216, 122);
+            this.ReceivedTb.Size = new System.Drawing.Size(217, 122);
             this.ReceivedTb.TabIndex = 19;
             this.ReceivedTb.Text = "";
             this.ReceivedTb.TextChanged += new System.EventHandler(this.ReceivedTb_TextChanged);
@@ -593,7 +593,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Ailerons", 13.75F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(5)))), ((int)(((byte)(65)))));
-            this.label2.Location = new System.Drawing.Point(144, -5);
+            this.label2.Location = new System.Drawing.Point(145, -5);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 23);
             this.label2.TabIndex = 18;
@@ -616,7 +616,7 @@
             this.bunifuMetroTextbox4.Location = new System.Drawing.Point(66, 2);
             this.bunifuMetroTextbox4.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuMetroTextbox4.Name = "bunifuMetroTextbox4";
-            this.bunifuMetroTextbox4.Size = new System.Drawing.Size(243, 151);
+            this.bunifuMetroTextbox4.Size = new System.Drawing.Size(244, 151);
             this.bunifuMetroTextbox4.TabIndex = 20;
             this.bunifuMetroTextbox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -801,7 +801,7 @@
             this.SidePanelAuto.Location = new System.Drawing.Point(0, 0);
             this.SidePanelAuto.Name = "SidePanelAuto";
             this.SidePanelAuto.Quality = 10;
-            this.SidePanelAuto.Size = new System.Drawing.Size(38, 600);
+            this.SidePanelAuto.Size = new System.Drawing.Size(36, 600);
             this.SidePanelAuto.TabIndex = 2;
             // 
             // ImportProcessedMapBt
@@ -822,7 +822,7 @@
             // 
             this.CreatePreProcessingBt.BackColor = System.Drawing.Color.Transparent;
             this.CreatePreProcessingBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CreatePreProcessingBt.Image = global::ThesisInterface.Properties.Resources.Google_Maps_50px2;
+            this.CreatePreProcessingBt.Image = global::ThesisInterface.Properties.Resources.Navigate_100px3;
             this.CreatePreProcessingBt.ImageActive = null;
             this.CreatePreProcessingBt.Location = new System.Drawing.Point(3, 398);
             this.CreatePreProcessingBt.Name = "CreatePreProcessingBt";
@@ -836,11 +836,11 @@
             // 
             this.SettingBt.BackColor = System.Drawing.Color.Transparent;
             this.SettingBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SettingBt.Image = global::ThesisInterface.Properties.Resources.Administrative_Tools_100px;
+            this.SettingBt.Image = global::ThesisInterface.Properties.Resources.Settings_64px1;
             this.SettingBt.ImageActive = null;
-            this.SettingBt.Location = new System.Drawing.Point(3, 351);
+            this.SettingBt.Location = new System.Drawing.Point(1, 351);
             this.SettingBt.Name = "SettingBt";
-            this.SettingBt.Size = new System.Drawing.Size(32, 32);
+            this.SettingBt.Size = new System.Drawing.Size(36, 36);
             this.SettingBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SettingBt.TabIndex = 3;
             this.SettingBt.TabStop = false;

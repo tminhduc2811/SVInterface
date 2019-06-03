@@ -336,6 +336,7 @@
     <None Include="Resources\Satellites_100px.png" />
     <None Include="Resources\Navigate_100px.png" />
     <None Include="Resources\Login_100px.png" />
+    <None Include="Resources\Play_100px1.png" />
     <Content Include="robot_qyi_icon.ico" />
   </ItemGroup>
   <ItemGroup>

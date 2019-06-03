@@ -124,8 +124,8 @@
   <data name="Navigate_100px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Navigate_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Google Play_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Google Play_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Settings_64px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Settings_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Save as_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save as_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -147,6 +147,12 @@
   </data>
   <data name="Save_1104px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save_1104px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Send Letter_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Send Letter_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Administrative Tools_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Administrative Tools_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="auto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\auto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,6 +178,9 @@
   <data name="Restore Window_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Restore Window_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Administrative Tools_50px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Administrative Tools_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Place Marker_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Place Marker_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -193,14 +202,17 @@
   <data name="Settings_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Navigate_100px3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Navigate_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Administrative Tools_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Administrative Tools_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_Update_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8_Update_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Opened Folder_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Opened Folder_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Save_100px2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save_100px2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="play" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,6 +265,9 @@
   <data name="Connect Develop_96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Connect Develop_96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Circled Play_100px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Circled Play_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Satellites_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Satellites_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -268,11 +283,14 @@
   <data name="stopwhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stopwhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Data Transfer_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Data Transfer_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Map Pinpoint_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map Pinpoint_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Close Window_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Close Window_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_Email_Send_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8_Email_Send_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="openwhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openwhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -292,20 +310,14 @@
   <data name="Google Maps_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Google Maps_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="aqua" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AQUA.TTF;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Connect Develop_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Connect Develop_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_Email_Send_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8_Email_Send_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Google Play_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Google Play_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="do" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\do.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Restart_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Restart_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="makhina" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MAKHINA.TTF;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -313,14 +325,14 @@
   <data name="Navigate_100px2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Navigate_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Data Transfer_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Data Transfer_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Restart_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Restart_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="play2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\play2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Send Letter_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Send Letter_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Opened Folder_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Opened Folder_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Navigate_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Navigate_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -349,8 +361,8 @@
   <data name="Folder_52px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Folder_52px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Save_100px2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Save_100px2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Close Window_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Close Window_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Available Updates_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Available Updates_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -382,10 +394,13 @@
   <data name="Save Close_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save Close_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Administrative Tools_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Administrative Tools_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="aqua" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AQUA.TTF;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Login_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Play_100px2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Play_100px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

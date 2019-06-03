@@ -91,6 +91,16 @@ namespace ThesisInterface.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Administrative_Tools_50px1 {
+            get {
+                object obj = ResourceManager.GetObject("Administrative Tools_50px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Ailerons_Regular {
@@ -146,6 +156,16 @@ namespace ThesisInterface.Properties {
         internal static System.Drawing.Bitmap Circled_Play_100px {
             get {
                 object obj = ResourceManager.GetObject("Circled Play_100px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Circled_Play_100px1 {
+            get {
+                object obj = ResourceManager.GetObject("Circled Play_100px1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -483,6 +503,16 @@ namespace ThesisInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Navigate_100px3 {
+            get {
+                object obj = ResourceManager.GetObject("Navigate_100px3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Navigation_50px {
             get {
                 object obj = ResourceManager.GetObject("Navigation_50px", resourceCulture);
@@ -676,6 +706,16 @@ namespace ThesisInterface.Properties {
         internal static System.Drawing.Bitmap Play_100px1 {
             get {
                 object obj = ResourceManager.GetObject("Play_100px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Play_100px2 {
+            get {
+                object obj = ResourceManager.GetObject("Play_100px2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -886,6 +926,16 @@ namespace ThesisInterface.Properties {
         internal static System.Drawing.Bitmap Settings_64px {
             get {
                 object obj = ResourceManager.GetObject("Settings_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Settings_64px1 {
+            get {
+                object obj = ResourceManager.GetObject("Settings_64px1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
