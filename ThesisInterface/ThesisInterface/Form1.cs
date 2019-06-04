@@ -115,7 +115,7 @@ namespace ThesisInterface
 
         public class StanleyControl
         {
-            public double thetaE, thetaD, Delta, ErrorDistance;
+            public double thetaE, thetaD, Delta, ErrorDistance, Efa;
             
             public StanleyControl(string []ArrayInfo)
             {
@@ -125,6 +125,7 @@ namespace ThesisInterface
                     thetaD = double.Parse(ArrayInfo[3], System.Globalization.CultureInfo.InvariantCulture);
                     Delta = double.Parse(ArrayInfo[4], System.Globalization.CultureInfo.InvariantCulture);
                     ErrorDistance = double.Parse(ArrayInfo[5], System.Globalization.CultureInfo.InvariantCulture);
+                    Efa = double.Parse(ArrayInfo[6], System.Globalization.CultureInfo.InvariantCulture);
                 }
 
                 catch (Exception ex)
@@ -154,6 +155,7 @@ namespace ThesisInterface
             public double Lat { get; set; }
             public double Lng { get; set; }
         }
+
         public bool NoError = true;
 
         public class CoordinatesInfo
@@ -175,6 +177,7 @@ namespace ThesisInterface
             public List<double> x { get; set; }
             public List<double> y { get; set; }
         }
+
         ProcessedMap processedMap = new ProcessedMap();
         Vehicle MyVehicle;
         GPS MyGPS;
@@ -242,6 +245,8 @@ namespace ThesisInterface
 
         public List<double> DistanceErrors = new List<double>();
 
+        public List<double> Efa = new List<double>();
+
         public GMapOverlay PlanLines = new GMapOverlay("PlanLines");
 
         public GMapOverlay ActualLines = new GMapOverlay("ActualLines");
@@ -259,7 +264,9 @@ namespace ThesisInterface
         private string ResendMess = "";
 
         BackgroundWorker TransferMapBackGroundWorker;
+
         BackgroundWorker PreprocessBackGroundWorker;
+
         public Form1()
         {
             InitializeComponent();
@@ -283,6 +290,7 @@ namespace ThesisInterface
             PreprocessBackGroundWorker.ProgressChanged += PreprocessBackGroundWorker_ProgressChanged;
             PreprocessBackGroundWorker.RunWorkerCompleted += PreprocessBackGroundWorker_RunWorkerCompleted;
         }
+
         private void PreprocessBackGroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -439,6 +447,7 @@ namespace ThesisInterface
                 progressUC1.BringToFront();
             }
         }
+
         void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyValue)
@@ -1330,7 +1339,6 @@ namespace ThesisInterface
                     DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCoordinatesList, "single_line") { Stroke = new Pen(Color.LightGoldenrodYellow, 3) }, "Planned");
                 }
                 
-
                 for (int i = 0; i < coordinatesInformation.actualCoordinates.Count; i++)
                 {
                     
@@ -1354,7 +1362,7 @@ namespace ThesisInterface
                     DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual");
                 }
                 DistanceErrors.Clear();
-                DistanceErrors = coordinatesInformation.ErrorDistances;
+                //DistanceErrors = coordinatesInformation.ErrorDistances;
             }
             catch (Exception ex)
             {
@@ -1363,8 +1371,7 @@ namespace ThesisInterface
         }
 
         private void SaveBtAutoUCClickHandler(object sender, EventArgs e)
-        {
-            
+        {            
             try
             {
                 CoordinatesInfo coordinatesInformation = CreateCoordinatesInformation();
@@ -1512,7 +1519,14 @@ namespace ThesisInterface
 
         private void CreatePreProcessingMapHandler(object sender, EventArgs e)
         {
-            PreprocessBackGroundWorker.RunWorkerAsync();
+            if(PreprocessBackGroundWorker.IsBusy)
+            {
+                PreprocessBackGroundWorker.CancelAsync();
+            }
+            else
+            {
+                PreprocessBackGroundWorker.RunWorkerAsync();
+            }
             //try
             //{
             //    if (PlanCoordinatesList.Count > 0)
@@ -1796,6 +1810,7 @@ namespace ThesisInterface
                                     MyStanleyControl = new StanleyControl(value);
                                     StanleyControl_Information = MyStanleyControl.GetStanleyControlStatus();
                                     DistanceErrors.Add(MyStanleyControl.ErrorDistance);
+                                    Efa.Add(MyStanleyControl.Efa);
                                 }
                                 
                                 /* If GPS Status is OK, then draw the positions of the vehicle on MAP. Otherwise, skip drawing positions. */
@@ -2314,6 +2329,7 @@ namespace ThesisInterface
             ActualCoordinatesList.Clear();
             ActualLines.Clear();
             DistanceErrors.Clear();
+            Efa.Clear();
         }
 
         private void DisplayRouteOnMap(GMapControl map, GMapRoute route, string mode, GMapMarker marker=null)
