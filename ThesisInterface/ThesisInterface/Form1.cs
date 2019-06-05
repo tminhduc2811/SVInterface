@@ -233,6 +233,14 @@ namespace ThesisInterface
 
         private string PrevMode;
 
+        private List<PointLatLng> DistanceCalculate = new List<PointLatLng>();
+
+        private int numOfCalculatePoints = 0;
+
+        GMapOverlay DistanceOverlay = new GMapOverlay("Distance");
+
+        GMapOverlay DistanceMarkers = new GMapOverlay("DSM");
+
         public int KcontrolWaitTimes = 3, defaultwaitTimes = 3;
 
         public bool PlanMapEnable = false, online = false;
@@ -400,10 +408,9 @@ namespace ThesisInterface
                         System.Threading.Thread.Sleep(200);
                         for (int i = 0; (i < processedMap.x.Count) && !TransferMapBackGroundWorker.CancellationPending; i++)
                         {
-                            TransferMapBackGroundWorker.ReportProgress((int)(100*i/processedMap.x.Count));
+                            TransferMapBackGroundWorker.ReportProgress((int)(100 * i / processedMap.x.Count));
                             serialPort1.Write(MessagesDocker("VPLAN," + i.ToString() + "," + processedMap.x[i].ToString() + "," + processedMap.y[i].ToString()));
-                            System.Threading.Thread.Sleep(200);
-
+                            System.Threading.Thread.Sleep(150);
                         }
                         TransferMapBackGroundWorker.ReportProgress(100);
                         //serialPort1.Write(MessagesDocker("VPLAN,STOP"));
@@ -413,10 +420,62 @@ namespace ThesisInterface
                         MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Please start this mode first.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //if (AutoEnabled)
+                //{
+                //    try
+                //    {
+                //        serialPort1.Write(MessagesDocker("VPLAN,SPLINE," + processedMap.x.Count().ToString()));
+                //        System.Threading.Thread.Sleep(200);
+                //        int numOfFrames = 40;
+                //        for (int i = 0; (i < processedMap.x.Count) && !TransferMapBackGroundWorker.CancellationPending; i++)
+                //        //for(int i = 0; i < 20; i++)
+                //        {
+                //            if (numOfFrames > 0)
+                //            {
+                //                TransferMapBackGroundWorker.ReportProgress((int)(100 * i / processedMap.x.Count));
+                //                string Index = i.ToString();
+                //                if (i < 10)
+                //                    Index = "000" + Index;
+                //                else if (i < 100)
+                //                    Index = "00" + Index;
+                //                else if (i < 1000)
+                //                    Index = "0" + Index;
+                //                string x = processedMap.x[i].ToString();
+                //                string y = processedMap.y[i].ToString();
+                //                for (int j = x.Length; j < 16; j++)
+                //                {
+                //                    x += "0";
+                //                }
+                //                for (int j = y.Length; j < 16; j++)
+                //                {
+                //                    y += "0";
+                //                }
+
+                //                //serialPort1.Write(MessagesDocker(i.ToString() + "," + processedMap.x[i].ToString() + "," + processedMap.y[i].ToString()));
+                //                serialPort1.Write(MessagesDocker(Index + "," + x + "," + y));
+                //                numOfFrames--;
+                //                System.Threading.Thread.Sleep(90);
+                //            }
+                //            else
+                //            {
+                //                numOfFrames = 40;
+                //                System.Threading.Thread.Sleep(500);
+                //            }
+
+                //        }
+                //        //serialPort1.Write(MessagesDocker("VPLAN,STOP"));
+                //        TransferMapBackGroundWorker.ReportProgress(100);
+                //        //serialPort1.Write(MessagesDocker("VPLAN,STOP"));
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Please start this mode first.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
             catch (Exception ex)
             {
@@ -432,6 +491,7 @@ namespace ThesisInterface
                 progressUC1.ProgressBar.Value = e.ProgressPercentage;
                 progressUC1.ProgressBar.Update();
                 progressUC1.ProgressBar.PerformLayout();
+                autoUC1.SentTb.Text = "Sending map: " + e.ProgressPercentage.ToString() + "% with " + PlanCoordinatesList.Count.ToString() + " points...\r\n";
             }
         }
 
@@ -728,7 +788,7 @@ namespace ThesisInterface
             string[] Ports = SerialPort.GetPortNames();
             vehicleSetting1.PortNameBox.Items.AddRange(Ports);
             vehicleSetting1.PortNameBox.Text = "COM4";
-            vehicleSetting1.BaudrateBox.Text = "9600";
+            vehicleSetting1.BaudrateBox.Text = "19200";
             // Read txt file
             StreamReader sr = new StreamReader(Application.StartupPath + @"\Config.txt");
 
@@ -1085,6 +1145,7 @@ namespace ThesisInterface
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
 
         //--------------------------------------------------------------------------//
 
@@ -1329,16 +1390,15 @@ namespace ThesisInterface
                 string jsonfile = ReadJsonFile();
                 CoordinatesInfo coordinatesInformation = ParseCoordinatesInformation(jsonfile);
                 
-                
                 ClearPLannedData();
 
                 ClearActualData();
+                //MessageBox.Show(coordinatesInformation.plannedCoordinates.Count.ToString());
                 for(int i = 0; i < coordinatesInformation.plannedCoordinates.Count(); i++)
                 {
                     PlanCoordinatesList.Add(new PointLatLng(coordinatesInformation.plannedCoordinates[i].Lat, coordinatesInformation.plannedCoordinates[i].Lng));
-                    DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCoordinatesList, "single_line") { Stroke = new Pen(Color.LightGoldenrodYellow, 3) }, "Planned");
                 }
-                
+                DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCoordinatesList, "single_line") { Stroke = new Pen(Color.LightGoldenrodYellow, 3) }, "Planned");
                 for (int i = 0; i < coordinatesInformation.actualCoordinates.Count; i++)
                 {
                     
@@ -1361,6 +1421,7 @@ namespace ThesisInterface
                     
                     DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual");
                 }
+                
                 DistanceErrors.Clear();
                 //DistanceErrors = coordinatesInformation.ErrorDistances;
             }
@@ -1386,15 +1447,57 @@ namespace ThesisInterface
 
         private void autoUC1_MouseClick(object sender, MouseEventArgs e)
         {
-            if(PlanMapEnable && (e.Button == MouseButtons.Right))
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                if(numOfCalculatePoints < 1)
+                {
+                    numOfCalculatePoints++;
+                    DistanceCalculate.Add(autoUC1.gmap.FromLocalToLatLng(e.X, e.Y));
+                }
+                else if (numOfCalculatePoints == 1)
+                {
+                    DistanceCalculate.Add(autoUC1.gmap.FromLocalToLatLng(e.X, e.Y));
+                    GMapMarker distanceMarker = new GMarkerGoogle(
+                        DistanceCalculate[0],
+                        GMarkerGoogleType.red_small
+                        );
+                    GMapMarker distanceMarker2 = new GMarkerGoogle(
+                        DistanceCalculate[1],
+                        GMarkerGoogleType.red_small
+                        );
+                    double[] UTM1 = LatLonToUTM(DistanceCalculate[0].Lat, DistanceCalculate[0].Lng);
+                    double[] UTM2 = LatLonToUTM(DistanceCalculate[1].Lat, DistanceCalculate[1].Lng);
+                    double distance = Math.Sqrt(Math.Pow(UTM1[0] - UTM2[0], 2) + Math.Pow(UTM1[1] - UTM2[1], 2))*100;
+
+                    distanceMarker2.ToolTipMode = MarkerTooltipMode.Always;
+                    distanceMarker2.ToolTipText = distance.ToString() + "cm";
+
+                    autoUC1.gmap.Overlays.Add(DistanceMarkers);
+                    autoUC1.gmap.Overlays.Add(DistanceOverlay);
+
+                    DistanceOverlay.Routes.Add(new GMapRoute(DistanceCalculate, "single-line") { Stroke = new Pen(Color.Chartreuse, 1) });
+                    DistanceMarkers.Markers.Add(distanceMarker);
+                    DistanceMarkers.Markers.Add(distanceMarker2);
+                    numOfCalculatePoints++;
+                }
+                else
+                {
+                    numOfCalculatePoints = 0;
+                    DistanceCalculate.Clear();
+                    DistanceOverlay.Clear();
+                    DistanceMarkers.Clear();
+                }
+            }
+            else if (PlanMapEnable && (e.Button == MouseButtons.Right))
             {
                 autoUC1.gmap.Overlays.Clear();
                 PlanCoordinatesList.Add(autoUC1.gmap.FromLocalToLatLng(e.X, e.Y));
-                GMap.NET.WindowsForms.GMapMarker marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
+                GMapMarker marker = new GMarkerGoogle(
                     PlanCoordinatesList[PlanCoordinatesList.Count - 1],
-                    GMap.NET.WindowsForms.Markers.GMarkerGoogleType.red_big_stop);
+                    GMarkerGoogleType.red_big_stop);
                 DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(PlanCoordinatesList, "single_line") { Stroke = new Pen(Color.LightGoldenrodYellow, 3) }, "Planned", marker);
             }
+            
         }
 
         private void PlanRoutesBtAutoUCClickHandler(object sender, EventArgs e)
@@ -1636,7 +1739,14 @@ namespace ThesisInterface
             //}
             progressUC1.ProgressBar.Value = 0;
             progressUC1.ProgressBar.Update();
-            TransferMapBackGroundWorker.RunWorkerAsync();
+            if(TransferMapBackGroundWorker.IsBusy)
+            {
+                TransferMapBackGroundWorker.CancelAsync();
+            }
+            else
+            {
+                TransferMapBackGroundWorker.RunWorkerAsync();
+            }
             progressUC1.BringToFront();
         }
 
@@ -1797,9 +1907,9 @@ namespace ThesisInterface
                                         // Save Position Data & Draw On Map
 
                                         ActualCoordinatesList.Add(new GMap.NET.PointLatLng(MyGPS.GPS_Lat, MyGPS.GPS_Lng));
-                                        GMap.NET.WindowsForms.GMapMarker marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
-                                            new GMap.NET.PointLatLng(MyGPS.GPS_Lat, MyGPS.GPS_Lng),
-                                            GMap.NET.WindowsForms.Markers.GMarkerGoogleType.orange_dot);
+                                        GMapMarker marker = new GMarkerGoogle(
+                                            new PointLatLng(MyGPS.GPS_Lat, MyGPS.GPS_Lng),
+                                            GMarkerGoogleType.orange_dot);
                                         DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual", marker);
                                     }
                                 }
@@ -2342,7 +2452,7 @@ namespace ThesisInterface
                     //PlanLines.Routes.Clear();
                     if(marker != null)
                     {
-                        GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
+                        GMapOverlay markers = new GMapOverlay("markers");
                         map.Overlays.Add(markers);
                         markers.Markers.Add(marker);
                     }
@@ -2356,7 +2466,7 @@ namespace ThesisInterface
                     ActualLines.Routes.Clear();
                     if(marker != null)
                     {
-                        GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
+                        GMapOverlay markers = new GMapOverlay("markers");
                         map.Overlays.Add(markers);
                         markers.Markers.Add(marker);
                     }
