@@ -16,6 +16,7 @@ using GMap.NET.MapProviders;
 using System.Runtime.InteropServices;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace ThesisInterface
 {
@@ -163,6 +164,7 @@ namespace ThesisInterface
             public List<PlannedCoordinate> plannedCoordinates { get; set; }
             public List<ActualCoordinate> actualCoordinates { get; set; }
             public List<double> ErrorDistances { get; set; }
+            public List<double> Efa { get; set; }
         }
 
         public class RootObject
@@ -1407,7 +1409,7 @@ namespace ThesisInterface
                         double [] utm1 = LatLonToUTM(coordinatesInformation.actualCoordinates[i - 1].Lat, coordinatesInformation.actualCoordinates[i - 1].Lng);
                         double [] utm2 = LatLonToUTM(coordinatesInformation.actualCoordinates[i].Lat, coordinatesInformation.actualCoordinates[i].Lng);
                         double deltaError = Math.Abs(utm1[0] - utm2[0]);
-                        if (deltaError > 10)
+                        if (deltaError > 5)
                         {
                             coordinatesInformation.actualCoordinates[i].Lat = coordinatesInformation.actualCoordinates[i - 1].Lat;
                             coordinatesInformation.actualCoordinates[i].Lng = coordinatesInformation.actualCoordinates[i - 1].Lng;
@@ -1417,11 +1419,11 @@ namespace ThesisInterface
                     else
                     {
                         ActualCoordinatesList.Add(new PointLatLng(coordinatesInformation.actualCoordinates[i].Lat, coordinatesInformation.actualCoordinates[i].Lng));
+
                     }
-                    
                     DisplayRouteOnMap(autoUC1.gmap, new GMapRoute(ActualCoordinatesList, "single_line") { Stroke = new Pen(Color.Red, 3) }, "Actual");
                 }
-                
+
                 DistanceErrors.Clear();
                 //DistanceErrors = coordinatesInformation.ErrorDistances;
             }
@@ -2365,6 +2367,8 @@ namespace ThesisInterface
             CoordinatesInformation.actualCoordinates = listActual;
 
             CoordinatesInformation.ErrorDistances = DistanceErrors;
+
+            CoordinatesInformation.Efa = Efa;
 
             return CoordinatesInformation;
         }
